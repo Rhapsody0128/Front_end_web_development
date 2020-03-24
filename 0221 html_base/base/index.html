@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- DOCTYPE = document type declaration = 告知你的瀏覽器這個文件是用哪個版本的HTML -->
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- content="width=device-width, initial-scale=1.0 會適應頁面大小自己調整 -->
+    <title>目錄</title>
+</head>
+
+<body>
+    <h1>hello World</h1>  
+    <h2>hello World</h2>
+    <h3>hello World</h3>
+    <h4>hello World</h4>
+    <h5>hello World</h5>
+    <h6>hello World</h6>
+    <!-- h = heading or header = 標題 -->
+    <hr />
+    <!-- hr = horizontal line = 水平線 -->
+    <p>
+        Lorem ipsum, dolor<br /> sit amet consectetur adipisicing elit. Delectus consequatur facere repellat esse non voluptas minus quis ab laborum doloribus, voluptatum, fugit recusandae quisquam quod obcaecati ut incidunt. Doloribus, nisi!
+    <!-- br = 換行 -->
+    </p>
+    <!-- p = paraphgraph = 段落 輸入Lorem+單字數 + TAB = 無意義文字自動鍵入 -->
+
+     <a href="https://www.google.com.tw/"target="_blank">GOOGLE</a><br/>
+    <!-- href = Hypertext Reference = 可以指定超連結目標的URL -->
+    <!-- target(把href放在哪裡) (連結目標)="_blank(新分頁) = 新開一個URL的新分頁 -->
+    <a href="others/other.html">貓</a>
+    <a href="#form">表單</a>
+    <!-- 設定錨點 a href="#form" = 設一個標記ID(form)，互動後會移動到同頁面的ID位置  -->
+
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+    </ul>
+    <!-- ul = unordered lists = 無序清單  li = list = 清單條目 -->
+
+    <ol>
+        <li>E</li>
+        <li>F</li>
+        <li>G</li>
+        <li>H</li>
+    </ol>
+    <!-- ol = ordered lists 有序列表 -->
+
+    <img src="images/aa.jpg" width = "600" lenght = "300" alt = "貓" title = "貓貓"><br/>
+    <!-- img = images = 圖片  src = source = 來源 alt = 圖片無法顯示時的替代文字 width.lenght = 圖片寬高大小 title = 滑鼠移動到圖片顯示的文字 -->
+    <!-- 屬性排列順序沒有差別 -->
+    <img src="https://picsum.photos/300/300/?random=1"><br/>
+    <img src="https://picsum.photos/600/600/?random=4"><br/>
+    <!-- 輸入picsum + TAB = 隨機插入圖片網址 (from Fake image Snippet Collection) -->
+    <img src="https://cdn.hk01.com/di/media/images/564852/org/cc3f10a7c9933953b2f11853d52a5e9e.jpg/-4IcMX8aSM6tcTEGMkJt6F3XRXexRKbLYrEJp2KxCac?v=w1280" width="600" lenght="600" alt="貓貓貓">
+    <hr/>
+    
+    <marquee>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, possimus?</marquee>
+    <!-- marquee = 跑馬燈   -->
+    
+    <iframe src="01.intro.html" frameborder="no" scrolling="0" ></iframe>
+    <!-- iframe = 插入頁框 frameborder = 是否需要邊框 scrolling = 是否需要捲軸 (Yes = 1 ,NO = 0)  -->
+    <iframe src="01.intro.html" frameborder="1" name="ShowFrame" width="600" lenght="1200" ></iframe>
+    <!-- 預設頁是01.intro.html -->
+    <a href="03.HTML_structure.html" target="ShowFrame">點我</a><br/>
+    <!-- 將03.HTML_structure.html連結到target 名稱叫ShowFrame的頁框 -->
+    
+   
+    <b>Bold</b>
+    <strong>Strong</strong><br/>
+    <!-- b,strong = 粗體 -->
+    <i>italic</i>
+    <em>斜體</em><br>
+    <!-- i,em = 斜體 -->
+    <s>刪除</s>
+    <del>delete line</del><br>
+    <!-- s,del =刪除線 -->
+    <pre>
+       <code>
+            var btn = document.getElementByID('btn');
+            btn.oneclick = function () {
+                setInterval(() => {
+                    document.getElementByID('showTime').innerText = Data();
+                },1000);
+            }
+        </code>
+    </pre>
+<!-- pre = 照原本結構顯示文字(不重新編排CODE裡的文字) code = 紀錄程式碼 -->
+
+<table border="1" width="600" cellspacing="1" cellpadding="10">
+    <tr>
+       <td>1.1</td>
+       <td>1.2</td>
+       <td>1.3</td>
+       <td>1.4</td>
+       <td>1.5</td>
+    </tr>
+    <tr>
+        <td>2.1</td>
+        <td>2.2</td>
+        <td>2.3</td>
+        <td>2.4</td>
+        <td>2.5</td>
+    </tr>
+    <tr>
+        <td>3.1</td>
+        <td>3.2</td>
+        <td>3.3</td>
+        <td>3.4</td>
+        <td>3.5</td>
+    </tr>
+    <tr>
+        <td>4.1</td>
+        <td>4.2</td>
+        <td>4.3</td>
+        <td>4.4</td>
+        <td>4.5</td>
+    </tr>
+    <tr>
+        <td>5.1</td>
+        <td>5.2</td>
+        <td>5.3</td>
+        <td>5.4</td>
+        <td>5.5</td>
+    </tr>
+    </table>
+
+    <table border="1" width="600" cellspacing="1" cellpadding="10" align="center">
+        <tr align="center">
+            <td rowspan="2">1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr align="center">
+            <td colspan="2">2</td>
+            <td>4</td>
+        </tr>
+    </table>
+<!-- table =表格 tr = 行 td = 列 cellspacing = 欄位行距 cellpadding = 欄位大小 colspan = 行欄位合併(後面數字=吃掉欄位數+自己，往右下一格合併) rowspan =列欄位合併) -->
+    <form method="post">
+        <!-- form method="post" =表單:傳遞到後台方式是POST -->
+    <table id="form" width="100%" border="1" cellpadding="5"cellspacing="0">
+       <tr>
+           <td width="100">帳號</td>
+           <td><input type="text" size = 10 placeholder="請輸入帳號" maxlength = 10 name="id">
+        </td>
+        <!-- size = 框格大小, input type="text" = 輸入格式為文字,
+placeholder = 未輸入文字前顯示的文字, maxlength = 框格最大輸入字元,name = 給此表單命名,方便後臺抓取資料 -->
+       </tr>
+       <tr>
+           <td width="100">密碼</td>
+           <td><input type="text" size = 10 maxlength = 10 placeholder="請輸入密碼" name="pw"></td>
+       </tr>
+       <tr>
+           <td width="100">性別</td>
+           <td>
+               <input type="radio" name="gemder" value="男">男
+               <input type="radio" name="gemder" value="女">女
+               <input type="radio" name="gemder" value="無" checked>請選擇
+               <!-- checked = 預選,為選取前預先選擇的選項 -->
+        </input>
+        <!-- value = 輸入到後檯的值的名稱 -->
+       </tr>
+       <tr>
+           <td width="100">興趣</td>
+           <td>
+               <input type="checkbox" name="habbit" value="拍照">拍照
+               <input type="checkbox" name="habbit" value="看書">看書
+               <input type="checkbox" name="habbit" value="唱歌">唱歌
+               <input type="checkbox" name="habbit" value="寫網頁">寫網頁
+           </td>
+       </tr>
+       <tr>
+           <td width="100">出生年份</td>
+           <td>
+               <select name="years">
+                   <option value="1980">1980</option>
+                   <option value="1990">1990</option>
+                   <option value="2000">2000</option>
+                   <option value="2010">2010</option>
+               </select>
+               <!-- select = 選擇欄  option = 選項-->
+           </td>
+       </tr>
+       <tr>
+           <td width="100">上傳檔案</td>
+           <td>
+            <input type="file" name="upload">
+           </td>
+       </tr>
+       <tr>
+           <td width="100">留言</td>
+           <td>
+               <textarea name="msg" cols="100" rows="10"></textarea>
+           </td>
+           <!-- rows = 行 cols = 寬 -->
+       </tr>
+       <tr>
+           <td width="100"></td>
+           <td>
+               <input type="submit" value="送出">
+               <input type="reset" value="重置">
+    </table>
+    </form>
+<!-- input type 輸入格式
+    text = 字元
+    radio = 單選 
+    checkbox = 多選 
+    file = 上傳檔案
+    submit = 送出資料到後檯
+    reset = 重置表單  -->
+</table>
+<a href="#">回頂層</a>
+</body>
+</html>

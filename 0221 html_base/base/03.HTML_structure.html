@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<!-- DOCTYPE 宣告html5 文件 -->
+
+<html>
+    <head> 
+        <!-- head = 紀錄的是給瀏覽器讀取的資訊 -->
+        <meta charset="UTF-8" /> 
+        <!-- meta = 宣告，沒有結束標籤，結尾標籤可不加(意旨無結束標籤)-->
+        <!-- charset = 字元編碼類別 UTF-8字元編碼 (確保各國瀏覽器內容正常顯示不會亂碼-->
+        <meta name="descriptoin" contemt="這是我的第一個網頁"> 
+        <!-- name/balue = 屬性名稱 同CSS、JSS  -->
+        <title>我的第一個網頁</title>
+        <link herf="css/example.css"> 
+        <link rel="stylesheet" href="">
+        <!-- link = 連結到外部CSS檔案 -->
+        <style>  
+        /* 本業使用的CSS */
+        body{background: #ffadaf;} 
+        /* body = 使用者讀取頁面 background =背景樣式(顏色) */
+        </style>
+    </head>
+
+    <body> 
+        <!-- body = 紀錄的是給使用者讀取的資訊 -->
+        <h1>第一個網頁</h1>
+        <!-- h1 = header1 = 標題一 -->
+        <p>HTML是網頁最基礎的技術</p>
+        <!-- P = paragraph = 段落 -->
+        <button id ="btn">顯示現在時間</button>
+        <div id ="showtime"></div>
+        <script> src="js/example.js"</script>
+        <script>
+            var btn = document.getElementByID("btn");
+            btn.oneclick = function () {
+                setInterval(() => {
+                    document.getElementByID("showtime").innerText = Data();
+                },1000);
+            }
+        </script>
+        <!-- script = 腳本 = 本頁使用的JS程式碼 -->
+    </body>
+</html>

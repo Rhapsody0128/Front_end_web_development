@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-tw"">
+
+<head>
+    <meta charset=" UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+
+<body>
+    <script>
+        let restaurants = ["太師傅", "麥當勞", "迎客門", "烤肉飯"]
+        // Array陣列=普通的陣列，在陣列變數名後加上 [] ，裡面放入索引數字可以該索引的資料。在變數名字後加上 .length 可以得到陣列的長度
+        document.write(`數量 ${restaurants.length}，第一個是${restaurants[1]}<br>`)
+        for (let i = 0; i < restaurants.length; i++) {
+            document.write(restaurants[i])
+        }
+        // JSON陣列 = 可命名的陣列。陣列的內容不是像上面的 Array 那樣是同一系列的，這個時候就會需要用到 JSON，使用 JSON 的話，索引能放文字
+
+        document.write('<hr>')
+        let person = {
+            name: "王曉明",
+            age: 33,
+            number: 24
+        }
+        document.write(`名字叫${person["name"]}，${person.age}歲，${person.number}號`)
+        document.write(Object.keys(person).length)
+
+        document.write('<hr>')
+
+        for (let restaurant of restaurants) {
+            document.write(restaurant + "<br>")
+        }
+        // for of = for(變數 of 陣列)，變數代表陣列裡面的每個東西的值，每次回圈的值都會改變
+
+        for (index in person) {
+            document.write(`${index}的值是${person[index]} <br>`)
+        }
+
+
+
+        // for in = for(變數 in 陣列)，變數代表陣列裡面的每個東西的索引值，JSON只能用這個迴圈
+
+    </script>
+</body>
+
+</html>

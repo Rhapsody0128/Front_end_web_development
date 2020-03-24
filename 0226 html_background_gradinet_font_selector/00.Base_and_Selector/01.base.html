@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基礎</title>
+
+   
+    <style>
+         /*
+        style標籤下 
+        1. 要有一個選擇器(h1)
+        2. 要有一個大括弧{}
+        3. 屬性後冒號+屬性值(color:red)
+        */
+        /* 第一種style標籤樣式:在head內寫下<style> = 該網頁文件專屬樣式，無法被其他網站使用 */
+
+        h1,h2,h3,h4,h5,h6{
+        color:green
+    }
+        h1{color:red;
+        background-color: brown;
+        font-size: 40px;
+    }
+    /* 群組選擇，用半形逗點分開 */
+    </style>
+    <link rel="stylesheet" href="style.css">
+        <!-- 第二種style標籤樣式，使用，<link>連結外部樣式表
+        1.優點可以減少CSS原始碼，不需要每個html重複寫，檔案較小
+        2. 設計專題或工作時，使用外部樣式表
+        3.外部樣式表不只有一份，可能會有樣式被覆蓋的問題，因瀏覽器在閱讀網頁，由上至下每一份外部樣式表 -->
+         <!-- /* 瀏覽器閱讀是由上到下，故後設定的h1顏色會蓋過先前的*/ -->
+    <link rel="stylesheet" href="style2.css">
+    
+    
+</head>
+
+
+<body>
+    <h1 style="color: purple;">Lorem ipsum dolor sit amet </h1>
+    <!-- 
+        第三種style標籤樣式:又稱行內樣式，優先度最高，因為style是標籤的屬性，不會被內嵌標籤和外部樣式表影響 -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ut cupiditate, nostrum neque inventore labore dolores quod, ex magni praesentium quae laudantium nisi aspernatur quos adipisci! Sunt quaerat libero non.</p>
+    <h1>Lorem, ipsum dolor sit amet </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempore quasi odio ipsam placeat, nisi nihil tempora nulla quidem minima cum! Inventore fugiat magni rem commodi ratione ipsum recusandae quos!</p>
+    <h1> possimus tempore autem adipisci </h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque officiis minima aperiam ipsum architecto impedit dicta natus veniam delectus suscipit autem voluptates non repellendus quas fugit dolores eveniet, totam voluptatem.</p>
+    <h1>Lorem ipsum dolor</h1>
+    <h2>Lorem ipsum dolor</h2>
+    <h3>Lorem ipsum dolor</h3>
+    <h4>Lorem ipsum dolor</h4>
+    <h5>Lorem ipsum dolor</h5>
+    <h6>Lorem ipsum dolor</h6>
+</body>
+</html>

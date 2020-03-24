@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>區塊盒和行內盒</title>
+    <style>
+        div,span,li,p{
+            font-size: 18px;
+            font-family: 微軟正黑體;
+        }
+        .menu{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .menu li{
+            display: inline-block;
+            /* display = 顯示 => 更變屬性:有inline(排隊)性質的block(區塊) */
+            background: darkblue;
+            width: 100px;
+            border: 1px solid black;
+        }
+        .menu li a{
+            color: cornsilk;
+            background:red;
+            display: block
+            /* 更變數醒:把不會填滿整行性質的inline box 改成可以填滿整行的block box */
+        }
+        /* display可以更變盒子的性質 */
+    </style>
+</head>
+<body>
+    <h1>區塊盒、行內盒</h1>
+    <p>盒子分為區塊盒(block box)、行內盒(inline box)兩種基本類型</p>
+<hr>
+    <h2>區塊盒</h2>
+    <div style="background:burlywood">div區塊標籤</div>
+    <div style="background:burlywood">div區塊標籤</div>
+    <div style="background:burlywood">div區塊標籤</div>
+    <ul>
+        <li>區塊盒前後斷行，填滿整個父元素，無法與其他元素並排</li>
+        <li>可正常使用width、height、margin和padding元素</li>
+        <li>EX:div、h1、p、ul </li>
+    </ul>
+<hr>
+    <h2>行內盒</h2>
+    <span style="background: burlywood;">span行內標籤</span>
+    <span style="background: burlywood;">span行內標籤</span>
+    <span style="background: burlywood;">span行內標籤</span>
+    <ul>
+        <li>行內盒前後不斷行，段以本身內容寬度為主</li>
+        <li>因以本身內容決定寬度，故width、height不會有作用</li>
+        <li>EX:span、a、en、strong</li>
+    </ul>
+<hr>
+    <p style ="background: cornflowerblue;" >p標籤區塊盒</p>
+    <a href="#" style="background: red;">a標籤是行內盒</a>
+    <h1 style="background: cyan;">h標籤是區塊盒</h1>
+<hr>
+    <h3>可使用 display 設定其他類型的盒子，例如display:inline-block</h3>
+    <ul class="menu">
+        <li><a href="#">link1</a></li>
+        <li><a href="#">link2</a></li>
+        <li><a href="#">link3</a></li>
+        <li><a href="#">link4</a></li>
+        <li><a href="#">link5</a></li>
+    </ul>
+<hr>
+</body>
+</html>

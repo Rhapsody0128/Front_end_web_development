@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            margin: auto;
+            line-height: 1200px;
+            text-align: center;
+        }
+
+        .dice {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(300deg, gray, white);
+            border: 5px solid black;
+            position: relative;
+            border-radius: 25px;
+            margin: auto;
+            display: inline-block;
+            line-height: 500px;
+            text-align: center;
+        }
+
+        .redpoint {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            transform: translate(50%, 50%);
+
+        }
+
+        .midpoint {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            transform: translate(50%, 50%);
+
+        }
+
+        .ltponit {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            transform: translate(50%, 50%)
+        }
+
+        .rtponit {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 90px;
+            transform: translate(50%, 50%)
+        }
+
+        .lbponit {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 90px;
+            left: 10px;
+            transform: translate(50%, 50%)
+        }
+
+        .rbponit {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 90px;
+            left: 90px;
+            transform: translate(50%, 50%)
+        }
+
+        .rmponit {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            transform: translate(50%, 50%)
+        }
+
+        .lmponit {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 90px;
+            transform: translate(50%, 50%)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dice">
+            <div class="redpoint"></div>
+        </div>
+        <div class="dice">
+            <div class="ltponit"></div>
+            <div class="rbponit"></div>
+        </div>
+        <div class="dice">
+            <div class="ltponit"></div>
+            <div class="rbponit"></div>
+            <div class="midpoint"></div>
+        </div>
+        <div class="dice">
+            <div class="ltponit"></div>
+            <div class="lbponit"></div>
+            <div class="rbponit"></div>
+            <div class="rtponit"></div>
+        </div>
+        <div class="dice">
+            <div class="ltponit"></div>
+            <div class="lbponit"></div>
+            <div class="rbponit"></div>
+            <div class="rtponit"></div>
+            <div class="midpoint"></div>
+        </div>
+        <div class="dice">
+            <div class="ltponit"></div>
+            <div class="lbponit"></div>
+            <div class="rbponit"></div>
+            <div class="rtponit"></div>
+            <div class="lmponit"></div>
+            <div class="rmponit"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

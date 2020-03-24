@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(Math.round(6.5))
+        // Math.round()四捨五入到整數
+        console.log(Math.ceil(6.5))
+        // Math.round()無條件進位到整數
+        console.log(Math.floor(6.5))
+        // Math.floor()無條件捨去到整數
+        console.log(Math.pow(6.5, 2))
+        // Math.pow(x,y)取x的y次方
+        console.log(Math.sqrt(6.5))
+        // Math.sqrt()平方根
+        console.log(Math.sign(-6.5))
+        // sign()正負數判斷，負數為 -1，0 為 0，正數為 1
+        // --------------------------------------------
+        console.log(Math.min(0, 150, 30, 20, -8, -200))
+        // Math.min陣列取最小值
+        console.log(Math.max(0, 150, 30, 20, -8, -200))
+        // Math.max陣列取最大值
+        let arr = [0, 150, 30, 20, -8, -200]
+        console.log(Math.min(...arr))
+        console.log(Math.max(...arr))
+        //如果是中括號的陣列，一般帶入Math.min()會無法讀取出現NaN，在前面須加上'...'，此為解構賦值語法
+        // Math.random() 從 0 到 1 隨機取小數
+
+
+    </script>
+</body>
+
+</html>

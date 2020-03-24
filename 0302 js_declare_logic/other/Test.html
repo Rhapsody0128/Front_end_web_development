@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let name = prompt('姓名');
+        let birthMonth = prompt('出生月份')
+        let birthDate = prompt('出生日期')
+        let Constellations = ''
+        if ((birthMonth == 1 && birthDate >= 20) || birthMonth == 2 && birthDate <= 18) {
+            Constellations = ('水瓶')
+        }
+
+        if ((birthMonth == 2 && birthDate >= 19) || birthMonth == 3 && birthDate <= 20) {
+            Constellations = ('雙魚')
+        }
+
+        alert(`${name} 你好，你的星座是 ${Constellations} 座`)
+
+
+    </script>
+</body>
+
+</html>

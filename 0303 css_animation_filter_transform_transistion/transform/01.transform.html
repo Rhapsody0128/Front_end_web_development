@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: 微軟正黑體;
+        }
+
+        section {
+            height: 100vh;
+            /* vh = viewhight = 看到視窗的高度百分比 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .dashed {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border: 5px dashed black;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .translate {
+            transform: translate(50%, -100px);
+            /* 第一個數值為X軸移動，二為Y軸移動，右、下為正數，左、上為負*/
+            /* 若使用%實際長度會以元素本身尺寸長度計算 */
+            /* ex:width=300px => 50% (150px) */
+            transform: translateX(100px);
+            transform: translateY(50%);
+            /* 可設定單軸X.Y的移動 但translateX.Y只能存在一個，如上只會顯示transform: translateY(50%)*/
+        }
+
+        .scale {
+            /* transform: scale(2); */
+            transform: scale(2);
+            /* sclae = 縮放 => 數值以倍數顯示 */
+            /* 負數會呈現倒影 */
+            transform-origin: left top;
+            /* transform-origin = 定位點 = 改變軸心:預設是center center = 50% 50%，box的中心點，數值可設em、px、%...等 */
+        }
+
+        section:nth-child(odd) {
+            background: rgb(161, 228, 255);
+        }
+
+        section:nth-child(even) {
+            background: rgb(254, 168, 144);
+        }
+
+        /* 選擇sectiom的子代小孩(odd=單數 even=偶數) */
+        .rotate {
+            transform: rotate(45deg);
+            /* rotate = 旋轉:已預設軸心(左上)順時鐘旋轉元素 */
+            transform-origin: left top;
+        }
+
+        .skew {
+            transform: skew(45deg, 15deg);
+            /* skew = 傾斜:第一個值為設定X軸的歪斜角，第二個值為Y軸的歪斜角 */
+            transform-origin: right top;
+        }
+
+        .more {
+            transform: translate(100px, 50px) rotate(20deg) scale(1.5) skew(15deg, 10deg);
+        }
+
+        /* 多屬性，屬性和屬性之間不需要加逗點 */
+        /* 屬性順序會由左至右判斷變形，新的會套用舊的屬性值，因此順序十分重要*/ 
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Tranlate(移動)</h1>
+        <div class="dashed">
+            <div class="box translate">Translate(移動)</div>
+        </div>
+    </section>
+    <section>
+        <h1>Scale(縮放)</h1>
+        <div class="dashed">
+            <div class="box scale">Scale(縮放)</div>
+        </div>
+    </section>
+    <section>
+        <h1>Rotate(旋轉)</h1>
+        <div class="dashed">
+            <div class="box rotate">Rotate(旋轉)</div>
+        </div>
+    </section>
+    <section>
+        <h1>Skew(傾斜)</h1>
+        <div class="dashed">
+            <div class="box skew">Skew(傾斜)</div>
+        </div>
+    </section>
+    <section>
+        <h1>設定多屬性</h1>
+        <div class="dashed">
+            <div class="box more">設定多屬性</div>
+        </div>
+    </section>
+</body>
+
+</html>

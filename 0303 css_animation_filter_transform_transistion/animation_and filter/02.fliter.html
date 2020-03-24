@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 60px;
+            font-family: 微軟正黑體;
+            color: tomato;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 400px;
+            height: 400px;
+            border: 5px solid #333;
+        }
+
+        .blur {
+            animation: blur 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1");
+        }
+
+        .brightness {
+            animation: brightness 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1");
+        }
+
+        .contrast {
+            animation: contrast 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1")
+        }
+
+        .drop-shadow {
+            animation: drop-shadow 3s infinite alternate;
+            margin: 100px;
+        }
+
+        .box-shadow {
+            animation: box-shadow 3s infinite alternate;
+
+        }
+
+        .grayscale {
+            animation: grayscale 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1")
+        }
+
+        .hue-rotate {
+            animation: hue-rotate 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1");
+            margin: 100px;
+        }
+
+        .invert {
+            animation: invert 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1")
+        }
+
+        .opacity {
+            animation: opacity 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1")
+        }
+
+        .saturate {
+            animation: saturate 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1")
+        }
+
+        .sepia {
+            animation: sepia 3s infinite alternate;
+            background: url("https://picsum.photos/400/400/?random=1")
+        }
+
+        section:nth-child(odd) {
+            background-color: rgb(196, 160, 89);
+        }
+
+        section:nth-child(even) {
+            background-color: rgb(124, 182, 124);
+        }
+
+        @keyframes blur {
+            from {
+                filter: blur();
+            }
+
+            to {
+                filter: blur(10px)
+            }
+
+            /* filter effect =濾鏡效果*/
+            /* blur = 模糊度 */
+        }
+
+        @keyframes brightness {
+            from {
+                filter: brightness(200%);
+            }
+
+            to {
+                filter: brightness(0%)
+            }
+
+            /* brightness = 明亮度，用百分比當值 */
+        }
+
+        @keyframes contrast {
+            from {
+                filter: contrast(200%);
+            }
+
+            to {
+                filter: contrast(0%)
+            }
+        }
+
+        /* contrast = 對比度， 越高對比度越強烈，0%沒有對比=灰色*/
+        @keyframes drop-shadow {
+            from {
+                filter: drop-shadow(0px 0px 5px red);
+            }
+
+            33% {
+                filter: drop-shadow(0px 0px 5px green);
+            }
+
+            66% {
+                filter: drop-shadow(0px 0px 5px blue);
+            }
+
+            100% {
+                filter: drop-shadow(0px 0px 5px red);
+            }
+        }
+
+        @keyframes box-shadow {
+            from {
+                box-shadow: 0px 0px 5px red;
+            }
+
+            33% {
+                box-shadow: 0px 0px 5px green;
+            }
+
+            66% {
+                box-shadow: 0px 0px 5px blue;
+            }
+
+            100% {
+                box-shadow: 0px 0px 5px red;
+            }
+        }
+
+        /* box-shadow 只能顯示盒子舉行的陰影 */
+        /* drop-shadow 則是包含文字邊框的陰影也可呈現 */
+        @keyframes grayscale {
+            from {
+                filter: grayscale(0%);
+            }
+
+            to {
+                filter: grayscale(100%)
+            }
+        }
+
+        /* grayscale = 灰階 100%=完全灰階 */
+        @keyframes hue-rotate {
+            from {
+                filter: hue-rotate(10deg);
+            }
+
+            50% {
+                filter: hue-rotate(360DEG)
+            }
+
+            to {
+                filter: hue-rotate(0DEG)
+            }
+        }
+
+        /*hue-rotate色相旋轉，單位是deg */
+        @keyframes invert {
+            from {
+                filter: invert(0%);
+            }
+
+            to {
+                filter: invert(100%)
+            }
+        }
+
+        /* invert = 負片，100%為完全負片效果 */
+        @keyframes opacity {
+            from {
+                filter: opacity(0%);
+            }
+
+            to {
+                filter: opacity(100%)
+            }
+        }
+
+        /* opacity = 透明度，100%為完全透明 */
+        @keyframes saturate {
+            from {
+                filter: saturate(0%);
+            }
+
+            to {
+                filter: saturate(100%)
+            }
+        }
+
+        /* saturate = 飽和度，0%為黑白照片，100%正常 */
+        @keyframes sepia {
+            from {
+                filter: sepia(0%);
+            }
+
+            to {
+                filter: sepia(100%)
+            }
+        }
+
+        /* sepia = 泛黃效果，100%為泛黃舊照片 */
+
+        /* filter可使用
+        blur = 模糊度
+        brightness = 明亮度
+        contrast = 對比度
+        drop-shadow = 全陰影
+        box-shadow = 盒陰影
+        box grayscale = 灰階
+        hue-rotate = 色相旋轉
+        box invert = 負片
+        box opacity = 透明度
+        saturate = 飽和度
+        box sepia = 泛黃效果
+         */
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="box blur">模糊度</div>
+    </section>
+    <section>
+        <div class="box brightness">明亮度</div>
+    </section>
+    <section>
+        <div class="box contrast">對比度</div>
+    </section>
+    <section>
+        <div class="box drop-shadow">
+            <span class="drop-shadow">全陰影</span>
+        </div>
+        <div class="box box-shadow">
+            <span class="box-shadow">盒陰影</span>
+        </div>
+    </section>
+    <section>
+        <div class="box grayscale">灰階</div>
+    </section>
+    <section>
+        <div class=" box hue-rotate"></div>
+        <div class="box hue-rotate">色相旋轉</div>
+    </section>
+    <section>
+        <div class="box invert">負片</div>
+    </section>
+    <section>
+        <div class=" box opacity">透明度</div>
+    </section>
+    <section>
+        <div class=" box saturate">飽和度</div>
+    </section>
+    <section>
+        <div class=" box sepia">泛黃效果</div>
+    </section>
+</body>
+
+</html>

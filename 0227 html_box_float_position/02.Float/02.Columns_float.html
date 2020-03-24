@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列浮動</title>
+    <style>
+        .container {
+            width: 960px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            background: gray;
+            /* overflow: hidden; */
+            /* 溢出值隱藏 */
+            /* display: table; */
+            /* 表格布局，也可使背景不被COL擋住 */
+
+        }
+
+        .col {
+            width: 300px;
+            background: firebrick;
+            float: left;
+            padding: 5px;
+            margin: 5px;
+
+        }
+
+        /* 偽元素寫法，也能給讓container背景不被蓋住
+         .clearfix::after{
+            content:'';
+            display: block;
+            clear:both;    
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="col">
+            <img src="https://picsum.photos/300/300/?random=1">
+            <h1>title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut beatae, temporibus minima facere
+                iste pariatur esse ex cumque, nobis ipsam in vero reprehenderit debitis tempora cum! Numquam,
+                exercitationem facere!</p>
+        </div>
+        <div class="col">
+            <img src="https://picsum.photos/300/300/?random=1">
+            <h1>title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut beatae, temporibus minima facere
+                iste pariatur esse ex cumque, nobis ipsam in vero reprehenderit debitis tempora cum! Numquam,
+                exercitationem facere!</p>
+        </div>
+        <div class="col">
+            <img src="https://picsum.photos/300/300/?random=1">
+            <h1>title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut beatae, temporibus minima facere
+                iste pariatur esse ex cumque, nobis ipsam in vero reprehenderit debitis tempora cum! Numquam,
+                exercitationem facere!</p>
+        </div>
+    </div>
+    <div style="float: left ;background:red;padding: 1rem;margin: 1rem; ">Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Vitae voluptatem impedit nesciunt esse expedita doloribus at sed dicta molestias amet non,
+        molestiae minus nemo dolorem quidem. Dicta asperiores delectus dolor veritatis. Modi ducimus illo doloremque
+        officiis voluptatum ea, amet vitae debitis magni necessitatibus sit distinctio consequatur animi quis omnis
+        quas?</div>
+</body>
+
+</html>

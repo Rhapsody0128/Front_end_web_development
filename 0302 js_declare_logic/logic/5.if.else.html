@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let num = 10;
+
+        if (num <= 10) {
+            document.write('數字小於等於10')
+        }
+        else {
+            document.write('數字大於10')
+        }
+
+        document.write('<hr>')
+
+        let str = 10
+        if (num == str) {
+            document.write('== ')
+        }
+        // 兩個等於會忽略資料型態
+        document.write('<br>')
+
+        if (num === str) {
+            document.write('===')
+        }
+        // 三個等於會判斷資料型態是否一樣
+
+        let answer = confirm('今天天氣好嗎?')
+        // confirm = 確認 => 跳出一個視窗(包含確認和取消)，按確定即為 true ,取消為 false
+
+        if (answer === true) {
+            alert('讚')
+        }
+        else {
+            alert('記得帶傘')
+        }
+        // 上等於下
+        answer === true ? alert('讚') : alert('出門記得帶傘')
+        // 變數 判斷 正確 ? 顯示結果  否則 顯示否則結果
+
+        document.write('<hr>')
+
+        let Rich = true
+        let Fat = false
+        let GoodAtCode = false
+        if (Rich && GoodAtCode || !Fat) {
+            document.write('交到女朋友')
+        }
+        // 符號	     說明	                 舉例
+        // a && b	a 與 b ，必須符合兩者	  A:如果颱風天沒颳風也沒下雨，我就去看電影
+        // a || b	a 或 b，符合其中一個      A: 晚餐吃什麼？ B: 便當或麵都可以
+        // !a	    否定、相反	              A: 你假日想做什麼事？ B: 除了練習程式外，其他都可以
+
+        let answer2 = prompt('引清兵入關的是誰? \n 1.吳三桂 \n 2.吳四桂 \n 3.吳武桂')
+        answer2 === '1' ? alert('對') : alert('錯')
+        // prompt = 提示 => 顯示可輸入文字的視窗，輸入值可以回傳判斷(回傳數值為文字)
+
+        let drink = "雪碧"
+        switch (drink) {
+            case "可樂":
+                alert("你喜歡喝可樂");
+                break
+            case "雪碧":
+                alert("你喜歡喝雪碧");
+                break
+            case "水":
+                alert("你喜歡喝水");
+                break;
+            default:
+                alert("沒有此選項")
+                break
+        }
+        // switch () { case "":...break } = 開關 => 判斷變數的值，若等於Case內的變數就執行，break為停止判斷，default = 若無符合的值時執行
+        let weather = 'rain';
+        let withUmberlla = true;
+        if (weather === 'rain') {
+            if (withUmberlla) {
+                alert('我有傘不怕')
+            }
+            else {
+                alert('我沒傘要去買')
+            }
+        }
+        else {
+            alert('出太陽')
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="-zh-tw"">
+
+<head>
+    <meta charset=" UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let input = ''
+        // while (input != 'end')
+        //     input = prompt('請輸入end')
+
+        // for (let i = 0; i < 10; i++) {
+        //     if (i === 5) {
+        //         continue;
+        //     }
+        //     document.write(i);
+        // }
+        // let num = 123;
+        // let count = 1
+        // while (true) {
+        //     let answer = prompt(`第${count}次猜測`)
+        //     if (answer == num) {
+        //         break
+        //     }
+        //     count++;
+        // }
+        // break 可以打斷迴圈的執行，continue 可以略一次執行
+        let num = 123;
+        let count = 1
+        while (true) {
+            let answer = prompt(`第${count}次猜測`)
+            if (answer == num) {
+                break
+            }
+
+            else if (answer > num) { alert('太大') }
+            else { alert('太小') } 1
+            count++
+        }
+    </script>
+</body>
+
+</html>

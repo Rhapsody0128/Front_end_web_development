@@ -1,0 +1,279 @@
+/* 頁面結構趨 */
+/* Navbar 導覽列---------------------------------------- */
+body{
+    font-family: 'Noto Sans TC' ,  sans-serif ;
+}
+hr{
+    border: 1px solid gray;
+}
+.container{
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+.btn{
+    display: inline-block;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    vertical-align: middle;
+    text-align: center;
+}
+/* 建立基本按鈕 */
+.btn-blue{
+    color: white;
+    background-color:gray;
+    border: gray;
+}
+.btn-blue:hover{
+    color: white;
+    background: blue;
+    border: blue;
+}
+.btn-lg{
+    padding: 0px;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    border-radius: 0.5rem;
+    font-family: 微軟正黑體;
+    box-shadow: inset 0 0 10 rgb(0, 0, 0);
+}
+.btn-black{
+    color: white;
+    background-color: black;
+    border: black;
+}
+.btn-black:hover{
+    color: white;
+    background: orange;
+    border: orange;
+}
+/* 按鈕尺寸 */
+
+
+#navbar{
+    width: 100%;
+    background: black;
+    line-height: 3.5rem;
+    /* overflow: hidden; */
+    position: fixed;
+    top: 0;
+    left: 0 ;
+    z-index: 999;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+
+}
+/* Logo */
+#navbar .logo{
+    float: left;
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+#navbar .logo a{
+    font-size: 2rem;
+    text-decoration: none;
+    padding: 0 1.3rem;
+    color: white;
+}
+/* menu */
+#navbar .menu{
+    float: left;
+    margin-left: 3rem;
+}
+#navbar .menu li{
+    float: left;
+    
+}
+#navbar .menu a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 0 1.3rem;
+    color: white;
+}
+#navbar .menu a:hover {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    outline: 0px solid gray;
+    background: linear-gradient(73deg,red,white,blue);
+    -webkit-background-clip: text;
+    background-clip:text;
+    color: transparent
+    /* 上三行是瀏覽器的前綴詞; */
+}
+#navbar .menu  i{
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 0 1.3rem;
+    color: white;
+}
+#navbar .menu  a:hover i {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    outline: 0px solid gray;
+    background: linear-gradient(73deg,red,white,blue);
+    -webkit-background-clip: text;
+    background-clip:text;
+    color: transparent
+}
+
+/* search */
+#navbar .search {
+    float: right;
+    margin-right: 1rem;
+}
+#navbar  .search form{
+    font-size: 0;
+}
+/*  系統預設字間會有4px的保留空間，要完全貼合要把字體改成0 */
+#navbar  form input, 
+#navbar  form button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+}
+
+#navbar  form button {
+    height: 2rem;
+    padding: 0 1rem;
+    border-radius: 0 10rem 10rem 0 ;
+}
+#navbar  form input{
+    width: 12rem;
+    height: 2rem;
+    border-radius: 10rem 0 0 10rem;
+}
+input::placeholder{
+    padding-left: 1rem;
+}
+/*  (::) 偽元素 */
+input[type="search"]:focus{
+    box-shadow: inset 0px 0px 10px green , inset 0px 0px 10px red ;
+    /*  shadow : 可以設定很多組，但需要在同一個屬性設定內，以逗號(,)隔開 */
+    filter: drop-shadow (0px 0px 10px rgb(15,30,33));
+}
+/* jumbotron 大螢幕-------------------------------------------- */
+#jumbotron{
+    width: 100%;
+    color: rgb(107, 13, 13);
+    background-image:linear-gradient(to right, black  0% , transparent 15% , transparent 85%, black 100%), url("https://picsum.photos/1920/400/?random=1");
+    background-repeat: none;
+    background-size: cover;
+    background-position: left top;
+    padding: 10rem 0 ;
+    margin-top: 3.5rem; 
+}
+#jumbotron h1{
+    font-size: 3rem;
+    line-height: 1.5;
+}
+#jumbotron p{
+    margin: 3rem 0;
+    line-height: 1.5;
+}
+/* design 設計欄---------------------------------------------- */
+
+#design hr{
+    border: 1px solid black;
+}
+
+#design{
+    padding: 2rem 0 ;
+}
+#design .container{
+    font-size: 0;
+}
+#design .col{
+    width: 30%;
+    display: inline-block;
+    box-sizing:border-box;
+    /* border-box = 改變盒子計算寬度方式，內距(padding)、邊框(border)都會計算在width、margin設定 */
+    margin: 0  1.5%;
+    padding: 1rem;
+    border: 1px solid gray;
+    transition: 1s;
+    position: relative;
+}
+
+#design .col img{
+    margin-top: 5% ;
+    width: 100%;
+}
+
+#design p{
+    margin: 0 1rem ;
+    padding: 0;
+    font-size: 2rem;
+}
+#design h1{
+    margin: 2rem 1rem ;
+    padding: 1rem;
+    font-size: 4rem;
+    line-height: 1.3;
+}
+#design .col h2{
+    margin: 0 1rem ;
+    padding: 0;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+#design .col:hover{
+    transform: translateY(-1.5rem) rotate(5deg);
+    box-shadow: 3px 10px 10px rgba(0 ,0 ,0 ,0.8 );
+}
+#design .col .close {
+    font-size: 2rem;
+    background:black;
+    color: white;
+    line-height: 35px;
+    width: 6.5%;
+    height: 5%;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 90%;
+    top: 3%;
+}
+#design .col .close:hover{
+    background: white;
+    color: black;
+}
+/* profile個人資料---------------------------------------------- */
+#profile{
+    overflow:hidden ;
+}
+#profile .container h1 {
+    font-size: 65px;
+    margin: 2.5%;
+}
+#profile .col h2 {
+    font-size: 3rem;
+    padding: 1rem;
+}
+#profile .col p{
+    font-size: 2rem;
+    line-height: 1.2;
+    padding: 1rem;
+}
+#profile .photo img{ 
+   width: 100%;  
+   margin-bottom: 5%;
+   transition: 1s;
+}
+#profile .photo :hover{
+    transform: translateY(-1.5rem) rotate(2deg);
+    box-shadow: 3px 10px 10px rgba(0 ,0 ,0 ,0.8 );
+}
+#profile .col{
+    width: 50%;
+    float: left;
+}
+/* footer------------------------------------------------ */
+#footer{
+    width: 100%;
+    background: black;
+    color: white;
+    height: 3.5rem;
+    text-align: center;
+}

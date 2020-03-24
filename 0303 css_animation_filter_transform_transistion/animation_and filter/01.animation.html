@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background: black;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+            animation: 1s;
+        }
+
+        .animation {
+            animation-name: animation;
+            /* 動畫名稱 */
+            animation-duration: 2s;
+            /* 動畫持續時間，單位可設毫秒ms */
+            animation-iteration-count: 2;
+            /* 動畫進場後的播放次數，預設為1，infinite = 無限 */
+            animation-timing-function: linear;
+            /* 播放速度風格 */
+            animation-direction: alternate;
+            /* 播放軸方向，
+            alternate = 交替播放: 奇數正向播放，偶數反向播放，(每一次播
+            到頭都算一個次數，故要回到原本模式，就是播放次數2)
+            alternate-reverse = 也是交替播放但奇數反向播放，偶數正向播放
+            normal = 預設值，正向播放，結束後直接回0值 
+            reverse = 反向播放，從100出發，歸零後回到100值*/
+            animation-delay: 2s;
+            /* 播放延遲時間 */
+            animation-fill-mode: backwards;
+            /* 播放後的狀態
+            forwards = 保留動畫結束時的樣式，ex顏色、位置...
+            backwards = 保留動畫開始前的樣式，ex顏色、位置...
+            */
+            animation: animation 2s alternate linear 1s infinite backwards;
+            /* 縮寫兩個時間單位，第一個為持續時間，第二個為延遲時間，順序沒有影響，需要有名字 */
+        }
+
+        .bg {
+            background-image: linear-gradient(-45deg, black, white);
+            background-size: 300%;
+            width: 49vw;
+            height: 49vw;
+            animation: bg 10s infinite alternate;
+            float: left;
+
+        }
+
+        .bg2 {
+            background-image: linear-gradient(-45deg, black, white);
+            background-size: 300%;
+            width: 49vw;
+            height: 49vw;
+            animation: bg 10s infinite alternate-reverse;
+            float: left;
+            background-position: center;
+        }
+
+        .kk {
+            background-image: linear-gradient(-135deg, green, red);
+            width: 150px;
+            height: 150px;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            animation: kk 2s infinite alternate
+        }
+
+        /*
+        Tranision 
+        1.需要觸發條件(Ex:hover)，兩種樣式狀態之間漸進改變
+        2.無法在網路載入時自動發生，且是一次性，必須重新觸發
+        
+        Animation
+        1.可以慘生更複雜的動畫，可以設定關鍵影格(keyframes)控制動畫進度
+        2.網頁載入時自動播放，且可以重複來回播放
+         */
+
+        @keyframes animation {
+            from {
+                background: blueviolet;
+                transform: scale(0) skew(0deg, 0deg) rotate(5deg);
+                color: cadetblue;
+                font-size: 30px;
+            }
+
+            50% {
+                background: none;
+                transform: scale(2) skew(-30deg, -30deg) rotate(20deg);
+                font-size: 60px;
+                border-radius: 25%;
+            }
+
+            /* 也可寫成0%{} 100{} */
+            to {
+                background: burlywood;
+                transform: scale(1) skew(-30deg, -45deg) rotate(30deg);
+                font-size: 20px;
+                border-radius: 50%;
+            }
+        }
+
+        /* 建立動畫animation */
+        /* 1.必須建立一組關鍵影格(keyframs)，並設定動畫名稱(自訂義) */
+        /* 2.套用動畫到各個選擇器，或建立動畫專用的class，設定各種屬性 */
+        @keyframes bg {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+                filter: hue-rotate(360deg);
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes kk {
+            0% {
+                transform: scale(1) skew(0deg, 0deg) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(3) rotate(20deg) skew(30deg, 40deg);
+            }
+
+            100% {
+                transform: scale(0) rotate(200deg) skew(40deg, 30deg);
+                border-radius: 50%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="bg">
+        <dir class="box animation">lorem</dir>
+    </section>
+    <section class="bg2">
+        <div class="kk">lorem</div>
+    </section>
+</body>
+
+</html>

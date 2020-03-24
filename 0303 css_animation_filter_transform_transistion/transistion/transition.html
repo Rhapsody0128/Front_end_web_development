@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: green;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            box-shadow: 20px 20px 5px rgba(0, 0, 0, 0.5);
+            transform: translate(-50%, -50%) scale(2) rotate(0deg);
+            transition:
+                /* background 3s,
+                width 1s,
+                height 1s,
+                border-radius 3s,
+                transform 1s,
+                box-shadow 1s;
+            /* transition-property: background; */
+                /* 轉場屬性 */
+                /* transition-duration: 1s; */
+                /* 轉場時長 */
+                /* transition-timing-function: ease; */
+                /* 轉場數率風格 */
+                /* transition-delay: 1s; */
+                /* 轉場延遲時間 */
+                /* 屬性間要用逗號區隔 */
+                /* transition = 轉場
+        1.兩個樣式之間"漸進式"的轉換過程
+        2.一個起始樣式，另一個是結束樣式，瀏覽器會將兩個樣式間的變化形成補間動畫(Tween) */
+                1s
+                /* 如果只設定時間，等於預設所有屬性轉場動畫為一秒
+                property = all */
+        }
+
+        .box:hover {
+            background: red;
+            width: 30px;
+            height: 30px;
+            transform: translate(-50%, -50%) scale(1) rotate(720deg) skew(300deg, 300deg);
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+            border-style: dashed;
+
+        }
+
+        /* transition可控屬性
+        [transform 變形]
+        translate
+        rotate
+        scale
+        skew
+
+        [color 顏色]
+        color
+        background-color
+        border-color
+
+        [font 文字]
+        font-size
+        opacity
+        line-hight
+        letter-spacing
+        word-spacing
+
+        [box 盒模型]
+        width
+        height
+        border-style
+        border-radious
+         */
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

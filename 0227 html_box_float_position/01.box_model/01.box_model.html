@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOX設定和應用</title>
+    <style>
+        hr{
+            margin: 25px 0;
+        }
+        .box1{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        .box2{
+            width: 300px;
+            background-color: royalblue;
+        }
+        /* 盒子設定寬高是放置的容器，也是放置問自圖片的地方 */
+        /* 若無設定height，預設值為"auto"，容器隨內容增長，
+        設定則會有內容溢出的問題*/
+        .box3{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+            overflow: scroll;
+             /* overflow:hidden = 超出格子後的文字隱藏
+             scroll 加入捲軸 */
+        }
+        .box4{
+            width: 300px;
+            background-color: burlywood;
+            margin-top: 50px;
+            margin-left: 50px;
+            margin-bottom: 50px;
+            margin-right: 50px;
+            /* margin = 餘量 => 外距:框外的和下一個區塊的間距
+            為個別指定，可輸入負數 */
+            margin:50px 50px 50px 50px;
+            /* 四值縮寫:以順時針順序:top、right、bottom、left */
+            margin: 50px 50px;
+            /* 雙值縮寫:第一個值為上下，二為左右 */
+            margin: 50px;
+            /* 單值縮寫:值為四個方向的值 */
+
+            padding-left: 50px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            padding-right: 50px;
+            /* padding = 填充 => 內距:內容和box的間距  */
+            /* 輸入規則和margin規則一樣 */
+           
+            border-width: 20px 10px;
+            /* 若無設定width，則為預設auto值=0 */
+            border-top-style: double;
+            border-bottom-style:solid ;
+            border-left-style: dashed;
+            border-right-style: dotted;
+            /* 邊框樣式常用的有:solid、dotted、dashed、double... */
+            border-color: green;
+            /* border = 邊境 => 邊框:每個邊的屬性 */
+            border-top: 15px yellow double;
+            /* 輸入規則和margin、padding相同 */
+            outline: 30px double rgba(54, 44, 33, 0.5);
+            /* outline = 輪廓 =>外框:獨立屬性，單獨存在於邊框外 */
+        }
+        .box5{
+            width: 300px;
+            height: 300px;
+            background-color: goldenrod;
+            margin-bottom:20px;
+        }
+        .box6{
+            width: 300px;
+            height: 300px;
+            background-color: indigo;
+            margin-top: 50px
+        }
+        /* box5、6外距會重疊，兩值重疊取最大值的外距 */
+        .box7{
+            width: 300px;
+            height: 300px;
+            background-color: violet;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-left: 5px solid lawngreen;
+            border-right: 5px solid lawngreen;
+        }
+        /* 計算一個盒子寬度 */
+        /* 300+10+10+10+10+5+5=350 */
+        .box8{
+            width: 300px;
+            height: 300px;
+            border: 10px solid khaki;
+            border-top-left-radius: 30px;  
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border-radius: 30px;
+            /* 單值，設定四個角落的圓角 */
+            border-radius: 30px 30px;
+            /* 雙值，第一個數值為左上、右下，第二個數值為右上、左下 */
+            border-radius: 30px 30px 30px 30px;
+            /* 四值，依序為左上、右上、右下、左下 */
+        
+        }
+        .circle{            
+            width: 500px;
+            height: 500px;
+            border: 10px solid black;
+            border-radius: 50%;
+             /* 劃一個圓，寬高必須為正方形*/
+            margin:auto ;
+            box-shadow: inset -200px -200px 200px rgba(0, 0, 0, 0.9);
+            /* 預設是外陰影， inset = 內陰影  */
+        }
+    </style>
+</head>
+<body>
+    <h1>box1 畫一個盒子，設定寬高和背景顏色</h1>
+    <div class="box1"></div>
+    <hr>
+    <h1>box2 若無設定高度，盒子大小依內容增長</h1>
+    <div class="box2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia velit odio laudantium iste, laboriosam pariatur, dolorum cum saepe illo quos ullam dignissimos nam ipsa a veritatis explicabo esse atque consequuntur nisi quibusdam. Rerum ex deleniti, praesentium quibusdam iusto perferendis? Dolorum officiis commodi, illum ex eius ad exercitationem aperiam error minus magnam maiores delectus adipisci esse sint ipsam quisquam eos ipsum est, aspernatur blanditiis vel architecto sed. Rerum deleniti quo quasi, tempore alias ad vero quisquam officia sint voluptatum et at magni iure tenetur minus inventore natus, maxime recusandae porro quis? Sint quisquam molestiae, incidunt saepe amet voluptates, perferendis beatae distinctio deleniti eaque corrupti vel et dolores a. Quis illum, reprehenderit velit sit rem aliquid quae eligendi expedita maxime aspernatur architecto sapiente omnis consectetur ullam odio eaque reiciendis enim modi deleniti maiores sequi porro. Optio unde mollitia eveniet nostrum fuga! Aperiam vel eos dolores blanditiis perspiciatis eveniet ullam, enim et illum.</div>
+    <hr>
+    <h1>設定高度，內容溢出可設定overflow</h1>
+    <div class="box3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet quaerat a consequuntur rem labore maxime ratione illum. Voluptatum repellendus excepturi inventore distinctio obcaecati natus tempore ratione error vitae a, necessitatibus sit nobis tenetur officiis quam impedit eveniet amet corrupti, molestiae illum iste ut sequi omnis? Inventore provident odio quia optio rerum, totam adipisci earum eveniet tempora placeat, tempore ipsa dignissimos. Tempore sint cupiditate voluptatem voluptates distinctio impedit. Harum sint doloribus molestiae consectetur obcaecati reprehenderit dolor ea beatae fuga. Libero vel ut est ratione, praesentium quo debitis omnis modi inventore odio esse porro eius nulla id! Vero deserunt, impedit dolores animi laudantium mollitia ipsum alias cumque laborum saepe vel provident commodi rerum sequi odio, voluptate eius obcaecati quae non eligendi numquam quasi? Deleniti aperiam, tenetur sequi natus ducimus vero ea repellat tempora ipsa possimus voluptatibus corrupti, dicta exercitationem sunt! Voluptate cumque eum consectetur facilis doloremque et consequuntur omnis vel similique impedit.</div>
+    <hr>
+    <h1>box4設定盒子margin、padding、border</h1>
+    <div class="box4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem hic sint quia numquam laboriosam placeat illum soluta praesentium magni, quaerat modi quam velit quas voluptatibus quis nostrum distinctio commodi. Earum nostrum perferendis omnis nulla minima iure cum consequatur quidem voluptate placeat ipsum veritatis laudantium alias unde enim maxime temporibus nobis, repellendus voluptatum illum laborum. Cupiditate consequatur ex rem, aliquam explicabo saepe alias debitis architecto at consequuntur eveniet laudantium officia, veniam veritatis optio! Obcaecati eligendi tempore eos ad facilis animi delectus excepturi laudantium quisquam accusamus commodi voluptates porro, dolore aliquam quidem fugiat cumque beatae ea nostrum necessitatibus dolor. Debitis libero itaque cum voluptatem placeat. Amet voluptates ut doloribus placeat cupiditate rerum. Quibusdam amet officia dolores pariatur nulla fuga mollitia, iure rerum laboriosam corrupti sit consequatur iusto alias totam nostrum quisquam expedita dolorem at. Corrupti, unde voluptatum voluptate pariatur aperiam cumque facere perspiciatis nam est veniam omnis! Suscipit deleniti quis totam porro.</div>
+    <hr>
+    <h1></h1>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <hr>
+    <div class="box7">Lorem Ipsa maxime nemo voluptates odit provident modi suscipit quaerat praesentium aspernatur nam repudiandae delectus ipsum, sunt illum voluptatem iste atque eos, quos qui omnis! Minima deleniti cum molestias modi omnis, dignissimos corrupti placeat sapiente officiis magni cupiditate unde commodi dolor, rem, qui illum culpa. Hic corrupti autem quae ipsum neque, repudiandae odit dolore unde ducimus ea et, iure repellat reiciendis fugiat sed deleniti totam, illo nesciunt porro molestias? Ipsam corrupti reprehenderit, ullam illum mollitia magni, amet omnis accusantium delectus laboriosam perferendis aspernatur natus aperiam quaerat qu?</div>
+    <hr>
+    <div class="box8"></div>
+    <hr>
+    <div class="circle">劃一個圓</div>
+</body>
+
+</html>

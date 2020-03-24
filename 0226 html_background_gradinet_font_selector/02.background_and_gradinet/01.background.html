@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景</title>
+    <style>
+        body {
+            background-image: url("https://picsum.photos/1600/1200/?random=1") ;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* background-attachment: fixed = 固定背景 */
+        }
+        .box{
+        font-size: 3rem;
+        color: blue;
+        text-shadow: 5px 5px 10px rgb(0,0,0);
+        width: 600px;
+        height: 600px;
+        border: 5px solid #444444;
+        /* solid = 邊框 */
+        margin: 100px;
+        /* margin = 和邊緣的距離 */
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.8);
+        backdrop-filter:blur(10px);
+        /* backdrop-filter = 讓BOX空白處的背景模糊*/
+    }
+    .bg-color{
+        background-color: #FAA;
+    }
+    .bg-img{
+        background-image: url("https://picsum.photos/100/100/?random=2");
+    }
+    .bg-repeat-x{
+        background-repeat:repeat-x;
+    }
+    /* 重複圖片僅X軸 */
+    .bg-repeat-y{
+        background-repeat:repeat-y;
+    }
+    /* 重複圖片僅Y軸 */
+    .bg-no-repeat{
+        background-repeat: no-repeat;
+    }
+    .bg-size{
+        background-image: url("https://picsum.photos/300/200/?random=1");
+        background-repeat: no-repeat; 
+        background-size:contain;
+        }
+        /* contain 等比放大填滿至一邊觸及邊框 */
+        /* cover 等比放大填滿至整個盒子 */
+    .bg-position{
+        background-position:35% bottom;
+        background-repeat: no-repeat;
+    }
+    /* position = 定位 兩個數值=(X,Y)的百分比值，也可用方向(left.right.top.bottom.center)，也可以用絕對單位 (px)來設定 */
+    .bg-abbr{
+        background: url("https://picsum.photos/500/400/?random=1") no-repeat center center/contain red;        
+    }
+    /* abbr = Abbreviation = 縮寫 */
+    /* background-size一定要緊接在background-position之後，要用(/)斜線分隔 */
+    .bg-three{
+        background-image: 
+        url("https://picsum.photos/600/100/?random=1"),
+        url("https://picsum.photos/600/200/?random=1"),
+        url("https://picsum.photos/600/300/?random=2");
+        background-repeat: no-repeat;
+        background-position: left top,left 100px,left bottom;
+        /* 同時插入3張圖，URL間需用逗號(,)隔開
+        background-position分別設定三張圖的位置，一樣用逗號隔開
+        若沒逗號(例這裡的no-repeat)則判斷為三張圖都有該屬性 */
+        /* 縮寫寫法
+        background: 
+        url("https://picsum.photos/600/100/?random=1") no-repeat left top,
+        url("https://picsum.photos/600/200/?random=1") no-repeat left 100px,
+        url("https://picsum.photos/600/300/?random=2")
+        no-repeat left bottom ;*/
+    }
+    .linear-gradinet{
+        background-image: linear-gradient(45deg,red,yellow,blue);
+    }
+    /* linear-gradient = 漸層軸判斷，deg = 角度時鐘指針圓心到針頭的方向(EX:0點=0deg 3點=90deg) */
+    .linear-gradinet2{
+        background-image: linear-gradient(to right top,#fff 0%,yellow 25%,red 50%,green 75%,black 100%);
+        /* 另一種呈現方式，往右、上 0%時白，25%黃...依推 */
+    }
+    .radial-gradient{
+        background-image: radial-gradient(red 25%,green 90%,white 100%);
+    }
+    .opacity{
+        
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url("https://picsum.photos/600/600/?random=1");
+        background-repeat: no-repeat;
+        background-size: cover; 
+    }
+    /* 漸層覆蓋在URL之上 */
+    </style>
+</head>
+<body>
+    <div class="box bg-color">background-color</div>
+    <div class="box bg-img">background-image</div>
+    <div class="box bg-img bg-repeat-x">background-repeat-x</div>
+    <div class="box bg-img bg-repeat-y">background-repeat-y</div>
+    <div class="box bg-img bg-no-repeat">background-no-repeat</div>
+    <div class="box bg-size">background-size</div>
+    <div class="box bg-img bg-position">background-position</div>
+    <div class="box bg-abbr">background-abbr</div>
+    <div class="box bg-three">background-three</div>
+    <div class="box linear-gradinet">backround-linear-gradinet</div>
+    <div class="box linear-gradinet2">backround-linear-gradinet2</div>
+    <div class="box radial-gradient">backround-radial-gradient</div>
+    <div class="box opacity">backround-opacity</div>
+</body>
+</html>

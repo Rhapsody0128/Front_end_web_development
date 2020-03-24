@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = ' 我是  文字  '
+        let strtrim = str.trim()
+        // 移除文字前後的空白
+        console.log(strtrim)
+
+
+
+        let str2 = 'asdasdasd';
+        let up = str2.toUpperCase()
+        console.log(up)
+        // 文字轉大寫
+        let str3 = 'ASDSAFSA';
+        let low = str2.toLowerCase()
+        console.log(low)
+        // 文字轉小寫
+
+
+
+        let str4 = 'asds JAVASCRIPT  fDSFSDF'
+        let isIncludes = str4.includes('JAVASCRIPT')
+        console.log(isIncludes);
+        // includes()會判斷是否包含指定文字，只會回傳布林值
+        let isMatch = str4.match(/JAVASCRIPT/g)
+        console.log(isMatch);
+        // match()會判斷是否符合regex規則，會回傳所有符合的文字陣列
+
+
+
+        let str5 = 'XMAS XMAS XMAS'
+        let replace1 = str5.replace('XMAS', 'Christmas')
+        console.log(replace1)
+        // replace(要取代的文字,取代為的文字)會取代文字，()如果放文字的話只能取代一筆
+        let replace2 = str5.replace(/xmas/ig, 'Christmas')
+        console.log(replace2)
+        // 用regex規則可取代全部
+
+
+        let str6 = 'hello 123456'
+        let sub = str6.substr(0, 7)
+        console.log(sub)
+        // substr(開始位置,長度)可切割字元，只顯示切割內的文字
+        let sub2 = str6.substring(0, 7);
+        console.log(sub2)
+        // substring(開始位置,結尾位置)可切割字元，只顯示切割內的文字
+        let sub3 = str6.slice(0, -5)
+        console.log(sub3)
+        // slice(開始位置，結尾位置)跟substring一樣，可放負數，代表倒數
+
+
+        let str7 = '3sasd1115'
+        let nan = parseInt(str7)
+        console.log(nan);
+        // parseInt()文字轉成數字，在文字後的數字判斷為文字
+        console.log(isNaN(nan))
+        // isNaN()判斷值是否是NaN(無值)，只會回傳布林值，不能直接nan==NaN，只能用isNaN()
+
+
+        let str8 = '1,2,3,4,a,b,c,d'
+        let split = str8.split(",")
+        let split2 = str8.split("")
+        let split3 = str8.split()
+        console.log(split)
+        console.log(split2)
+        console.log(split3)
+        // split(用什麼做為切割依據)文字切割，將字串單字轉成陣列，若輸入""空分割，就每個字元分割
+
+    </script>
+</body>
+
+</html>

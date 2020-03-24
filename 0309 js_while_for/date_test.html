@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let year = parseInt(prompt(`西元`))
+        // <!-- parseInt (變數或數字的文字) = 會把文字轉數字 -->
+        let month = prompt(`月`)
+        month = parseInt(month)
+        let day = parseInt(prompt('日'))
+        let days = 0
+
+
+        for (let i = 1; i <= (month - 1); i++) {
+            if (i == 2) {
+                days += 28;
+            }
+            else if (i <= 7 && i % 2 == 1 || (i => 8 && i % 2 == 0)) {
+                days += 31;
+            }
+            else {
+                days += 30;
+            }
+
+        }
+        if (((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) && month >= 3) {
+            days++
+        }
+        days += day
+        document.write(days)
+    </script>
+    <!-- 使用者可輸入西元年、月、日，三個prompt() -->
+    <!-- 顯示使用者輸入的是該年的第幾天 -->
+
+</body>
+
+</html>

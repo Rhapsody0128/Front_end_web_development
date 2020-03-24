@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let Ming = {
+        //     firstname: "小名",
+        //     lastname: "王",
+        //     sayhello() {
+        //         alert(`HI,我叫${this.lastname}${this.firstname}`)
+        //     }
+        // }
+        // Ming.sayhello()
+
+        class person {
+            constructor(name, gender, id) {
+                // constructor = 建設者 => 當person建立時需要帶甚麼物件進來
+                this.name = name;
+                this.gender = gender;
+                this.id = id;
+            }
+            introduce() {
+                alert(`我的名字叫${this.name}，性別是${this.gender}，身份證字號是${this.id}`)
+            }
+            changeName(name) {
+                this.name = name
+            }
+        }
+
+        let wang = new person('小a', '女', 'A123456789')
+        wang.introduce();
+        wang.changeName('小b');
+        wang.introduce();
+        console.log(Wang.id);
+
+        let mei = new person('小c', '男', 'A123456444')
+        mei.introduce();
+    </script>
+</body>
+
+</html>

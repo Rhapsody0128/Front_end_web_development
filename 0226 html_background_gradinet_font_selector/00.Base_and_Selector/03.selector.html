@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選擇器</title>
+    <style>
+    .a{
+        color:blue;
+        font-size: 30px;        
+    }
+    li{color:chartreuse}
+    .b{color:rgb(255, 022, 122);
+    font-size: 33px;}
+    /* 類別選擇器
+    1.類別名稱必定以.句點開頭
+    2.只允許字元、數字、連字 - 、底線 _
+    3.句點後必須以字源開始，不能用數字、中文開頭
+    4.類別、ID有大小寫之分
+    
+    ".設定類別"(EX=.a=>設定a類別)，之後class選擇類別後即可套用a類別的設定值 */
+    #c{
+        color: red;
+        width: 30px;
+        height: 30px;
+        background-color: blue;
+    }
+         /* #設定ID */
+    #d{color: red;
+        width: 30px;
+        height: 30px;
+        background-color: green;}
+
+        nav p{color: blue;}
+        /* 後代選擇器，後代子孫全選 */
+        nav>p{color:red}
+        /* 子代選擇器，只選擇下一代 */
+       </style>
+</head>
+
+<body>
+    <h1 class="a" class="b">Class 選擇器</h1>
+    <p>Lorem ipsum <em class="a">dolor</em> sit amet consectetur.</p>
+    <p>class是CSS樣式最常被使用的選擇器，具重複使用的特性，往後學<a href=# class="b">Bootstrap</a>時，可以看到大量樣是被設計成class</p>
+    <h2>相同標籤，不同外觀</h2>
+    <ul>
+        <li>Lorem ipsum dolor sit amet consectetur.</li>
+        <li>Lorem ipsum dolor sit amet consectetur.</li>
+        <li >Lorem ipsum dolor sit amet consectetur.</li>
+        <li class="b">Lorem ipsum dolor sit amet consectetur.</li>
+        <li>Lorem ipsum dolor sit amet consectetur.</li>
+    </ul>
+    
+    <hr>
+    <h1>ID選擇器</h1>
+    <!-- ID和class不同的是ID只能對應 -->
+    <p>在一份文件裡，只能有一個獨一無二的ID，具唯一的特性，通常作為網頁邏輯區塊名稱或是JS、JQ控制元素的選擇器</p>
+    <div id=c></div>
+    <div id=d></div>
+    <div id="container">Lorem ipsum dolor sit amet consectetur.</div>
+    <button id="btn">Click</button>
+
+<hr>
+
+    <h1>後代選擇器和子代選擇器</h1>
+    <nav>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <div>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+    </nav>
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+    $("#btn").click(function(){
+        $('#container').slideToggle();
+    });
+    
+    </script>
+</body>
+
+</html>

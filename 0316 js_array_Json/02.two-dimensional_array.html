@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let people = [{
+            name: '小名',
+            age: 20,
+            id: "A123456789",
+            hobbies: ["看書", "打球"]
+        },
+        {
+            name: '小美',
+            age: 15,
+            id: 'A548979841',
+            hobbies: ["看書", "發呆", '睡覺']
+        },
+        {
+            name: '小王',
+            age: 25,
+            id: 'A946132154',
+            hobbies: ["吃飯", "看書", '寫CODE']
+        },
+        ]
+        for (let person of people) {
+            document.write(`姓名:${person.name}，年齡:${person.age}，身分證字號:${person.id}<br>`)
+
+            for (let data in person) {
+                if (data != 'hobbies') {
+                    document.write(`${data}的資料是${person[data]}<br>`)
+                }
+            }
+            for (let i = 0; i < person.hobbies.length; i++) {
+                document.write(`第${i + 1}個興趣是${person.hobbies[i]}<br>`)
+            }
+
+            document.write("<hr>")
+        }
+    </script>
+</body>
+
+</html>

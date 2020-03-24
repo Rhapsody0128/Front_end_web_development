@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>絕對定位和相對定位</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            /* 顯示為彈性盒類性 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bigbox {
+            width: 700px;
+            border: 1px solid black;
+            background: darkblue;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            background: yellowgreen;
+            float: left;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .relative {
+            color: black;
+            background: brown;
+            position: relative;
+            left: 70px;
+            /* 由左往右70px */
+            /* 相對定位:會保留自己位置，根據原本位置相對移動，position會比float層級更高，故會蓋住其他BOX */
+        }
+
+        .absolute {
+            position: absolute;
+            /* 絕對定位 */
+            /* 未設定預設則在父元素的第一定位點 */
+            /* 依序往祖元素找定位點，若都沒有定位，則以整個HTML的定位座標做定位 */
+            top: 20%;
+            /* 若父元素設定相對定位(position:relative)則會在父元素內定位 */
+            /* offset(位移)top、right、bottom、left可使用px、em、rem、百分比 */
+            background: purple
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bigbox">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+        <div class="box">10</div>
+        <div class="box">11</div>
+        <div class="box">12</div>
+        <div class="box">13</div>
+        <div class="box">14</div>
+        <div class="box">15</div>
+        <div class="box">16</div>
+        <div class="box">17</div>
+        <div class="box">18</div>
+        <div class="box">19</div>
+        <div class="box">20</div>
+        <div class="box">21</div>
+        <div class="box">22</div>
+        <div class="box">23</div>
+        <div class="box">24</div>
+        <div class="box relative">25</div>
+        <div class="box">26</div>
+        <div class="box">27</div>
+        <div class="box absolute">28</div>
+        <div class="box">29</div>
+        <div class="box">30</div>
+        <div class="box">31</div>
+        <div class="box">32</div>
+        <div class="box">33</div>
+        <div class="box">34</div>
+        <div class="box">35</div>
+        <div class="box">36</div>
+        <div class="box">37</div>
+        <div class="box">38</div>
+        <div class="box">39</div>
+        <div class="box">40</div>
+        <div class="box">41</div>
+        <div class="box">42</div>
+        <div class="box">43</div>
+        <div class="box">44</div>
+        <div class="box">45</div>
+        <div class="box">46</div>
+        <div class="box">47</div>
+        <div class="box">48</div>
+        <div class="box">49</div>
+        <div class="box">50</div>
+    </div>
+</body>
+
+</html>

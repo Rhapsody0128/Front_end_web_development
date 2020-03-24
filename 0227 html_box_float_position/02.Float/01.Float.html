@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮動</title>
+    <style>
+        p {
+            font-size: 35px;
+            font-family: 微軟正黑體;
+        }
+
+        .container {
+            width: 960px;
+            margin: auto;
+            background: rosybrown;
+            padding: 1rem;
+        }
+
+        .float_left {
+            float: left;
+        }
+
+        /* float = 賦予元素浮動特性，想像圖片浮起來，成為獨立的優先區塊 */
+        .clear_left {
+            clear: left;
+        }
+
+        .float_right {
+            float: right;
+        }
+
+        .clear_right {
+            clear: right;
+        }
+
+        .clear_both {
+            clear: both;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>早期文繞圖作法 </h1>
+        <img src="https://picsum.photos/300/300/?random=1" align="left">
+        <!-- aligm = 對齊 =>圖和文對齊左邊造成圖繞文效果 -->
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero exercitationem aliquid explicabo amet
+            quibusdam deleniti quidem sit dicta molestias? Sunt itaque quas temporibus eaque dolorem doloribus maxime,
+            neque at repellendus voluptas beatae eligendi odio, ad numquam sapiente, placeat qui consequatur
+            ipsum.Cupiditate iure nemo consequuntur explicabo esse odit ipsam! Dignissimos.</p>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <h1>浮動 </h1>
+        <img class="float_left" src="https://picsum.photos/300/300/?random=1">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero exercitationem aliquid explicabo amet
+            quibusdam deleniti quidem sit dicta molestias? </p>
+        <p class="clear_left">
+            <!-- 清除此段落左側，其餘文字列於圖片下 -->
+            itaque quas temporibus eaque dolorem doloribus maxime,
+            neque at repellendus voluptas beatae eligendi odio, ad numquam sapiente, placeat qui consequatur
+            ipsum.Cupiditate iure nemo consequuntur explicabo esse odit ipsam! Dignissimos.</p>
+
+        <h2>flat-right</h2>
+        <img class="float_right" src="https://picsum.photos/300/300/?random=1">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero exercitationem aliquid explicabo amet
+            quibusdam deleniti quidem sit dicta molestias? </p>
+        <p class="clear_right"> itaque quas temporibus eaque dolorem doloribus maxime,
+            neque at repellendus voluptas beatae eligendi odio, ad numquam sapiente, placeat qui consequatur
+            ipsum.Cupiditate iure nemo consequuntur explicabo esse odit ipsam! Dignissimos.</p>
+
+        <hr>
+
+        <h2>flat-right和flot-left</h2>
+        <img class="float_right" src="https://picsum.photos/300/300/?random=1">
+        <img class="float_left" src="https://picsum.photos/300/300/?random=1">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero exercitationem </p>
+        <p class="clear_both">aliquid explicabo amet quibusdam delenitiquidem sit dicta molestias? itaque quas
+            temporibus eaque dolorem doloribus maxime,
+            neque at repellendus voluptas beatae eligendi odio, ad numquam sapiente, placeat qui consequatur
+            ipsum.Cupiditate iure nemo consequuntur explicabo esse odit ipsam! Dignissimos.</p>
+        <hr>
+
+    </div>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+
+</html>

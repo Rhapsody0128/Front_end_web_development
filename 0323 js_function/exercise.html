@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const judge = (num) => {
+            // if (num % 2 == 0) {
+            //     return true
+            // }
+            // else if (num % 2 != 0) {
+            //     return false
+            // }
+            return (num % 2 == 0) ? true : false
+        }
+        let a = prompt('請輸入數字')
+        // if (judge(a) == true) {
+        //     document.write('偶數')
+        // }
+        // else { document.write('奇數') }
+        judge(a) == true ? document.write('偶數') : document.write('奇數')
+    </script>
+</body>
+
+</html>

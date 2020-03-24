@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = ['a', 'b', 'c', 'd']
+        let join = arr1.join("")
+        console.log(join)
+        // join()將陣列接成文字，若()內容空白則用逗號連接，若輸入("")則降陣列轉文字
+
+
+        let arr2 = [1, 2, 3, 4]
+        arr2.push(7)
+        console.log(arr2)
+        // push()在陣列後輸入新增值
+
+
+        let arr3 = ['a', 'b', 'c']
+        arr3.splice(1, 1, 'ba', 'bb')
+        console.log(arr3)
+
+        // splice(開始位置, 刪除數量, 插入新值, 插入新值2)
+
+
+        let arr4 = ['a', 'b', 'c']
+        let arr5 = ['d', 'e', 'f']
+        let arr6 = arr4.concat(arr5)
+        console.log(arr6)
+        // concat()陣列連接
+
+
+
+        let arr7 = ['a', 'b', 'c']
+        arr7.reverse()
+        console.log(arr7)
+        // reverse()顛倒陣列
+
+
+        let arr8 = ['aa', 'a', 'aaa']
+        let includes = arr8.includes('a')
+        console.log(includes)
+        // includes(文字)= 陣列中找文字，回傳布林值
+        let index = arr8.indexOf('a')
+        console.log(index)
+        // indexOf(文字)=陣列中找文字，回傳索引值，找不到回傳-1
+        // 都要完全符合才找的到
+
+
+        let arr9 = [1, 2, 3, 4];
+        arr9 = arr9.map((number) => {
+            return number * 2
+        })
+        console.log(arr9)
+        // map()有點像for(of)迴圈，迴圈陣列後產生新的陣列
+        // 一定要有return
+
+
+        let arr10 = [1, 2, 3, 4, 5];
+        arr10 = arr10.filter((number) => {
+            return number > 3
+        })
+        console.log(arr10)
+        // filter() 可以過濾陣列後產生新的陣列，true 代表保留，false 代表刪除
+        // 同跟下述寫法一樣
+        // let arr10 = [1, 2, 3, 4, 5];
+        // arr10 = arr10.filter((number) => {
+        //     let stay = false;
+        //     if (number > 3) {
+        //         stay = true
+        //     }
+        //     return stay
+        // })
+        // console.log(arr10)
+
+
+
+        let arr11 = [4, 2, 1, 3, 11, 100];
+        arr11 = arr11.sort()
+        console.log(arr11)
+        // sort()排序，預設是小排到大預設數字1-9，大寫A-Z，小寫a-z
+
+        let arr12 = ['A', 'a', 'A', 'b', 'B', '']
+        arr12.sort()
+        console.log(arr12)
+        // 英文擁字首預設是A-Z，先大寫在小寫
+
+        let arr13 = ['四', '二', '一', '三']
+        arr13.sort()
+        console.log(arr13)
+        // 排列沒有預設中文
+
+        let arr14 = [4, 2, 1, 3, 11, 100];
+        let ascnum = arr14.sort((a, b) => {
+            // console.log(a, b, a - b)
+            return a - b;
+        })
+        console.log(ascnum)
+        let descnum = arr14.sort((a, b) => {
+            // console.log(a, b, b - a)
+            return b - a;
+        })
+        console.log(descnum)
+        // .sort 裡面的 function 會迴圈跑過每個值，一次兩個
+        // 第一次跑第 1 2 個
+        // 第二次跑第 2 3 個
+        // a 指的是後面的，b 指的是前面的
+        // return < 0 ，a會排在b前面
+        // return = 0 ，a b順序不變
+        // return > 0 ，a會排在b後面
+
+
+
+        // localCompare()可以依文字的編碼做排序
+        let cn1 = '三'
+        let cn2 = '五'
+        // 如果cn1在cn2前為-1
+        // 如果cn1在cn2後為1
+        // 如果cn1和cn2一樣為0
+        let compare = cn1.localeCompare(cn2, 'zh-Hant-TW')
+        console.log(compare)
+
+        let arr15 = ['四', '二', '一', '三', '玖', '肆', '九']
+        arr15.sort((a, b) => {
+            return a.localeCompare(b, 'zh-Hant-TW')
+        })
+        console.log(arr15)
+
+    </script>
+</body>
+
+</html>
