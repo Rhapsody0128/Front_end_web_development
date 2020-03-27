@@ -10,9 +10,26 @@
 <body>
     <script>
         //    將 prompt() 輸入的英文文字大寫轉小寫，小寫轉大寫後顯示在網頁上
-        let Word = prompt('請輸入')
-        let array = Word.split("")
-        console.log(array)
+        let word = prompt('請輸入')
+        let array = word.split("")
+
+
+        const replace = array.map((a) => {
+
+            if (a.match(/[a-z]/g) != null) {
+                return a.match(/[a-z]/g).join("").toUpperCase()
+            }
+            else if (a.match(/[A-Z]/g) != null) {
+                return a.match(/[A-Z]/g).join("").toLowerCase()
+            }
+            else {
+                return a
+            }
+        }
+        )
+        console.log(replace.join(""))
+
+
 
     </script>
 </body>

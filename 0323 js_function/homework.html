@@ -14,19 +14,19 @@
             return Math.round((Math.random() * (max - min)) + min)
         }
         let array = []
-        let random = rand(0, 38)
+        let random = rand(1, 38)
 
 
 
         for (i = 0; i < 6; i++) {
             array.push(random)
             while (array.includes(random)) {
-                random = rand(0, 38)
+                random = rand(1, 38)
             }
         }
         document.write(`A區${array}`)
         document.write('<br>')
-        document.write(`B區${rand(0, 8)}`)
+        document.write(`B區${rand(1, 8)}`)
 
     </script>
 </body>
