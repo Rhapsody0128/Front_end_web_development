@@ -17,16 +17,15 @@
         const replace = array.map((a) => {
 
             if (a.match(/[a-z]/g) != null) {
-                return a.match(/[a-z]/g).join("").toUpperCase()
+                return a.toUpperCase()
             }
             else if (a.match(/[A-Z]/g) != null) {
-                return a.match(/[A-Z]/g).join("").toLowerCase()
+                return a.toLowerCase()
             }
             else {
                 return a
             }
-        }
-        )
+        })
         console.log(replace.join(""))
 
 
