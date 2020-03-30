@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>選擇器</title>
     <style>
-    .a{
-        color:blue;
-        font-size: 30px;        
-    }
-    li{color:chartreuse}
-    .b{color:rgb(255, 022, 122);
-    font-size: 33px;}
-    /* 類別選擇器
+        .a {
+            color: blue;
+            font-size: 30px;
+        }
+
+        li {
+            color: chartreuse
+        }
+
+        .b {
+            color: rgb(255, 022, 122);
+            font-size: 33px;
+        }
+
+        /* 類別選擇器
     1.類別名稱必定以.句點開頭
     2.只允許字元、數字、連字 - 、底線 _
     3.句點後必須以字源開始，不能用數字、中文開頭
     4.類別、ID有大小寫之分
     
     ".設定類別"(EX=.a=>設定a類別)，之後class選擇類別後即可套用a類別的設定值 */
-    #c{
-        color: red;
-        width: 30px;
-        height: 30px;
-        background-color: blue;
-    }
-         /* #設定ID */
-    #d{color: red;
-        width: 30px;
-        height: 30px;
-        background-color: green;}
+        #c {
+            color: red;
+            width: 30px;
+            height: 30px;
+            background-color: blue;
+        }
 
-        nav p{color: blue;}
+        /* #設定ID */
+        #d {
+            color: red;
+            width: 30px;
+            height: 30px;
+            background-color: green;
+        }
+
+        nav p {
+            color: blue;
+        }
+
         /* 後代選擇器，後代子孫全選 */
-        nav>p{color:red}
+        nav>p {
+            color: red
+        }
+
         /* 子代選擇器，只選擇下一代 */
-       </style>
+    </style>
 </head>
 
 <body>
@@ -46,11 +63,11 @@
     <ul>
         <li>Lorem ipsum dolor sit amet consectetur.</li>
         <li>Lorem ipsum dolor sit amet consectetur.</li>
-        <li >Lorem ipsum dolor sit amet consectetur.</li>
+        <li>Lorem ipsum dolor sit amet consectetur.</li>
         <li class="b">Lorem ipsum dolor sit amet consectetur.</li>
         <li>Lorem ipsum dolor sit amet consectetur.</li>
     </ul>
-    
+
     <hr>
     <h1>ID選擇器</h1>
     <!-- ID和class不同的是ID只能對應 -->
@@ -60,7 +77,7 @@
     <div id="container">Lorem ipsum dolor sit amet consectetur.</div>
     <button id="btn">Click</button>
 
-<hr>
+    <hr>
 
     <h1>後代選擇器和子代選擇器</h1>
     <nav>
@@ -72,10 +89,10 @@
 
     <script src="jquery-3.4.1.min.js"></script>
     <script>
-    $("#btn").click(function(){
-        $('#container').slideToggle();
-    });
-    
+        $("#btn").click(function () {
+            $('#container').slideToggle();
+        });
+
     </script>
 </body>
 

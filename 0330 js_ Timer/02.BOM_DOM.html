@@ -16,6 +16,15 @@
         // 用ID抓HTML元素   
         console.log(title.innerText)
         // innerText為裡面的文字
+
+        const h2 = document.getElementsByTagName('h2')
+        // 用標籤名稱抓HTML元素，會出現陣列
+        console.log(h2[0].innerText)
+        // 輸出需要輸入陣列編號
+        for (let element of h2) {
+            element.innerText += '號'
+        }
+        // 也可以使用for of 一次修改
     </script>
 </body>
 
