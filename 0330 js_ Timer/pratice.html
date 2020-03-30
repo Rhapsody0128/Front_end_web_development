@@ -13,7 +13,11 @@
         // 製作倒數式計時器，使用者可使用`prompt()`輸入數字
         // 每秒減1，到0後停止
         // 如果使用者不適輸入數字會有錯誤訊息
+
+
         let num = prompt('請輸入倒數數字')
+
+
         // for (i = 0; i < 1; i++) {
         //     if (isNaN(num) == true) {
         //         alert('請輸入數字')
@@ -27,22 +31,36 @@
         //         }
         //     }, 100);
         // }
+        // ---------------------------------------------------------------
 
-        let timer = setInterval(() => {
-            document.write(num + '<br>')
-            num--
+        // let timer = setInterval(() => {
+        //     document.write(num + '<br>')
+        //     num--
+        //     if (num < 0) {
+        //         clearInterval(timer)
 
+        //     }
+        // }, 1000)
+        // if ((isNaN(num))) {
+        //     alert('請輸入數字')
+        //     clearInterval(timer)
+        // }
 
-            if (num < 0) {
-                clearInterval(timer)
-            }
-        }, 1000)
+        // ----------------------------------------------------------------
 
-
-        if ((isNaN(num))) {
-            alert('請輸入數字')
-            clearInterval(timer)
+        if (isNaN(num) || num <= 0) {
+            alert('請輸入正整數')
         }
+        else {
+            let timer = setInterval(() => {
+                document.write(num + '<br>')
+                num--
+                if (num < 0) {
+                    clearInterval(timer)
+                }
+            }, 100)
+        }
+
     </script>
 </body>
 
