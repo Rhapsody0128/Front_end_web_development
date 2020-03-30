@@ -53,12 +53,14 @@
         }
         else {
             let timer = setInterval(() => {
+
                 document.write(num + '<br>')
                 num--
                 if (num < 0) {
                     clearInterval(timer)
                 }
-            }, 100)
+
+            }, 1000)
         }
 
     </script>
