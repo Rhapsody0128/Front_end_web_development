@@ -9,8 +9,17 @@
 
 <body>
     <h1 id='title'>標題</h1>
+
     <h2>1</h2>
     <h2>2</h2>
+
+    <h3 class='myclass1'>1</h3>
+    <h3 class='myclass1'>2</h3>
+    <h3 class='myclass2'>3</h3>
+
+    <a href="https://google.com" id="link">連結</a>
+
+    <h4 id='bye'>刪掉</h4>
     <script>
         const title = document.getElementById('title');
         // 用ID抓HTML元素   
@@ -25,6 +34,30 @@
             element.innerText += '號'
         }
         // 也可以使用for of 一次修改
+
+        const myclass = document.getElementsByClassName('myclass1')
+        // 用CLASS名稱抓HTML元素，會出現陣列
+        // 若要一次選符合的多個CLASS元素，須以空白分隔('myclass1 myclass2')
+
+        for (let element of myclass) {
+            element.style.color = 'red'
+        }
+        // .style.CSS名稱
+        // CSS名稱改為駝峰式命名，EX:background-color 改成 backgroundColor
+
+        const link = document.querySelector("#link")
+        // 用CSS選擇器抓HTML元素
+        // querySelectorAll取全部，會出現陣列
+        // querySelector 取第一個
+        console.log(link.href)
+        console.log(link.getAttribute("href"))
+        link.setAttribute("href", "https://fb.com")
+        link.href = 'https://fb.com'
+
+
+        const bye = document.getElementById('bye')
+        bye.remove()
+
     </script>
 </body>
 
