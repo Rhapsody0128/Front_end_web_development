@@ -20,6 +20,18 @@
     <a href="https://google.com" id="link">連結</a>
 
     <h4 id='bye'>刪掉</h4>
+
+    <ul id="ul">
+        <li class="li">1</li>
+        <li class="li">2</li>
+        <li><a href="https://google.com">3</a></li>
+    </ul>
+    <ul id='ul2'>
+        <li>1</li>
+        <li id='myli'>2</liid>
+        <li>3</li>
+    </ul>
+
     <script>
         const title = document.getElementById('title');
         // 用ID抓HTML元素   
@@ -57,6 +69,31 @@
 
         const bye = document.getElementById('bye')
         bye.remove()
+
+
+
+        const ul = document.getElementById("ul")
+        console.log(ul.innerHTML)
+        // innerHTML會將HTML內容以文字輸出
+        const ul_li = document.getElementById('ul').getElementsByClassName('li')
+        console.log(ul_li[1].innerText)
+
+
+        const ul_a = ul.getElementsByTagName('a')[0]
+        ul_a.parentElement.style.background = 'green'
+        // parentElement 會抓到元素的父輩
+
+        const ul_chi = ul.children
+        // childrenElement 會抓到元素的子輩
+        for (let element of ul_chi) {
+            element.style.border = "1px solid blue"
+        }
+
+        const myli = document.getElementById('myli')
+        myli.previousElementSibling.style.color = "gray"
+        // previousElementSibling抓前一個元素
+        myli.nextElementSibling.style.color = 'red'
+        // nextElementSibling抓下一個元素
 
     </script>
 </body>
