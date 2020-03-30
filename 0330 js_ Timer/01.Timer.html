@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // setTimeout(() => {
+        //     alert('五秒啦')
+        // }, 5000)
+        // setTimeout(function,毫秒)
+        // 延遲時間後執行function
+        // // setTimeout(()=>{行為},延遲'毫秒'後執行)
+
+        //     const msg = (sec, i) => {
+        //         alert(`過了${sec}秒了`)
+        //     }
+        //     setTimeout(msg, 2000, 2)
+        // // setTimeout(function,毫秒,傳入function的第一個變數,傳入function的第二個變數...)
+
+        // let delay = setTimeout(() => {
+        //     alert('過五秒啦')
+        // }, 5000)
+
+        // clearTimeout(delay)
+        // // clearTimeout會清除計時器
+
+
+        // for (let i = 0; i < 3; i++) {
+        //     setTimeout(() => {
+        //         console.log('let' + i)
+        //     }, 1000)
+        // }
+
+        // for (var j = 0; j < 3; j++) {
+        //     setTimeout(() => {
+        //         console.log('var' + j)
+        //     }, 1000)
+        // }
+        // // var是宣告全域變數，在這個裡會先跑完for迴圈後，在進入setTimeout()裡，故只會出現var3
+
+        let num = 10
+        let timer = setInterval(() => {
+            document.write(num + '<br>')
+            num--
+            if (num == -1) {
+                clearInterval(timer)
+            }
+        }, 1000)
+        // setInterval() 可以每隔一段時間執行指定的程式碼，語法和 setTimeout一樣
+
+
+    </script>
+</body>
+
+</html>

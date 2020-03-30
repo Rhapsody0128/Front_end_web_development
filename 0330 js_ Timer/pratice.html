@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // #計時器練習
+        // 製作倒數式計時器，使用者可使用`prompt()`輸入數字
+        // 每秒減1，到0後停止
+        // 如果使用者不適輸入數字會有錯誤訊息
+        let num = prompt('請輸入倒數數字')
+        // for (i = 0; i < 1; i++) {
+        //     if (isNaN(num) == true) {
+        //         alert('請輸入數字')
+        //         break;
+        //     }
+        //     let timer = setInterval(() => {
+        //         document.write(num + '<br>')
+        //         num--
+        //         if (num < 0) {
+        //             clearInterval(timer)
+        //         }
+        //     }, 100);
+        // }
+
+        let timer = setInterval(() => {
+            document.write(num + '<br>')
+            num--
+
+
+            if (num < 0) {
+                clearInterval(timer)
+            }
+        }, 1000)
+
+
+        if ((isNaN(num))) {
+            alert('請輸入數字')
+            clearInterval(timer)
+        }
+    </script>
+</body>
+
+</html>
