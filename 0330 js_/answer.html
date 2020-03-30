@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const rand = (max, min) => {
+            return Math.round((Math.random() * (max - min)) + min)
+        }
+
+        let a = []
+        document.write('A區:<br>')
+
+        for (i = 0; i < 6; i++) {
+            let temp = rand(1, 38);
+            if (a.includes(temp)) {
+                i--;
+                // (如果重複的話，第五次(i=5)減一次變成(i=4)重複加入迴圈)
+                continue
+                // continue 跳過其他步驟
+            }
+            a.push(temp);
+            document.write(temp + ',')
+        }
+        document.write('<br>')
+        document.write(`B區:<br>${rand(1, 8)}<br>`)
+
+        // anwser 2------------------------------------------------------------
+
+        let num = []
+        document.write('A區:<br>')
+        for (let i = 1; i <= 38; i++) {
+            num.push(i)
+        }
+
+        for (let i = 0; i < 6; i++) {
+            let temp = rand(0, 37 - i)
+            document.write(num[temp] + ',')
+            num.splice(temp, 1)
+        }
+        document.write('<br>')
+        document.write(`B區:<br>${rand(1, 8)}<br>`)
+    </script>
+</body>
+
+</html>
