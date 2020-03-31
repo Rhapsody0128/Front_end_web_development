@@ -32,6 +32,12 @@
         <li>3</li>
     </ul>
 
+    <p id="myp" class="myclass1 myclass2">123</p>
+
+    <div id='mydiv'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, nihil. Assumenda vel quod,
+        doloribus impedit atque nemo inventore neque quis dolores animi et, consequuntur voluptatibus voluptate
+        repudiandae ad ut doloremque?</div>
+
     <script>
         const title = document.getElementById('title');
         // 用ID抓HTML元素   
@@ -95,6 +101,24 @@
         myli.nextElementSibling.style.color = 'red'
         // nextElementSibling抓下一個元素
 
+        const myp = document.getElementById('myp')
+        console.log(myp.className)
+        myp.classList.add("myclass3")
+        // add新增
+        myp.classList.remove('myclass2')
+        // remove刪除
+        myp.classList.replace('myclass1', 'myclass4')
+        // replace(原本，取代後)
+        myp.classList.toggle('myclass4')
+        myp.classList.toggle('myclass5')
+        // toggle有改成無，無變成有
+        console.log(myp.className)
+
+        const mydiv = document.getElementById('mydiv')
+        mydiv.insertAdjacentHTML("afterbegin", '(<i>afterbegin開始後<i>)')
+        mydiv.insertAdjacentHTML("beforebegin", '(<i>beforebegin開始前<i>)')
+        mydiv.insertAdjacentHTML("afterend", '(<i>afterend結束後<i>)')
+        mydiv.insertAdjacentHTML("beforeend", '(<i>beforeend結束前<i>)')
     </script>
 </body>
 
