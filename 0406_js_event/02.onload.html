@@ -5,24 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<style>
-    body {
-        background: gray;
-    }
 
-    #a {
-        text-align: center;
-    }
-</style>
+    <style>
+        body {
+            background: gray;
+            margin: 0;
+        }
+
+        #loading {
+            background: gray;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            display: table;
+            /* 模擬成TABLE */
+            transition: opacity 1s;
+        }
+
+        #loading-inner {
+            text-align: center;
+            display: table-cell;
+            /* 模擬成TABLE/TD */
+            vertical-align: middle;
+            color: white;
+            /* vertical-align:垂直置中(僅對TABLE有用)  */
+            font-family: 微軟正黑體;
+        }
+    </style>
+</head>
 
 <body>
-    <div id='a'><img src="loading.svg" alt=""></div>
-    <img src="https://picsum.photos/1600/1280/?random=1">
-    <img src="https://picsum.photos/1600/1280/?random=2">
-    <img src="https://picsum.photos/1600/1280/?random=3">
-    <img src="https://picsum.photos/1600/1280/?random=4">
-    <img src="https://picsum.photos/1600/1280/?random=5">
+    <div id='loading'>
+        <div id='loading-inner'>
+            <img src="loading.svg" alt="">
+            <h1>載入中</h1>
+        </div>
+    </div>
+    <div style="text-align: center">
+        <img src="https://picsum.photos/1600/1280/?random=1">
+        <img src="https://picsum.photos/1600/1280/?random=2">
+        <img src="https://picsum.photos/1600/1280/?random=3">
+    </div>
+    <a href="#" style="text-align: center">TOP</a>
+
+
     <script>
 
 
@@ -34,7 +60,7 @@
 
         // 當載入完網頁上的HTML時(for JQ)
         // document.onload
-        const a = document.getElementById('a')
+        const loading = document.getElementById('loading')
         document.onreadystatechange = () => {
             console.log(document.readyState)
         }
@@ -44,7 +70,11 @@
 
         window.onload = () => {
             console.log('window ok')
-            a.innerText = ''
+            loading.style.opacity = 0
+            setTimeout(() => {
+                loading.style.display = 'none'
+            }, 1000)
+
         }
 
         // document.onload = () => {
