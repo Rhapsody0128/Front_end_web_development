@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #clock {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border-radius: 50%;
+            margin: auto;
+            position: relative;
+        }
+
+        #hour {
+            position: absolute;
+            border-radius: 2px;
+            width: 20%;
+            height: 6px;
+            background: red;
+            top: calc(50% - 3px);
+            left: 30%;
+            /* 左向右30%+寬度20%=圓心位置50% */
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #minute {
+            position: absolute;
+            border-radius: 2px;
+            width: 45%;
+            height: 6px;
+            background: green;
+            top: calc(50% - 3px);
+            /* calc可以幫助不同單位間運算 */
+            left: 5%;
+            /* 左向右30%+寬度20%=圓心位置50% */
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #second {
+            position: absolute;
+            border-radius: 2px;
+            width: 48%;
+            height: 3px;
+            background: yellow;
+            top: calc(50% - 1.5px);
+            left: 2%;
+            /* 左向右30%+寬度20%=圓心位置50% */
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #bottom {
+            position: absolute;
+            background: black;
+            width: 8px;
+            height: 8px;
+            top: calc(50% - 4px);
+            left: calc(50% - 4px);
+            border-radius: 50%;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='clock'>
+        <div id="bottom"></div>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        const hour = document.getElementById('hour')
+        const minute = document.getElementById('minute')
+        const second = document.getElementById('second')
+
+        const setDate = () => {
+            const now = new Date()
+            hour.style.transform = `rotate(${now.getHours() * 30 + 90}deg)`
+            minute.style.transform = `rotate(${now.getMinutes() * 6 + 90}deg)`
+            second.style.transform = `rotate(${now.getSeconds() * 6 + 90}deg)`
+        }
+        setDate();
+        setInterval(setDate, 1);
+    </script>
+</body>
+
+</html>

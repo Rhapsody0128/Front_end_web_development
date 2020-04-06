@@ -15,55 +15,54 @@
         // 在網頁只能有一行字顯示，剩餘時間X秒，秒數不能變負數，顏色為藍色
         // 時間到時文字變成紅色
 
-        // let div = document.getElementsByTagName('div')
+        const a = document.getElementById('text')
+        let num = prompt('請輸入數字')
+        a.innerText = parseInt(num)
 
-        // let num = parseInt(prompt('請輸入倒數數字'))
-        // for (a of div) {
-
-        //     a.style.color = 'red'
-        //     a = parseInt(a)
-        //     if (isNaN(a) || a <= 0) {
-        //         alert('請輸入正整數')
-        //     }
-        //     else {
-        //         let timer = setInterval(() => {
-
-        //             document.write(a)
-        //             a--
-        //             if (a < 0) {
-        //                 clearInterval(timer)
-        //             }
-
-        //         }, 1000)
-        //     }
-        // }
-
-        // anwser------------------------------------------------------
-
-        const text = document.getElementById('text')
-        const input = prompt(('請輸入倒數數字'))
-        let num = parseInt(input)
-
-
-        if (isNaN(input) || num <= 0) {
+        if (isNaN(num) || num <= 0) {
             alert('請輸入正整數')
         }
         else {
-            text.innerText = `剩餘${num}秒`
+            a.innerText = `剩餘${num}秒`
             let timer = setInterval(() => {
                 num--
-                if (num < 0) {
+                a.innerText = `剩餘${num}秒`
+                if (num <= 0) {
                     clearInterval(timer)
-                    text.style.color = 'red'
-                    text.innerText = 時間到
-                }
-                else {
-                    text.innerText = num
-                    text.innerText = `剩餘${num}秒`
+                    a.innerText = '時間到'
+                    a.style.color = 'red'
                 }
 
             }, 1000)
         }
+
+
+        // anwser------------------------------------------------------
+
+        // const text = document.getElementById('text')
+        // const input = prompt(('請輸入倒數數字'))
+        // let num = parseInt(input)
+
+
+        // if (isNaN(input) || num < 0 || input == null) {
+        //     // 如果prompt按取消會回傳NULL
+        //     alert('請輸入正整數')
+        // }
+        // else {
+        //     text.innerText = `剩餘${ num } 秒`
+        //     let timer = setInterval(() => {
+        //         num--
+        //         if (num <= 0) {
+        //             clearInterval(timer)
+        //             text.style.color = 'red'
+        //             text.innerText = '時間到'
+        //         }
+        //         else {
+        //             text.innerText = `剩餘${ num } 秒`
+        //         }
+
+        //     }, 1000)
+        // }
 
 
     </script>
