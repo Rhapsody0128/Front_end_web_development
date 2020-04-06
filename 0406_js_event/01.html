@@ -11,9 +11,25 @@
     <input type="button" value="給我點" onclick="alert('ㄏ')">
     <input type="button" value="給我點看時間" onclick="this.value = new Date().toLocaleString('zh-tw')">
     <input type="button" value="給我點去GOOGLE" onclick="goto('https://google.com.tw')">
+
+    <hr>
+
+    <input type="button" class="btn" value="給我點">
+    <input type="button" class="btn" value="給我點">
+    <input type="button" class="btn" value="給我點">
+    <input type="button" class="btn" value="給我點">
+    <input type="button" class="btn" value="給我點">
+
     <script>
         const goto = (link) => {
             location.href = link;
+        }
+
+        const btns = document.getElementsByClassName('btn')
+        for (let btn of btns) {
+            btn.onclick = () => {
+                btn.value = new Date().toLocaleString('zh-tw')
+            }
         }
     </script>
 </body>
