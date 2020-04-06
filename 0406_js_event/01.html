@@ -20,6 +20,10 @@
     <input type="button" class="btn" value="給我點">
     <input type="button" class="btn" value="給我點">
 
+    <hr>
+
+    <a href="https://fb.com" id="fb">去FB</a>
+
     <script>
         const goto = (link) => {
             location.href = link;
@@ -29,6 +33,16 @@
         for (let btn of btns) {
             btn.onclick = () => {
                 btn.value = new Date().toLocaleString('zh-tw')
+            }
+        }
+
+        const fb = document.getElementById('fb')
+        fb.onclick = (event) => {
+            const input = prompt('請輸入密碼')
+            if (input != 1234) {
+                event.preventDefault()
+                console.log(event)
+                alert('看屁')
             }
         }
     </script>
