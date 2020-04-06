@@ -6,8 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        background: gray;
+    }
+
+    #a {
+        text-align: center;
+    }
+</style>
 
 <body>
+    <div id='a'><img src="loading.svg" alt=""></div>
     <img src="https://picsum.photos/1600/1280/?random=1">
     <img src="https://picsum.photos/1600/1280/?random=2">
     <img src="https://picsum.photos/1600/1280/?random=3">
@@ -24,7 +34,7 @@
 
         // 當載入完網頁上的HTML時(for JQ)
         // document.onload
-
+        const a = document.getElementById('a')
         document.onreadystatechange = () => {
             console.log(document.readyState)
         }
@@ -34,6 +44,7 @@
 
         window.onload = () => {
             console.log('window ok')
+            a.innerText = ''
         }
 
         // document.onload = () => {
