@@ -6,51 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body {
+            margin: 0;
+        }
+
         #scr {
             margin: auto;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0))
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgb(255, 255, 25255), rgb(255, 255, 255))
         }
 
         #tbtn {
             text-align: center;
+            margin-top: 20%;
+            background: rgb(228, 87, 174);
+            opacity: 0.5;
         }
 
         #bbtn {
             text-align: center;
+            background: rgb(228, 87, 174);
+            opacity: 0.5;
         }
 
         #result {
             text-align: center;
+            color: rgb(0, 0, 0);
         }
 
         #result2 {
             text-align: center;
+            color: rgb(0, 0, 0);
         }
     </style>
 </head>
 
 <body>
-    <div id="scr"></div>
-    <br>
-    <div id='tbtn'>
-        <input type="button" value="上R值隨機" onclick="color(tr)">
-        <input type="button" value="上G值隨機" onclick="color(tg)">
-        <input type="button" value="上B值隨機" onclick="color(tb)">
+    <div id="scr">
+        <br>
+
+        <div id='tbtn'>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="R值隨機" onclick="color(tr)">
+            <br>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="G值隨機" onclick="color(tg)">
+            <br>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="B值隨機" onclick="color(tb)">
+            <div id="result"></div>
+        </div>
+        <div id='bbtn'>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="R值隨機" onclick="color(br)">
+            <br>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="G值隨機" onclick="color(bg)">
+            <br>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="B值隨機" onclick="color(bb)">
+            <div id="result2"></div>
+        </div>
+
+        <br>
+
     </div>
-    <div id="bbtn">
-        <input type="button" value="下R值隨機" onclick="color(br)">
-        <input type="button" value="下G值隨機" onclick="color(bg)">
-        <input type="button" value="下B值隨機" onclick="color(bb)">
-    </div>
-    <br>
-    <div id="result"></div>
-    <div id='result2'></div>
     <script>
+        const ranges = document.getElementsByClassName('range')
         const result = document.getElementById('result')
-        const result2 = document.getElementById('result2')
         const scr = document.getElementById('scr')
+        const body = document.querySelectorAll(".body");
+        result.innerText = 'R: 0, G: 0, B: 0'
         const rand = () => {
             return Math.floor((Math.random() * 256))
         }
@@ -60,39 +87,55 @@
         let br = 0
         let bg = 0
         let bb = 0
+        for (let range of ranges) {
+            range.oninput = () => {
+                scr.style.background = `linear-gradient(rgb(${ranges[0].value},${ranges[1].value},${ranges[2].value}), rgb(${ranges[3].value},${ranges[4].value},${ranges[5].value}))`
+                result.innerText = `R:${ranges[0].value}, G:${ranges[1].value}, B:${ranges[2].value}`
+                result2.innerText = `R:${ranges[3].value}, G:${ranges[4].value}, B:${ranges[5].value}`
+                result.style.color = `rgb( ${255 - ranges[0].value}, ${255 - ranges[1].value}, ${255 - ranges[2].value})`
+                result.style.color = `rgb( ${255 - ranges[3].value}, ${255 - ranges[4].value}, ${255 - ranges[5].value})`
+                tr = ranges[0].value
+                tg = ranges[1].value
+                tb = ranges[2].value
+                br = ranges[3].value
+                bg = ranges[4].value
+                bb = ranges[5].value
+            }
+        }
         const color = (a) => {
-
             switch (a) {
                 case tr:
                     tr = rand()
+                    ranges[0].value = tr
                     break;
                 case tg:
                     tg = rand()
+                    ranges[1].value = tg
                     break;
                 case tb:
                     tb = rand()
+                    ranges[2].value = tb
                     break;
                 case br:
                     br = rand()
+                    ranges[3].value = br
                     break;
                 case bg:
                     bg = rand()
+                    ranges[4].value = bg
                     break;
                 case bb:
                     bb = rand()
+                    ranges[5].value = bb
                     break;
 
             }
-            console.log(tr)
-            console.log(tg)
-            console.log(tb)
-            console.log(br)
-            console.log(bg)
-            console.log(bb)
+
             scr.style.background = `linear-gradient(rgb(${tr},${tg},${tb}), rgb(${br},${bg},${bb}))`
             result.innerText = `上R:${tr}, 上G:${tg}, 上B:${tb}`
             result2.innerText = `下R:${br}, 下G:${bg}, 下B:${bb}`
-            // ${r},${g},${b}
+            result.style.color = `rgb(${255 - tr}, ${255 - tg}, ${255 - tb})`
+            result2.style.color = `rgb(${255 - br}, ${255 - bg}, ${255 - bb})`
         }
 
     </script>

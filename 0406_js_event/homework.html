@@ -6,61 +6,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body {
+            margin: 0;
+        }
+
         #scr {
             margin: auto;
-            width: 300px;
-            height: 300px;
-            background: rgb(0, 0, 0);
+            width: 100%;
+            height: 100vh;
+            background: rgb(255, 255, 255);
         }
 
         #btn {
             text-align: center;
+            margin-top: 20%;
+            background: rgb(228, 87, 174);
+            opacity: 0.5;
         }
 
         #result {
             text-align: center;
+            color: rgb(0, 0, 0);
         }
     </style>
 </head>
 
 <body>
-    <div id="scr"></div>
-    <br>
-    <div id='btn'>
-        <input type="button" value="R值隨機" onclick="color(0)">
-        <input type="button" value="G值隨機" onclick="color(1)">
-        <input type="button" value="B值隨機" onclick="color(2)">
+    <div id="scr">
+        <br>
+
+        <div id='btn'>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="R值隨機" onclick="color(0)">
+            <br>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="G值隨機" onclick="color(1)">
+            <br>
+            <input class='range' type="range" min='0' max='255' value='255'>
+            <input type="button" value="B值隨機" onclick="color(2)">
+            <div id="result"></div>
+        </div>
+
+        <br>
+
     </div>
-    <br>
-    <div id="result"></div>
     <script>
+        const ranges = document.getElementsByClassName('range')
         const result = document.getElementById('result')
         const scr = document.getElementById('scr')
+        const body = document.querySelectorAll(".body");
+        result.innerText = 'R: 0, G: 0, B: 0'
         const rand = () => {
             return Math.floor((Math.random() * 256))
         }
         let r = 0
         let g = 0
         let b = 0
+        for (let range of ranges) {
+            range.oninput = () => {
+                scr.style.background = `rgb(${ranges[0].value}, ${ranges[1].value}, ${ranges[2].value})`
+                result.innerText = `R:${ranges[0].value}, G:${ranges[1].value}, B:${ranges[2].value}`
+                result.style.color = `rgb( ${255 - ranges[0].value}, ${255 - ranges[1].value}, ${255 - ranges[2].value})`
+                r = ranges[0].value
+                g = ranges[1].value
+                b = ranges[2].value
+            }
+        }
         const color = (a) => {
-
             switch (a) {
                 case 0:
                     r = rand()
+                    ranges[0].value = r
                     break;
                 case 1:
                     g = rand()
+                    ranges[1].value = g
                     break;
                 case 2:
                     b = rand()
+                    ranges[2].value = b
                     break;
-
             }
             console.log(r)
             console.log(g)
             console.log(b)
             scr.style.background = `rgb(${r}, ${g}, ${b})`
             result.innerText = `R:${r}, G:${g}, B:${b}`
+            result.style.color = `rgb(${255 - r}, ${255 - g}, ${255 - b})`
         }
 
     </script>
