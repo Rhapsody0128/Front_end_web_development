@@ -8,11 +8,38 @@
 </head>
 
 <body>
+    <img src="https://picsum.photos/1600/1280/?random=1">
+    <img src="https://picsum.photos/1600/1280/?random=2">
+    <img src="https://picsum.photos/1600/1280/?random=3">
+    <img src="https://picsum.photos/1600/1280/?random=4">
+    <img src="https://picsum.photos/1600/1280/?random=5">
     <script>
+
+
         // 當載入完網頁上的HTML時
-        // document.onload
+        // document.onreadystatechange
+
+
         // 當整個網頁載入完(連圖片都下載完)時
-        // wundow.onload
+        // window.onload
+
+        // 當載入完網頁上的HTML時(for JQ)
+        // document.onload
+
+        document.onreadystatechange = () => {
+            console.log(document.readyState)
+        }
+        // document.readyState下狀態:
+        // interactive:載入完HTML標籤時
+        // complete:整個頁面載入完時
+
+        window.onload = () => {
+            console.log('window ok')
+        }
+
+        // document.onload = () => {
+        //     console.log('doc ok')
+        // }
 
     </script>
 </body>
