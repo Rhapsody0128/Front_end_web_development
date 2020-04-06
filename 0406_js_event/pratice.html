@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 微軟正黑體;
+            font-size: 36px;
+        }
+
+        #c {
+            font-family: 微軟正黑體;
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>請出拳</h3>
+    <input type="button" value="剪刀" onclick=judge(0)>
+    <input type="button" value="石頭" onclick=judge(1)>
+    <input type="button" value="布" onclick=judge(2)>
+
+
+    <ul id='c'>
+    </ul>
+
+    <script>
+        const rand = () => {
+            return Math.floor((Math.random() * 3))
+        }
+        const c = document.getElementById('c')
+
+        const judge = (a) => {
+            let b = rand()
+            let result = ''
+            // console.log(a)
+            // console.log(b)
+            if (a == 0) {
+                switch (b) {
+                    case 0:
+                        result = '平手'
+                        break;
+                    case 1:
+                        result = '輸'
+                        break;
+                    case 2:
+                        result = '贏'
+                        break;
+                }
+            }
+            if (a == 1) {
+                switch (b) {
+                    case 0:
+                        result = '贏'
+                        break;
+                    case 1:
+                        result = '平手'
+                        break;
+                    case 2:
+                        result = '輸'
+                        break;
+                }
+            }
+            if (a == 2) {
+                switch (b) {
+                    case 0:
+                        result = '輸'
+                        break;
+                    case 1:
+                        result = '贏'
+                        break;
+                    case 2:
+                        result = '平手'
+                        break;
+                }
+            }
+            switch (a) {
+                case 0:
+                    a = '剪刀'
+                    break;
+                case 1:
+                    a = '石頭'
+                    break;
+                case 2:
+                    a = '布'
+                    break;
+            }
+            switch (b) {
+                case 0:
+                    b = '剪刀'
+                    break;
+                case 1:
+                    b = '石頭'
+                    break;
+                case 2:
+                    b = '布'
+                    break;
+            }
+            c.insertAdjacentHTML('beforeend', `<li>你出${a}，電腦出${b}，${result}</li>`)
+        }
+
+
+    </script>
+</body>
+
+</html>
