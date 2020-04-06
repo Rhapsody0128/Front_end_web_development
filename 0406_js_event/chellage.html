@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #scr {
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0))
+        }
+
+        #tbtn {
+            text-align: center;
+        }
+
+        #bbtn {
+            text-align: center;
+        }
+
+        #result {
+            text-align: center;
+        }
+
+        #result2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="scr"></div>
+    <br>
+    <div id='tbtn'>
+        <input type="button" value="上R值隨機" onclick="color(tr)">
+        <input type="button" value="上G值隨機" onclick="color(tg)">
+        <input type="button" value="上B值隨機" onclick="color(tb)">
+    </div>
+    <div id="bbtn">
+        <input type="button" value="下R值隨機" onclick="color(br)">
+        <input type="button" value="下G值隨機" onclick="color(bg)">
+        <input type="button" value="下B值隨機" onclick="color(bb)">
+    </div>
+    <br>
+    <div id="result"></div>
+    <div id='result2'></div>
+    <script>
+        const result = document.getElementById('result')
+        const result2 = document.getElementById('result2')
+        const scr = document.getElementById('scr')
+        const rand = () => {
+            return Math.floor((Math.random() * 256))
+        }
+        let tr = 0
+        let tg = 0
+        let tb = 0
+        let br = 0
+        let bg = 0
+        let bb = 0
+        const color = (a) => {
+
+            switch (a) {
+                case tr:
+                    tr = rand()
+                    break;
+                case tg:
+                    tg = rand()
+                    break;
+                case tb:
+                    tb = rand()
+                    break;
+                case br:
+                    br = rand()
+                    break;
+                case bg:
+                    bg = rand()
+                    break;
+                case bb:
+                    bb = rand()
+                    break;
+
+            }
+            console.log(tr)
+            console.log(tg)
+            console.log(tb)
+            console.log(br)
+            console.log(bg)
+            console.log(bb)
+            scr.style.background = `linear-gradient(rgb(${tr},${tg},${tb}), rgb(${br},${bg},${bb}))`
+            result.innerText = `上R:${tr}, 上G:${tg}, 上B:${tb}`
+            result2.innerText = `下R:${br}, 下G:${bg}, 下B:${bb}`
+            // ${r},${g},${b}
+        }
+
+    </script>
+</body>
+
+</html>
