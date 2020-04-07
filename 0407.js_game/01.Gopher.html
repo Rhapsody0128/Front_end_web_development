@@ -42,9 +42,10 @@
 
     <input type="button" value="START" id='btn-start'><br>
     目前分數<span id='text-score'>0</span>
+    剩餘時間<span id='text-time'></span>
     <hr>
     最高分:<br>
-    玩家<span id=text-higherplayer>沒有人</span>
+    玩家<span id=text-highplayer>沒有人</span><br>
     分數<span id=text-hightscore>0</span>
 
     <script>
@@ -53,6 +54,7 @@
         const textScore = document.getElementById('text-score')
         const textHighPlayer = document.getElementById('text-highplayer')
         const textHighScore = document.getElementById('text-highscore')
+        const textTime = document.getElementById('text-time')
 
         let score = 0
         // 分數
@@ -63,17 +65,78 @@
         let timer = 0
         // 計時器
         btnStart.onclick = () => {
+
+            inGame = true
+
             btnStart.disabled = true
             // 停用開始按鈕
+
             timer = setInterval(game, 1000)
             // 設定每秒變換一次
             game()
             // 避免timer把第一次也延長1000毫秒
-            score = 0
+            timeleft = 10
+            // 剩餘時間
+            textTime.innerText = timeleft
+            // 重設時間
+        }
+        const game = () => {
+            for (let hole of holes) {
+                hole.classList.remove('red')
+                hole.classList.remove('blue')
+            }
+            // 清掉格子的class
+            for (let i = 0; i < 3; i++) {
+                const rand = Math.floor(Math.random() * 9)
+                holes[rand].classList.add('red')
+            }
+            // 隨機抽三個變紅色
+
+
+
             textScore.innerText = score
 
-            const game = () => {
 
+            timeleft--
+            // 時間遞減
+            textTime.innerText = timeleft
+
+            if (timeleft == 0) {
+                // 如果時間到了
+                inGame = false
+                // 設定狀態為離開遊戲
+                clearInterval(timer)
+                for (let hole of holes) {
+                    hole.classList.remove('red')
+                    hole.classList.remove('blue')
+                }
+                btnStart.disabled = false
+                alert(`你得到${score}分`)
+            }
+        }
+
+        for (let hole of holes) {
+            hole.onclick = () => {
+
+                if (inGame && hole.classList.contains('red')) {
+                    // 若在遊戲中且包含red
+                    hole.classList.add('blue')
+                    hole.classList.remove('red')
+                    console.log('aa')
+                    score++
+                    textScore.innerText = score
+                }
+            }
+        }
+
+        document.onkeydown = (event) => {
+            const key = event.key
+            if (!isNaN(key) && inGame && key > 0 && key < 10) {
+                // 如果是按鍵是數字，且在遊戲中，且數字1-9
+                const target = document.getElementById(`hole${key}`)
+                // 找到對應的格子
+                target.click()
+                // 觸發點擊事件
             }
         }
     </script>
