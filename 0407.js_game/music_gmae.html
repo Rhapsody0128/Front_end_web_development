@@ -125,24 +125,30 @@
         }
 
 
-        const A = () => {
 
-            scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller"></div>`)
-            // fallers[i].style.animation = 'faller 1s linear'
-            j = parseInt(scrs[0].childElementCount - 1)
-            console.log(j)
+        function A() {
             i = 0
-            const slide = setInterval(() => {
+            scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
 
-                fallers[j].style.top = `${i}%`
-                i++
-                if (fallers[j].style.top == `100%`) {
-                    clearInterval(slide)
-                    fallers[j - j].remove()
-                }
+            const x = document.getElementById(`A${j}`)
+            j++
 
-            }, 10)
+            // let count = parseInt(x.childElementCount) - 1
+            // console.log(count)
 
+            function slide() {
+                setInterval(() => {
+
+                    x.style.top = `${i}%`
+                    i++
+                    let top = parseInt(x.style.top)
+
+                    if (top >= 100) {
+                        clearInterval(slide)
+                        x.remove()
+                    }
+                }, 1000)
+            }
         }
 
 
