@@ -114,32 +114,38 @@
         music.src = "./material/yay.mp3"
         let ingame = false
 
-
+        j = 0
         start.onclick = () => {
             // music.play()
             // ingame = true
             // game()
             A()
+
             // start.disabled = true
         }
 
-        i = 0
-        const slide = setInterval(() => {
 
-            fallers[j].style.top = `${i}%`
-            i++
-            if (fallers[j].style.top == `100%`) {
-                clearInterval(slide)
-                fallers[0].remove()
-            }
+        const A = () => {
 
-        }, 10)
-        const A = (j) => {
-            j = 1
             scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller"></div>`)
             // fallers[i].style.animation = 'faller 1s linear'
+            j = parseInt(scrs[0].childElementCount - 1)
             console.log(j)
+            i = 0
+            const slide = setInterval(() => {
+
+                fallers[j].style.top = `${i}%`
+                i++
+                if (fallers[j].style.top == `100%`) {
+                    clearInterval(slide)
+                    fallers[j - j].remove()
+                }
+
+            }, 10)
+
         }
+
+
 
 
     </script>
