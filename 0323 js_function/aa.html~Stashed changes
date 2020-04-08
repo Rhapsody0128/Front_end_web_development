@@ -9,6 +9,7 @@
 
 <body>
     <script>
+<<<<<<< Updated upstream:test.html
         // (function (i) {
         //     console.log(i)
         // }())
@@ -17,6 +18,10 @@
         })()
         a(5)
 
+=======
+        let a = parseInt(prompt('aa'))
+        console.log(a)
+>>>>>>> Stashed changes:0323 js_function/aa.html
     </script>
 </body>
 

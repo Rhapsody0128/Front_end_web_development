@@ -123,6 +123,7 @@
             // start.disabled = true
         }
 
+<<<<<<< Updated upstream
         // i = 0
         // j = 0
         // k = 0
@@ -219,6 +220,36 @@
                 }
             }, 1000)
         }
+
+
+=======
+
+
+        function A() {
+            i = 0
+            scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
+
+            const x = document.getElementById(`A${j}`)
+            j++
+
+            // let count = parseInt(x.childElementCount) - 1
+            // console.log(count)
+
+            function slide() {
+                setInterval(() => {
+
+                    x.style.top = `${i}%`
+                    i++
+                    let top = parseInt(x.style.top)
+
+                    if (top >= 100) {
+                        clearInterval(slide)
+                        x.remove()
+                    }
+                }, 1000)
+            }
+        }
+>>>>>>> Stashed changes
 
 
 
