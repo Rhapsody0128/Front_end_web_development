@@ -65,7 +65,6 @@
     <table id="screen" border="1px">
         <tr>
             <td class='scr'>
-                <div class="faller"></div>
             </td>
             <td class='scr'>
             </td>
@@ -124,31 +123,101 @@
             // start.disabled = true
         }
 
+        // i = 0
+        // j = 0
+        // k = 0
+
+        // function A() {
+        //     scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller"></div>`)
+
+        //     let count = parseInt(scrs[0].childElementCount)
+        //     console.log(count)
+
+        //     if (count == 1) {
+        //         const slide = setInterval(() => {
+        //             fallers[0].style.top = `${i}%`
+        //             i++
+        //             let top = parseInt(fallers[0].style.top)
+
+        //             if (top >= 100) {
+        //                 clearInterval(slide)
+        //                 fallers[0].remove()
+        //                 i = 0
+        //             }
+        //         }, 500)
+        //     }
+        //     if (count == 2) {
+        //         const slide = setInterval(() => {
+        //             fallers[1].style.top = `${j}%`
+        //             j++
+        //             let top = parseInt(fallers[1].style.top)
+
+        //             if (top >= 100) {
+        //                 clearInterval(slide)
+        //                 fallers[0].remove()
+        //                 j = 0
+        //             }
+        //         }, 500)
+        //     }
+        //     if (count == 3) {
+        //         const slide = setInterval(() => {
+        //             fallers[2].style.top = `${k}%`
+        //             k++
+        //             let top = parseInt(fallers[2].style.top)
+
+        //             if (top >= 100) {
+        //                 clearInterval(slide)
+        //                 fallers[0].remove()
+        //                 k = 0
+        //             }
+        //         }, 500)
+        //     }
+        // }
 
 
-        function A() {
+        // const A = () => {
+        //     scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
+
+        //     let x = document.getElementById(`A${j}`)
+
+        //     let i = 0
+
+        //     var timer = setInterval(() => {
+        //         console.log(x)
+        //         x.style.top = `${i}%`
+        //         i++
+        //         // let top = parseInt(x.style.top)
+        //         // console.log(top)
+        //         if (i >= 100) {
+        //             clearInterval(timer)
+        //             x.remove()
+        //         }
+        //         j++
+        //     }, 100)
+        // }
+
+
+
+        const A = () => {
+
             i = 0
             scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
 
-            const x = document.getElementById(`A${j}`)
+            let x = document.getElementById(`A${j}`)
+
             j++
 
-            // let count = parseInt(x.childElementCount) - 1
-            // console.log(count)
-
-            function slide() {
-                setInterval(() => {
-
-                    x.style.top = `${i}%`
-                    i++
-                    let top = parseInt(x.style.top)
-
-                    if (top >= 100) {
-                        clearInterval(slide)
-                        x.remove()
-                    }
-                }, 1000)
-            }
+            setInterval(() => {
+                console.log(x)
+                x.style.top = `${i}%`
+                i++
+                let top = parseInt(x.style.top)
+                console.log(top)
+                if (top >= 100) {
+                    // clearInterval()
+                    x.remove()
+                }
+            }, 1000)
         }
 
 
