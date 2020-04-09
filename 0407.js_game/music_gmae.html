@@ -32,6 +32,9 @@
             width: 150px;
             height: 100px;
             text-align: center;
+            transition: 0.5s;
+            font-size: 40px;
+            font-family: 微軟正黑體;
         }
 
         .faller {
@@ -40,6 +43,19 @@
             background: red;
             position: absolute;
             top: 0%;
+        }
+
+        .judge {
+
+            width: 148px;
+            height: 20px;
+            position: absolute;
+            top: 80%;
+            border: blue solid 1px;
+        }
+
+        .click {
+            animation: click 0.5s infinite;
         }
 
         /* @keyframes faller {
@@ -58,6 +74,15 @@
                 height: 20px;
             }
         } */
+        @keyframes click {
+            from {
+                background: none;
+            }
+
+            to {
+                background: blue;
+            }
+        }
     </style>
 </head>
 
@@ -65,16 +90,22 @@
     <table id="screen" border="1px">
         <tr>
             <td class='scr'>
+                <div class="judge"></div>
             </td>
             <td class='scr'>
+                <div class="judge"></div>
             </td>
             <td class='scr'>
+                <div class="judge"></div>
             </td>
             <td class='scr'>
+                <div class="judge"></div>
             </td>
             <td class='scr'>
+                <div class="judge"></div>
             </td>
             <td class='scr'>
+                <div class="judge"></div>
             </td>
         </tr>
         <tr>
@@ -102,156 +133,144 @@
         </tr>
     </table>
     <script>
+
         const start = document.getElementById('start')
         const btns = document.getElementsByClassName('btn')
         const scrs = document.getElementsByClassName('scr')
         const fallers = document.getElementsByClassName('faller')
         const borad = document.getElementById('borad')
         const score = document.getElementById('score')
-        const music = new Audio()
-        let keyboard = ['A', 'S', 'D', 4, 5, 6]
-        music.src = "./material/yay.mp3"
-        let ingame = false
+        const judges = document.getElementsByClassName('judge')
 
-        j = 0
+        const music = new Audio()
+        let keyboard = ['A', 'S', 'D', '4', '5', '6']
+        music.src = "./material/Lemon.mp3"
+        let ingame = false
+        let point = 0
+
+
+        // 譜面-----------------------------------------------------------
+
+        let A = [826.0799999989104,
+            1185.819999984232,
+            1522.149999975226,
+            2266.210000001592,
+            2409.919999976409,
+            2817.799999989802,
+            2977.879999991273,
+            3770.349999977043,
+            3929.914999986067,
+            4082.029999990482,
+            4273.949999973411,
+            4465.879999974277,
+            4858.019999985117,
+            5017.709999985527,
+            5202.024999976857,
+            5562.619999982417,
+            5945.699999982025]
+        let S = [, , , , , , , , , , , , , , , ,]
+        let D = [, , , , , , , , , , , , , , , ,]
+        let num4 = [, , , , , , , , , , , , , , , ,]
+        let num5 = [, , , , , , , , , , , , , , , ,]
+        let num6 = [, , , , , , , , , , , , , , , ,]
+
+
+        // let A = [  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,]
+        // let S = [  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,]
+        // let D = [  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,]
+        // let num4 = [  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,]
+        // let num5 = [  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,]
+        // let num6 = [  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,]
+
+        var j = 0
+
+        // START開始-----------------------------------------------------------
         start.onclick = () => {
+            // setTimeout('music.play()', 2500)
             // music.play()
-            // ingame = true
-            // game()
-            A()
+            ingame = true
+            run()
 
             // start.disabled = true
         }
 
-<<<<<<< Updated upstream
-        // i = 0
-        // j = 0
-        // k = 0
 
-        // function A() {
-        //     scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller"></div>`)
-
-        //     let count = parseInt(scrs[0].childElementCount)
-        //     console.log(count)
-
-        //     if (count == 1) {
-        //         const slide = setInterval(() => {
-        //             fallers[0].style.top = `${i}%`
-        //             i++
-        //             let top = parseInt(fallers[0].style.top)
-
-        //             if (top >= 100) {
-        //                 clearInterval(slide)
-        //                 fallers[0].remove()
-        //                 i = 0
-        //             }
-        //         }, 500)
-        //     }
-        //     if (count == 2) {
-        //         const slide = setInterval(() => {
-        //             fallers[1].style.top = `${j}%`
-        //             j++
-        //             let top = parseInt(fallers[1].style.top)
-
-        //             if (top >= 100) {
-        //                 clearInterval(slide)
-        //                 fallers[0].remove()
-        //                 j = 0
-        //             }
-        //         }, 500)
-        //     }
-        //     if (count == 3) {
-        //         const slide = setInterval(() => {
-        //             fallers[2].style.top = `${k}%`
-        //             k++
-        //             let top = parseInt(fallers[2].style.top)
-
-        //             if (top >= 100) {
-        //                 clearInterval(slide)
-        //                 fallers[0].remove()
-        //                 k = 0
-        //             }
-        //         }, 500)
-        //     }
-        // }
-
-
-        // const A = () => {
-        //     scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
-
-        //     let x = document.getElementById(`A${j}`)
-
-        //     let i = 0
-
-        //     var timer = setInterval(() => {
-        //         console.log(x)
-        //         x.style.top = `${i}%`
-        //         i++
-        //         // let top = parseInt(x.style.top)
-        //         // console.log(top)
-        //         if (i >= 100) {
-        //             clearInterval(timer)
-        //             x.remove()
-        //         }
-        //         j++
-        //     }, 100)
-        // }
-
-
-
-        const A = () => {
-
-            i = 0
-            scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
+        // 滑動方塊------------------------------------------------------------
+        const game = (k) => {
+            var i = 0
+            scrs[k].insertAdjacentHTML('afterbegin', ` <div class="faller" id="A${j}"></div>`)
 
             let x = document.getElementById(`A${j}`)
 
             j++
 
             setInterval(() => {
-                console.log(x)
                 x.style.top = `${i}%`
                 i++
                 let top = parseInt(x.style.top)
-                console.log(top)
                 if (top >= 100) {
                     // clearInterval()
                     x.remove()
                 }
-            }, 1000)
+            }, 12.5)
         }
 
-
-=======
-
-
-        function A() {
-            i = 0
-            scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
-
-            const x = document.getElementById(`A${j}`)
-            j++
-
-            // let count = parseInt(x.childElementCount) - 1
-            // console.log(count)
-
-            function slide() {
-                setInterval(() => {
-
-                    x.style.top = `${i}%`
-                    i++
-                    let top = parseInt(x.style.top)
-
-                    if (top >= 100) {
-                        clearInterval(slide)
-                        x.remove()
-                    }
-                }, 1000)
+        // 譜面執行------------------------------------------------------------
+        const run = () => {
+            for (let i = 0; i < 20; i++) {
+                setTimeout('game(0)', A[`${i}`])
+                setTimeout('game(1)', S[`${i}`])
+                setTimeout('game(2)', D[`${i}`])
+                setTimeout('game(3)', num4[`${i}`])
+                setTimeout('game(4)', num5[`${i}`])
+                setTimeout('game(5)', num6[`${i}`])
             }
         }
->>>>>>> Stashed changes
 
 
+        // 分數判斷-------------------------------------------------------------
+        const judge = (i) => {
+
+            let last = judges[i].previousElementSibling
+
+            console.log(last)
+            if (last != null) {
+                var top = parseInt(last.style.top)
+                if (top == 80) {
+                    point += 5
+                    score.innerText = `${point}`
+                    last.remove()
+                }
+                else if (90 > top && top > 70 && top != 80) {
+                    point += 3
+                    score.innerText = `${point}`
+                    last.remove()
+                }
+            }
+        }
+        //點擊判斷-------------------------------------------------------------
+        for (let btn of btns) {
+            btn.onclick = () => {
+                btn.classList.add('click')
+                setTimeout(() => {
+                    btn.classList.remove('click')
+                }, 500);
+
+                let x = btn.innerText
+                var i = keyboard.indexOf(`${x}`)
+                judge(i)
+            }
+        }
+        // 鍵盤點擊-----------------------------------------------------------
+        window.onkeydown = (event) => {
+            const x = event.key.toUpperCase()
+            if (x == 'A' || x == 'S' || x == 'D' || x == '4' || x == '5' || x == '6') {
+                let i = keyboard.indexOf(`${x}`)
+                // console.log(x)
+                // console.log(event.timeStamp)
+                btns[i].click()
+            }
+        }
 
 
     </script>
