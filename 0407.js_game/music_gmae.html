@@ -161,6 +161,7 @@
         let num5 = [6930.010000010952, 13850.08500001276, 15450.21999999880, 18826.13500001025, 19498.15999998827, 24097.92500000912, 25409.95000000111]
         let num6 = [6274.124999996275, 15698.07000001310, 23794.13500000373]
 
+<<<<<<< Updated upstream
         // let A = [ ]
         // let S = [ ]
         // let D = [ ]
@@ -186,19 +187,29 @@
             scrs[5].innerHTML = ('<div class="judge"></div>')
         }
 
+=======
+        j = 0
+>>>>>>> Stashed changes
         start.onclick = () => {
             setTimeout('music.play()', 4700)
             ready()
             setTimeout('clear()', 3700)
             // music.play()
+<<<<<<< Updated upstream
             point = 0
             ingame = true
             run()
+=======
+            // ingame = true
+            // game()
+            A()
+>>>>>>> Stashed changes
 
             // start.disabled = true
         }
 
 
+<<<<<<< Updated upstream
         // 滑動方塊------------------------------------------------------------
         const game = (k) => {
             var i = 0
@@ -311,8 +322,35 @@
             }
             else if (x == 'ENTER') {
                 start.click()
+=======
+
+        function A() {
+            i = 0
+            scrs[0].insertAdjacentHTML('beforeend', ` <div class="faller" id="A${j}"></div>`)
+
+            const x = document.getElementById(`A${j}`)
+            j++
+
+            // let count = parseInt(x.childElementCount) - 1
+            // console.log(count)
+
+            function slide() {
+                setInterval(() => {
+
+                    x.style.top = `${i}%`
+                    i++
+                    let top = parseInt(x.style.top)
+
+                    if (top >= 100) {
+                        clearInterval(slide)
+                        x.remove()
+                    }
+                }, 1000)
+>>>>>>> Stashed changes
             }
         }
+
+
 
 
     </script>
