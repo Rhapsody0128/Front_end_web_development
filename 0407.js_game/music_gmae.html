@@ -192,6 +192,7 @@
         let perfect = 0
         let excellent = 0
         let good = 0
+        let maxcombo = 0
         var j = 0
 
 
@@ -221,7 +222,7 @@
             setTimeout('music.play()', 1250)
             ready()
             setTimeout('clear()', 2500)
-            setTimeout('over()', 16000)
+            setTimeout('over()', 160000)
 
 
 
@@ -230,6 +231,7 @@
             good = 0
             combo = 0
             point = 0
+            maxcombo = 0
 
             run()
             start.disabled = true
@@ -368,7 +370,9 @@
                     point += 10
                     score.innerText = `${point}`
                 }
-
+                if (combo > maxcombo) {
+                    maxcombo = combo
+                }
             }
         }
         //點擊結果-------------------------------------------------------------
@@ -399,10 +403,12 @@
         let over = () => {
             start.disabled = true
             alert(`恭喜您獲得${point}分`)
-            alert(`你的確率統計:\n
-            perfect:${perfect}次\n
-            excellent:${perfect}次\n
-            good:${good}次`)
+            alert(`您的確率:
+                     perfect:${perfect}次
+                     excellent:${perfect}次
+                     good:${good}次
+                     最大COMBO: ${maxcombo}`)
+
             if (storage == null || point > hscore.score) {
 
                 const input = prompt('恭喜最高分，請輸入名字')
