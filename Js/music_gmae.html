@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+
+        }
+
+        #screen {
+            margin: auto;
+            position: relative;
+        }
+
+        #board {
+            margin: auto;
+            width: 600px;
+            height: 50px;
+        }
+
+        .scr {
+            position: relative;
+            width: 150px;
+            height: 600px;
+            transition: 4s;
+            font-size: 30px;
+            font-family: 微軟正黑體;
+        }
+
+        .btn {
+            position: relative;
+            width: 150px;
+            height: 100px;
+            text-align: center;
+            transition: 0.5s;
+            font-size: 40px;
+            font-family: 微軟正黑體;
+        }
+
+        .faller {
+            width: 150px;
+            height: 20px;
+            background: red;
+            position: absolute;
+            top: 0%;
+        }
+
+        .judge {
+            width: 148px;
+            height: 30px;
+            position: absolute;
+            top: 80%;
+            border: blue solid 1px;
+            font-size: 20px;
+        }
+
+        .click {
+            animation: click 0.5s infinite;
+        }
+
+        /* @keyframes faller {
+            from {
+                top: 0%;
+                height: 0px;
+            }
+
+            1% {
+                top: 1%;
+                height: 20px;
+            }
+
+            to {
+                top: 100%;
+                height: 20px;
+            }
+        } */
+        @keyframes click {
+            from {
+                background: none;
+            }
+
+            to {
+                background: blue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table id="screen" border="1px">
+        <tr>
+            <td class='scr'>
+                <div class="judge"></div>
+            </td>
+            <td class='scr'>
+                <div class="judge"></div>
+            </td>
+            <td class='scr'>
+                <div class="judge"></div>
+            </td>
+            <td class='scr'>
+                <div class="judge"></div>
+            </td>
+            <td class='scr'>
+                <div class="judge"></div>
+            </td>
+            <td class='scr'>
+                <div class="judge"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class='btn'>A</td>
+            <td class='btn'>S</td>
+            <td class='btn'>D</td>
+            <td class='btn'>4</td>
+            <td class='btn'>5</td>
+            <td class='btn'>6</td>
+        </tr>
+        </tr>
+    </table>
+    <input type="button" value="START" id='start'><br>
+    目前分數:<span id='score'></span>
+    <hr>
+    名人榜
+    <table id='board' border="1">
+        <tr>
+            <td>名字</td>
+            <td>分數</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+
+        const start = document.getElementById('start')
+        const btns = document.getElementsByClassName('btn')
+        const scrs = document.getElementsByClassName('scr')
+        const fallers = document.getElementsByClassName('faller')
+        const borad = document.getElementById('borad')
+        const score = document.getElementById('score')
+        const judges = document.getElementsByClassName('judge')
+
+        const music = new Audio()
+        music.src = "./material/Lemon.mp3"
+
+        let keyboard = ['A', 'S', 'D', '4', '5', '6']
+
+        let ingame = false
+        let point = 0
+        var j = 0
+
+
+
+        // 譜面-----------------------------------------------------------
+        // sky.demo
+        // let A = [3842.115000006743, 9474.270000006072, 10698.28000001143, 11994.19500000658, 20545.95500000869, 26970.06500000134, 31161.94499999983]
+        // let S = [4090.880000003380, 5386.315000010654, 10362.08500000066, 19506.01499999175, 26282.08999999333, 29482.15500000515, 30713.99499999825, 31938.12000000616]
+        // let D = [4441.95999999647, 5674.100000003818, 8802.33499998576, 11290.11999999056, 16986.29000000073, 21265.98500000545, 22001.92000000970, 28841.97000000858, 30409.92500001448]
+        // let num4 = [8170.060000004014, 14466.14999999292, 16011.12500000908, 24458.10499999788, 25706.06999998563]
+        // let num5 = [6930.010000010952, 13850.08500001276, 15450.21999999880, 18826.13500001025, 19498.15999998827, 24097.92500000912, 25409.95000000111]
+        // let num6 = [6274.124999996275, 15698.07000001310, 23794.13500000373]
+        // A
+        // 1645,
+        // S
+        // 1837,
+        // D
+        // 2022,
+        // S
+        // 2429,
+        // D
+        // 2589,
+        // 6
+        // 3141,
+        // 5
+        // 3453,
+        // 4
+        // 3805,
+        // 5
+        // 4005,
+        // 6
+        // 4469,
+        // 5
+        // 4861,
+        // 4
+        // 5205,
+        // 6
+        // 5349,
+        // A
+        // 5837,
+        // S
+        // 6173,
+        // 6
+        // 7437,
+        // 5
+        // 7605,
+        // 4
+        // 7781,
+        // S
+        // 8389,
+        // D
+        // 8685,
+        // S
+        // 8837,
+        // D
+        // 8933,
+        // A
+        // 9541,
+        // S
+        // 9965,
+        // D
+        // 10077,
+        // S
+        // 10261,
+        // 5
+        // 10949,
+        // 6
+        // 11285,
+        // 4
+        // 11549,
+        // 6
+        // 11741,
+        // S
+        // 13069,
+        // 5
+        // 13086,
+        // D
+        // 13829,
+        // 4
+        // 13837,
+        // A
+        // 14485,
+        // 6
+        // 14485,
+        // S
+        // 15173,
+        // 5
+        // 15181,
+        // D
+        // 15877,
+        // 6
+        // 15885,
+        // A
+        // 16534,
+        // 4
+        // 16557,
+        // A
+        // 17229,
+        // 4
+        // 17237,
+        // S
+        // 17949,
+        // 4
+        // 17957,
+        // D
+        // 18661,
+        // 6
+        // 18669,
+        // S
+        // 19333,
+        // 5
+        // 19341,
+        // 4
+        // 20037,
+        // A
+        // 20038,
+        // S
+        // 20677,
+        // 5
+        // 20685,
+        // D
+        // 21334,
+        // 6
+        // 21341,
+        // S
+        // 22037,
+        // 5
+        // 22053,
+        // 6
+        // 22637,
+        // 5
+        // 22813,
+        // 4
+        // 23093,
+        // 5
+        // 26805,
+        // 4
+        // 26941,
+        // 5
+        // 27117,
+        // 6
+        // 27421,
+        // 5
+        // 27613,
+        // S
+        // 28053,
+        // A
+        // 28437,
+        // S
+        // 28741,
+        // S
+        // 28933,
+        // A
+        // 29341,
+        // S
+        // 29709,
+        // D
+        // 30029,
+        // S
+        // 30205,
+        // D
+        // 30741,
+        // S
+        // 31021,
+        // A
+        // 31413,
+        // 6
+        // 31421,
+        // 5
+        // 32117,
+        // 4
+        // 32269,
+        // 6
+        // 32485,
+        // S
+        // 33094,
+        // D
+        // 33477,
+        // S
+        // 33629,
+        // D
+        // 33773,
+        // 6
+        // 34461,
+        // 5
+        // 34821,
+        // 4
+        // 35021,
+        // 5
+        // 35165,
+        // A
+        // 35805,
+        // S
+        // 36117,
+        // D
+        // 36325,
+        // S
+        // 36493,
+        // D
+        // 36589,
+        // 6
+        // 37573,
+        // 5
+        // 37765,
+        // 4
+        // 37901,
+        // 5
+        // 38222,
+        // 4
+        // 38373,
+        // S
+        // 39013,
+        // 6
+        // 39341,
+        // 5
+        // 39661,
+        // 4
+        // 39869,
+        // S
+        // 40365,
+        // 6
+        // 40725,
+        // 5
+        // 41029,
+        // 4
+        // 41141,
+        // S
+        // 41749,
+        // D
+        // 42117,
+        // A
+        // 42437,
+        // 6
+        // 42741,
+        // S
+        // 43165,
+        // D
+        // 43350,
+        // 5
+        // 43493,
+        // D
+        // 44165,
+        // 4
+        // 44501,
+        // A
+        // 44677,
+        // S
+        // 44813,
+        // 6
+        // 45157,
+        // 5
+        // 45541,
+        // 4
+        // 45845,
+        // D
+        // 46157,
+        // S
+        // 46293,
+        // 6
+        // 46965,
+        // 4
+        // 47405,
+        // 4
+        // 47605,
+        // D
+        // 48925,
+        // S
+        // 48925,
+        // 4
+        // 48933,
+        // 5
+        // 48941,
+        // S
+        // 49525,
+        // A
+        // 49533,
+        // 6
+        // 49541,
+        // 5
+        // 49550,
+        // S
+        // 50229,
+        // D
+        // 50237,
+        // 6
+        // 50253,
+        // A
+        // 50933,
+        // 4
+        // 50957,
+        // S
+        // 51685,
+        // D
+        // 51693,
+        // 4
+        // 51701,
+        // 5
+        // 51709,
+        // A
+        // 52357,
+        // 4
+        // 52365,
+        // 6
+        // 53045,
+        // S
+        // 53045,
+        // D
+        // 53725,
+        // 5
+        // 53749,
+        // A
+        // 54461,
+        // 4
+        // 54477,
+        // 6
+        // 55157,
+        // 4
+        // 55165,
+        // S
+        // 55166,
+        // D
+        // 55173,
+        // A
+        // 55837,
+        // 5
+        // 55861,
+        // A
+        // 56573,
+        // 5
+        // 56581,
+        // 4
+        // 56589,
+        // D
+        // 56589,
+        // S
+        // 57245,
+        // 6
+        // 57253,
+        // A
+        // 57869,
+        // S
+        // 57877,
+        // D
+        // 57885,
+        // 4
+        // 57886,
+        // D
+        // 58501,
+        // S
+        // 58501,
+        // 5
+        // 58517,
+        // 6
+        // 59197,
+        // 5
+        // 59381,
+        // 4
+        // 59573,
+        // 5
+        // 59757,
+        // 4
+        // 59877,
+        // 5
+        // 60077,
+        // 4
+        // 60285,
+        // S
+        // 60741,
+        // D
+        // 60933,
+        // A
+        // 61373,
+        // S
+        // 61581,
+        // D
+        // 62125,
+        // S
+        // 62293,
+        // D
+        // 62413,
+        // S
+        // 62533,
+        // D
+        // 62661,
+        // A
+        // 62869,
+        // S
+        // 63413,
+        // D
+        // 63581,
+        // S
+        // 64133,
+        // D
+        // 64301,
+        // 6
+        // 64862,
+        // 5
+        // 65077,
+        // 4
+        // 65197,
+        // 5
+        // 65445,
+        // 4
+        // 65589,
+        // 5
+        // 65837,
+        // S
+        // 66221,
+        // A
+        // 66405,
+        // D
+        // 66917,
+        // S
+        // 67077,
+        // A
+        // 67597,
+        // S
+        // 67765,
+        // 6
+        // 68357,
+        // 5
+        // 68525,
+        // 4
+        // 69013,
+        // 5
+        // 69189,
+        // 4
+        // 69701,
+        // A
+        // 70357,
+        // S
+        // 70469,
+        // D
+        // 70717,
+        // 6
+        // 70957,
+        // 5
+        // 71053,
+        // 4
+        // 71285,
+        // S
+        // 71725,
+        // D
+        // 71893,
+        // 6
+        // 72469,
+        // 5
+        // 72621,
+        // 4
+        // 73181,
+        // A
+        // 73509,
+        // S
+        // 73773,
+        // D
+        // 73957,
+        // A
+        // 74549,
+        // S
+        // 74701,
+        // D
+        // 75189,
+        // 6
+        // 76189,
+        // 5
+        // 76429,
+        // 4
+        // 76589,
+        // 5
+        // 76917,
+        // 4
+        // 77246,
+        // 5
+        // 77565,
+        // S
+        // 77901,
+        // A
+        // 78237,
+        // S
+        // 78629,
+        // D
+        // 78797,
+        // D
+        // 79317,
+        // S
+        // 79629,
+        // A
+        // 79917,
+        // S
+        // 80261,
+        // A
+        // 80605,
+        // 6
+        // 80613,
+        // 4
+        // 80621,
+        // D
+        // 80621,
+
+        // let A = [ ]
+        // let S = [ ]
+        // let D = [ ]
+        // let num4 = [ ]
+        // let num5 = [ ]
+        // let num6 = [ ]
+
+        // START開始-----------------------------------------------------------
+        const ready = () => {
+            scrs[0].innerText = ('R')
+            scrs[1].innerText = ('E')
+            scrs[2].innerText = ('A')
+            scrs[3].innerText = ('D')
+            scrs[4].innerText = ('Y')
+            scrs[5].innerText = ('?')
+        }
+        const clear = () => {
+            scrs[0].innerHTML = ('<div class="judge"></div>')
+            scrs[1].innerHTML = ('<div class="judge"></div>')
+            scrs[2].innerHTML = ('<div class="judge"></div>')
+            scrs[3].innerHTML = ('<div class="judge"></div>')
+            scrs[4].innerHTML = ('<div class="judge"></div>')
+            scrs[5].innerHTML = ('<div class="judge"></div>')
+        }
+
+        start.onclick = () => {
+
+            music.play()
+            // setTimeout('music.play()', 2000)
+            // ready()
+            // setTimeout('clear()', 4000)
+
+            point = 0
+            ingame = true
+            // run()
+            start.disabled = true
+
+        }
+
+
+        // 滑動方塊------------------------------------------------------------
+        const game = (k) => {
+            var i = 0
+            scrs[k].insertAdjacentHTML('afterbegin', ` <div class="faller" id="A${j}"></div>`)
+
+            let x = document.getElementById(`A${j}`)
+
+            j++
+
+            setInterval(() => {
+                x.style.top = `${i}%`
+                i++
+                let top = parseInt(x.style.top)
+                if (top >= 100) {
+                    // clearInterval()
+                    x.remove()
+                }
+            }, 12.5)
+
+        }
+        // 譜面執行------------------------------------------------------------
+        const run = () => {
+            let i = 0
+            let j = 0
+            let k = 0
+            let l = 0
+            let m = 0
+            let n = 0
+            while (A[`${i}`] != undefined) {
+                setTimeout('game(0)', A[`${i}`])
+                i++
+            }
+            while (S[`${j}`] != undefined) {
+                setTimeout('game(1)', S[`${j}`])
+                j++
+            }
+            while (D[`${k}`] != undefined) {
+                setTimeout('game(2)', D[`${k}`])
+                k++
+            }
+            while (num4[`${l}`] != undefined) {
+                setTimeout('game(3)', num4[`${l}`])
+                l++
+            }
+            while (num5[`${m}`] != undefined) {
+                setTimeout('game(4)', num5[`${m}`])
+                m++
+            }
+            while (num6[`${n}`] != undefined) {
+                setTimeout('game(5)', num6[`${n}`])
+                n++
+            }
+        }
+
+
+        // 分數判斷-------------------------------------------------------------
+        const judge = (i) => {
+
+            let last = judges[i].previousElementSibling
+
+            if (last != null) {
+                var top = parseInt(last.style.top)
+                if (top == 80) {
+                    point += 5
+                    score.innerText = `${point}`
+                    last.remove()
+                    judges[i].innerText = ('perfect')
+                    setTimeout(() => {
+                        judges[i].innerText = ('')
+                    }, 500);
+                }
+                else if (90 > top && top > 70 && top != 80) {
+                    point += 3
+                    score.innerText = `${point}`
+                    last.remove()
+                    judges[i].innerText = ('good')
+                    setTimeout(() => {
+                        judges[i].innerText = ('')
+                    }, 500);
+                }
+                else {
+                    judges[i].innerText = ('miss')
+                    setTimeout(() => {
+                        judges[i].innerText = ('')
+                    }, 500);
+                }
+
+            }
+        }
+        //點擊判斷-------------------------------------------------------------
+        for (let btn of btns) {
+            btn.onclick = () => {
+                btn.classList.add('click')
+                setTimeout(() => {
+                    btn.classList.remove('click')
+                }, 500);
+                let x = btn.innerText
+                var i = keyboard.indexOf(`${x}`)
+                judge(i)
+            }
+        }
+        // 鍵盤點擊-----------------------------------------------------------
+        window.onkeydown = (event) => {
+            const x = event.key.toUpperCase()
+            if (x == 'A' || x == 'S' || x == 'D' || x == '4' || x == '5' || x == '6') {
+                let i = keyboard.indexOf(`${x}`)
+                console.log(x + "," + event.timeStamp)
+
+                // console.log(event)
+                btns[i].click()
+            }
+            else if (x == 'ENTER') {
+                start.click()
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
