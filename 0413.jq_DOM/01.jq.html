@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green {
+            color: green;
+        }
+
+        .big {
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>1</h1>
+    <h1>2</h1>
+    <h1>3</h1>
+    <input type="text" id='input1'>
+    <a href="http://yahoo.com" id="link1">yahoo</a>
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            console.log('k1')
+        })
+        // 讀取完頁面的HTML內容後執行
+        $(() => {
+            console.log('j1')
+        })
+        // $(document).ready()的簡寫
+        $(() => {
+            console.log($('h1'));
+            $('h1').text('a');
+            // .text()=innertext
+            // .text()如果括號內有東西就是改文字，沒東西就是取文字
+            // 指定會所h1都被改成a
+            $('h1').eq(2).text('b');
+            // 會改指定的第eq()個
+            $('h1').eq(1).html('<i>bb</i>');
+            // .html()=innerhtml
+            // .html()如果括號內有東西就是改文字，沒東西就是取文字
+            $('#input1').val('ab')
+            // .val = value
+            // .val()如果括號內有東西就是改值，沒有就是取值
+
+            $('#link1').attr('href', 'https://google.com');
+            $('#link1').text('GOOGLE')
+            // .attr = setAttribute
+            // .attr(屬性名,值)
+            // 如果沒有設定值就是取值
+
+            $('h1').eq(1).css('color', 'red')
+            $('#link1').css({ 'color': 'blue', 'font-size': '50px' })
+
+            // .css(樣式名,值)
+            // .css({樣式名:值,第二樣式:值})
+            // 如果沒有設定值就是取值
+
+            $('h1').eq(0).addClass("green big")
+            let a = $('h1').eq(0).hasClass('green')
+            console.log(a)
+            // .addClass()新增class
+            // .removeClass()刪除class
+            // .hasClass()判斷是否含有class回傳布林值
+
+            $('')
+
+            // 抓DOM語法:$(CSS選擇器)
+
+        })
+
+    </script>
+</body>
+
+</html>
