@@ -332,9 +332,9 @@
                     last.remove()
                     perfect++
                     judges[i].innerText = ('perfect')
-                    // setTimeout(() => {
-                    //     judges[i].innerText = ('')
-                    // }, 300);
+                    setTimeout(() => {
+                        judges[i].innerText = ('')
+                    }, 500);
                 }
                 else if (85 > top && top > 75 && top != 80) {
                     point += 5
@@ -344,9 +344,9 @@
                     last.remove()
                     excellent++
                     judges[i].innerText = ('excellent')
-                    // setTimeout(() => {
-                    //     judges[i].innerText = ('')
-                    // }, 300);
+                    setTimeout(() => {
+                        judges[i].innerText = ('')
+                    }, 500);
                 }
                 else if (90 >= top && top >= 85 || 75 >= top && top >= 70) {
                     point += 3
@@ -356,17 +356,17 @@
                     last.remove()
                     good++
                     judges[i].innerText = ('good')
-                    // setTimeout(() => {
-                    //     judges[i].innerText = ('')
-                    // }, 300);
+                    setTimeout(() => {
+                        judges[i].innerText = ('')
+                    }, 500);
                 }
                 else {
                     judges[i].innerText = ('miss')
                     combo = 0
                     comboboard.innerText = `${combo}`
-                    // setTimeout(() => {
-                    //     judges[i].innerText = ('')
-                    // }, 300);
+                    setTimeout(() => {
+                        judges[i].innerText = ('')
+                    }, 500);
                 }
                 if (combo == 10) {
                     point += 5
