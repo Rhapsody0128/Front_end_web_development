@@ -24,6 +24,8 @@
 
 <body>
     <div id='src' class='sir'></div>
+    <hr>
+    <img src="./0102.jpg" id='img' alt="">
     <input type="button" id='btn' value="超級變變變">
     <script src="jquery-3.5.0.min.js"></script>
     <script>
@@ -38,6 +40,21 @@
             }
         })
 
+        // answer-------------------------------------------------------------
+
+        $(function () {
+            // 多包一個空function 為了讓程式先讀完HTML標籤
+            $('#btn').click(function () {
+                if ($('#img').attr('src') == './0102.jpg') {
+                    $('#img').attr('src', './0507.jpg')
+                    $(this).val('點我變校長')
+                }
+                else {
+                    $('#img').attr('src', './0102.jpg')
+                    $(this).val('點我變舒曼')
+                }
+            })
+        })
 
     </script>
 </body>
