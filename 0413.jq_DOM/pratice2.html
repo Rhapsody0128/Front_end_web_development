@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <H1>待辦清單</H1>
+    <input id='input' type="text" value="請輸入">
+    <input id='btn' type="button" value="新增">
+    <ul id='ul'></ul>
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+        $(function () {
+
+            $("#btn").click(function () {
+
+                $("#ul").append(`<li>${$('#input').val()} <input type='button' value='X' class='a'></input> </li>`)
+
+                $('#input').val("")
+
+
+                // $('.a').click(function () {
+                //     $(this).parent().remove()
+                // })
+                // jq的事件不需要像原生JS一樣寫FOR
+            })
+
+            $('#ul').on("click", '.a', function () {
+                $(this).parent().remove()
+            })
+            // .on(事件,過濾,function)
+            // 當點擊#ul裡若包含.a的class時執行function，因此在執行functiom的時候(下)
+            // this代表.a
+
+
+            // $('#ul').click('.a', function () {
+            //     $(this).remove()
+            // })
+            // .click(過濾,function)
+            // this代表#ul
+        })
+
+    </script>
+</body>
+
+</html>
