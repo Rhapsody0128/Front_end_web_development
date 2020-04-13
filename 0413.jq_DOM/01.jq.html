@@ -29,6 +29,7 @@
         <li>4</li>
         <li>5</li>
     </ul>
+    <input type="button" value="按我" id='btn1'>
     <script src="jquery-3.5.0.min.js"></script>
     <script>
         $(document).ready(() => {
@@ -74,7 +75,40 @@
             // .removeClass()刪除class
             // .hasClass()判斷是否含有class回傳布林值
 
-            $('')
+            $('#ul1').find('li').eq(2).css('color', 'red')
+            // .find(CSS選擇器)
+            // 在指定元素的子元素中找符合條件的東西
+
+            $('#ul1').find('li').eq(0).next().addClass('green')
+            $('#ul1 li').eq(2).prevAll('.green').addClass('big')
+            // .prev()同一層的上一個元素
+            // .prevAll()同一層的上面所有元素，()內可以放選擇器篩選
+            // .next()同一層的下一個元素
+            // .nextAll()同一層的下面所有元素，()內可以放選擇器篩選
+
+
+            $('#ul1 .green').siblings().css('color', 'blue')
+            // (id = ul1下擁有.green class的元素)的以外元素的CSS蓋成藍色
+            // sublings()同一層的其他東西，()裡可以放選擇器篩選器
+
+
+
+            $('#btn1').click(() => {
+                console.log('aa')
+                $("#ul1").prepend("<li>前面新的</li>");
+                $("#ul1").append("<li>後面新的</li>");
+                // prepend()在同一層前面加入新的HTML
+                // append()在同一層後面加入新的HTML
+            })
+            // 用事件名當涵式
+
+            $('#btn1').on('click', () => {
+                console.log('bb')
+            })
+            // 若事件沒有預設事件名使用 .on()
+            // .on(事件名稱, function(){})
+
+
 
             // 抓DOM語法:$(CSS選擇器)
 
