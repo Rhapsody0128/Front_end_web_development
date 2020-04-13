@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sir {
+            background: url(./0102.jpg);
+            width: 400px;
+            height: 400px;
+            background-repeat: no-repeat;
+        }
+
+        .man {
+            background: url(./0507.jpg);
+            width: 400px;
+            height: 400px;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='src' class='sir'></div>
+    <input type="button" id='btn' value="超級變變變">
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+        $('#btn').click(() => {
+            if ($('#src').hasClass('sir') == true) {
+                $('#src').removeClass('sir')
+                $('#src').addClass('man')
+            }
+            else {
+                $('#src').removeClass('man')
+                $('#src').addClass('sir')
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
