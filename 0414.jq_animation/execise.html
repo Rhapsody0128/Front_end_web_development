@@ -15,7 +15,6 @@
         }
 
         #imgs {
-            display: inline-block;
             position: absolute;
 
         }
@@ -37,8 +36,38 @@
             <img src="./0555.jpg" alt="">
         </div>
     </div>
+    <input id='btn1' type="button" value="<">
+    <input id='btn2' type="button" value=">">
     <script src="jquery-3.5.0.min.js"></script>
-    <script></script>
+    <script>
+
+        $(function () {
+            let now = 0
+            const total = $("#imgs img").length
+            $('#imgs').css('width', total * 400)
+
+            $('#btn2').click(function () {
+                if (now < total - 1) {
+                    now++
+                    const move = now * 400
+                    $("#imgs").stop(true, true)
+                    $('#imgs').animate({ left: `-${move + 40}px` }, 1000).animate({ left: `-${move}px` }, 100)
+                }
+            })
+
+            $('#btn1').click(function () {
+                if (now > 0) {
+                    now--
+                    const move = now * 400
+                    $("#imgs").stop(true, true)
+                    if (move == 0) {
+                        $('#imgs').animate({ left: `${move + 40}px` }, 1000).animate({ left: `-${move}px` }, 100)
+                    }
+                    else { $('#imgs').animate({ left: `-${move - 40}px` }, 1000).animate({ left: `-${move}px` }, 100) }
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

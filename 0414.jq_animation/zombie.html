@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content {
+            width: 400px;
+            margin: auto;
+            text-align: center;
+
+        }
+
+        #game {
+
+            width: 400px;
+            height: 400px;
+            background: black;
+            cursor: url(./material/cursor_white.png) 50 50, auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #game img {
+            position: absolute;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="game"></div>
+        <br>
+        <input type="button" value="開始遊戲">
+        <p>分數:<span id='text-score'>0</span></p>
+        <p>剩餘時間:<span id='text-time'>10</span></p>
+    </div>
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+        let score = 0;
+        // 分數
+        let timeleft = 10;
+        // 剩餘時間
+        let gametimer = 0;
+        // 遊戲計時器
+        let zbid = 0;
+        // 殭屍流水號
+        const rand = (num) => {
+            return Math.round(Math.random() * num)
+        }
+
+    </script>
+</body>
+
+</html>
