@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="變大" id='btn1'>
+    <input type="button" value="停止" id='btn2'>
+    <input type="button" value="淡入" id='btn3'>
+    <input type="button" value="淡出" id='btn4'>
+    <input type="button" value="透明" id='btn5'>
+    <input type="button" value="滑出" id='btn6'>
+    <input type="button" value="滑入" id='btn7'>
+    <hr>
+    <img id='img' src="./0102.jpg" alt="">
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#btn1').click(function () {
+                $('#img').animate({
+                    // .animate(改變CSS,秒數,動畫結束後的function)
+                    // 只能基礎jq只能修改值為數字的CSS
+                    width: '500px',
+                    height: '+=200px'
+                }, 2000, function () {
+                    console.log('變大了')
+                }).animate({
+                    width: '300px',
+                    height: '-=200px'
+                }, 2000, function () {
+                    console.log('變大了')
+                })
+            })
+
+            $('#btn2').click(function () {
+                $('#img').stop(true, true)
+                // .stop(是否連之後的動畫動畫也停止，直接跳到動畫結束的狀態)
+                // 如果要跳到動畫結束的狀態 停止之後的動畫設定必須為TRUE
+            })
+
+            $('#btn3').click(function () {
+                $('#img').fadeIn('fast', function () {
+                    // .fadeIn(slow/fast/毫秒 ,動畫結束時的function)
+
+                    console.log('淡入了')
+                })
+            })
+
+            $('#btn4').click(function () {
+                $('#img').fadeOut('slow', function () {
+                    // .fadeout(slow/fast/毫秒 ,動畫結束時的function)
+                    // 淡出到透明度0的時候會多一個display:none的屬性，可能會影響排版位置
+                    console.log('淡出了')
+                })
+            })
+
+            $('#btn5').click(function () {
+                $('#img').fadeTo(2000, 0.5, function () {
+                    // .fadeout(slow/fast/毫秒 ,透明度 ,動畫結束時的function)
+                    console.log('半透明了')
+                })
+            })
+            $('#btn6').click(function () {
+                $('#img').slideDown(2000, function () {
+                    // .fadeout(slow/fast/毫秒 ,透明度 ,動畫結束時的function)
+                    console.log('滑入了')
+                })
+            })
+            $('#btn7').click(function () {
+                $('#img').slideUp(2000, function () {
+                    // .fadeout(slow/fast/毫秒 ,透明度 ,動畫結束時的function)
+                    console.log('滑出了')
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
