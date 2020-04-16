@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content {
+            text-align: center;
+        }
+
+        #src {
+            width: 1000px;
+            height: 400px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            background: gray;
+
+            /* cursor: url(./material/0.png) 50 50, auto; */
+        }
+
+        #start {
+            margin: auto;
+        }
+
+        #table {
+            width: 400px;
+            height: 400px;
+            margin: auto;
+            font-size: 30px;
+            font-family: 微軟正黑體;
+        }
+
+        .red {
+            background: red;
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .blue {
+            background: blue;
+            width: 50px;
+            height: 50px;
+
+            border-radius: 40%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .yellow {
+            background: yellow;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        #player1 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            background: red;
+            top: 50%;
+            left: 25%;
+        }
+
+        #player2 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            background: blue;
+            top: 50%;
+            left: 75%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="content">
+        <div id="src">
+        </div>
+        <br>
+        <input id='start' type="button" value="Start">
+        <div></div>
+        <hr>
+        <table id="table" border="1">
+            <tr>
+                <td class="td">1</td>
+                <td class="td">2</td>
+                <td class="td">3</td>
+                <td class="td">4</td>
+                <td class="td">5</td>
+            </tr>
+            <tr>
+                <td class="td">6</td>
+                <td class="td">7</td>
+                <td class="td">8</td>
+                <td class="td">9</td>
+                <td class="td">10</td>
+            </tr>
+            <tr>
+                <td class="td">11</td>
+                <td class="td">12</td>
+                <td class="td">13</td>
+                <td class="td">14</td>
+                <td class="td">15</td>
+            </tr>
+            <tr>
+                <td class="td">16</td>
+                <td class="td">17</td>
+                <td class="td">18</td>
+                <td class="td">19</td>
+                <td class="td">20</td>
+            </tr>
+            <tr>
+                <td class="td">21</td>
+                <td class="td">22</td>
+                <td class="td">23</td>
+                <td class="td">24</td>
+                <td class="td">25</td>
+            </tr>
+        </table>
+    </div>
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+
+        const rand = (max, min) => {
+            return Math.floor((Math.random() * (max - min)) + min)
+        }
+
+        $('#start').click(function () {
+            game()
+            computer()
+
+        })
+
+
+        const game = () => {
+            let i = ''
+            let j = 0
+
+            setInterval(() => {
+
+                switch (rand(3, 0)) {
+                    case 0:
+                        i = 'red'
+                        break;
+                    case 1:
+                        i = 'blue'
+                        break;
+                    case 2:
+                        i = 'yellow'
+                        break;
+                }
+                $('#src').append(`<div id=a${j} class='${i}'></div>`)
+                $(`#a${j}`).css({
+                    top: '100%',
+                    left: rand(95, 5) + '%'
+                })
+                move(j)
+                j++
+            }, 100);
+
+        }
+
+        const move = (j) => {
+            $(`#a${j}`).animate({
+                top: rand(20, 0) + '%',
+                left: rand(95, 5) + '%',
+            }, 2000).animate({
+                top: '110%'
+            }, 2000)
+
+        }
+
+
+        let array = []
+        let random = rand(26, 1)
+        for (let i = 0; i < 25; i++) {
+
+            while (array.includes(random)) {
+                random = rand(26, 1)
+            }
+            array.push(random)
+        }
+
+
+
+        let i = 0
+
+
+
+        $('#src').on('click', '.red', function () {
+            (this).remove()
+
+            $('#src').css("cursor", `url(./material/${array[i]}.png) 50 50, auto`)
+            $('.td').eq(`${array[i]}` - 1).css('background', 'red')
+            console.log(`(${array[i + 1]}).png`)
+
+            array.splice(0, 1)
+
+        })
+        $('#src').on('click', '.blue', function () {
+            (this).remove()
+
+            $('#src').css("cursor", `url(./material/${array[i]}.png) 50 50, auto`)
+            $('.td').eq(`${array[i]}` - 1).css('background', 'blue')
+            console.log(`(${array[i + 1]}).png`)
+
+            array.splice(0, 1)
+        })
+        $('#src').on('click', '.yellow', function () {
+            (this).remove()
+
+            $('#src').css("cursor", `url(./material/${array[i]}.png) 50 50, auto`)
+            $('.td').eq(`${array[i]}` - 1).css('background', 'yellow')
+            console.log(`(${array[i + 1]}).png`)
+
+            array.splice(0, 1)
+        })
+        console.log(array)
+        const computer = function () {
+            timer = setInterval(() => {
+
+                $('.td').eq(`${array[i]}` - 1).css('background', 'blue')
+
+                array.splice(0, 1)
+
+                $('#src').css("cursor", `url(./material/${array[i]}.png) 50 50, auto`)
+
+                judge()
+
+            }, 300)
+        }
+
+
+
+
+
+        const judge = () => {
+            let a1 = $('.td').eq(0).css('backgroundColor')
+            let a2 = $('.td').eq(1).css('backgroundColor')
+            let a3 = $('.td').eq(2).css('backgroundColor')
+            let a4 = $('.td').eq(3).css('backgroundColor')
+            let a5 = $('.td').eq(4).css('backgroundColor')
+            let a6 = $('.td').eq(5).css('backgroundColor')
+            let a7 = $('.td').eq(6).css('backgroundColor')
+            let a8 = $('.td').eq(7).css('backgroundColor')
+            let a9 = $('.td').eq(8).css('backgroundColor')
+            let a10 = $('.td').eq(9).css('backgroundColor')
+            let a11 = $('.td').eq(10).css('backgroundColor')
+            let a12 = $('.td').eq(11).css('backgroundColor')
+            let a13 = $('.td').eq(12).css('backgroundColor')
+            let a14 = $('.td').eq(13).css('backgroundColor')
+            let a15 = $('.td').eq(14).css('backgroundColor')
+            let a16 = $('.td').eq(15).css('backgroundColor')
+            let a17 = $('.td').eq(16).css('backgroundColor')
+            let a18 = $('.td').eq(17).css('backgroundColor')
+            let a19 = $('.td').eq(18).css('backgroundColor')
+            let a20 = $('.td').eq(19).css('backgroundColor')
+            let a21 = $('.td').eq(20).css('backgroundColor')
+            let a22 = $('.td').eq(21).css('backgroundColor')
+            let a23 = $('.td').eq(22).css('backgroundColor')
+            let a24 = $('.td').eq(23).css('backgroundColor')
+            let a25 = $('.td').eq(24).css('backgroundColor')
+
+
+            if (a1 == 'rgb(0, 0, 255)' && a6 == 'rgb(0, 0, 255)' && a11 == 'rgb(0, 0, 255)' && a16 == 'rgb(0, 0, 255)' && a21 == 'rgb(0, 0, 255)' || a2 == 'rgb(0, 0, 255)' && a7 == 'rgb(0, 0, 255)' && a12 == 'rgb(0, 0, 255)' && a17 == 'rgb(0, 0, 255)' && a22 == 'rgb(0, 0, 255)') {
+                lose()
+            }
+
+
+        }
+
+        const lose = () => {
+
+            const timer2 = setTimeout(() => {
+                alert('LOSE')
+            }, 500);
+
+            clearInterval(timer)
+            setTimeout(() => {
+                clearInterval(timer2)
+            }, 500)
+        }
+
+
+    </script>
+</body>
+
+</html>
