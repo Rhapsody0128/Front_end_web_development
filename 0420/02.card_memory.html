@@ -17,6 +17,7 @@
             transition: transform 0.5s;
             float: left;
             margin: 10px;
+
         }
 
         .front {
@@ -38,6 +39,12 @@
             position: absolute;
             transform: rotateY(180deg);
             /* 把背面的div轉到後面 */
+            backface-visibility: hidden;
+
+        }
+
+        .open {
+            transform: rotateY(0deg);
         }
 
         #game {
@@ -52,6 +59,7 @@
 
     </div>
     <script src="/jq/jquery-3.5.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         $(function () {
             for (let i = 0; i < 16; i++) {
@@ -60,7 +68,66 @@
                 <div class='back'></div>
                 </div>`)
             }
+
+            for (let i = 0; i < $('.card').length; i++) {
+                let num = i % ($('.card').length / 2) + 1
+
+                $('.card').eq(i).find('.front').css('background-image', `url(./poker_materal/${num}H.jpg)`)
+                $('.card').eq(i).attr('data-card', num)
+                // 可以加上自己設定的屬性，方便配對的判斷抓元素
+            }
+            for (let i = 0; i < 20; i++) {
+
+                let target = Math.floor(Math.random() * $('.card').length)
+                // 隨機抽一張牌
+                let dist = Math.floor(Math.random() * $('.card').length)
+                // 隨機抽一張牌的位置
+                $('.card').eq(target).insertAfter($('.card').eq(dist))
+                // 放在迴圈的牌的後面
+            }
+
+            $('.card').on('click', function () {
+                if ($('.open').length < 2 && !$(this).hasClass('open')) {
+                    // 如果以翻開的牌數小於2且這張牌還沒被翻開
+                    $(this).addClass('open')
+                }
+                if ($('.open').length == 2) {
+                    // 如果翻開兩張牌了
+                    setTimeout(() => {
+                        $('.open').removeClass('open')
+                    }, 500);
+
+
+                    if ($('.open').eq(0).find('.front').css('background-image') ==
+                        $('.open').eq(1).find('.front').css('background-image')) {
+
+                        $('.open').fadeTo(1000, 0).addClass('ok')
+
+                    }
+
+
+
+                    if ($('.ok').length == $('.card').length) {
+                        // 如果配對完等一秒淡出後跳視窗
+                        setTimeout(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: '恭喜',
+                                text: '恭喜過關'
+                            })
+                        }, 1000);
+
+                    }
+                }
+            })
+
+            // setInterval(() => {
+            //     let dist = Math.floor(Math.random() * $('.card').length)
+            //     $('.card').eq(dist).click()
+            // }, 50);
         })
+
+
     </script>
 </body>
 
