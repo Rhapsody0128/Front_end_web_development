@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            width: 100px;
+            height: 180px;
+            transform-style: preserve-3d;
+            /* 設定子元素在3D空間內 */
+            position: relative;
+            transform: rotateY(0deg);
+            /* 整張卡片的旋轉 */
+            transition: transform 0.5s;
+        }
+
+        .front {
+            width: 100%;
+            height: 100%;
+            background-image: url(./poker_materal/1H.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+        }
+
+        .back {
+            width: 100%;
+            height: 100%;
+            background-image: url(./poker_materal/Red_back.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            transform: rotateY(180deg);
+            /* 把背面的div轉到後面 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+</body>
+
+</html>
