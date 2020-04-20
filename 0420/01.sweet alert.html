@@ -22,6 +22,19 @@
             input: 'text',
 
 
+        }).then(result => {
+            console.log(result)
+            if (result.value) {
+                Swal.fire({
+                    title: result.value
+                })
+            }
+            else if (result.dismiss || result.value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: '取消'
+                })
+            }
         })
     </script>
 </body>
