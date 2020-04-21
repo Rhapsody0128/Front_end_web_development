@@ -7,5 +7,7 @@ freepik - 海報設計參考
 colorspace - 漸層色色碼
 codility - 企業考試
 leetcode - 工程師知識+
+sweetalert - 漂亮提醒
+JASONPlaceholder - 虛擬API
 
 微學棧
