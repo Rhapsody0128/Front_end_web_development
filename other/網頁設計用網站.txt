@@ -11,4 +11,11 @@ sweetalert - 漂亮提醒
 JASONPlaceholder - 虛擬API
 datatable - 套用可索引table
 
+D3 - 圖形圖表
+
+圖表
+*Chart.js 
+*CHARTIST.JS
+*Highchart 
+
 微學棧

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <table id='table'>
+    <table id='table' border="1">
         <!-- datatable必須先要有table -->
         <thead>
             <tr>
@@ -25,10 +25,54 @@
     </table>
     <script src="/jq/jquery-3.5.0.min.js"></script>
     <script src='https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js'></script>
+
     <!-- 使用datatable前須先引用JQ -->
 
     <script>
-        const table = $('#table').DataTable()
+        const table = $('#table').DataTable({
+            'language': {
+                // 'url': '//cdn.datatables.net/plug-ins/1.10.20/i18n/Chinese.json'
+                // CDN目前版本chinese-tradition有問題，可直接引用下面代碼取代
+
+                "processing": "處理中...",
+                "loadingRecords": "載入中...",
+                "lengthMenu": "顯示 _MENU_ 項結果",
+                "zeroRecords": "沒有符合的結果",
+                "info": "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+                "infoEmpty": "顯示第 0 至 0 項結果，共 0 項",
+                "infoFiltered": "(從 _MAX_ 項結果中過濾)",
+                "infoPostFix": "",
+                "search": "搜尋:",
+                "paginate": {
+                    "first": "第一頁",
+                    "previous": "上一頁",
+                    "next": "下一頁",
+                    "last": "最後一頁"
+                },
+                "aria": {
+                    "sortAscending": ": 升冪排列",
+                    "sortDescending": ": 降冪排列"
+                }
+            },
+            lengthMenu: [
+                // 控制顯示數量選單的選項
+                [30, 50, -1],
+                // 數值 -1=>全部
+                [30, 50, '全部']
+                // 顯示筆量
+            ],
+            columnDefs: [
+                {
+                    // 欄位設定
+                    targets: [0, 1],
+                    // 目標欄位
+                    orderable: false,
+                    // 是否可排序
+                    searchable: false
+                    //是否可被搜尋
+                }
+            ]
+        })
 
         $.get('https://kktix.com/events.json', function (response) {
             for (let event of response.entry) {
