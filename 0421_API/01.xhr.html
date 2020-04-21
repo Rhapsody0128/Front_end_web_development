@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        // 建立XHR
+        xhr.open('get', 'https://kktix.com/events.json')
+        // 設定(請求方式,網址)
+        xhr.onload = () => {
+            // console.log(xhr.responseText);
+            let json = JSON.parse(xhr.responseText);
+            for (let i = 0; i < 50; i++) {
+                console.log(json.entry[i].url);
+            }
+        }
+        // 設定成功執行式的function
+        xhr.onerror = (error) => {
+            console.log(error);
+        }
+        xhr.send()
+
+    </script>
+</body>
+
+</html>
