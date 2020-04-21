@@ -9,5 +9,6 @@ codility - 企業考試
 leetcode - 工程師知識+
 sweetalert - 漂亮提醒
 JASONPlaceholder - 虛擬API
+datatable - 套用可索引table
 
 微學棧
