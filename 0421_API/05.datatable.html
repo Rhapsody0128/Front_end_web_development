@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
+</head>
+
+<body>
+    <table id='table'>
+        <!-- datatable必須先要有table -->
+        <thead>
+            <tr>
+                <th>標題</th>
+                <th>時間</th>
+                <th>主辦</th>
+            </tr>
+        <tbody>
+
+        </tbody>
+        </thead>
+
+    </table>
+    <script src="/jq/jquery-3.5.0.min.js"></script>
+    <script src='https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js'></script>
+    <!-- 使用datatable前須先引用JQ -->
+
+    <script>
+        const table = $('#table').DataTable()
+
+        $.get('https://kktix.com/events.json', function (response) {
+            for (let event of response.entry) {
+                table.row.add([event.title, event.content, event.author.name]).draw().node()
+            }
+        }, 'json')
+    </script>
+</body>
+
+</html>
