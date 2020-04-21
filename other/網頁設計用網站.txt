@@ -10,6 +10,7 @@ leetcode - 工程師知識+
 sweetalert - 漂亮提醒
 JASONPlaceholder - 虛擬API
 datatable - 套用可索引table
+fullcalendar - 月曆
 
 D3 - 圖形圖表
 
