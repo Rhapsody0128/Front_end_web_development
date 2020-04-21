@@ -17,7 +17,8 @@
 <body>
     <div id="chart">
         <canvas id='bar'></canvas>
-        <canvas id=''></canvas>
+        <canvas id='line'></canvas>
+        <canvas id='pie'></canvas>
 
     </div>
 
@@ -29,7 +30,7 @@
         // getContext('2d')取得canvas的2D繪圖參數
         const barChart = new Chart(barCanvas, {
             type: 'bar',
-            // 圖表類型
+            // 圖表類型(條狀圖)
             data: {
                 labels: ['一月', '二月', '三月', '四月'],
                 // 資料區間名稱
@@ -37,7 +38,7 @@
                     {
                         label: '台北',
                         // 名稱
-                        data: [-100, 200, 300, 400],
+                        data: [100, 200, 300, 400],
                         // 資料
                         borderColor: '#F00',
                         backgroundColor: 'pink',
@@ -69,6 +70,80 @@
                 }
             }
         })
+
+        const lineCanvas = $('#line')
+        // 用JQ可以直接這養血省略getContext('2D')
+        const lineChart = new Chart(lineCanvas, {
+            type: 'line',
+            // 圖表類型(條狀圖)
+            data: {
+                labels: ['一月', '二月', '三月', '四月'],
+                // 資料區間名稱
+                datasets: [
+                    {
+                        label: '台北',
+                        // 名稱
+                        data: [100, 200, 300, 100],
+                        // 資料
+                        borderColor: '#F00',
+                        backgroundColor: 'pink',
+                        borderWidth: 3,
+                        fill: false,
+                        // 是否填滿
+                        lineTension: 0.5
+                        // 取線彎曲程度
+                    },
+                    {
+                        label: '高雄',
+
+                        data: [300, 100, 400, 100],
+
+                        borderColor: 'blue',
+                        backgroundColor: 'gray',
+                        borderWidth: 3,
+
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    text: '台灣空汙指數',
+                    display: true,
+                    fontSize: 50
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
+        const pieCanvas = $("#pie")
+        const pieChart = new Chart(pieCanvas, {
+            type: 'pie',
+            // 圖表類型(條狀圖)
+            data: {
+                labels: ['一月', '二月', '三月', '四月'],
+                // 資料區間名稱
+                datasets: [
+                    {
+                        data: [10, 20, 40, 10],
+                        backgroundColor: ['red', 'gray', 'blue', 'pink'],
+                        borderColor: 'black',
+                        borderWidth: 3,
+                    }]
+            },
+            options: {
+                title: {
+                    text: '台灣空汙指數',
+                    display: true,
+                    fontSize: 50
+                }
+            }
+        })
+
     </script>
 </body>
 
