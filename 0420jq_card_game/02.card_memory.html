@@ -8,7 +8,7 @@
     <style>
         .card {
             width: 100px;
-            height: 180px;
+            height: 100px;
             transform-style: preserve-3d;
             /* 設定子元素在3D空間內 */
             position: relative;
@@ -17,7 +17,6 @@
             transition: transform 0.5s;
             float: left;
             margin: 10px;
-
         }
 
         .front {
@@ -46,7 +45,7 @@
         }
 
         .open {
-            transform: rotateY(0deg);
+            transform: rotateY(360deg);
         }
 
         #game {
@@ -64,7 +63,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         $(function () {
-            for (let i = 0; i < 2; i++) {
+            for (let i = 0; i < 4; i++) {
                 $('#game').append(`<div class='card'>
                 <div class='front'></div>
                 <div class='back'></div>
@@ -122,11 +121,6 @@
                     }
                 }
             })
-
-            // setInterval(() => {
-            //     let dist = Math.floor(Math.random() * $('.card').length)
-            //     $('.card').eq(dist).click()
-            // }, 50);
         })
 
 
