@@ -9,19 +9,24 @@
         #src {
             width: 700px;
             height: 400px;
-            background: red;
             margin: auto;
+        }
 
-
+        #boss {
+            width: 700px;
+            height: 400px;
+            background-image: url(./material/leaf_dragon.jpg);
+            /* background-image: url(./material/fire_dragon.png);
+            background-image: url(./material/water_dragon.png); */
+            background-size: contain;
+            background-repeat: no-repeat;
+            ;
         }
 
         #cards {
             width: 500px;
             height: 500px;
             margin: auto;
-
-
-
         }
 
         .card {
@@ -32,7 +37,7 @@
             display: inline-block;
             position: relative;
             transform: rotateY(180deg);
-            transition: 1s;
+            transition: 0.5s;
 
         }
 
@@ -40,10 +45,6 @@
             width: 120px;
             height: 120px;
             position: absolute;
-            background-size: contain;
-            background-repeat: no-repeat;
-
-
         }
 
         .back {
@@ -65,44 +66,56 @@
             background-image: url(./material/fire.png);
             background-size: contain;
             background-repeat: no-repeat;
+            width: 120px;
+            height: 120px;
+            position: absolute;
         }
 
         .water {
             background-image: url(./material/water.png);
             background-size: contain;
             background-repeat: no-repeat;
+            width: 120px;
+            height: 120px;
+            position: absolute;
         }
 
         .leaf {
             background-image: url(./material/leaf.png);
             background-size: contain;
             background-repeat: no-repeat;
+            width: 120px;
+            height: 120px;
+            position: absolute;
         }
 
         .shield {
             background-image: url(./material/shield.png);
             background-size: contain;
             background-repeat: no-repeat;
+            width: 120px;
+            height: 120px;
+            position: absolute;
         }
 
         .sword {
             background-image: url(./material/sword.png);
             background-size: contain;
             background-repeat: no-repeat;
+            width: 120px;
+            height: 120px;
+            position: absolute;
         }
     </style>
 </head>
 
 <body>
     <div id="content">
-        <div id="src"></div>
+        <div id="src">
+            <div id="boss"></div>
+        </div>
         <hr>
         <div id="cards">
-
-
-
-
-
         </div>
     </div>
 
@@ -110,6 +123,9 @@
     <script>
 
         const rand = (num) => { return Math.floor(Math.random() * num) }
+        let array = []
+        let atk = 0
+        let def = 0
 
         for (let i = 0; i < 16; i++) {
             $("#cards").append(`<div class='card'>
@@ -137,24 +153,52 @@
                     break;
 
             }
-            $('.card').eq(i).addClass(`${random}`)
-
+            $('.front').eq(i).addClass(`${random}`)
         }
+
         $('.card').on('click', function () {
-
-            console.log($(this).hasClass('fire'));
-
-
+            attack()
             $(this).addClass('open')
 
-            console.log(this);
-            setTimeout(() => {
-                $(this).fadeTo(1000, 0)
-            }, 500);
+            array.push($(this).children('.front').attr('class'))
+
+            if ($('.open').length > 1) {
+
+                if (array[0] == $(this).children('.front').attr('class')) {
+                    console.log('combo');
+                }
+
+                else {
+                    if (array.indexOf('front sword') != -1 && array.indexOf('front shield') == -1) {
+                        console.log('attack');
+                    }
+                    else if (array.indexOf('front shield') != -1 && array.indexOf('front sword') == -1) {
+                        console.log('desfend')
+                    }
+                    else if (array.indexOf('front shield') != -1 && array.indexOf('front sword') != -1) {
+                        console.log('cancel');
+                    }
+                    setTimeout(() => {
+                        $('.open').removeClass('open')
+                        array = []
+                    }, 500);
+                }
+            }
+
+            console.log(array);
+            console.log(array.indexOf('front shield'));
+
+            // setTimeout(() => {
+            //     $(this).fadeTo(1000, 0)
+            // }, 500);
 
         })
+        const attack = function () {
+            if ($('#boss').css('background-image') == ('url("http://127.0.0.1:5500/0420jq_card_game/material/leaf_dragon.jpg")')) {
 
+            }
 
+        }
 
 
 
