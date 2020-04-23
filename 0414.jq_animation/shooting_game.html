@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            position: relative;
+            background: rgba(150, 0, 150, 0.5);
+            width: 100%;
+            height: 200%;
+        }
+
+
+
+        #src {
+            width: 960px;
+            height: 800px;
+            margin-left: 50px;
+            margin-right: 50px;
+            overflow: hidden;
+            position: relative;
+            background: pink;
+            display: inline-block;
+        }
+
+        #start {
+            margin: auto;
+        }
+
+        #table {
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+            font-family: 微軟正黑體;
+            margin-top: 50px;
+
+        }
+
+
+        .red {
+            background: red;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .blue {
+            background: blue;
+            width: 50px;
+            height: 50px;
+            border-radius: 40%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .green {
+            background: rgb(0, 255, 0);
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        #right {
+            float: right;
+            height: 500px;
+            width: 300px;
+            /* position: absolute; */
+            text-align: center;
+            margin-right: 50px;
+        }
+
+        #left {
+            height: 800px;
+            width: 400px;
+            margin: auto;
+            float: left;
+            text-align: center;
+
+        }
+
+        #start {
+            margin-top: 300px;
+        }
+
+        #next {
+            font-size: 300px;
+            font-family: 微軟正黑體;
+            width: 400px;
+            height: 400px;
+        }
+
+        #level {
+            width: 400px;
+            height: 400px;
+            font-size: 25px;
+            font-family: 微軟正黑體;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="left">
+        <div id='next'></div>
+        <table id="level" border="1">
+            <tr>
+                <td>already</td>
+                <td>shooting</td>
+                <td>=></td>
+                <td>result</td>
+            </tr>
+            <tr>
+                <td>none</td>
+                <td><span class="red"></span></td>
+                <td>=></td>
+                <td><span class="red"></span></td>
+            </tr>
+
+            <tr>
+                <td><span class="blue"></span></td>
+                <td><span class="red"></span></td>
+                <td>=></td>
+                <td><span class="blue"></span></td>
+            </tr>
+            <tr>
+                <td><span class="blue"></span></td>
+
+                <td><span class="green"></span></td>
+
+                <td>=></td>
+                <td>none</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="src"></div>
+
+    <div id='right'>
+        <table id="table" cellpadding='10' border="1">
+            <tr>
+                <td class="td">1</td>
+                <td class="td">2</td>
+                <td class="td">3</td>
+                <td class="td">4</td>
+                <td class="td">5</td>
+            </tr>
+            <tr>
+                <td class="td">6</td>
+                <td class="td">7</td>
+                <td class="td">8</td>
+                <td class="td">9</td>
+                <td class="td">10</td>
+            </tr>
+            <tr>
+                <td class="td">11</td>
+                <td class="td">12</td>
+                <td class="td">13</td>
+                <td class="td">14</td>
+                <td class="td">15</td>
+            </tr>
+            <tr>
+                <td class="td">16</td>
+                <td class="td">17</td>
+                <td class="td">18</td>
+                <td class="td">19</td>
+                <td class="td">20</td>
+            </tr>
+            <tr>
+                <td class="td">21</td>
+                <td class="td">22</td>
+                <td class="td">23</td>
+                <td class="td">24</td>
+                <td class="td">25</td>
+            </tr>
+        </table>
+        <input id='start' type="button" value="Start">
+    </div>
+
+
+
+
+
+
+
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+
+        const rand = (max, min) => {
+            return Math.floor((Math.random() * (max - min)) + min)
+        }
+        ingame = false
+
+
+        // 開始遊戲--------------------------------------------------------------------
+        $('#start').click(function () {
+
+            array = []
+            array2 = []
+            random = rand(26, 1)
+            random2 = rand(26, 1)
+            for (let i = 0; i < 25; i++) {
+
+                while (array.includes(random)) {
+                    random = rand(26, 1)
+                }
+                array.push(random)
+            }
+
+            for (let i = 0; i < 25; i++) {
+
+                while (array2.includes(random2)) {
+                    random2 = rand(26, 1)
+                }
+                array2.push(random2)
+            }
+
+            i = 0
+
+            ingame = true
+
+            $(this).attr('disabled', true)
+
+            $('#next').text('')
+
+            $('.td').css('background', 'none')
+
+
+            game()
+            $('#next').text(`${array[0]}`)
+
+            computer()
+
+            $('#src').css("cursor", `url(./material/${array[i]}.png) ,auto`)
+
+
+        })
+
+        // 目標創造--------------------------------------------------------------------
+        const game = () => {
+            if (ingame) {
+
+                let i = ''
+                let j = 0
+
+                born = setInterval(() => {
+                    switch (rand(3, 0)) {
+                        case 0:
+                            i = 'red'
+                            break;
+                        case 1:
+                            i = 'blue'
+                            break;
+                        case 2:
+                            i = 'green'
+                            break;
+                    }
+                    $('#src').append(`<div id=a${j} class='${i}'></div>`)
+                    $(`#a${j}`).css({
+                        top: '110%',
+                        left: rand(95, 5) + '%'
+                    })
+                    move(j)
+                    j++
+                }, 100);
+
+            }
+        }
+        // 目標移動--------------------------------------------------------------------
+
+        const move = (j) => {
+            if (ingame) {
+                $(`#a${j}`).animate({
+                    top: rand(20, 0) + '%',
+                    left: rand(100, 0) + '%',
+                }, 2000).animate({
+                    top: rand(50, 0) + '%',
+                    left: rand(75, 25) + '%',
+                }, 2000).animate({
+                    top: '110%'
+                }, 2000)
+                setInterval(() => {
+                    $(`#a${j}`).remove()
+                }, 8000);
+            }
+        }
+
+
+        // 射擊事件--------------------------------------------------------------------
+
+        $('#src').on('mouseover', '.red', function () {
+            (this).remove()
+
+            if ($('.td').eq(`${array[i]}` - 1).css('backgroundColor') == 'rgb(0, 0, 255)') {
+                $('.td').eq(`${array[i]}` - 1).css('background', 'blue')
+            }
+            else {
+                $('.td').eq(`${array[i]}` - 1).css('background', 'red')
+            }
+
+            $('#src').css("cursor", `url(./material/${array[i + 1]}.png) ,auto`)
+            $('#next').text(`${array[i + 1]}`)
+
+            if (array[i + 1] == undefined) {
+                $('#next').text('0')
+            }
+
+            array.splice(0, 1)
+
+
+        })
+        $('#src').on('mouseover', '.blue', function () {
+            (this).remove()
+
+            $('#src').css("cursor", `url(./material/${array[i + 1]}.png) ,auto`)
+            $('#next').text(`${array[i + 1]}`)
+            if (array[i + 1] == undefined) {
+                $('#next').text('0')
+            }
+
+
+
+            $('.td').eq(`${array[i]}` - 1).css('background', 'blue')
+            // console.log(`(${array[i + 1]}).png`)
+
+            array.splice(0, 1)
+
+
+        })
+        $('#src').on('mouseover', '.green', function () {
+            (this).remove()
+
+            $('#src').css("cursor", `url(./material/${array[i + 1]}.png) ,auto`)
+            $('#next').text(`${array[i + 1]}`)
+            if (array[i + 1] == undefined) {
+                $('#next').text('0')
+            }
+
+
+            $('.td').eq(`${array[i]}` - 1).css('backgroundColor', 'rgb(255,255,255)')
+
+
+
+            let a = rand(array.length, 0)
+            let b = array[0]
+            array.splice(0, 1)
+
+
+            array.splice(a, 1, b)
+
+        })
+
+        //  電腦事件--------------------------------------------------------------------
+
+        const computer = function () {
+            if (ingame) {
+                timer = setInterval(() => {
+
+                    judge()
+
+                    let td = $('.td').eq(`${array2[i]}` - 1)
+
+
+                    if (td.css('backgroundColor') == 'rgb(0, 255, 0)') {
+
+                        td.css('backgroundColor', 'rgb(0, 255, 0)')
+                    }
+                    else {
+                        td.css('background', 'blue')
+                    }
+
+                    array2.splice(0, 1)
+
+                    $('#content').css('background')
+
+                }, 2000)
+            }
+        }
+
+
+        // 勝負判斷--------------------------------------------------------------------
+        const judge = () => {
+            let a1 = $('.td').eq(0).css('backgroundColor')
+            let a2 = $('.td').eq(1).css('backgroundColor')
+            let a3 = $('.td').eq(2).css('backgroundColor')
+            let a4 = $('.td').eq(3).css('backgroundColor')
+            let a5 = $('.td').eq(4).css('backgroundColor')
+            let a6 = $('.td').eq(5).css('backgroundColor')
+            let a7 = $('.td').eq(6).css('backgroundColor')
+            let a8 = $('.td').eq(7).css('backgroundColor')
+            let a9 = $('.td').eq(8).css('backgroundColor')
+            let a10 = $('.td').eq(9).css('backgroundColor')
+            let a11 = $('.td').eq(10).css('backgroundColor')
+            let a12 = $('.td').eq(11).css('backgroundColor')
+            let a13 = $('.td').eq(12).css('backgroundColor')
+            let a14 = $('.td').eq(13).css('backgroundColor')
+            let a15 = $('.td').eq(14).css('backgroundColor')
+            let a16 = $('.td').eq(15).css('backgroundColor')
+            let a17 = $('.td').eq(16).css('backgroundColor')
+            let a18 = $('.td').eq(17).css('backgroundColor')
+            let a19 = $('.td').eq(18).css('backgroundColor')
+            let a20 = $('.td').eq(19).css('backgroundColor')
+            let a21 = $('.td').eq(20).css('backgroundColor')
+            let a22 = $('.td').eq(21).css('backgroundColor')
+            let a23 = $('.td').eq(22).css('backgroundColor')
+            let a24 = $('.td').eq(23).css('backgroundColor')
+            let a25 = $('.td').eq(24).css('backgroundColor')
+
+            if (a1 == 'rgb(0, 0, 255)' && a6 == 'rgb(0, 0, 255)' && a11 == 'rgb(0, 0, 255)' && a16 == 'rgb(0, 0, 255)' && a21 == 'rgb(0, 0, 255)' || a2 == 'rgb(0, 0, 255)' && a7 == 'rgb(0, 0, 255)' && a12 == 'rgb(0, 0, 255)' && a17 == 'rgb(0, 0, 255)' && a22 == 'rgb(0, 0, 255)' || a3 == 'rgb(0, 0, 255)' && a8 == 'rgb(0, 0, 255)' && a13 == 'rgb(0, 0, 255)' && a18 == 'rgb(0, 0, 255)' && a23 == 'rgb(0, 0, 255)' || a4 == 'rgb(0, 0, 255)' && a9 == 'rgb(0, 0, 255)' && a14 == 'rgb(0, 0, 255)' && a19 == 'rgb(0, 0, 255)' && a24 == 'rgb(0, 0, 255)' || a5 == 'rgb(0, 0, 255)' && a10 == 'rgb(0, 0, 255)' && a15 == 'rgb(0, 0, 255)' && a20 == 'rgb(0, 0, 255)' && a25 == 'rgb(0, 0, 255)') {
+                lose()
+            }
+            else if (a1 == 'rgb(0, 0, 255)' && a2 == 'rgb(0, 0, 255)' && a3 == 'rgb(0, 0, 255)' && a4 == 'rgb(0, 0, 255)' && a5 == 'rgb(0, 0, 255)' || a6 == 'rgb(0, 0, 255)' && a7 == 'rgb(0, 0, 255)' && a8 == 'rgb(0, 0, 255)' && a9 == 'rgb(0, 0, 255)' && a10 == 'rgb(0, 0, 255)' || a11 == 'rgb(0, 0, 255)' && a12 == 'rgb(0, 0, 255)' && a13 == 'rgb(0, 0, 255)' && a14 == 'rgb(0, 0, 255)' && a15 == 'rgb(0, 0, 255)' || a16 == 'rgb(0, 0, 255)' && a17 == 'rgb(0, 0, 255)' && a18 == 'rgb(0, 0, 255)' && a19 == 'rgb(0, 0, 255)' && a20 == 'rgb(0, 0, 255)' || a21 == 'rgb(0, 0, 255)' && a22 == 'rgb(0, 0, 255)' && a23 == 'rgb(0, 0, 255)' && a24 == 'rgb(0, 0, 255)' && a25 == 'rgb(0, 0, 255)') {
+                lose()
+            }
+
+            else if (a5 == 'rgb(0, 0, 255)' && a9 == 'rgb(0, 0, 255)' && a13 == 'rgb(0, 0, 255)' && a17 == 'rgb(0, 0, 255)' && a21 == 'rgb(0, 0, 255)' || a1 == 'rgb(0, 0, 255)' && a7 == 'rgb(0, 0, 255)' && a13 == 'rgb(0, 0, 255)' && a19 == 'rgb(0, 0, 255)' && a25 == 'rgb(0, 0, 255)') {
+                lose()
+            }
+
+            if (a1 == 'rgb(255, 0, 0)' && a6 == 'rgb(255, 0, 0)' && a11 == 'rgb(255, 0, 0)' && a16 == 'rgb(255, 0, 0)' && a21 == 'rgb(255, 0, 0)' || a2 == 'rgb(255, 0, 0)' && a7 == 'rgb(255, 0, 0)' && a12 == 'rgb(255, 0, 0)' && a17 == 'rgb(255, 0, 0)' && a22 == 'rgb(255, 0, 0)' || a3 == 'rgb(255, 0, 0)' && a8 == 'rgb(255, 0, 0)' && a13 == 'rgb(255, 0, 0)' && a18 == 'rgb(255, 0, 0)' && a23 == 'rgb(255, 0, 0)' || a4 == 'rgb(255, 0, 0)' && a9 == 'rgb(255, 0, 0)' && a14 == 'rgb(255, 0, 0)' && a19 == 'rgb(255, 0, 0)' && a24 == 'rgb(255, 0, 0)' || a5 == 'rgb(255, 0, 0)' && a10 == 'rgb(255, 0, 0)' && a15 == 'rgb(255, 0, 0)' && a20 == 'rgb(255, 0, 0)' && a25 == 'rgb(255, 0, 0)') {
+                win()
+            }
+            else if (a1 == 'rgb(255, 0, 0)' && a2 == 'rgb(255, 0, 0)' && a3 == 'rgb(255, 0, 0)' && a4 == 'rgb(255, 0, 0)' && a5 == 'rgb(255, 0, 0)' || a6 == 'rgb(255, 0, 0)' && a7 == 'rgb(255, 0, 0)' && a8 == 'rgb(255, 0, 0)' && a9 == 'rgb(255, 0, 0)' && a10 == 'rgb(255, 0, 0)' || a11 == 'rgb(255, 0, 0)' && a12 == 'rgb(255, 0, 0)' && a13 == 'rgb(255, 0, 0)' && a14 == 'rgb(255, 0, 0)' && a15 == 'rgb(255, 0, 0)' || a16 == 'rgb(255, 0, 0)' && a17 == 'rgb(255, 0, 0)' && a18 == 'rgb(255, 0, 0)' && a19 == 'rgb(255, 0, 0)' && a20 == 'rgb(255, 0, 0)' || a21 == 'rgb(255, 0, 0)' && a22 == 'rgb(255, 0, 0)' && a23 == 'rgb(255, 0, 0)' && a24 == 'rgb(255, 0, 0)' && a25 == 'rgb(255, 0, 0)') {
+                win()
+            }
+
+            else if (a5 == 'rgb(255, 0, 0)' && a9 == 'rgb(255, 0, 0)' && a13 == 'rgb(255, 0, 0)' && a17 == 'rgb(255, 0, 0)' && a21 == 'rgb(255, 0, 0)' || a1 == 'rgb(255, 0, 0)' && a7 == 'rgb(255, 0, 0)' && a13 == 'rgb(255, 0, 0)' && a19 == 'rgb(255, 0, 0)' && a25 == 'rgb(255, 0, 0)') {
+                win()
+            }
+            if (a1 != 'rgba(0, 0, 0, 0)' && a2 != 'rgba(0, 0, 0, 0)' && a3 != 'rgba(0, 0, 0, 0)' && a4 != 'rgba(0, 0, 0, 0)' && a5 != 'rgba(0, 0, 0, 0)' && a6 != 'rgba(0, 0, 0, 0)' && a7 != 'rgba(0, 0, 0, 0)' && a8 != 'rgba(0, 0, 0, 0)' && a9 != 'rgba(0, 0, 0, 0)' && a10 != 'rgba(0, 0, 0, 0)' && a11 != 'rgba(0, 0, 0, 0)' && a12 != 'rgba(0, 0, 0, 0)' && a13 != 'rgba(0, 0, 0, 0)' && a14 != 'rgba(0, 0, 0, 0)' && a15 != 'rgba(0, 0, 0, 0)' && a16 != 'rgba(0, 0, 0, 0)' && a17 != 'rgba(0, 0, 0, 0)' && a18 != 'rgba(0, 0, 0, 0)' && a19 != 'rgba(0, 0, 0, 0)' && a20 != 'rgba(0, 0, 0, 0)' && a21 != 'rgba(0, 0, 0, 0)' && a22 != 'rgba(0, 0, 0, 0)' && a23 != 'rgba(0, 0, 0, 0)' && a24 != 'rgba(0, 0, 0, 0)' && a25 != 'rgba(0, 0, 0, 0)') {
+                draw()
+            }
+
+        }
+        // 輸贏結果--------------------------------------------------------------------
+
+        const lose = () => {
+
+            const timer2 = setTimeout(() => {
+                alert('LOSE')
+            }, 300);
+
+            clearInterval(timer)
+            setTimeout(() => {
+                clearInterval(timer2)
+                clearInterval(born)
+            }, 300)
+            ingame = false
+            $('#start').attr('disabled', false)
+        }
+
+        const win = () => {
+
+            const timer2 = setTimeout(() => {
+                alert('WIN')
+            }, 300);
+
+            clearInterval(timer)
+            setTimeout(() => {
+                clearInterval(timer2)
+                clearInterval(born)
+            }, 300)
+            ingame = false
+            $('#start').attr('disabled', false)
+        }
+
+        const draw = () => {
+
+            const timer2 = setTimeout(() => {
+                alert('DRAW')
+            }, 300);
+
+            clearInterval(timer)
+            setTimeout(() => {
+                clearInterval(timer2)
+                clearInterval(born)
+            }, 300)
+            ingame = false
+            $('#start').attr('disabled', false)
+        }
+
+
+    </script>
+</body>
+
+</html>

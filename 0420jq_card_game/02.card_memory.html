@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            /* 設定子元素在3D空間內 */
+            position: relative;
+            transform: rotateY(180deg);
+            /* 整張卡片的旋轉 */
+            transition: transform 0.5s;
+            float: left;
+            margin: 10px;
+        }
+
+        .front {
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+
+        }
+
+        .back {
+            width: 100%;
+            height: 100%;
+            background-image: url(./poker_materal/Red_back.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            transform: rotateY(180deg);
+            /* 把背面的div轉到後面 */
+            backface-visibility: hidden;
+
+
+        }
+
+        .open {
+            transform: rotateY(360deg);
+        }
+
+        #game {
+            width: 480px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game">
+
+    </div>
+    <script src="/jq/jquery-3.5.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        $(function () {
+            for (let i = 0; i < 4; i++) {
+                $('#game').append(`<div class='card'>
+                <div class='front'></div>
+                <div class='back'></div>
+                </div>`)
+            }
+
+            for (let i = 0; i < $('.card').length; i++) {
+                let num = i % ($('.card').length / 2) + 1
+
+                $('.card').eq(i).find('.front').css('background-image', `url(./poker_materal/${num}H.jpg)`)
+                $('.card').eq(i).attr('data-card', num)
+                // 可以加上自己設定的屬性，方便配對的判斷抓元素
+            }
+            for (let i = 0; i < 20; i++) {
+
+                let target = Math.floor(Math.random() * $('.card').length)
+                // 隨機抽一張牌
+                let dist = Math.floor(Math.random() * $('.card').length)
+                // 隨機抽一張牌的位置
+                $('.card').eq(target).insertAfter($('.card').eq(dist))
+                // 放在迴圈的牌的後面
+            }
+
+            $('.card').on('click', function () {
+                if ($('.open').length < 2 && !$(this).hasClass('open')) {
+                    // 如果以翻開的牌數小於2且這張牌還沒被翻開
+                    $(this).addClass('open')
+                }
+                if ($('.open').length == 2) {
+                    // 如果翻開兩張牌了
+                    setTimeout(() => {
+                        $('.open').removeClass('open')
+                    }, 500);
+
+
+                    if ($('.open').eq(0).find('.front').css('background-image') ==
+                        $('.open').eq(1).find('.front').css('background-image')) {
+
+                        $('.open').fadeTo(1000, 0).addClass('ok')
+
+                    }
+
+
+
+                    if ($('.ok').length == $('.card').length) {
+                        // 如果配對完等一秒淡出後跳視窗
+                        setTimeout(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: '恭喜',
+                                text: '恭喜過關'
+                            })
+                        }, 1000);
+
+                    }
+                }
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #src {
+            width: 700px;
+            height: 400px;
+            background: red;
+            margin: auto;
+
+
+        }
+
+        #cards {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+
+
+
+        }
+
+        .card {
+            width: 120px;
+            height: 120px;
+            transform-style: preserve-3d;
+            margin-left: 5px;
+            display: inline-block;
+            position: relative;
+            transform: rotateY(180deg);
+            transition: 1s;
+
+        }
+
+        .front {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+
+        }
+
+        .back {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            transform: rotateY(180deg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url(./material/card.png);
+            backface-visibility: hidden;
+        }
+
+        .open {
+            transform: rotateY(0deg);
+        }
+
+        .fire {
+            background-image: url(./material/fire.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .water {
+            background-image: url(./material/water.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .leaf {
+            background-image: url(./material/leaf.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .shield {
+            background-image: url(./material/shield.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .sword {
+            background-image: url(./material/sword.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="src"></div>
+        <hr>
+        <div id="cards">
+
+
+
+
+
+        </div>
+    </div>
+
+    <script src="/jq/jquery-3.5.0.min.js"></script>
+    <script>
+
+        const rand = (num) => { return Math.floor(Math.random() * num) }
+
+        for (let i = 0; i < 16; i++) {
+            $("#cards").append(`<div class='card'>
+                <div class="front"></div>
+                <div class="back"></div>
+                
+            </div>`)
+
+            let random = rand(5)
+            switch (random) {
+                case 0:
+                    random = 'fire'
+                    break;
+                case 1:
+                    random = 'leaf'
+                    break;
+                case 2:
+                    random = 'water'
+                    break;
+                case 3:
+                    random = 'sword'
+                    break;
+                case 4:
+                    random = 'shield'
+                    break;
+
+            }
+            $('.card').eq(i).addClass(`${random}`)
+
+        }
+        $('.card').on('click', function () {
+
+            console.log($(this).hasClass('fire'));
+
+
+            $(this).addClass('open')
+
+            console.log(this);
+            setTimeout(() => {
+                $(this).fadeTo(1000, 0)
+            }, 500);
+
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -7,5 +7,16 @@ freepik - 海報設計參考
 colorspace - 漸層色色碼
 codility - 企業考試
 leetcode - 工程師知識+
+sweetalert - 漂亮提醒
+JASONPlaceholder - 虛擬API
+datatable - 套用可索引table
+fullcalendar - 月曆
+
+D3 - 圖形圖表
+
+圖表
+*Chart.js 
+*CHARTIST.JS
+*Highchart 
 
 微學棧

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content {
+            width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #game {
+
+            width: 400px;
+            height: 400px;
+            background: black;
+            cursor: url(./material/cursor_white.png) 50 50, auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #game img {
+            position: absolute;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="game"></div>
+        <br>
+        <input type="button" id='btn-start' value="開始遊戲">
+        <p>分數:<span id='text-score'>0</span></p>
+        <p>剩餘時間:<span id='text-time'>10</span></p>
+    </div>
+    <script src="jquery-3.5.0.min.js"></script>
+    <script>
+        let score = 0;
+        // 分數
+        let timeleft = 10;
+        // 剩餘時間
+        let gametimer = 0;
+        // 遊戲計時器
+        let zbid = 0;
+        // 殭屍流水號
+        const rand = (num) => {
+            return Math.round(Math.random() * num)
+        }
+
+        const movezb = (zbid) => {
+            $(`#zb${zbid}`).animate({
+                top: rand(70) + "%",
+                left: rand(70) + "%"
+            }, 3000, function () {
+                movezb(zbid)
+            })
+        }
+
+        $('#btn-start').click(function () {
+
+            $(this).attr('disabled', true);
+            // 開始遊戲按鈕停用
+
+            score = 0;
+            $('#text-score').text(score);
+            // 分數歸零
+            timeleft = 10;
+            $('#text-time').text(timeleft);
+            // 遊戲倒數復位
+
+            gametimer = setInterval(() => {
+                timeleft--;
+                $('#text-time').text(timeleft);
+                if (timeleft == 0) {
+                    // 剩餘時間0
+                    clearInterval(gametimer)
+                    // 停止計時器
+                    $(this).attr('disabled', false);
+                    // 啟用開始按鈕
+                    $('#game img').remove()
+                    // 清除場面上的殭屍
+                }
+
+                const num = rand(10)
+                // 隨機
+                if (num > 3) {
+                    // 如果抽到數字>5，生成一個殭屍
+                    $('#game').append(`<img src='./material/zombie.gif' id='zb${zbid}'>`)
+                    $(`#zb${zbid}`).css({
+                        top: rand(70) + "%",
+                        left: rand(70) + "%"
+                    })
+                    movezb(zbid)
+                    zbid++
+                }
+            }, 1000);
+
+        })
+        $('#game').on('click', "img", function () {
+            $(this).attr('src', './material/blood.png');
+            $(this).stop();
+            $(this).css('pointer-event', 'none');
+            score++;
+            $('#text-score').text(score);
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        // 建立XHR
+        xhr.open('get', 'https://kktix.com/events.json')
+        // 設定(請求方式,網址)
+        xhr.onload = () => {
+            // console.log(xhr.responseText);
+            let json = JSON.parse(xhr.responseText);
+            for (let i = 0; i < 50; i++) {
+                console.log(json.entry[i].url);
+            }
+        }
+        // 設定成功執行式的function
+        xhr.onerror = (error) => {
+            console.log(error);
+        }
+        xhr.send()
+
+        // post--------------------------------------------------------------
+
+        let xhr2 = new XMLHttpRequest();
+        // 建立XHR
+        xhr2.open('post', 'https://jsonplaceholder.typicode.com/posts')
+        // 設定(請求方式,網址)
+        xhr2.setRequestHeader('Content-type', 'application/json')
+        // 設定送出的資料格式為JSON
+
+        xhr2.onload = () => {
+            // console.log(xhr2.responseText);
+            let json = JSON.parse(xhr2.responseText);
+            console.log(json);
+        }
+        // 設定成功執行式的function
+        xhr2.onerror = (error) => {
+            console.log(error);
+        }
+
+        xhr2.send(JSON.stringify({
+            // JSON.stringify()=>將JSON陣列轉文字
+            "title": "aaa",
+            "body": "bbb",
+            "userid": 1
+        }))
+
+
+    </script>
+</body>
+
+</html>

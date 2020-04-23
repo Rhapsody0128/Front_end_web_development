@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1 id='title'></h1>
+    <p id=update></p>
+    <table id='table' border="1">
+        <!-- <tr id="menu"></tr>
+        <tr id='class'></tr>
+        <tr id="time"></tr>
+        <tr id="summary"></tr>
+        <tr id="url"></tr> -->
+    </table>
+    <script src="/jq/jquery-3.5.0.min.js"></script>
+
+    <script>
+        // $.ajax({
+        //     url: 'https://kktix.com/events.json',
+        //     method: 'GET',
+        //     // jq這裡的method是指回來資料的型態
+        //     dataType: 'json',
+
+
+        //     success: function (response) {
+        //         console.log(response);
+
+        //         $('#class').append(`<td>課程名稱</td>`)
+        //         $('#time').append(`<td>課程時間.地點</td>`)
+        //         $('#summary').append(`<td>簡介</td>`)
+        //         $('#url').append(`<td>連結網址</td>`)
+        //         for (i = 0; i < 100; i++) {
+
+        //             $('#class').append(`<td>${response.entry[i].title}</td>`)
+        //             $('#time').append(`<td>${response.entry[i].content}</td>`)
+        //             $('#summary').append(`<td>${response.entry[i].summary}</td>`)
+        //             $('#url').append(`<td>${response.entry[i].url}</td>`)
+        //         }
+
+        //     },
+
+        //     error: function () {
+        //         console.log('錯誤')
+        //     }
+        // })
+
+        // anwser ----------------------------------------------------------------
+        $.get('https://kktix.com/events.json', function (response) {
+            $('#title').text(response.title)
+            $('#update').text(new Date(response.update).toLocaleDateString('zh-tw'))
+
+
+            for (let event of response.entry) {
+                $('#table').append(`<tr>
+            <td>${event.title}</td>
+            <td><${event.summary}</td>
+            <td><a href='${event.url}' target='_blank'>訂票</a></td>
+            </tr>`
+
+                )
+            }
+        }, 'json')
+
+    </script>
+</body>
+
+</html>

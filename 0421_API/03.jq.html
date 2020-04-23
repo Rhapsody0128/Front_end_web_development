@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="/jq/jquery-3.5.0.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'https://kktix.com/events.json',
+            method: 'GET',
+            // jq這裡的method是指回來資料的型態
+            dataType: 'json',
+            success: function (response) {
+                console.log(response.title);
+            },
+
+            error: function () {
+                console.log('錯誤')
+            }
+
+            // error: function (xhr, ajaxOptions, thrownError) {
+            //     console.log(xhr);
+            //     console.log(ajaxOptions);
+            //     console.log(thrownError);
+            // },
+        })
+
+        $.get('https://kktix.com/events.json', function (response) {
+
+            console.log(response.title)
+        }, 'json')
+        // 簡寫版:get直接用tpye接網址，dataType也省略，但沒有error function
+
+        $.get('https://kktix.com/events.json')
+            .then(function (response) {
+                console.log(response.title);
+            }, function (error) {
+                console.log(error.status);
+                console.log(error.responseText);
+            })
+        // 簡寫版:有error function
+
+        // post---------------------------------------------------------------
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            method: 'post',
+            // jq這裡的method是指回來資料的型態
+
+            method: 'POST',
+            data: {
+                "title": "aaa",
+                "body": "bbb",
+                "userid": 1
+            },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+            },
+
+            error: function () {
+                console.log('錯誤')
+            }
+        })
+        $.post('https://jsonplaceholder.typicode.com/posts', {
+            "title": "aaa",
+            "body": "bbb",
+            "userid": 1
+        }, function (response) {
+            console.log(response)
+        }, 'json')
+
+
+    </script>
+</body>
+
+</html>
