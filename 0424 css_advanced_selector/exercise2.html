@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #round {
+            margin: auto;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+            transition: 1s;
+            box-shadow: 0px 0px 20px black;
+            margin-top: 10%;
+        }
+
+        #round::before {
+            content: '';
+            width: 500px;
+            height: 500px;
+            background: black;
+            position: absolute;
+            left: 50%;
+            z-index: -1;
+        }
+
+        #round::after {
+            content: '';
+            width: 500px;
+            height: 500px;
+            background: white;
+            position: absolute;
+            left: -50%;
+            z-index: -1;
+        }
+
+        #top {
+            width: 250px;
+            height: 250px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #top::before {
+            content: '';
+            width: 75px;
+            height: 75px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #bottom {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: black;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        #bottom::before {
+            content: '';
+            width: 75px;
+            height: 75px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+
+        #round:hover {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="round">
+        <div id='top'></div>
+        <div id='bottom'></div>
+    </div>
+</body>
+
+</html>

@@ -15,9 +15,9 @@
         #boss {
             width: 700px;
             height: 400px;
-            /* background-image: url(./material/leaf_dragon.jpg); */
-            /* background-image: url(./material/fire_dragon.png);*/
-            background-image: url(./material/water_dragon.png);
+            background-image: url(./material/leaf_dragon.png);
+            /* background-image: url(./material/fire_dragon.png);
+            background-image: url(./material/water_dragon.png); */
             background-size: contain;
             background-repeat: no-repeat;
             ;
@@ -126,6 +126,11 @@
         let array = []
         let atk = 0
         let def = 0
+        let bossattr = $('#boss').css('background-image')
+        let leafdragon = 'url("http://127.0.0.1:5500/0420jq_card_game/material/leaf_dragon.jpg")'
+        let firedragon = 'url("http://127.0.0.1:5500/0420jq_card_game/material/fire_dragon.jpg")'
+        let waterdragon = 'url("http://127.0.0.1:5500/0420jq_card_game/material/water_dragon.jpg")'
+
 
         for (let i = 0; i < 16; i++) {
             $("#cards").append(`<div class='card'>
@@ -193,13 +198,16 @@
             // }, 500);
 
         })
-        const attack = function () {
-            if ($('#boss').css('background-image') == ('url("http://127.0.0.1:5500/0420jq_card_game/material/leaf_dragon.jpg")')) {
 
+        const attack = function () {
+            if (bossattr == leafdragon) {
+                console.log('aa');
             }
 
         }
-
+        console.log(bossattr);
+        console.log(leafdragon);
+        attack()
 
 
 
