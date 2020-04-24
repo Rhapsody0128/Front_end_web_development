@@ -175,6 +175,10 @@
         #nth-type-n p:nth-of-type(n+2) {
             color: blue;
         }
+
+        .menu2 li:not(.no) {
+            color: red;
+        }
     </style>
 </head>
 
@@ -328,6 +332,16 @@
         <div>標題</div>
         <p>Lorem ipsum dolor sit amet.</p>
     </div>
+    <h2>最後一個偽類...</h2>
+    <h3>:not() 反選</h3>
+    <p>否定掉:not()括號中的條件，不要他們，其他的都要</p>
+    <ul class="menu2">
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li class='no'>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+    </ul>
 
 </body>
 
