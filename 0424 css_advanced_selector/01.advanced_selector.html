@@ -112,7 +112,68 @@
         input[type='text']::placeholder {
             color: burlywood;
             text-align: center;
+        }
 
+        input[type='checkbox']:checked,
+        input[type='radio']:checked {
+            filter: drop-shadow(0 0 3px rgb(221, 0, 255));
+        }
+
+        #child :first-child {
+            color: red;
+        }
+
+        #child :last-child {
+            /*:前面要空白 */
+            color: blue;
+        }
+
+        #nth-child :nth-child(2) {
+            color: blue;
+        }
+
+        #nth-child :nth-last-child(2) {
+            color: red;
+        }
+
+        #nth-child :nth-child(odd) {
+            /* 選擇奇數 偶數是even */
+            color: green;
+        }
+
+        #nth-child-n :nth-child(2N+3) {
+            color: red;
+        }
+
+        #type div:first-of-type,
+        #type p:last-of-type {
+            color: red;
+        }
+
+        #type p:first-of-type,
+        #type div:last-of-type {
+            color: blue;
+        }
+
+        #nth-type div:nth-of-type(2),
+        #nth-type p:nth-last-of-type(2) {
+            color: blue;
+        }
+
+        #nth-type div:nth-of-type(odd) {
+            color: red;
+        }
+
+        #nth-type p:nth-last-of-type(even) {
+            color: green;
+        }
+
+        #nth-type-n div:nth-of-type(2n+3) {
+            color: red;
+        }
+
+        #nth-type-n p:nth-of-type(n+2) {
+            color: blue;
         }
     </style>
 </head>
@@ -174,18 +235,100 @@
     <h3>checked</h3>
     <p>表單勾選checkbox或radio狀態時套用樣式</p>
     <div>
-        <label for="for c1">寫CODE</label>
+        <label for="c1">寫CODE</label>
+        <!-- label for 'c1'可以對應input id='c1'的元素，點擊label就可以等於點選input -->
         <input id='c1' type="checkbox">
-        <label for="for c1">覓食</label>
+        <label for="c2">覓食</label>
         <input id='c2' type="checkbox">
-        <label for="for c1">睡覺</label>
+        <label for="c3">睡覺</label>
         <input id='c3' type="checkbox">
         <br>
-        <label for="for c1">男</label>
+        <label for="r1">男</label>
         <input id='r1' name="gender" type="radio">
-        <label for="for c1">女</label>
+        <label for="r2">女</label>
         <input id='r2' name="gender" type="radio">
     </div>
+    <br>
+    <h2>以元素位置或類型(type)來選擇</h2>
+    <br>
+    <h3>:first-child(第一個子元素)、:last-child(最後一個子元素)</h3>
+    <p>:nth-last-child 可以從最後面開始選擇</p>
+    <div id="child">
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+    </div>
+    <br>
+    <h3>:nth-child(第幾個子元素)</h3>
+    <div id="nth-child">
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+    </div>
+    <br>
+    <h3>:nth-child(Xn+Y)從第n個孩子開始，重複XN再做一次選擇。ex:2N+3=>從第3個開始選，接著每第二個選擇一次</h3>
+    <div id="nth-child-n">
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+        <div>Lorem ipsum, dolor sit amet</div>
+    </div>
+    <br>
+    <p>child適合用在單一類型的元素項目，混合許多元素項目時適合用type</p>
+
+    <h3>:first-of-type(選擇同類型中的第一個元素)、last-of-type(選擇同類型中的最後一個元素)</h3>
+    <div id="type">
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <br>
+    <h3>:nth-of-type(選擇同類型中的第n個元素)</h3>
+    <p>:nth-last-type 可以從最後面開始選擇</p>
+    <div id="nth-type">
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <h3>:nth-of-tpye(Xn+Y)從第n個孩子開始，重複XN再做一次選擇。ex:2N+3=>從第3個開始選，接著每第二個選擇一次</h3>
+    <div id="nth-type-n">
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>標題</div>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+
 </body>
 
 </html>
