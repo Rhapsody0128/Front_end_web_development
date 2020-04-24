@@ -179,6 +179,24 @@
         .menu2 li:not(.no) {
             color: red;
         }
+
+        #pseudo-element::first-letter {
+            /* 第一個字 */
+            font-size: 5rem;
+            float: left;
+            padding: 0 1rem;
+        }
+
+        #pseudo-element::first-line {
+            /* 第一行 */
+            color: red;
+        }
+
+        #pseudo-element::selection {
+            /* 選擇起來時 */
+            color: rgb(221, 0, 255);
+            background: wheat;
+        }
     </style>
 </head>
 
@@ -285,7 +303,7 @@
         <div>Lorem ipsum, dolor sit amet</div>
     </div>
     <br>
-    <p>child適合用在單一類型的元素項目，混合許多元素項目時適合用type</p>
+    <p>-----------------------child適合用在單一類型的元素項目，混合許多元素項目時適合用type-----------------------------------</p>
 
     <h3>:first-of-type(選擇同類型中的第一個元素)、last-of-type(選擇同類型中的最後一個元素)</h3>
     <div id="type">
@@ -315,6 +333,7 @@
         <div>標題</div>
         <p>Lorem ipsum dolor sit amet.</p>
     </div>
+    <br>
     <h3>:nth-of-tpye(Xn+Y)從第n個孩子開始，重複XN再做一次選擇。ex:2N+3=>從第3個開始選，接著每第二個選擇一次</h3>
     <div id="nth-type-n">
         <div>標題</div>
@@ -332,6 +351,7 @@
         <div>標題</div>
         <p>Lorem ipsum dolor sit amet.</p>
     </div>
+    <br>
     <h2>最後一個偽類...</h2>
     <h3>:not() 反選</h3>
     <p>否定掉:not()括號中的條件，不要他們，其他的都要</p>
@@ -342,6 +362,27 @@
         <li>Lorem ipsum dolor sit amet.</li>
         <li>Lorem ipsum dolor sit amet.</li>
     </ul>
+    <hr>
+    <h1>5.虛擬元素(偽元素)::雙冒號</h1>
+    <p>偽元素家族有(::first-letter、::first-line、::selection、::placeholder，另外還有兩個最重要的::before、::after)</p>
+    <h3>::first-letter、::first-line、::selection</h3>
+    <br>
+
+    <p id="pseudo-element">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam repellat est explicabo eos
+        atque totam, exercitationem hic ut dolore aperiam, repellendus aut voluptatibus, cumque aspernatur expedita
+        quasi impedit placeat consequatur.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam repellat
+        est explicabo eos
+        atque totam, exercitationem hic ut dolore aperiam, repellendus aut voluptatibus, cumque aspernatur expedita
+        quasi impedit placeat consequatur.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam repellat
+        est explicabo eos
+        atque totam, exercitationem hic ut dolore aperiam, repellendus aut voluptatibus, cumque aspernatur expedita
+        quasi impedit placeat consequatur.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam repellat
+        est explicabo eos
+        atque totam, exercitationem hic ut dolore aperiam, repellendus aut voluptatibus, cumque aspernatur expedita
+        quasi impedit placeat consequatur.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam repellat
+        est explicabo eos
+        atque totam, exercitationem hic ut dolore aperiam, repellendus aut voluptatibus, cumque aspernatur expedita
+        quasi impedit placeat consequatur.</p>
 
 </body>
 
