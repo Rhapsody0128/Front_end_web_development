@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            /* 整個HTML，通常用於重置預設 */
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: 微軟正黑體;
+        }
+
+
+        body {
+            /* 整個BODY */
+            margin: 20px;
+
+        }
+
+        a[title='google'] {
+            /* 指定a標籤title是"google"的 */
+            color: goldenrod;
+        }
+
+
+        a[title='yahoo'] {
+            /* 指定a標籤title是"yahoo"的 */
+            color: red;
+        }
+
+        a[href='https://www.google.com'][title='google'] {
+            /* 複數屬性選 */
+            color: pink;
+        }
+
+        img[src*='/100/100/'] {
+            /* 選取所有img元素中的src屬性中包含'/100/100/'字串的元素 */
+            /* *=選取屬性中的包含字串 */
+            border: 5px solid green;
+        }
+
+        img[src^="https://picsum.photos"] {
+            /* 選取所有img元素中的src屬性中開頭為'https://picsum.photos'字串的元素 */
+            /* ^=選取屬性中的開頭字串 */
+            outline: 5px solid yellow;
+        }
+
+        img[src$="random=3"] {
+            /* 選取所有img元素中的src屬性中結尾為'random=3'字串的元素 */
+            /* $=選取屬性中的結尾字串 */
+            width: 150px;
+        }
+
+        img[class~='two'] {
+            /* 選取所有img元素中的class屬性中有two的元素 */
+            /* ~=two的前後需要有空白 */
+            margin-right: 1rem;
+        }
+
+        .case1 h2+p {
+            /*  選取class為case1的h2的下面一個p元素*/
+            color: red;
+        }
+
+        .case2 h2~p {
+            /*  選取class為case2的h2的下面所有p元素*/
+            color: blue;
+        }
+
+        .menu1 li {
+            float: left;
+        }
+
+        .menu1 li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            background: burlywood;
+            text-decoration: none;
+
+
+        }
+
+        .menu1 li~li {
+            /* 指定li-li的自己不會選，自己的下一個更變屬性，達成只有中間有border的效果 */
+            border-left: 1px solid black;
+        }
+
+        input[type='text']:focus {
+            /* 成為焦點:當選擇元素被點擊或選取，會更變樣式 */
+            width: 250px;
+        }
+
+        h1:focus {
+
+            color: blue;
+        }
+
+        input[type='text']:enabled {
+            /* 可使用狀態:當選擇元素處於可以被使用的狀態，會更變樣式 */
+            background: blueviolet;
+        }
+
+        input[type='text']:disabled {
+            /* 可使用狀態:當選擇元素處於可以被使用的狀態，會更變樣式 */
+            background: red;
+        }
+
+        input[type='text']::placeholder {
+            color: burlywood;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1 tabindex="1">1.屬性選擇器</h1>
+    <a href="https://www.google.com" title="google">google</a>
+    <a href="https://www.yahoo.com" title="yahoo">yahoo</a>
+    <img id='abc' class='one two three' src="https://picsum.photos/100/100/?random=1">
+    <img class='one two three' src="https://picsum.photos/100/100/?random=2">
+    <img class='one three' src="https://picsum.photos/100/100/?random=3">
+    <hr>
+    <h1 tabindex="3">2.同層相鄰選擇器(兄弟選擇器)a+b</h1>
+    <!-- tabindex賦予元素索引值，讓頁面按TAB能夠選取，選取順序依照屬性值的流水號 -->
+    <div class="case1">
+        <p>弟弟弟</p>
+        <h2>兄兄兄</h2>
+        <p>弟弟弟</p>
+        <p>弟弟弟</p>
+    </div>
+    <hr>
+    <h1>3.同層全體選擇器(兄弟們選擇器)a~b</h1>
+    <div class="case2">
+        <p>弟弟弟</p>
+        <h2>兄兄兄</h2>
+        <p>弟弟弟</p>
+        <p>弟弟弟</p>
+    </div>
+
+    <h2>例子:</h2>
+
+    <ul class="menu1">
+        <li><a href="#">LIST</a></li>
+        <li><a href="#">LIST</a></li>
+        <li><a href="#">LIST</a></li>
+        <li><a href="#">LIST</a></li>
+        <li><a href="#">LIST</a></li>
+    </ul>
+    <br><br>
+    <hr>
+
+    <h1 tabindex="2">4.虛擬類別(偽類)選擇器:(單冒號)</h1>
+    <p>扮演的腳色是讓CSS對元素擁有更多的可操控性</p>
+    <h3>項目類別有(:focus、:enbled、:disabled)(::placeholder)</h3>
+    <br>
+    <p>:focus表單輸入欄位或元素有tabindex屬性可成為焦點時可套用的樣式</p>
+    <p>:enbled表單輸入欄位預設enbled屬性</p>
+    <p>:disabled表單若要禁用可使用disabled屬性停止禁用</p>
+    <p>::不是偽類，是偽元素</p>
+    <p>::placeholder 佔位文字</p>
+    <div>
+        <label for="name">帳號:</label>
+        <input type="text">
+
+        <label for="name">密碼:</label>
+        <input type="text" placeholder='disabled' disabled>
+    </div>
+    <br>
+    <h3>checked</h3>
+    <p>表單勾選checkbox或radio狀態時套用樣式</p>
+    <div>
+        <label for="for c1">寫CODE</label>
+        <input id='c1' type="checkbox">
+        <label for="for c1">覓食</label>
+        <input id='c2' type="checkbox">
+        <label for="for c1">睡覺</label>
+        <input id='c3' type="checkbox">
+        <br>
+        <label for="for c1">男</label>
+        <input id='r1' name="gender" type="radio">
+        <label for="for c1">女</label>
+        <input id='r2' name="gender" type="radio">
+    </div>
+</body>
+
+</html>
