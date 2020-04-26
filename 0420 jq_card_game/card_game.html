@@ -119,10 +119,14 @@
         const rand = (num) => { return Math.floor(Math.random() * num) }
         let cardarray = []
         let array = []
+        let borncardarray = []
         let atk = 0
         let def = 0
         let combo = 1
         let skillcount = 1
+
+
+
         boss.style.backgroundImage = 'url("./material/leaf_dragon.png")'
 
         let bossattr = boss.style.backgroundImage
@@ -162,66 +166,161 @@
                     break;
             }
             if (i == 15) {
-                cardarray.splice(rand(16), 1, 'sword')
-                cardarray.splice(rand(16), 1, 'shield')
+                let random = rand(16)
+                cardarray.splice(random, 1, 'sword')
+                let random2 = rand(16)
+                while (random2 == random) {
+                    random2 = rand(16)
+                }
+                cardarray.splice(random2, 1, 'shield')
             }
 
         }
-        for (i = 0; i < 16; i++) {
+        for (let i = 0; i < 16; i++) {
             $('.front').eq(i).addClass(cardarray[i])
-
         }
+
         $('.front').removeClass('front')
 
+        // 補牌-----------------------------------------------------------------
+        const borncard = () => {
+
+            for (let i = 0; i < 16; i++) {
+                if ($('.card').eq(i).hasClass('open')) {
+                    borncardarray.push(i)
+                }
+            }
+
+            if (array.includes('shield')) {
+                for (let i = 0; i < borncardarray.length; i++) {
+                    let random = rand(3)
+                    switch (random) {
+                        case 0:
+                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'fire')
+                            break;
+                        case 1:
+                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'water')
+                            break;
+                        case 2:
+                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'leaf')
+                            break;
+                    }
+                }
+                let random2 = rand(borncardarray.length)
+                $('.card').eq(borncardarray[random2]).children().first().attr('class', 'shield')
+            }
+
+
+            else if (array.includes('sword')) {
+                for (let i = 0; i < borncardarray.length; i++) {
+                    let random = rand(3)
+                    switch (random) {
+                        case 0:
+                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'fire')
+                            break;
+                        case 1:
+                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'water')
+                            break;
+                        case 2:
+                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'leaf')
+                            break;
+                    }
+                }
+                let random2 = rand(borncardarray.length)
+                $('.card').eq(borncardarray[random2]).children().first().attr('class', 'sword')
+
+            }
+            else {
+                for (let j = 0; j < borncardarray.length; j++) {
+                    let random = rand(3)
+                    switch (random) {
+                        case 0:
+                            $('.card').eq(borncardarray[j]).children().first().attr('class', 'fire')
+                            break;
+                        case 1:
+                            $('.card').eq(borncardarray[j]).children().first().attr('class', 'water')
+                            break;
+                        case 2:
+                            $('.card').eq(borncardarray[j]).children().first().attr('class', 'leaf')
+                            break;
+                    }
+                }
+            }
+        }
 
         // 點擊卡片事件-----------------------------------------------------------------
         const actioncancel = () => {
+
+            setTimeout(() => {
+                $('.open').removeClass('open')
+            }, 500);
             array = []
             combo = 1
             skillcount = 1
             atk = 0
             def = 0
-            setTimeout(() => {
-                $('.open').removeClass('open')
-
-            }, 500);
         }
         const actionfinish = () => {
-            array = []
-            combo = 1
-            skillcount = 1
-            atk = 0
-            def = 0
+
+
+            console.log(array);
+
+
             setTimeout(() => {
-                $('.open').fadeTo(1000, 0)
+                borncard()
+                console.log(array);
+            }, 500)
+
+
+
+
+
+            setTimeout(() => {
+
                 $('.open').removeClass('open')
-            }, 500);
+
+                array = []
+                borncardarray = []
+                combo = 1
+                skillcount = 1
+                atk = 0
+                def = 0
+            }, 1000);
+
         }
+
+
+
         $('.card').on('click', function () {
 
-            if (!$(this).hasClass('open')) {
+
+
+            if (!$(this).hasClass('.open')) {
+
+                $(this).addClass('open')
 
                 array.push($(this).children().first().attr('class'))
+                console.log(array);
+                if ($('.open').length > 1) {
 
-
-                if ($('.open').length > 0) {
-                    console.log();
                     if (array[0] == $(this).children().first().attr('class')) {
                         combo++
                         combo *= 1.3
                         skillcount++
                         if ($(`.${array[0]}`).length == skillcount) {
                             skill()
-
+                            actionfinish()
                         }
                     }
 
                     else {
                         if (array.indexOf('sword') != -1 && array.indexOf('shield') == -1) {
                             attack()
+                            actionfinish()
                         }
                         else if (array.indexOf('shield') != -1 && array.indexOf('sword') == -1) {
                             defense()
+                            actionfinish()
                         }
                         else if (array.indexOf('shield') != -1 && array.indexOf('sword') != -1) {
                             actioncancel()
@@ -232,11 +331,6 @@
 
                 }
             }
-            $(this).addClass('open')
-            // setTimeout(() => {
-            //     $(this).fadeTo(1000, 0)
-            // }, 500);
-
         })
 
         // 攻擊------------------------------------------------------
@@ -290,7 +384,6 @@
 
                 atk *= combo
                 console.log(atk);
-                actionfinish()
             }
         }
         // 防禦----------------------------------------------------
@@ -343,7 +436,6 @@
                 }
                 def *= combo
                 console.log(def);
-                actionfinish()
             }
         }
         // 技能--------------------------------------------------
@@ -395,7 +487,6 @@
             }
             atk *= combo
             console.log(atk);
-            actionfinish()
         }
 
 
