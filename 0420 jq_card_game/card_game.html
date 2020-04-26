@@ -23,9 +23,38 @@
             ;
         }
 
+        #content {
+            text-align: center;
+        }
+
         #cards {
             width: 500px;
             height: 500px;
+
+            display: inline-block;
+
+        }
+
+        #dright {
+            width: 500px;
+            height: 500px;
+            background: wheat;
+            float: right;
+            line-height: 500px;
+        }
+
+        #dleft {
+            width: 500px;
+            height: 500px;
+            background: wheat;
+            float: left;
+
+        }
+
+        #start {
+            background: blueviolet;
+            width: 200px;
+            height: 100px;
             margin: auto;
         }
 
@@ -36,7 +65,7 @@
             margin-left: 5px;
             display: inline-block;
             position: relative;
-            transform: rotateY(400deg);
+            transform: rotateY(540deg);
             transition: 0.5s;
 
         }
@@ -106,11 +135,15 @@
 <body>
     <div id="content">
         <div id="src">
+            <div id=topleft></div>
             <div id="boss"></div>
+            <div id=top right></div>
         </div>
         <hr>
-        <div id="cards">
-        </div>
+        <div id='dleft'></div>
+        <div id="cards"></div>
+        <div id='dright'><button id='start' type="button" value="START">START</button></div>
+
     </div>
 
     <script src="/jq/jquery-3.5.0.min.js"></script>
@@ -129,7 +162,7 @@
 
 
 
-        boss.style.backgroundImage = 'url("./material/leaf_dragon.png")'
+        boss.style.backgroundImage = 'url("./material/fire_dragon.png")'
 
         let bossattr = boss.style.backgroundImage
         let leafdragon = 'url("./material/leaf_dragon.png")'
@@ -141,7 +174,13 @@
 
         // 開始-----------------------------------------------------------------
 
-
+        $('#start').click(function () {
+            $('.card').addClass('open')
+            setTimeout(() => {
+                $('.card').removeClass('open')
+            }, 2000);
+            $(this).attr('disabled', 'ture')
+        })
 
         // 隨機發牌-----------------------------------------------------------------
 
@@ -271,13 +310,6 @@
 
         const actionfinish = () => {
 
-
-            console.log(array);
-
-
-
-
-
             borncard()
 
             $('.open').fadeTo(700, 0, function () {
@@ -315,7 +347,7 @@
                 $(this).addClass('open')
 
                 array.push($(this).children().first().attr('class'))
-                console.log(array);
+
                 if ($('.open').length > 1) {
 
                     if (array[0] == $(this).children().first().attr('class')) {
@@ -399,7 +431,7 @@
                 }
 
                 atk *= combo
-                console.log(atk);
+                $('#dleft').text(`${atk}`)
             }
         }
         // 防禦----------------------------------------------------
@@ -451,7 +483,7 @@
                     })
                 }
                 def *= combo
-                console.log(def);
+                $('#dleft').text(`${def}`)
             }
         }
         // 技能--------------------------------------------------
@@ -502,7 +534,7 @@
                 })
             }
             atk *= combo
-            console.log(atk);
+            $('#dleft').text(`${atk}`)
         }
 
 
