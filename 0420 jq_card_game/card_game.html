@@ -119,7 +119,9 @@
         const rand = (num) => { return Math.floor(Math.random() * num) }
         let cardarray = []
         let array = []
+        let array2 = []
         let borncardarray = []
+
         let atk = 0
         let def = 0
         let combo = 1
@@ -190,62 +192,67 @@
                     borncardarray.push(i)
                 }
             }
+            let array2 = array
+            setTimeout(() => {
 
-            if (array.includes('shield')) {
-                for (let i = 0; i < borncardarray.length; i++) {
-                    let random = rand(3)
-                    switch (random) {
-                        case 0:
-                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'fire')
-                            break;
-                        case 1:
-                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'water')
-                            break;
-                        case 2:
-                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'leaf')
-                            break;
+
+                if (array2.includes('shield')) {
+                    for (let i = 0; i < borncardarray.length; i++) {
+                        let random = rand(3)
+                        switch (random) {
+                            case 0:
+                                $('.card').eq(borncardarray[i]).children().first().attr('class', 'fire')
+                                break;
+                            case 1:
+                                $('.card').eq(borncardarray[i]).children().first().attr('class', 'water')
+                                break;
+                            case 2:
+                                $('.card').eq(borncardarray[i]).children().first().attr('class', 'leaf')
+                                break;
+                        }
+                    }
+                    let random2 = rand(borncardarray.length)
+                    $('.card').eq(borncardarray[random2]).children().first().attr('class', 'shield')
+                }
+
+
+                else if (array2.includes('sword')) {
+                    for (let i = 0; i < borncardarray.length; i++) {
+                        let random = rand(3)
+                        switch (random) {
+                            case 0:
+                                $('.card').eq(borncardarray[i]).children().first().attr('class', 'fire')
+                                break;
+                            case 1:
+                                $('.card').eq(borncardarray[i]).children().first().attr('class', 'water')
+                                break;
+                            case 2:
+                                $('.card').eq(borncardarray[i]).children().first().attr('class', 'leaf')
+                                break;
+                        }
+                    }
+                    let random2 = rand(borncardarray.length)
+                    $('.card').eq(borncardarray[random2]).children().first().attr('class', 'sword')
+
+                }
+                else {
+                    for (let j = 0; j < borncardarray.length; j++) {
+                        let random = rand(3)
+                        switch (random) {
+                            case 0:
+                                $('.card').eq(borncardarray[j]).children().first().attr('class', 'fire')
+                                break;
+                            case 1:
+                                $('.card').eq(borncardarray[j]).children().first().attr('class', 'water')
+                                break;
+                            case 2:
+                                $('.card').eq(borncardarray[j]).children().first().attr('class', 'leaf')
+                                break;
+                        }
                     }
                 }
-                let random2 = rand(borncardarray.length)
-                $('.card').eq(borncardarray[random2]).children().first().attr('class', 'shield')
-            }
+            }, 1000);
 
-
-            else if (array.includes('sword')) {
-                for (let i = 0; i < borncardarray.length; i++) {
-                    let random = rand(3)
-                    switch (random) {
-                        case 0:
-                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'fire')
-                            break;
-                        case 1:
-                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'water')
-                            break;
-                        case 2:
-                            $('.card').eq(borncardarray[i]).children().first().attr('class', 'leaf')
-                            break;
-                    }
-                }
-                let random2 = rand(borncardarray.length)
-                $('.card').eq(borncardarray[random2]).children().first().attr('class', 'sword')
-
-            }
-            else {
-                for (let j = 0; j < borncardarray.length; j++) {
-                    let random = rand(3)
-                    switch (random) {
-                        case 0:
-                            $('.card').eq(borncardarray[j]).children().first().attr('class', 'fire')
-                            break;
-                        case 1:
-                            $('.card').eq(borncardarray[j]).children().first().attr('class', 'water')
-                            break;
-                        case 2:
-                            $('.card').eq(borncardarray[j]).children().first().attr('class', 'leaf')
-                            break;
-                    }
-                }
-            }
         }
 
         // 點擊卡片事件-----------------------------------------------------------------
@@ -260,32 +267,40 @@
             atk = 0
             def = 0
         }
+
+
         const actionfinish = () => {
 
 
             console.log(array);
 
 
+
+
+
+            borncard()
+
+            $('.open').fadeTo(700, 0, function () {
+                setTimeout(() => {
+                    $('.open').fadeTo(700, 100)
+                }, 1000);
+
+            })
+
+
             setTimeout(() => {
-                borncard()
-                console.log(array);
-            }, 500)
-
-
-
-
-
-            setTimeout(() => {
-
-                $('.open').removeClass('open')
-
                 array = []
                 borncardarray = []
                 combo = 1
                 skillcount = 1
                 atk = 0
                 def = 0
-            }, 1000);
+            }, 2000);
+
+            setTimeout(() => {
+                $('.open').removeClass('open')
+
+            }, 3000);
 
         }
 
@@ -325,7 +340,8 @@
                         else if (array.indexOf('shield') != -1 && array.indexOf('sword') != -1) {
                             actioncancel()
                         }
-                        actioncancel()
+                        else { actioncancel() }
+
 
                     }
 
