@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-tw"">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魯蛇自我檢測</title>
+</head>
+<body>
+    <script>
+        alert('歡迎來到魯蛇自我檢測器，以下會簡單問你幾個問題，評估你是否為魯蛇。')
+        alert('我們開始吧~')
+        let Q0 = confirm ('你現在有穩定交往的男/女朋友') 
+        if (Q0){alert('掰掰，祝您順心:)')} 
+        else{alert('恭喜你成為魯蛇的一員，接下來的問題會決定你魯蛇的程度');alert('接下來的問題請誠實依照自己的情況選擇1-5的程度');alert('我們正式開始吧~')
+        let A1 =''
+        let A2 =''
+        let A3 =''
+        let A4 =''
+        let A5 =''
+        
+        let Q1 = prompt ('你現在的經濟情況富足 \n 1=非常有錢，2=稍微有錢，3=普通，4=稍微窮，5=非常窮')
+        let Q2 = prompt ('常常有人說過你很帥/美 \n 1=非常帥/美，2=稍微帥/美，3=普通，4=稍微醜，5=非常醜')
+        let Q3 = prompt ('每天行程都很滿，吃飯、活動都不會落下你 \n 1=非常正確，2=稍微正確，3=普通，4=稍微不正確，5=非常不正確')
+        let Q4 = prompt ('有明確的未來目標並依照自己的步調前進當中 \n 1=非常正確，2=稍微正確，3=普通，4=稍微不正確，5=非常不正確')
+        let Q5 = prompt ('對自己的身材非常滿意 \n 1=非常滿意，2=稍微滿意，3=普通，4=稍微不滿意，5=非常不滿意')
+
+        if (Q1==1){A1=1}
+        else if (Q1==2){A1=2}
+        else if (Q1==3){A1=3}
+        else if (Q1==4){A1=4}
+        else if (Q1==5){A1=5}
+        else {A1=6}
+        if (Q2==1){A2=1}
+        else if (Q2==2){A2=2}
+        else if (Q2==3){A2=3}
+        else if (Q2==4){A2=4}
+        else if (Q2==5){A2=5}
+        else {A2=6}
+        if (Q3==1){A3=1}
+        else if (Q3==2){A3=2}
+        else if (Q3==3){A3=3}
+        else if (Q3==4){A3=4}
+        else if (Q3==5){A3=5}
+        else {A3==6}
+        if (Q4==1){A4=1}
+        else if (Q4==2){A4=2}
+        else if (Q4==3){A4=3}
+        else if (Q4==4){A4=4}
+        else if (Q4==5){A4=5}    
+        else {A4==6}
+        if (Q3==1){A3==1}
+        else if (Q5==2){A5=2}
+        else if (Q5==3){A5=3}
+        else if (Q5==4){A5=4}
+        else if (Q5==5){A5=5}
+        else {A5=6}
+        
+        let A = A1+A2+A3+A4+A5
+       
+        if(4<=A && A<=8){alert('恭喜你快脫離魯蛇了，你不屬於這裡，你只差一點緣分和運氣')}
+        else if(8<A && A<=14){alert('恭喜，你是魯蛇二等兵，新入伍的菜鳥還不去排隊，你還要加油一點')}
+        else if(14<A && A<=20){alert('恭喜，魯蛇上校，你距離魯蛇之王只差一步之遙')}
+        else if(20<A && A<=24){alert('你是魯蛇大將軍，將軍出征，寸草不生，恭喜你達到一人之下，萬人之上地位')}
+        else if(A==25){alert('魯蛇之神，你沒救了。')}
+        else{alert('別亂填阿')}
+        
+        
+        
+        
+        }
+                
+    </script>
+</body>
+</html>
