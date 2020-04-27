@@ -12,15 +12,22 @@
         // async function asyncFunction(){
         // }
         // 非箭頭函式寫法
+
         // await可以讓程式暫停。等執行完才繼續
         // await後面只能接受promise
         // await只能在async裡面使用
+        let duration = prompt('請輸入秒')
+        duration *= 1000
         const wait = (duration) => {
 
             return new Promise((resolve, reject) => {
+                if (isNaN(duration)) {
+                    // 建議reject使用Error，保持catch街到的東西保持一致
+                    reject(new Error('不是數字'))
+                }
                 setTimeout(() => {
-                    resolve(true)
-                    console.log('aa');
+                    resolve(`等了${duration}秒`)
+
                 }, duration);
             })
 
@@ -30,17 +37,27 @@
             setTimeout(() => {
                 console.log('aaa');
             }, i);
-
         }
 
         const asyncFunction = async () => {
-            await aaa(1000)
-            await wait(2000)
-            setTimeout(() => {
-                console.log('a');
-            }, 1000);
+            try {
+                await aaa(1000)
+                // aaa不是promise函式所以沒有辦法await
+
+                const result = await wait(duration)
+
+                console.log(result);
+
+                console.log('set');
+
+            } catch (error) {
+                console.log(error.message);
+
+            }
         }
         asyncFunction()
+
+
     </script>
 </body>
 
