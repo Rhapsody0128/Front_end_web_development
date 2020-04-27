@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * {
+            font-size: 30px;
+            font-family: 微軟正黑體;
+        }
+
         #src {
-            width: 700px;
+            width: 800px;
             height: 400px;
             margin: auto;
+            position: relative;
+            background-color: blue;
         }
 
         #boss {
@@ -20,7 +27,11 @@
             background-image: url(./material/water_dragon.png); */
             background-size: contain;
             background-repeat: no-repeat;
-            ;
+            position: absolute;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
         }
 
         #content {
@@ -33,12 +44,27 @@
             display: inline-block;
         }
 
+        #tright {
+            width: 500px;
+            height: 400px;
+            background: wheat;
+            float: right;
+
+        }
+
+        #tleft {
+            width: 500px;
+            height: 400px;
+            background: wheat;
+            float: left;
+        }
+
         #dright {
             width: 500px;
             height: 500px;
             background: wheat;
             float: right;
-            line-height: 500px;
+
         }
 
         #dleft {
@@ -46,7 +72,6 @@
             height: 500px;
             background: wheat;
             float: left;
-
         }
 
         #start {
@@ -54,6 +79,7 @@
             width: 200px;
             height: 100px;
             margin: auto;
+            margin-top: 70%;
         }
 
         .card {
@@ -65,7 +91,7 @@
             position: relative;
             transform: rotateY(540deg);
             transition: 0.5s;
-
+            pointer-events: none
         }
 
         .back {
@@ -132,15 +158,21 @@
 
 <body>
     <div id="content">
+        <div id="animate"></div>
+        <div id='tleft'></div>
+        <div id='tright'></div>
         <div id="src">
-            <div id=topleft></div>
+
             <div id="boss"></div>
-            <div id=top right></div>
+
         </div>
         <hr>
         <div id='dleft'></div>
         <div id="cards"></div>
-        <div id='dright'><button id='start' type="button" value="START">START</button></div>
+        <div id='dright'>
+            <div id="drighttext">asd</div>
+            <button id='start' type="button" value="START">START</button>
+        </div>
 
     </div>
 
@@ -155,10 +187,15 @@
 
         let ingame = false
 
+        let bossatk = 0
         let atk = 0
         let def = 0
         let combo = 1
         let skillcount = 1
+        let combopoint = 1
+        let bossskillcount = 0
+        let hp = 1000
+        let bosshp = 3000
 
 
 
@@ -177,6 +214,8 @@
         $('#start').click(function () {
 
 
+            $('.card').css('pointer-events', 'all')
+
 
             $('.card').addClass('open')
 
@@ -185,12 +224,13 @@
                 $('.card').removeClass('open')
             }, 2000);
 
-            // $(this).attr('disabled', 'ture')
+            $(this).attr('disabled', 'ture')
 
 
         })
 
         // 隨機發牌-----------------------------------------------------------------
+
 
         for (let i = 0; i < 16; i++) {
             $("#cards").append(`<div class='card'>
@@ -299,18 +339,24 @@
                         }
                     }
                 }
-            }, 1000);
+            }, 1200);
 
         }
 
         // 點擊卡片事件-----------------------------------------------------------------
         const actioncancel = () => {
-
+            $('.card').css('pointer-events', 'none')
             setTimeout(() => {
                 $('.open').removeClass('open')
+
             }, 500);
+            bossaction()
+            setTimeout(() => {
+                $('.card').css('pointer-events', 'all')
+            }, 1000);
             array = []
             combo = 1
+            combopoint = 1
             skillcount = 1
             atk = 0
             def = 0
@@ -318,14 +364,13 @@
 
 
         const actionfinish = () => {
-
+            $('.card').css('pointer-events', 'none')
             borncard()
 
             $('.open').fadeTo(700, 0, function () {
                 setTimeout(() => {
                     $('.open').fadeTo(700, 100)
                 }, 1000);
-
             })
 
 
@@ -333,6 +378,7 @@
                 array = []
                 borncardarray = []
                 combo = 1
+                combopoint = 1
                 skillcount = 1
                 atk = 0
                 def = 0
@@ -340,12 +386,13 @@
 
             setTimeout(() => {
                 $('.open').removeClass('open')
+                bossaction()
+                setTimeout(() => {
+                    $('.card').css('pointer-events', 'all')
+                }, 500);
 
             }, 3000);
-
         }
-
-
 
         $('.card').on('click', function () {
 
@@ -359,7 +406,8 @@
 
                     if (array[0] == $(this).children().first().attr('class')) {
                         combo++
-                        combo *= 1.3
+                        console.log(combopoint);
+                        combopoint *= 1.5
                         skillcount++
                         if ($(`.${array[0]}`).length == skillcount) {
                             skill()
@@ -380,10 +428,7 @@
                             actioncancel()
                         }
                         else { actioncancel() }
-
-
                     }
-
                 }
             }
         })
@@ -437,7 +482,7 @@
                     })
                 }
 
-                atk *= combo
+                atk *= combopoint
                 $('#dleft').text(`${atk}`)
             }
         }
@@ -489,7 +534,7 @@
                         }
                     })
                 }
-                def *= combo
+                def *= combopoint
                 $('#dleft').text(`${def}`)
             }
         }
@@ -499,13 +544,13 @@
                 array.map((i) => {
                     switch (i) {
                         case 'leaf':
-                            atk++
-                            break;
-                        case 'fire':
                             atk += 2
                             break;
+                        case 'fire':
+                            atk += 3
+                            break;
                         case 'water':
-                            atk--
+                            atk += 0.5
                             break;
                     }
                 })
@@ -514,13 +559,13 @@
                 array.map((i) => {
                     switch (i) {
                         case 'leaf':
-                            atk--
+                            atk += 0.5
                             break;
                         case 'fire':
-                            atk++
+                            atk += 2
                             break;
                         case 'water':
-                            atk += 2
+                            atk += 3
                             break;
                     }
                 })
@@ -529,21 +574,115 @@
                 array.map((i) => {
                     switch (i) {
                         case 'leaf':
-                            atk += 2
+                            atk += 3
                             break;
                         case 'fire':
-                            atk--
+                            atk += 0.5
                             break;
                         case 'water':
-                            atk++
+                            atk += 2
                             break;
                     }
                 })
             }
-            atk *= combo
+            atk *= combopoint
             $('#dleft').text(`${atk}`)
         }
+        // BOSS行為-----------------------------------------------------------
+        let bossid = '火龍'
+        const bossattack = () => {
+            $('#boss').animate({
+                width: '+=200px',
+                height: '+=200px',
+                top: '35%',
+            }, 1000)
+            $('#boss').animate({
+                top: '150%'
+            }, 500)
+            $('#boss').animate({
+                width: '-=200px',
+                height: '-=200px',
+                top: '50%',
+            }, 1000)
+            $('#tright').text('BOSS向你衝了過來')
+            bossatk = rand(50) + 50
+            setTimeout(() => {
+                if ((bossatk - def) < 0) {
+                    hp = hp
+                    $('#dleft').text(`你成功擋下${bossid}的攻擊`)
+                }
+                else {
+                    hp -= (bossatk - def)
+                    $('#dleft').text(`被${bossid}，抓傷你受到${(bossatk - def)}點傷害`)
+                    $('#drighttext').text(`HP:${hp}`)
+                }
+            }, 1500);
 
+        }
+        const bossskill = () => {
+            $('#boss').animate({
+                width: '+=200px',
+                height: '+=200px',
+                top: '35%',
+            }, 1000)
+            $('#boss').animate({
+
+                top: '45%',
+            }, 1000)
+            $('#boss').animate({
+                width: '-=200px',
+                height: '-=200px',
+                top: '50%',
+            }, 500)
+            bossatk = rand(100) + 100
+            setTimeout(() => {
+                if ((bossatk - def) < 0) {
+                    hp = hp
+                    $('#dleft').text(`你成功擋下${bossid}的吐襲`)
+                }
+                else {
+                    hp -= (bossatk - def)
+                    $('#dleft').text(`${bossid}向你發動龍之吐襲，你受到${(bossatk - def)} 點傷害`)
+                    $('#drighttext').text(`HP: ${hp}`)
+                }
+            }, 1500);
+        }
+
+        const bossaction = () => {
+            let random = rand(3)
+            if (bossskillcount == 1) {
+                random = 1
+            }
+            if (bossskillcount == -1) {
+                random = 2
+            }
+            console.log(random);
+            setTimeout(() => {
+                if (random == 0) {
+                    bossattack()
+                }
+                if (random == 1) {
+                    bossskillcount++
+
+                    $('#tright').text(`${bossid}好像正在醞釀...`)
+                    if (bossskillcount == 2) {
+                        bossskill()
+                        bossskillcount = 0
+                    }
+                }
+                if (random == 2) {
+                    bossskillcount--
+
+                    $('#tright').text(`${bossid}好像正在改變型態...`)
+                    if (bossskillcount == -2) {
+                        console.log('aa');
+                        bossskillcount = 0
+                    }
+                }
+                console.log(bossskillcount);
+            }, 50);
+
+        }
 
     </script>
 </body>
