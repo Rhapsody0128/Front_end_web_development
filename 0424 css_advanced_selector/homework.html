@@ -5,10 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+
+        }
+
+        #a {
+            width: 400px;
+            height: 120px;
+            background: repeating-linear-gradient(to right, rgba(0, 0, 0, 0) 1px 3%, black 10px 3.5%), linear-gradient(90deg, white 0% 45%, black 45% 55%, yellow 0%);
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            border: 1px solid black;
+
+        }
+
+        #a::after {
+            content: '';
+            width: 600px;
+            height: 80px;
+            background: black;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            left: -25%;
+            bottom: 0;
+            border: 1px solid black;
+            z-index: -1;
+        }
+
+        #a::before {
+            content: '';
+            height: 120px;
+            width: 50px;
+            background: green;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            left: -150%;
+            bottom: 0;
+        }
+
+        hr {
+            position: absolute;
+            top: 45%;
+            left: 100%;
+            width: 380px;
+            height: 2px;
+            background: black;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id='a'>
+        <hr>
+    </div>
 </body>
 
 </html>
