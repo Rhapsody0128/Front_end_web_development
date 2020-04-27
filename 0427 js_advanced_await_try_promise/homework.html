@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 30px;
+            font-family: 微軟正黑體;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id='a'>
+
+    </ul>
+
+    <script src="../jq/jquery-3.5.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+
+        const p = async (user) => {
+            try {
+                const users = await axios.get('https://jsonplaceholder.typicode.com/users')
+                for (let data of users.data) {
+                    if (data.name == user) {
+                        id = data.id
+                    }
+                }
+                const pages = await axios.get('https://jsonplaceholder.typicode.com/posts')
+                for (let data of pages.data) {
+                    if (data.userId == id) {
+                        $('#a').append(`<li>${data.title}</li>`)
+                    }
+                }
+                // if (users.data.includes('Leanne Graham'))
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        p('Leanne Graham')
+    </script>
+</body>
+
+</html>
