@@ -23,7 +23,7 @@
         //         console.log('使用了未定義的函式');
         //     }
         // }
-
+        let input = prompt('請輸入5-10')
         const validate = (input) => {
             // 只接受5-10數字的function
             let re = { ok: false, msg: '' }
@@ -53,7 +53,7 @@
             }
             return re
         }
-        const isok = validate(101)
+        const isok = validate(input)
         console.log(isok);
 
     </script>
