@@ -30,7 +30,6 @@
         #cards {
             width: 500px;
             height: 500px;
-
             display: inline-block;
 
         }
@@ -177,54 +176,59 @@
         // 開始-----------------------------------------------------------------
 
         $('#start').click(function () {
+            borncards()
             $('.card').addClass('open')
+
             setTimeout(() => {
+
                 $('.card').removeClass('open')
             }, 2000);
             $(this).attr('disabled', 'ture')
-            ingame = true
+
+
         })
 
         // 隨機發牌-----------------------------------------------------------------
-
-        for (let i = 0; i < 16; i++) {
-            $("#cards").append(`<div class='card'>
+        const borncards = () => {
+            for (let i = 0; i < 16; i++) {
+                $("#cards").append(`<div class='card'>
                 <div class="front"></div>
                 <div class="back"></div>
             </div>`)
 
-            let random = rand(3)
+                let random = rand(3)
 
-            switch (random) {
-                case 0:
-                    random = 'fire'
-                    cardarray.push(random)
-                    break;
-                case 1:
-                    random = 'leaf'
-                    cardarray.push(random)
-                    break;
-                case 2:
-                    random = 'water'
-                    cardarray.push(random)
-                    break;
-            }
-            if (i == 15) {
-                let random = rand(16)
-                cardarray.splice(random, 1, 'sword')
-                let random2 = rand(16)
-                while (random2 == random) {
-                    random2 = rand(16)
+                switch (random) {
+                    case 0:
+                        random = 'fire'
+                        cardarray.push(random)
+                        break;
+                    case 1:
+                        random = 'leaf'
+                        cardarray.push(random)
+                        break;
+                    case 2:
+                        random = 'water'
+                        cardarray.push(random)
+                        break;
                 }
-                cardarray.splice(random2, 1, 'shield')
+                if (i == 15) {
+                    let random = rand(16)
+                    cardarray.splice(random, 1, 'sword')
+                    let random2 = rand(16)
+                    while (random2 == random) {
+                        random2 = rand(16)
+                    }
+                    cardarray.splice(random2, 1, 'shield')
+                }
+
+            }
+            for (let i = 0; i < 16; i++) {
+                $('.front').eq(i).addClass(cardarray[i])
             }
 
+            $('.front').removeClass('front')
         }
-        for (let i = 0; i < 16; i++) {
-            $('.front').eq(i).addClass(cardarray[i])
-        }
-
-        $('.front').removeClass('front')
 
         // 補牌-----------------------------------------------------------------
         const borncard = () => {
