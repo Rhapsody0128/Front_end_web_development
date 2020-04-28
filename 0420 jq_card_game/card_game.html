@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         * {
-            font-size: 30px;
+            font-size: 35px;
             font-family: 微軟正黑體;
         }
 
@@ -38,6 +38,15 @@
             text-align: center;
         }
 
+        #animate {
+            position: absolute;
+            top: 42%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            background-color: crimson;
+        }
+
         #cards {
             width: 500px;
             height: 500px;
@@ -49,7 +58,7 @@
             height: 400px;
             background: wheat;
             float: right;
-
+            transition: 1s;
         }
 
         #tleft {
@@ -57,6 +66,7 @@
             height: 400px;
             background: wheat;
             float: left;
+            transition: 1s;
         }
 
         #dright {
@@ -64,7 +74,7 @@
             height: 500px;
             background: wheat;
             float: right;
-
+            transition: 1s;
         }
 
         #dleft {
@@ -72,6 +82,7 @@
             height: 500px;
             background: wheat;
             float: left;
+            transition: 1s;
         }
 
         #start {
@@ -79,7 +90,7 @@
             width: 200px;
             height: 100px;
             margin: auto;
-            margin-top: 70%;
+            margin-top: 50%;
         }
 
         .card {
@@ -197,10 +208,7 @@
         let hp = 1000
         let bosshp = 3000
 
-
-
-        boss.style.backgroundImage = 'url("./material/fire_dragon.png")'
-
+        let bossid = ''
         let bossattr = boss.style.backgroundImage
         let leafdragon = 'url("./material/leaf_dragon.png")'
         let firedragon = 'url("./material/fire_dragon.png")'
@@ -213,6 +221,7 @@
 
         $('#start').click(function () {
 
+            bosschange()
 
             $('.card').css('pointer-events', 'all')
 
@@ -225,8 +234,6 @@
             }, 2000);
 
             $(this).attr('disabled', 'ture')
-
-
         })
 
         // 隨機發牌-----------------------------------------------------------------
@@ -340,11 +347,13 @@
                     }
                 }
             }, 1200);
-
         }
 
         // 點擊卡片事件-----------------------------------------------------------------
         const actioncancel = () => {
+
+
+
             $('.card').css('pointer-events', 'none')
             setTimeout(() => {
                 $('.open').removeClass('open')
@@ -396,7 +405,12 @@
 
         $('.card').on('click', function () {
 
+
+
             if (!$(this).hasClass('.open')) {
+
+                $('#tright').text('')
+                $('#dleft').text('')
 
                 $(this).addClass('open')
 
@@ -589,7 +603,6 @@
             $('#dleft').text(`${atk}`)
         }
         // BOSS行為-----------------------------------------------------------
-        let bossid = '火龍'
         const bossattack = () => {
             $('#boss').animate({
                 width: '+=200px',
@@ -604,7 +617,10 @@
                 height: '-=200px',
                 top: '50%',
             }, 1000)
-            $('#tright').text('BOSS向你衝了過來')
+            $('#tright').text(`${bossid}向你衝了過來`)
+            $('#animate').css({
+
+            })
             bossatk = rand(50) + 50
             setTimeout(() => {
                 if ((bossatk - def) < 0) {
@@ -617,9 +633,9 @@
                     $('#drighttext').text(`HP:${hp}`)
                 }
             }, 1500);
-
         }
         const bossskill = () => {
+
             $('#boss').animate({
                 width: '+=200px',
                 height: '+=200px',
@@ -634,6 +650,23 @@
                 height: '-=200px',
                 top: '50%',
             }, 500)
+            if (bossid == '櫻火龍') {
+                $('#animate').css('backgroundImage', 'fireskill')
+            }
+            $('#animate').animate({
+                width: '200px',
+                height: '20px',
+
+            }, 1000)
+            $('#animate').animate({
+                height: '600px',
+                top: '73%'
+            }, 100)
+            $('#animate').animate({
+                top: '100%',
+                height: '0px'
+            }, 1000, animatenone())
+
             bossatk = rand(100) + 100
             setTimeout(() => {
                 if ((bossatk - def) < 0) {
@@ -650,7 +683,38 @@
                     $('.card').removeClass('open')
                 }, 1000);
             }, 1500);
+        }
 
+        const bosschange = () => {
+            let randon3 = rand(3)
+
+            if (bossid == '櫻火龍') {
+                randon3 = rand(2) + 1
+            }
+            if (bossid == '水蛟龍') {
+                while (randon3 == 1) {
+                    randon3 = rand(3)
+                }
+            }
+            if (bossid == '翡翠龍') {
+                rand(2)
+            }
+            console.log(randon3);
+            if (randon3 == 0) {
+                bossid = '櫻火龍'
+                $('#src').css('backgroundImage', 'fire_sence')
+                boss.style.backgroundImage = 'url("./material/fire_dragon.png")'
+            }
+            if (randon3 == 1) {
+                bossid = '水蛟龍'
+                $('#src').css('backgroundImage', 'water_sence')
+                boss.style.backgroundImage = 'url("./material/water_dragon.png")'
+            }
+            if (randon3 == 2) {
+                bossid = '翡翠龍'
+                $('#src').css('backgroundImage', 'leaf_sence')
+                boss.style.backgroundImage = 'url("./material/leaf_dragon.png")'
+            }
         }
 
         const bossaction = () => {
@@ -677,15 +741,42 @@
                 }
                 if (random == 2) {
                     bossskillcount--
+                    $('#src').css('backgroundImage', 'changing')
+                    $('#boss').animate({
+                        top: '40%'
+                    }, 500)
+                    $('#boss').animate({
+                        top: '50%',
+                        left: '60%'
+                    }, 500)
+                    $('#boss').animate({
+                        top: '60%',
+                        left: '50%'
+                    }, 500)
+                    $('#boss').animate({
+                        top: '50%',
+                        left: '40%'
+                    }, 500)
+                    $('#boss').animate({
+                        top: '50%',
+                        left: '50%'
+                    }, 500)
 
                     $('#tright').text(`${bossid}好像正在改變型態...`)
                     if (bossskillcount == -2) {
-                        console.log('aa');
+                        bosschange()
                         bossskillcount = 0
                     }
                 }
                 console.log(bossskillcount);
             }, 50);
+        }
+        // 動畫歸零--------------------------------------------------------
+        const animatenone = () => {
+            $('#animate').css({
+                width: 0,
+                height: 0
+            })
         }
 
     </script>
