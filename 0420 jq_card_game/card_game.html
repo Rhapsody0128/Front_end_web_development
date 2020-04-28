@@ -644,8 +644,13 @@
                     hp -= (bossatk - def)
                     $('#dleft').text(`${bossid}向你發動龍之吐襲，你受到${(bossatk - def)} 點傷害`)
                     $('#drighttext').text(`HP: ${hp}`)
+                    $('.card').addClass('open')
                 }
+                setTimeout(() => {
+                    $('.card').removeClass('open')
+                }, 1000);
             }, 1500);
+
         }
 
         const bossaction = () => {
@@ -681,7 +686,6 @@
                 }
                 console.log(bossskillcount);
             }, 50);
-
         }
 
     </script>
