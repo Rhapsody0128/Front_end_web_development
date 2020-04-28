@@ -1,3 +1,4 @@
 node_modules/
-nogrok.exe/
-.env/
+ngrok
+*.env
+.env
