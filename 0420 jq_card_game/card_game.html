@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         * {
-            font-size: 35px;
+            font-size: 30px;
             font-family: 微軟正黑體;
         }
 
@@ -17,14 +17,12 @@
             margin: auto;
             position: relative;
             background-color: blue;
+            transition: 1s;
         }
 
         #boss {
             width: 700px;
             height: 400px;
-            /* background-image: url(./material/leaf_dragon.png); */
-            /* background-image: url(./material/fire_dragon.png);
-            background-image: url(./material/water_dragon.png); */
             background-size: contain;
             background-repeat: no-repeat;
             position: absolute;
@@ -47,24 +45,40 @@
             background-color: crimson;
         }
 
+        #nowpick {
+            width: 500px;
+            height: 300px;
+
+            text-align: left;
+        }
+
+
         #cards {
             width: 500px;
             height: 500px;
             display: inline-block;
         }
 
+        #bosshp {
+            width: 500px;
+            height: 50px;
+            background: linear-gradient(90deg, red 0% 100%, black 0% 100%);
+
+        }
+
         #tright {
             width: 500px;
             height: 400px;
-            background: wheat;
+
             float: right;
             transition: 1s;
+            text-align: left;
         }
 
         #tleft {
             width: 500px;
             height: 400px;
-            background: wheat;
+
             float: left;
             transition: 1s;
         }
@@ -72,7 +86,7 @@
         #dright {
             width: 500px;
             height: 500px;
-            background: wheat;
+
             float: right;
             transition: 1s;
         }
@@ -80,17 +94,27 @@
         #dleft {
             width: 500px;
             height: 500px;
-            background: wheat;
+
             float: left;
             transition: 1s;
+            text-align: left;
         }
 
         #start {
             background: blueviolet;
             width: 200px;
-            height: 100px;
+            height: 80px;
             margin: auto;
-            margin-top: 50%;
+        }
+
+        #rest {
+            background: blueviolet;
+            width: 200px;
+            height: 80px;
+            margin: auto;
+            margin-top: 0.5%;
+            pointer-events: none;
+
         }
 
         .card {
@@ -164,25 +188,47 @@
             height: 120px;
             position: absolute;
         }
+
+        .pick {
+            position: relative;
+            display: inline-block;
+        }
+
+        li:nth-last-child(even) {
+            color: red;
+        }
+
+        li:nth-last-child(odd) {
+            color: blue;
+        }
     </style>
 </head>
 
 <body>
     <div id="content">
         <div id="animate"></div>
-        <div id='tleft'></div>
-        <div id='tright'></div>
+        <div id='tleft'>BOSS HP:
+            <div id='bosshp'></div>
+        </div>
+        <div id='tright'>
+            <ul></ul>
+        </div>
         <div id="src">
 
             <div id="boss"></div>
 
         </div>
         <hr>
-        <div id='dleft'></div>
+        <div id='dleft'>
+            <ul></ul>
+        </div>
         <div id="cards"></div>
         <div id='dright'>
-            <div id="drighttext">asd</div>
-            <button id='start' type="button" value="START">START</button>
+            <div>HP:<span id='drighttext'>1000</span></div>
+            <div id='nowpick'>
+            </div>
+            <div> <button id='start' type="button" value="START">START</button></div>
+            <div><button id='rest' type="button">REST</button></div>
         </div>
 
     </div>
@@ -207,35 +253,75 @@
         let bossskillcount = 0
         let hp = 1000
         let bosshp = 3000
-
+        let bosshpchart = ''
         let bossid = ''
-        let bossattr = boss.style.backgroundImage
-        let leafdragon = 'url("./material/leaf_dragon.png")'
-        let firedragon = 'url("./material/fire_dragon.png")'
-        let waterdragon = 'url("./material/water_dragon.png")'
-
+        let attr = ''
+        let heal = ''
 
 
 
         // 開始-----------------------------------------------------------------
 
+        setInterval(() => {
+            if ($('.tright')[7] != undefined) {
+                $('.tright')[0].remove()
+            }
+            if ($('.dleft')[5] != undefined) {
+                $('.dleft')[0].remove()
+            }
+            bosshpchart = bosshp / 30
+            $('#bosshp').css('background', `linear-gradient(90deg, red 0% ${bosshpchart}%, black 0% 100%)`)
+
+        }, 1000);
+
+
         $('#start').click(function () {
 
-            bosschange()
+            bossborn()
 
-            $('.card').css('pointer-events', 'all')
+            $('#rest').css('pointer-events', 'auto')
 
+            $('.card').css('pointer-events', 'auto')
 
             $('.card').addClass('open')
 
             setTimeout(() => {
 
                 $('.card').removeClass('open')
-            }, 2000);
+            }, 3000);
 
             $(this).attr('disabled', 'ture')
         })
 
+
+        $('#rest').click(function () {
+            $('.card').addClass('open')
+
+            setTimeout(() => {
+
+                actioncancel()
+            }, 3000);
+        })
+
+        const bossborn = () => {
+            let random = rand(3)
+            if (random == 0) {
+                bossid = '櫻火龍'
+                $('#src').css('backgroundImage', 'fire_sence')
+                boss.style.backgroundImage = 'url("./material/fire_dragon.png")'
+            }
+            if (random == 1) {
+                bossid = '水蛟龍'
+                $('#src').css('backgroundImage', 'water_sence')
+                boss.style.backgroundImage = 'url("./material/water_dragon.png")'
+            }
+            if (random == 2) {
+                bossid = '翡翠龍'
+                $('#src').css('backgroundImage', 'leaf_sence')
+                boss.style.backgroundImage = 'url("./material/leaf_dragon.png")'
+            }
+            $('#tright').append(`<li class='tright'>${bossid}出現了!</li>`)
+        }
         // 隨機發牌-----------------------------------------------------------------
 
 
@@ -352,8 +438,6 @@
         // 點擊卡片事件-----------------------------------------------------------------
         const actioncancel = () => {
 
-
-
             $('.card').css('pointer-events', 'none')
             setTimeout(() => {
                 $('.open').removeClass('open')
@@ -361,6 +445,7 @@
             }, 500);
             bossaction()
             setTimeout(() => {
+                $('#nowpick').children().remove()
                 $('.card').css('pointer-events', 'all')
             }, 1000);
             array = []
@@ -376,8 +461,10 @@
             $('.card').css('pointer-events', 'none')
             borncard()
 
+
             $('.open').fadeTo(700, 0, function () {
                 setTimeout(() => {
+                    $('#nowpick').children().remove()
                     $('.open').fadeTo(700, 100)
                 }, 1000);
             })
@@ -406,24 +493,27 @@
         $('.card').on('click', function () {
 
 
+            if (!$(this).hasClass('open')) {
 
-            if (!$(this).hasClass('.open')) {
 
-                $('#tright').text('')
-                $('#dleft').text('')
+                $('#nowpick').append(`<div class='${$(this).children().first().attr('class')
+                    } pick'></div>`)
+
+
 
                 $(this).addClass('open')
 
                 array.push($(this).children().first().attr('class'))
 
+
                 if ($('.open').length > 1) {
 
                     if (array[0] == $(this).children().first().attr('class')) {
                         combo++
-                        console.log(combopoint);
                         combopoint *= 1.5
                         skillcount++
-                        if ($(`.${array[0]}`).length == skillcount) {
+                        console.log($(`.${array[0]}`).length);
+                        if ($(`.${array[0]}`).length / 2 == skillcount) {
                             skill()
                             actionfinish()
                         }
@@ -450,157 +540,194 @@
         // 攻擊------------------------------------------------------
         const attack = function () {
             if (array.indexOf('sword') != -1 && array.indexOf('shield') == -1) {
-                if (bossattr == leafdragon) {
+                if (bossid == '翡翠龍') {
                     array.map((i) => {
                         switch (i) {
                             case 'leaf':
                                 atk++
+                                attr = '木'
                                 break;
                             case 'fire':
                                 atk += 2
+                                attr = '火'
                                 break;
                             case 'water':
                                 atk--
+                                attr = '水'
                                 break;
                         }
                     })
                 }
-                if (bossattr == firedragon) {
+                if (bossid == '櫻火龍') {
                     array.map((i) => {
                         switch (i) {
                             case 'leaf':
                                 atk--
+                                attr = '木'
                                 break;
                             case 'fire':
                                 atk++
+                                attr = '火'
                                 break;
                             case 'water':
                                 atk += 2
+                                attr = '水'
                                 break;
                         }
                     })
                 }
-                if (bossattr == waterdragon) {
+                if (bossid == '水蛟龍') {
                     array.map((i) => {
                         switch (i) {
                             case 'leaf':
                                 atk += 2
+                                attr = '木'
                                 break;
                             case 'fire':
                                 atk--
+                                attr = '火'
                                 break;
                             case 'water':
                                 atk++
+                                attr = '水'
                                 break;
                         }
                     })
                 }
 
                 atk *= combopoint
-                $('#dleft').text(`${atk}`)
+                atk = Math.round(atk)
+                bosshp -= atk
+                $('#dleft').append(`<li class='dleft'>對${bossid}使用了${attr}之斬擊，造成${atk}點傷害`)
             }
         }
         // 防禦----------------------------------------------------
         const defense = function () {
             if (array.indexOf('shield') != -1 && array.indexOf('sword') == -1) {
-                if (bossattr == leafdragon) {
-                    array.map((i) => {
-                        switch (i) {
-                            case 'leaf':
-                                def++
-                                break;
-                            case 'fire':
-                                def += 2
-                                break;
-                            case 'water':
-                                def--
-                                break;
-                        }
-                    })
-                }
-                if (bossattr == firedragon) {
-                    array.map((i) => {
-                        switch (i) {
-                            case 'leaf':
-                                def--
-                                break;
-                            case 'fire':
-                                def++
-                                break;
-                            case 'water':
-                                def += 2
-                                break;
-                        }
-                    })
-                }
-                if (bossattr == waterdragon) {
+                if (bossid == '翡翠龍') {
                     array.map((i) => {
                         switch (i) {
                             case 'leaf':
                                 def += 2
+                                attr = '木'
                                 break;
                             case 'fire':
-                                def--
+                                def += 3
+                                attr = '火'
                                 break;
                             case 'water':
                                 def++
+                                attr = '水'
                                 break;
                         }
                     })
                 }
+                if (bossid == '櫻火龍') {
+                    array.map((i) => {
+                        switch (i) {
+                            case 'leaf':
+                                def++
+                                attr = '木'
+                                break;
+                            case 'fire':
+                                def += 2
+                                attr = '火'
+                                break;
+                            case 'water':
+                                def += 3
+                                attr = '水'
+                                break;
+                        }
+                    })
+                }
+                if (bossid == '水蛟龍') {
+                    array.map((i) => {
+                        switch (i) {
+                            case 'leaf':
+                                def += 3
+                                attr = '木'
+                                break;
+                            case 'fire':
+                                def++
+                                attr = '火'
+                                break;
+                            case 'water':
+                                def += 2
+                                attr = '水'
+                                break;
+                        }
+                    })
+                }
+
                 def *= combopoint
-                $('#dleft').text(`${def}`)
+                def = Math.round(def)
+                $('#dleft').append(`<li class='dleft'>架起了${attr}之盾，對${bossid}具有${def}點防禦減免</li>`)
             }
         }
         // 技能--------------------------------------------------
         const skill = () => {
-            if (bossattr == leafdragon) {
+            if (bossid == '翡翠龍') {
                 array.map((i) => {
                     switch (i) {
                         case 'leaf':
                             atk += 2
+                            attr = '木'
                             break;
                         case 'fire':
                             atk += 3
+                            attr = '火'
                             break;
                         case 'water':
                             atk += 0.5
+                            attr = '水'
                             break;
                     }
                 })
             }
-            if (bossattr == firedragon) {
+            if (bossid == '櫻火龍') {
                 array.map((i) => {
                     switch (i) {
                         case 'leaf':
                             atk += 0.5
+                            attr = '木'
                             break;
                         case 'fire':
                             atk += 2
+                            attr = '火'
                             break;
                         case 'water':
                             atk += 3
+                            attr = '水'
                             break;
                     }
                 })
             }
-            if (bossattr == waterdragon) {
+            if (bossid == '水蛟龍') {
                 array.map((i) => {
                     switch (i) {
                         case 'leaf':
                             atk += 3
+                            attr = '木'
                             break;
                         case 'fire':
                             atk += 0.5
+                            attr = '火'
                             break;
                         case 'water':
                             atk += 2
+                            attr = '水'
                             break;
                     }
                 })
             }
             atk *= combopoint
-            $('#dleft').text(`${atk}`)
+            atk = Math.round(atk)
+            heal = Math.round(atk * 0.5)
+
+            hp += heal
+            bosshp -= atk
+            $('#drighttext').text(`${hp}`)
+            $('#dleft').append(`<li class='dleft'>詠唱出${attr}之魔法，對${bossid}造成${atk}點傷害，並從${bossid}身上吸取${heal}點HP</li>`)
         }
         // BOSS行為-----------------------------------------------------------
         const bossattack = () => {
@@ -617,7 +744,7 @@
                 height: '-=200px',
                 top: '50%',
             }, 1000)
-            $('#tright').text(`${bossid}向你衝了過來`)
+            $('#tright').append(`<li class='tright'>${bossid}向你衝了過來</li>`)
             $('#animate').css({
 
             })
@@ -625,12 +752,12 @@
             setTimeout(() => {
                 if ((bossatk - def) < 0) {
                     hp = hp
-                    $('#dleft').text(`你成功擋下${bossid}的攻擊`)
+                    $('#dleft').append(`<li class='dleft'>你成功擋下${bossid}的攻擊</li>`)
                 }
                 else {
                     hp -= (bossatk - def)
-                    $('#dleft').text(`被${bossid}，抓傷你受到${(bossatk - def)}點傷害`)
-                    $('#drighttext').text(`HP:${hp}`)
+                    $('#dleft').append(`<li class='dleft'>被${bossid}抓傷，你受到${(bossatk - def)}點傷害</li>`)
+                    $('#drighttext').text(`${hp}`)
                 }
             }, 1500);
         }
@@ -653,6 +780,8 @@
             if (bossid == '櫻火龍') {
                 $('#animate').css('backgroundImage', 'fireskill')
             }
+
+            $('#tright').append(`<li class='tright'>${bossid}向你發動龍之吐襲</li>`)
             $('#animate').animate({
                 width: '200px',
                 height: '20px',
@@ -671,12 +800,12 @@
             setTimeout(() => {
                 if ((bossatk - def) < 0) {
                     hp = hp
-                    $('#dleft').text(`你成功擋下${bossid}的吐襲`)
+                    $('#dleft').append(`<li class="dleft">你成功擋下${bossid}的吐襲</li>`)
                 }
                 else {
                     hp -= (bossatk - def)
-                    $('#dleft').text(`${bossid}向你發動龍之吐襲，你受到${(bossatk - def)} 點傷害`)
-                    $('#drighttext').text(`HP: ${hp}`)
+                    $('#dleft').append(`<li class='dleft'>${bossid}向你發動龍之吐襲，你受到${(bossatk - def)} 點傷害</li>`)
+                    $('#drighttext').text(`${hp}`)
                     $('.card').addClass('open')
                 }
                 setTimeout(() => {
@@ -686,35 +815,36 @@
         }
 
         const bosschange = () => {
-            let randon3 = rand(3)
+            let random3 = rand(3)
 
             if (bossid == '櫻火龍') {
-                randon3 = rand(2) + 1
+                random3 = rand(2) + 1
             }
             if (bossid == '水蛟龍') {
-                while (randon3 == 1) {
-                    randon3 = rand(3)
+                while (random3 == 1) {
+                    random3 = rand(3)
                 }
             }
             if (bossid == '翡翠龍') {
-                rand(2)
+                random3 = rand(2)
             }
-            console.log(randon3);
-            if (randon3 == 0) {
+            console.log(random3);
+            if (random3 == 0) {
                 bossid = '櫻火龍'
                 $('#src').css('backgroundImage', 'fire_sence')
                 boss.style.backgroundImage = 'url("./material/fire_dragon.png")'
             }
-            if (randon3 == 1) {
+            if (random3 == 1) {
                 bossid = '水蛟龍'
                 $('#src').css('backgroundImage', 'water_sence')
                 boss.style.backgroundImage = 'url("./material/water_dragon.png")'
             }
-            if (randon3 == 2) {
+            if (random3 == 2) {
                 bossid = '翡翠龍'
                 $('#src').css('backgroundImage', 'leaf_sence')
                 boss.style.backgroundImage = 'url("./material/leaf_dragon.png")'
             }
+            $('#tright').append(`<li class='tright'>變成${bossid}了!</li>`)
         }
 
         const bossaction = () => {
@@ -725,7 +855,6 @@
             if (bossskillcount == -1) {
                 random = 2
             }
-            console.log(random);
             setTimeout(() => {
                 if (random == 0) {
                     bossattack()
@@ -733,42 +862,48 @@
                 if (random == 1) {
                     bossskillcount++
 
-                    $('#tright').text(`${bossid}好像正在醞釀...`)
+
                     if (bossskillcount == 2) {
                         bossskill()
                         bossskillcount = 0
                     }
+                    else {
+                        $('#tright').append(`<li class='tright'>${bossid}好像正在醞釀...</li>`)
+                    }
                 }
                 if (random == 2) {
                     bossskillcount--
-                    $('#src').css('backgroundImage', 'changing')
-                    $('#boss').animate({
-                        top: '40%'
-                    }, 500)
-                    $('#boss').animate({
-                        top: '50%',
-                        left: '60%'
-                    }, 500)
-                    $('#boss').animate({
-                        top: '60%',
-                        left: '50%'
-                    }, 500)
-                    $('#boss').animate({
-                        top: '50%',
-                        left: '40%'
-                    }, 500)
-                    $('#boss').animate({
-                        top: '50%',
-                        left: '50%'
-                    }, 500)
 
-                    $('#tright').text(`${bossid}好像正在改變型態...`)
+
                     if (bossskillcount == -2) {
                         bosschange()
                         bossskillcount = 0
                     }
+
+                    else {
+                        $('#src').css('backgroundImage', 'changing')
+                        $('#boss').animate({
+                            top: '40%'
+                        }, 500)
+                        $('#boss').animate({
+                            top: '50%',
+                            left: '60%'
+                        }, 500)
+                        $('#boss').animate({
+                            top: '60%',
+                            left: '50%'
+                        }, 500)
+                        $('#boss').animate({
+                            top: '50%',
+                            left: '40%'
+                        }, 500)
+                        $('#boss').animate({
+                            top: '50%',
+                            left: '50%'
+                        }, 500)
+                        $('#tright').append(`<li class='tright'>${bossid}好像正在改變型態...</li>`)
+                    }
                 }
-                console.log(bossskillcount);
             }, 50);
         }
         // 動畫歸零--------------------------------------------------------
