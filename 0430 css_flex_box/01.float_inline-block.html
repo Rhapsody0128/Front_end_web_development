@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        /* 可以把padding和margin列入width計算，就不用再額外減去原有width */
+    }
+
+
+
+    #content {
+        width: 1200px;
+        border: 1px black solid;
+        background: #FFA;
+        margin: auto;
+        font-size: 0;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .p1 {
+        width: 30%;
+        height: 350px;
+        margin: 0 1.6666666%;
+        display: inline-block;
+        font-size: 1rem;
+    }
+
+    #content2 {
+        width: 1200px;
+        border: 1px black solid;
+        margin: auto;
+        font-size: 0;
+        background: #FFA;
+        overflow: hidden;
+    }
+
+    .p2 {
+        width: 30%;
+        height: 350px;
+        margin: 0 1.6666666%;
+        float: left;
+        font-size: 1rem;
+    }
+</style>
+
+<body>
+    <h1>Inline-Block排版</h1>
+    <p>必須處裡inline-block之間幾px的空白問題</p>
+    <div id="content">
+        <div id='center' class="p1">
+            <h2>TITLE</h2>
+            <img src="https://picsum.photos/350/200/?random=1">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro facilis accusamus ipsum nemo
+                nobis
+            </p>
+        </div>
+        <div id='left' class='p1'>
+            <h2>TITLE</h2>
+            <img src="https://picsum.photos/350/200/?random=1">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro facilis accusamus ipsum nemo
+                nobis
+            </p>
+        </div>
+        <div id='right' class="p1">
+            <h2>TITLE</h2>
+            <img src="https://picsum.photos/350/200/?random=1">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro facilis accusamus ipsum nemo
+                nobis
+            </p>
+        </div>
+    </div>
+    <hr>
+    <h1>Float排版</h1>
+    <p>如果子元素全部float沒有內容撐起父元素高度，需多加overfloat:hidden屬性來處理高度崩塌的問題</p>
+    <div id="content2">
+        <div id='center2' class="p2">
+            <h2>TITLE</h2>
+            <img src="https://picsum.photos/350/200/?random=1">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro facilis accusamus ipsum nemo
+                nobis
+            </p>
+        </div>
+        <div id='left2' class='p2'>
+            <h2>TITLE</h2>
+            <img src="https://picsum.photos/350/200/?random=1">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro facilis accusamus ipsum nemo
+                nobis
+            </p>
+        </div>
+        <div id='right2' class="p2">
+            <h2>TITLE</h2>
+            <img src="https://picsum.photos/350/200/?random=1">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro facilis accusamus ipsum nemo
+                nobis
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

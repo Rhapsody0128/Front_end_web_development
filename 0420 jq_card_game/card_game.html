@@ -16,8 +16,10 @@
             height: 400px;
             margin: auto;
             position: relative;
-            background-color: blue;
             transition: 1s;
+            background-repeat: no-repeat;
+            background-size: cover;
+
         }
 
         #boss {
@@ -69,7 +71,6 @@
         #tright {
             width: 500px;
             height: 400px;
-
             float: right;
             transition: 1s;
             text-align: left;
@@ -227,7 +228,7 @@
             <div>HP:<span id='drighttext'>1000</span></div>
             <div id='nowpick'>
             </div>
-            <div> <button id='start' type="button" value="START">START</button></div>
+            <div><button id='start' type="button" value="START">START</button></div>
             <div><button id='rest' type="button">REST</button></div>
         </div>
 
@@ -307,17 +308,17 @@
             let random = rand(3)
             if (random == 0) {
                 bossid = '櫻火龍'
-                $('#src').css('backgroundImage', 'fire_sence')
+                $('#src').css('backgroundImage', 'url("./material/fire_sence.jpg")')
                 boss.style.backgroundImage = 'url("./material/fire_dragon.png")'
             }
             if (random == 1) {
                 bossid = '水蛟龍'
-                $('#src').css('backgroundImage', 'water_sence')
+                $('#src').css('backgroundImage', 'url("./material/water_sence.jpg")')
                 boss.style.backgroundImage = 'url("./material/water_dragon.png")'
             }
             if (random == 2) {
                 bossid = '翡翠龍'
-                $('#src').css('backgroundImage', 'leaf_sence')
+                $('#src').css('backgroundImage', 'url("./material/leaf_sence.jpg")')
                 boss.style.backgroundImage = 'url("./material/leaf_dragon.png")'
             }
             $('#tright').append(`<li class='tright'>${bossid}出現了!</li>`)
@@ -831,17 +832,17 @@
             console.log(random3);
             if (random3 == 0) {
                 bossid = '櫻火龍'
-                $('#src').css('backgroundImage', 'fire_sence')
+                $('#src').css('backgroundImage', 'url("./material/fire_sence.jpg")')
                 boss.style.backgroundImage = 'url("./material/fire_dragon.png")'
             }
             if (random3 == 1) {
                 bossid = '水蛟龍'
-                $('#src').css('backgroundImage', 'water_sence')
+                $('#src').css('backgroundImage', 'url("./material/water_sence.jpg")')
                 boss.style.backgroundImage = 'url("./material/water_dragon.png")'
             }
             if (random3 == 2) {
                 bossid = '翡翠龍'
-                $('#src').css('backgroundImage', 'leaf_sence')
+                $('#src').css('backgroundImage', 'url("./material/leaf_sence.jpg")')
                 boss.style.backgroundImage = 'url("./material/leaf_dragon.png")'
             }
             $('#tright').append(`<li class='tright'>變成${bossid}了!</li>`)
@@ -881,7 +882,7 @@
                     }
 
                     else {
-                        $('#src').css('backgroundImage', 'changing')
+                        $('#src').css('backgroundImage', 'url("./material/changing.jpg")')
                         $('#boss').animate({
                             top: '40%'
                         }, 500)
