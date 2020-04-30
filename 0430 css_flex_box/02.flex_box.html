@@ -2,18 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">console.assert(expression, object);
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            box-sizing: border-box;
-            font-family: 微軟正黑體;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -60,8 +52,11 @@
         }
 
         .flex-direction {
-            flex-direction: column;
-            /* 預設是列(row) */
+            flex-direction: column-reverse;
+            /* 
+            預設是列(row)
+            reverse時可以倒過來排序
+             */
         }
 
         .justify-content {
@@ -145,13 +140,100 @@
    
             每個彈性項目拿到280px的空間
 
-            (840*(0.2)*3)/3+本身的wid
+            840*(0.2*3)/3+本身的width=每一個彈性最後的width
              */
         }
 
+        .flex-shrink {
+            flex-shrink: 0.3
+                /* 
+        計算flex-shrink
+        列出已知條件
+        margin totla:10*6=60px
+        flex-item width total:500+500+500=1500px
+        flex-item width total +margin total : 1500+60=1560px
+        1560>1200=>爆版
+
+        超出空間=1560-1200=360px
+        520-(360/3(幾等分))=400px
+        每個彈性項目抵銷120px
+
+        520*(0.3*3)/3+本身的width=每一個彈性盒最後的width
+            */
+        }
+
+        .flex-basis {
+
+            flex-basis: 100px;
+            /* 
+            auto(預設)時，width,height才有作用
+            數值=0時width height都沒作用
+            可以改變彈性項目的主軸長，優先權會比任何設定高，
+            會依據flex-direction的方向不同去操縱
+            row時操縱寬度
+            column時操縱高度
+             */
+        }
+
+        .flex {
+            flex: 1;
+            /* 
+        當flex設定數字時，
+        flex:1 => flex:1 1 0
+        當flex設定文字時，
+        flex:initial => flex:0 1 auto(預設) ，
+        flex:auto => flex:1 1 auto
+        flex:none => flex:0 0 auto
+         */
+        }
 
         .w1 {
             width: 200px;
+        }
+
+        .w2 {
+            width: 500px
+        }
+
+        .w3 {
+            width: 200px;
+        }
+
+        .order-1 {
+            order: 1
+        }
+
+        .order-2 {
+            order: 2
+        }
+
+        .order-3 {
+            order: 3
+        }
+
+        .order-first {
+            order: -1
+        }
+
+        .order-last {
+            order: 4
+        }
+
+        /* 沒設定預設order=0 */
+        /* order可以改變彈性項目的順序，數字越小越接近START */
+
+        .container2 {
+            width: 1200px;
+            height: 600px;
+            background: black;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            justify-content: center;
+        }
+
+        .col2 {
+            margin: 10px;
         }
     </style>
 </head>
@@ -232,12 +314,64 @@
         <div class="col align-self-end">彈性項目 03</div>
         <div class="col align-self-stretch">彈性項目 04</div>
     </div>
+
+    <hr>
+
     <h3>2.flex-grow 彈性伸展係數</h3>
-    <p>彈性項目的伸展係數，預設0，彈性項目的寬度可取決於元素設定寬度。ex:width:100px 100px</p>
+    <p>彈性項目的伸展係數，預設0，彈性項目的寬度可取決於元素設定寬度。ex:width:100px 即是100px</p>
     <div class="container d-flex">
         <div class="col w1 flex-grow">彈性項目 01</div>
-        <div class="col  flex-grow">彈性項目 02</div>
+        <div class="col w1 flex-grow">彈性項目 02</div>
         <div class="col w1 flex-grow">彈性項目 03</div>
+    </div>
+
+    <hr>
+
+    <h3>3.flex-shrink 彈性收縮係數</h3>
+    <p>彈性項目的收縮係數，預設1，防指所有彈性項目加起來的總寬度超過彈性和寬度而產生爆版現象</p>
+    <div class="container d-flex">
+        <div class="col w2 flex-shrink">彈性項目 01</div>
+        <div class="col w2 flex-shrink">彈性項目 02</div>
+        <div class="col w2 flex-shrink">彈性項目 03</div>
+    </div>
+
+    <hr>
+
+    <h3>4.flex-basis 彈性基準係數</h3>
+    <p>彈性項目的收縮係數，預設1，防指所有彈性項目加起來的總寬度超過彈性和寬度而產生爆版現象</p>
+    <div class="container d-flex">
+        <div class="col w3 flex-basis">彈性項目 01</div>
+        <div class="col w3 flex-basis">彈性項目 02</div>
+        <div class="col w3 flex-basis">彈性項目 03</div>
+    </div>
+    <h3>5.flex 三合一屬性縮寫</h3>
+    <p></p>
+    <div class="container d-flex">
+        <div class="col w2 flex">彈性項目 01</div>
+        <div class="col w2 flex">彈性項目 02</div>
+        <div class="col w2 flex">彈性項目 03</div>
+    </div>
+
+    <h3>6.order 彈性項目順序</h3>
+    <p></p>
+    <div class="container d-flex">
+        <div class="col flex ">彈性項目 01</div>
+        <div class="col flex order-1">彈性項目 02</div>
+        <div class="col flex order-first">彈性項目 03</div>
+    </div>
+
+    <hr>
+
+    <h3>align-contet</h3>
+    <p>1. 在彈性盒裡面設定</p>
+    <p>2. flex-wrap必須是wrap(多行)</p>
+    <div class="container2">
+        <div class="col2"><img src="https://picsum.photos/300/200/?random=1"></div>
+        <div class="col2"><img src="https://picsum.photos/300/200/?random=1"></div>
+        <div class="col2"><img src="https://picsum.photos/300/200/?random=1"></div>
+        <div class="col2"><img src="https://picsum.photos/300/100/?random=1"></div>
+        <div class="col2"><img src="https://picsum.photos/300/100/?random=1"></div>
+        <div class="col2"><img src="https://picsum.photos/300/100/?random=1"></div>
     </div>
 </body>
 

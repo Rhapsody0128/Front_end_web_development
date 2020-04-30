@@ -14,7 +14,7 @@
         #a {
             width: 400px;
             height: 120px;
-            background: repeating-linear-gradient(to right, rgba(0, 0, 0, 0) 1px 3%, black 10px 3.5%), linear-gradient(90deg, white 0% 45%, black 45% 55%, yellow 0%);
+            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(128, 128, 128, 0.5)45% 55%, rgba(255, 255, 255, 0.5)100%), linear-gradient(90deg, rgba(0, 0, 0, 0) 0% 45%, black 45% 55%, rgba(255, 255, 0, 0.5)55% 0%), linear-gradient(transparent 0 10%, white 10% 90%), repeating-linear-gradient(to right, rgba(0, 0, 0, 0) 1px 3%, black 10px 3.5%), white;
             position: absolute;
             margin: auto;
             top: 0;
@@ -22,14 +22,15 @@
             left: 0;
             bottom: 0;
             border: 1px solid black;
-
+            line-height: 220px;
+            font-size: large;
         }
 
         #a::after {
             content: '';
             width: 600px;
             height: 80px;
-            background: black;
+            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(128, 128, 128, 0.5)45% 55%, rgba(255, 255, 255, 0.5)100%), white;
             position: absolute;
             margin: auto;
             top: 0;
@@ -38,37 +39,40 @@
             bottom: 0;
             border: 1px solid black;
             z-index: -1;
+            border-radius: 5%;
         }
 
         #a::before {
             content: '';
             height: 120px;
             width: 50px;
-            background: green;
+            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(128, 128, 128, 0.5)45% 55%, rgba(255, 255, 255, 0.5)100%), white;
             position: absolute;
             margin: auto;
             top: 0;
             right: 0;
             left: -150%;
             bottom: 0;
+            border: 1px black solid;
+            border-radius: 5%;
         }
 
         hr {
             position: absolute;
-            top: 45%;
+            top: 43%;
             left: 100%;
             width: 380px;
             height: 2px;
             background: black;
             transform: translate(-50%, -50%);
-            z-index: -2;
-
+            z-index: -1;
         }
     </style>
 </head>
 
 <body>
     <div id='a'>
+        Made In Taiwan
         <hr>
     </div>
 </body>
