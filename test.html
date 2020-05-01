@@ -1,0 +1,608 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+
+@Rhapsody0128
+powerkaifu
+/
+JS_Clock
+1
+00
+Code
+Issues 0
+Pull requests 0 Actions
+Projects 0
+Wiki
+Security 0
+Insights
+JS_Clock/index.html
+@powerkaifu powerkaifu 調整畫面
+a82824e 13 days ago
+570 lines (487 sloc) 15.2 KB
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        * {
+            /* 線性走法 */
+            /* transition: 1s linear; */
+            /* 彈跳抖動走法 */
+            transition: 0.1s;
+            transition-timing-function: cubic-bezier(0.47, 2, 0.8, 1.2);
+        }
+
+        #doodle {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9998;
+        }
+
+        #mask {
+            /* width: 100%;
+         height: 100%; */
+            background: radial-gradient(transparent, transparent 50%, rgba(0, 0, 0, 0.9) 85%) no-repeat center/cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            background: url("./images/bg.jpg") no-repeat fixed center/cover;
+            filter: contrast(110%) saturate(140%);
+            overflow: hidden;
+        }
+
+        #clock {
+            /* 控制整體外觀 */
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)) hue-rotate(-50deg) contrast(130%) saturate(110%) invert(100%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(rgb(255, 254, 220) 0%, rgb(252, 249, 210) 75%, rgb(255, 248, 210) 75%);
+            box-shadow:
+                inset 0 0 10px 8px rgba(126, 81, 29, 0.5),
+                inset 0 0 30px 15px rgba(126, 81, 29, 0.5),
+                0 0 50px 10px rgb(255, 230, 170),
+                0 0 5px 5px rgb(145, 107, 61),
+                0 0 5px 3px rgb(112, 67, 12),
+                0 0 50px 60px rgb(255, 230, 170),
+                0 0 30px 20px rgba(255, 94, 0, 0.747),
+                0 0 100px 40px rgb(126, 80, 0);
+            border-radius: 50%;
+            margin: auto;
+            position: relative;
+            transition: 1s;
+        }
+
+        #hour {
+            width: 22%;
+            height: 5px;
+            background: rgb(102, 71, 35);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            z-index: 9999;
+            transform-origin: right center;
+            transform: translate(-50%, 0) rotate(90deg);
+        }
+
+        #minute {
+            width: 32%;
+            height: 3px;
+            background: rgb(102, 71, 35);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            z-index: 9999;
+            transform-origin: right center;
+            transform: translate(-50%, 0) rotate(90deg);
+        }
+
+        #second {
+            width: 40%;
+            height: 1px;
+            background: rgb(102, 71, 35);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            z-index: 9999;
+            transform-origin: right center;
+            transform: translate(-50%, 0) rotate(90deg);
+        }
+
+        #line {
+            height: 100%;
+            position: relative;
+            transform: rotate(-90deg);
+        }
+
+        /* 對齊線 */
+        #line .line {
+            color: white;
+            width: 42%;
+            height: 3px;
+            filter: drop-shadow(0 0 10px rgba(75, 45, 0, 0.5));
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* 線條定位點在左側、中間 */
+            transform-origin: left center;
+        }
+
+        #line .line:nth-child(1) {
+            transform: rotate(30deg);
+        }
+
+        #line .line:nth-child(2) {
+            transform: rotate(60deg);
+        }
+
+        #line .line:nth-child(3) {
+            transform: rotate(90deg);
+        }
+
+        #line .line:nth-child(4) {
+            transform: rotate(120deg);
+        }
+
+        #line .line:nth-child(5) {
+            transform: rotate(150deg);
+        }
+
+        #line .line:nth-child(6) {
+            transform: rotate(180deg);
+        }
+
+        #line .line:nth-child(7) {
+            transform: rotate(210deg);
+        }
+
+        #line .line:nth-child(8) {
+            transform: rotate(240deg);
+        }
+
+        #line .line:nth-child(9) {
+            transform: rotate(270deg);
+        }
+
+        #line .line:nth-child(10) {
+            transform: rotate(300deg);
+        }
+
+        #line .line:nth-child(11) {
+            transform: rotate(330deg);
+        }
+
+        #line .line:nth-child(12) {
+            transform: rotate(0deg);
+        }
+
+        /* 數字 */
+        #line .line span {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 28px;
+            color: rgb(122, 90, 54);
+            position: absolute;
+            right: 0;
+            top: -24px;
+            transform: translateY(-50%);
+        }
+
+        #line .line:nth-child(1) span {
+            transform: rotate(60deg);
+        }
+
+        #line .line:nth-child(2) span {
+            transform: rotate(30deg)
+        }
+
+        #line .line:nth-child(3) span {
+            transform: rotate(0deg)
+        }
+
+        #line .line:nth-child(4) span {
+            transform: rotate(-30deg)
+        }
+
+        #line .line:nth-child(5) span {
+            transform: rotate(-60deg)
+        }
+
+        #line .line:nth-child(6) span {
+            transform: rotate(-90deg)
+        }
+
+        #line .line:nth-child(7) span {
+            transform: rotate(-120deg)
+        }
+
+        #line .line:nth-child(8) span {
+            transform: rotate(-150deg)
+        }
+
+        #line .line:nth-child(9) span {
+            transform: rotate(-180deg)
+        }
+
+        #line .line:nth-child(10) span {
+            transform: rotate(-210deg)
+        }
+
+        #line .line:nth-child(11) span {
+            transform: rotate(-240deg)
+        }
+
+        #line .line:nth-child(12) span {
+            transform: rotate(-270deg)
+        }
+
+        /* 刻度 */
+        #tick {
+            width: 97%;
+            height: 97%;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: tick 8s ease infinite alternate;
+        }
+
+        #tick .tick_tick {
+            width: 3px;
+            height: 50%;
+            background: linear-gradient(to top, transparent 0%, transparent 94%, rgb(122, 90, 54) 0%);
+            position: absolute;
+            left: 50%;
+            transform-origin: center bottom;
+            transform: translate(-50%, 0) rotate(0deg);
+        }
+
+        #point {
+            width: 20px;
+            height: 20px;
+            background: rgb(102, 71, 35);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            filter: drop-shadow(0 0 3px rgb(102, 71, 35)) drop-shadow(0 0 4px rgb(102, 71, 35));
+        }
+
+
+        #bg {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 動畫 */
+        .tick_tick.tick_color {
+            animation: tick_color 1s ease infinite alternate;
+        }
+
+        @media (min-width: 570px) {
+            #clock {
+                width: 370px;
+                height: 370px;
+                transition: 1s;
+            }
+
+            #line .line span {
+                font-size: 30px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #clock {
+                width: 390px;
+                height: 390px;
+                transition: 1s;
+            }
+
+            #line .line span {
+                font-size: 32px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            #clock {
+                width: 420px;
+                height: 420px;
+                transition: 1s;
+            }
+
+            #line .line span {
+                font-size: 35px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #clock {
+                width: 450px;
+                height: 450px;
+                transition: 1s;
+            }
+
+            #line .line span {
+                font-size: 38px;
+            }
+        }
+
+        /* 當前閃爍刻度動畫 */
+        @keyframes tick_color {
+            from {
+                filter: drop-shadow(0 0 2px orange) drop-shadow(0 0 2px orange);
+
+            }
+
+            to {
+                filter: drop-shadow(0 0 2px orange) drop-shadow(0 0 2px orange) drop-shadow(0 0 3px orange) drop-shadow(0 0 5px orange);
+            }
+        }
+
+        /* 內光暈集中動畫 */
+        @keyframes tick {
+            50% {
+                box-shadow: inset 0 0 120px 10px rgba(209, 118, 0, 0.5);
+            }
+        }
+
+        /* 數位 */
+        #digit {
+            font-size: 1.2rem;
+            color: rgb(122, 90, 54);
+            text-align: center;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+
+
+            display: flex;
+            width: 40%;
+        }
+
+        #digit div {
+            flex: 1;
+        }
+
+        @media (max-width:500px) {
+            #doodle {
+                display: none;
+            }
+
+            #clock {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width:320px) {
+            #clock {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Black Mask -->
+    <div id="mask"></div>
+    <!-- css-doodle -->
+    <css-doodle id="doodle">
+        :doodle {
+        @grid: 100x1/ 100% 100vh;
+        perspective: 800px;
+        }
+
+        @place-cell: center;
+        @size: 200px 1px;
+
+        transform-style: preserve-3d;
+
+        background:
+        linear-gradient(to left,transparent, rgba(209, 118, 0, 1) 30%,transparent @rand(50%));
+        filter: hue-rotate(-40deg) invert(100%);
+
+        --trans:
+        translate(50%,50%)
+        rotateX(@r(0deg, 360deg))
+        rotateY(@r(0deg, 360deg))
+        rotateZ(@r(0deg, 360deg));
+
+        transform-origin: 0 center;
+        transform: var(--trans) scale(4);
+        opacity: 0;
+
+        animation: move @rand(2s, 5s) infinite -@rand(.1s, 2s);
+        @keyframes move {
+        20% { opacity: 1; }
+        100% { transform: var(--trans) scale(0); }
+        }
+    </css-doodle>
+
+    <div id="clock">
+        <div id="bg"></div>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <div id="line">
+            <div class="line"><span>&#x0407</span></div>
+            <div class="line"><span>&#x040F</span></div>
+            <div class="line"><span>&#x0428</span></div>
+            <div class="line"><span>&#x0418</span></div>
+            <div class="line"><span>&#x0474</span></div>
+            <div class="line"><span>&#x04EC</span></div>
+            <div class="line"><span>&#x04AA</span></div>
+            <div class="line"><span>&#x04EA</span></div>
+            <div class="line"><span>&#x0514</span></div>
+            <div class="line"><span>&#x04FC</span></div>
+            <div class="line"><span>&#x050A</span></div>
+            <div class="line"><span>&#x0496</span></div>
+        </div>
+        <div id="point"></div>
+        <!-- 刻度 -->
+        <div id="tick">
+            <div class="tick_tick"></div>
+        </div>
+        <div id="digit">
+            <div id="hour_ten">1</div>
+            <div id="hour_one">1</div>
+            <div>:</div>
+            <div id="minute_ten">1</div>
+            <div id="minute_one">1</div>
+            <div>:</div>
+            <div id="second_ten">1</div>
+            <div id="second_one">1</div>
+        </div>
+    </div>
+    <!-- <script src="jquery-3.4.1.js"></script> -->
+    <script src="js/css-doodle.min.js"></script>
+    <script>
+
+        /* 畫刻度  -----------------------------------------------------------------------------------------------*/
+        let html = '';
+        const $tick = document.getElementById('tick');
+        for (let i = 0; i < 60; i++) {
+            if (i == 0 || i == 5 || i == 10 || i == 15 || i == 20 || i == 25 || i == 30 || i == 35 || i == 40 || i == 45 || i == 50 || i == 55 || i == 60) {
+                // 可在漸層背景設定刻度的寬度 
+                html += `
+            <div class="tick_tick" style=" transform: translate(-50%, 0) rotate(${i * 6}deg);width:6px;background:linear-gradient(to top, transparent 0%, transparent 92%, rgb(122, 90, 54) 0%)"></div>
+            `;
+            } else {
+                html += `<div class="tick_tick" style=" transform: translate(-50%, 0) rotate(${i * 6}deg);"></div>`;
+            }
+
+        }
+        $tick.innerHTML = html;
+
+        /* 建立時間  ---------------------------------------------------------------------------------------------*/
+        // 機械時鐘
+        const $hour = document.getElementById('hour');
+        const $minute = document.getElementById('minute');
+        const $second = document.getElementById('second');
+
+
+
+        const now = new Date();
+        let round = 0;
+        const setDate = () => {
+            /* -----------------------------------------------------------------------------------------------------
+               時針可以想想看例子：6:30 時針位置在哪？在6與7的中間，也就是說這時時針角度...
+               6時，時針跑了 30*60=180度，
+               30分，時針跑了幾度？15度，可以得知 30*0.5=15
+             ------------------------------------------------------------------------------------------------------*/
+            const now = new Date();
+            const hour = now.getHours();
+            const min = now.getMinutes();
+            const sec = now.getSeconds();
+
+            $hour.style.transform = `translate(-50%, 0) rotate(${hour * 30 + min * 0.5 + 90}deg)`;
+            $minute.style.transform = `translate(-50%, 0) rotate(${min * 6 + sec * 1 / 60 + 90}deg)`;
+            /* 處理秒針逆時針迴轉  -----------------------------------------------------------------------------------*/
+            if (sec === 0) {
+                round++;
+            }
+            $second.style.transform = `translate(-50%, 0) rotate(${(sec + 60 * round) * 6 + 90}deg)`;
+
+            /* 刻度發光 ---------------------------------------------------------------------------------------------*/
+            let $tick_tick = document.getElementsByClassName('tick_tick');
+            // 
+            if (min === 0) {
+                $tick_tick[59].classList.remove('tick_color');
+                $tick_tick[min].classList.add('tick_color');
+            }
+            if (sec === 0) {
+                $tick_tick[min - 1].classList.remove('tick_color');
+                $tick_tick[min].classList.add('tick_color');
+            } else {
+                $tick_tick[min].classList.add('tick_color');
+            }
+
+            // 數位時鐘
+            const $hour_ten = document.getElementById('hour_ten');
+            const $hour_one = document.getElementById('hour_one');
+            const $minute_ten = document.getElementById('minute_ten');
+            const $minute_one = document.getElementById('minute_one');
+            const $second_ten = document.getElementById('second_ten');
+            const $second_one = document.getElementById('second_one');
+
+            const hour_number = Math.floor(hour % 10);
+
+            const min_ten_number = Math.floor(min / 10);
+            const min_one_number = Math.floor(min % 10);
+            const sec_ten_number = Math.floor(sec / 10);
+            const sec_one_number = Math.floor(sec % 10);
+            if (hour_number < 10) {
+                $hour_ten.textContent = 0;
+            }
+            $hour_one.textContent = hour_number;
+            $minute_ten.textContent = min_ten_number;
+            $minute_one.textContent = min_one_number;
+            $second_ten.textContent = sec_ten_number;
+            $second_one.textContent = sec_one_number;
+        }
+        // 先跑一次 setDate()，讓時間顯示正常
+        setDate();
+        setInterval(setDate, 1000);
+
+    </script>
+
+</body>
+
+</html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
