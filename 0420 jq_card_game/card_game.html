@@ -49,8 +49,7 @@
 
         #nowpick {
             width: 500px;
-            height: 300px;
-
+            height: 240px;
             text-align: left;
         }
 
@@ -193,6 +192,8 @@
         .pick {
             position: relative;
             display: inline-block;
+            width: 100px;
+            height: 100px;
         }
 
         li:nth-last-child(even) {
@@ -212,7 +213,6 @@
             <div id='bosshp'></div>
         </div>
         <div id='tright'>
-            <ul></ul>
         </div>
         <div id="src">
 
@@ -221,11 +221,12 @@
         </div>
         <hr>
         <div id='dleft'>
-            <ul></ul>
         </div>
         <div id="cards"></div>
         <div id='dright'>
-            <div>HP:<span id='drighttext'>1000</span></div>
+            <div>HP:<span id='hp'>1000</span></div>
+            <div>Shild Value:<span id='defensevalue'></span></div>
+            <div>COMBO:<span id="combo"></span></div>
             <div id='nowpick'>
             </div>
             <div><button id='start' type="button" value="START">START</button></div>
@@ -252,7 +253,7 @@
         let skillcount = 1
         let combopoint = 1
         let bossskillcount = 0
-        let hp = 1000
+        let hp = 20
         let bosshp = 3000
         let bosshpchart = ''
         let bossid = ''
@@ -263,7 +264,7 @@
 
         // 開始-----------------------------------------------------------------
 
-        setInterval(() => {
+        const timer = setInterval(() => {
             if ($('.tright')[7] != undefined) {
                 $('.tright')[0].remove()
             }
@@ -272,11 +273,17 @@
             }
             bosshpchart = bosshp / 30
             $('#bosshp').css('background', `linear-gradient(90deg, red 0% ${bosshpchart}%, black 0% 100%)`)
-
+            if (hp < 0 || bosshp < 0) {
+                over()
+            }
         }, 1000);
 
 
         $('#start').click(function () {
+
+            $('#tright').text('')
+
+            $('#dleft').text('')
 
             bossborn()
 
@@ -285,6 +292,14 @@
             $('.card').css('pointer-events', 'auto')
 
             $('.card').addClass('open')
+
+            hp = 1000
+
+            $('#hp').text(hp)
+
+            bosshp = 3000
+
+
 
             setTimeout(() => {
 
@@ -451,10 +466,10 @@
             }, 1000);
             array = []
             combo = 1
+            $('#combo').text('')
             combopoint = 1
             skillcount = 1
             atk = 0
-            def = 0
         }
 
 
@@ -475,10 +490,10 @@
                 array = []
                 borncardarray = []
                 combo = 1
+                $('#combo').text('')
                 combopoint = 1
                 skillcount = 1
                 atk = 0
-                def = 0
             }, 2000);
 
             setTimeout(() => {
@@ -513,6 +528,7 @@
                         combo++
                         combopoint *= 1.5
                         skillcount++
+                        $('#combo').text(combo)
                         console.log($(`.${array[0]}`).length);
                         if ($(`.${array[0]}`).length / 2 == skillcount) {
                             skill()
@@ -662,6 +678,7 @@
 
                 def *= combopoint
                 def = Math.round(def)
+                $('#defensevalue').text(def)
                 $('#dleft').append(`<li class='dleft'>架起了${attr}之盾，對${bossid}具有${def}點防禦減免</li>`)
             }
         }
@@ -727,7 +744,7 @@
 
             hp += heal
             bosshp -= atk
-            $('#drighttext').text(`${hp}`)
+            $('#hp').text(`${hp}`)
             $('#dleft').append(`<li class='dleft'>詠唱出${attr}之魔法，對${bossid}造成${atk}點傷害，並從${bossid}身上吸取${heal}點HP</li>`)
         }
         // BOSS行為-----------------------------------------------------------
@@ -750,15 +767,22 @@
 
             })
             bossatk = rand(50) + 50
+            console.log(bossatk);
             setTimeout(() => {
                 if ((bossatk - def) < 0) {
-                    hp = hp
+                    def -= bossatk
+                    bossatk = 0
+                    $('#defensevalue').text(def)
                     $('#dleft').append(`<li class='dleft'>你成功擋下${bossid}的攻擊</li>`)
                 }
                 else {
                     hp -= (bossatk - def)
-                    $('#dleft').append(`<li class='dleft'>被${bossid}抓傷，你受到${(bossatk - def)}點傷害</li>`)
-                    $('#drighttext').text(`${hp}`)
+                    bossatk -= def
+                    def = 0
+                    $('#defensevalue').text(def)
+                    $('#dleft').append(`<li class='dleft'>被${bossid}抓傷，你受到${(bossatk)}點傷害</li>`)
+                    $('#hp').text(`${hp}`)
+
                 }
             }, 1500);
         }
@@ -798,15 +822,21 @@
             }, 1000, animatenone())
 
             bossatk = rand(100) + 100
+            console.log(bossatk);
             setTimeout(() => {
                 if ((bossatk - def) < 0) {
-                    hp = hp
+                    def -= bossatk
+                    bossatk = 0
+                    $('#defensevalue').text(def)
                     $('#dleft').append(`<li class="dleft">你成功擋下${bossid}的吐襲</li>`)
                 }
                 else {
                     hp -= (bossatk - def)
-                    $('#dleft').append(`<li class='dleft'>${bossid}向你發動龍之吐襲，你受到${(bossatk - def)} 點傷害</li>`)
-                    $('#drighttext').text(`${hp}`)
+                    def = 0
+                    bossattack -= def
+                    $('#defensevalue').text(def)
+                    $('#dleft').append(`<li class='dleft'>${bossid}向你發動龍之吐襲，你受到${(bossatk)} 點傷害</li>`)
+                    $('#hp').text(`${hp}`)
                     $('.card').addClass('open')
                 }
                 setTimeout(() => {
@@ -915,6 +945,28 @@
             })
         }
 
+        const over = () => {
+            if (bosshp < 0) {
+                setTimeout(() => {
+
+                    alert('恭喜你擊敗了BOSS')
+                }, 1000);
+            }
+            if (hp < 0) {
+                setTimeout(() => {
+
+                    alert('你已被BOSS擊敗，請再接再厲')
+                }, 1000);
+            }
+            clearInterval(timer)
+
+            $('#rest').css('pointer-events', 'none')
+
+            $('.card').css('pointer-events', 'none')
+
+            $('#start').attr('disabled', false)
+
+        }
     </script>
 </body>
 
