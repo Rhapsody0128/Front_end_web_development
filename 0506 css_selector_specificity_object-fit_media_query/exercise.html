@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+            transition: 1s;
+        }
+
+        #all {
+            display: flex;
+            margin: auto;
+        }
+
+        .container {
+            width: 300px;
+            height: 400px;
+            margin: 30px auto;
+            border: 1px black solid;
+            padding: 3px;
+            text-align: center;
+        }
+
+        img {
+            object-fit: cover;
+            max-width: 95%;
+            height: 70%;
+            margin-top: 2%;
+        }
+
+        h1 {
+            text-align: left;
+        }
+
+        p {
+            text-align: left;
+        }
+
+        @media (max-width: 575px) {
+            p {
+                color: green;
+            }
+
+            #all {
+                flex-direction: column;
+            }
+
+            .container {
+                width: 90%;
+                height: 90%;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width:992px) {
+            p {
+                color: red
+            }
+
+            #all {
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+
+            .container {
+                width: 45%;
+                height: 45%;
+            }
+        }
+
+        @media (min-width:993px) {
+            p {
+                color: blue
+            }
+
+            #all {
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+
+            .container {
+                width: 30%;
+                height: 30%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="all">
+        <div class="container"><img src="https://picsum.photos/500/400/?random=1">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=2">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=3">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=4">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=5">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=6">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=7">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=8">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+        <div class="container"><img src="https://picsum.photos/500/400/?random=9">
+            <h1>熱門有關部門。</h1>
+            <p>男性成果創意四個師傅奧客圖形下載住宅太麻里，最多之家，授權方式推坑王未知作用加速提出
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+            transition: 1s;
+        }
+
+        /* Media type => all、print、screen、speech */
+        @media all and (min-width:500px) {
+            /* min-width 以上 */
+            /* max-width 以下 */
+            /* and跟括號後要空格 最小尺寸在500以上會改變為下面的屬性 */
+
+        }
+
+        /* @media (min-width: 500px; ){} */
+        /* media type =>all時可以省略，上為縮寫 */
+        img {
+            max-width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 60%;
+                margin: 1rem auto;
+                border: 1px solid black;
+                padding: 15px;
+            }
+
+            h1 {
+                color: yellow;
+                background: darkmagenta;
+            }
+
+            p {
+                font-size: 1.5rem;
+                color: red;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+
+            /* 可用and 讓條件介於之間 */
+            .container {
+                width: 60%;
+                margin: 1rem auto;
+                border: 1px solid black;
+                padding: 15px;
+            }
+
+            h1 {
+                color: gray;
+                background: aqua;
+            }
+
+            p {
+                font-size: 1.5rem;
+                color: violet;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 75%;
+                margin: 1rem auto;
+                border: 5px solid black;
+                padding: 15px;
+            }
+
+            h1 {
+                color: red;
+                background: brown;
+            }
+
+            p {
+                font-size: 1.5rem;
+                color: aquamarine;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>緊急業績。</h1>
+        <img src="02.jpg" alt="">
+        <p>反對下面從來沒手裡不喜歡可能，緊緊用途個性您現在見面日報字體嚴格馬上，我去陽明山媒體把它貼布取消就是優惠註冊時間，防治詳細訊息開心觀察發出日子努力教材提高，提交行情出發今後病人法人冠軍醫生一直你自己主義，主角中間關心來說為什麼走到，事件存款那位批發，努力。
+        </p>
+    </div>
+</body>
+
+</html>
