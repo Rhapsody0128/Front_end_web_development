@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+             黑桃 >>>>>>> 紅心 > 方塊 > 梅花
+         inline-style     id    class   p
+         */
+        /* #container 在HTML內部的優先積分=>0 1 0 1 */
+        #container p {
+            color: red;
+        }
+
+        /* .container 在HTML內部的優先積分=>0 0 1 1 */
+        .container p {
+            color: aquamarine;
+        }
+
+        /* 
+        CSS選擇器權重
+        0.!important 鬼牌:大於一切
+        1.inline style 黑桃:1 0 0 0
+        2.ID選擇器 愛心: 0 1 0 0 
+        3.Class選擇器、屬性選擇器、虛擬類別 方塊:0 0 1 0
+        4.元素(標籤)、虛擬元素(偽類) 梅花:0 0 0 1
+         */
+
+        /* 第二組------------------------------------------------------ */
+        #container2 .box p {
+            /* 優先權: 0 1 1 1 */
+            color: blue;
+        }
+
+        #container2 p {
+            /* 優先權:0 1 0 1 */
+            color: red;
+        }
+
+        /* 第三組------------------------------------------------------ */
+        .container3 .box h1+p {
+            /* 優先權:0 0 2 2 */
+            color: blue;
+        }
+
+        .container3 .box p {
+            /* 優先權:0 0 2 1 + 鬼牌 */
+            color: gold !important
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div class="box">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p style="color: green;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus quia, ea,
+                reiciendis aliquid excepturi
+                sequi vero tempore minus similique repellat nesciunt adipisci? Sit tempore, qui sunt neque laboriosam
+                illo voluptatibus.</p>
+        </div>
+    </div>
+
+
+    <div id="container2" class="container2">
+        <div class="box">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus quia, ea,
+                reiciendis aliquid excepturi
+                sequi vero tempore minus similique repellat nesciunt adipisci? Sit tempore, qui sunt neque laboriosam
+                illo voluptatibus.</p>
+        </div>
+    </div>
+
+
+    <div id="container3" class="container3">
+        <div class="box">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p style="color: red !important;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus
+                quia, ea,
+                reiciendis aliquid excepturi
+                sequi vero tempore minus similique repellat nesciunt adipisci? Sit tempore, qui sunt neque laboriosam
+                illo voluptatibus.</p>
+        </div>
+    </div>
+</body>
+
+</html>
