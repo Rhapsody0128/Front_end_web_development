@@ -51,6 +51,13 @@
             width: 500px;
             height: 240px;
             text-align: left;
+            position: absolute;
+        }
+
+        #bigpick {
+            width: 500px;
+            height: 240px;
+            text-align: left;
         }
 
 
@@ -58,6 +65,7 @@
             width: 500px;
             height: 500px;
             display: inline-block;
+            position: relative;
         }
 
         #bosshp {
@@ -86,7 +94,6 @@
         #dright {
             width: 500px;
             height: 500px;
-
             float: right;
             transition: 1s;
         }
@@ -114,7 +121,25 @@
             margin: auto;
             margin-top: 0.5%;
             pointer-events: none;
+        }
 
+        #skilling {
+            width: 500px;
+            height: 240px;
+            background-size: cover;
+            background-position: 0 70%;
+            position: absolute;
+            z-index: 5;
+            opacity: 30%;
+        }
+
+        #skill {
+            width: 800px;
+            height: 400px;
+            margin-left: 20%;
+            position: absolute;
+            left: -20%;
+            z-index: 2;
         }
 
         .card {
@@ -207,6 +232,7 @@
 </head>
 
 <body>
+
     <div id="content">
         <div id="animate"></div>
         <div id='tleft'>BOSS HP:
@@ -215,19 +241,21 @@
         <div id='tright'>
         </div>
         <div id="src">
-
+            <div id='skill'></div>
             <div id="boss"></div>
-
         </div>
         <hr>
         <div id='dleft'>
         </div>
-        <div id="cards"></div>
+
+        <div id="cards">
+        </div>
         <div id='dright'>
             <div>HP:<span id='hp'>1000</span></div>
             <div>Shild Value:<span id='defensevalue'></span></div>
             <div>COMBO:<span id="combo"></span></div>
-            <div id='nowpick'>
+            <div id='bigpick'>
+                <div id='nowpick'></div>
             </div>
             <div><button id='start' type="button" value="START">START</button></div>
             <div><button id='rest' type="button">REST</button></div>
@@ -280,6 +308,9 @@
 
 
         $('#start').click(function () {
+
+
+
 
             $('#tright').text('')
 
@@ -461,7 +492,7 @@
             }, 500);
             bossaction()
             setTimeout(() => {
-                $('#nowpick').children().remove()
+                $('#bigpick').children().remove()
                 $('.card').css('pointer-events', 'all')
             }, 1000);
             array = []
@@ -480,7 +511,7 @@
 
             $('.open').fadeTo(700, 0, function () {
                 setTimeout(() => {
-                    $('#nowpick').children().remove()
+                    $('#bigpick').children().remove()
                     $('.open').fadeTo(700, 100)
                 }, 1000);
             })
@@ -510,8 +541,10 @@
 
 
             if (!$(this).hasClass('open')) {
-
-
+                console.log();
+                if ($('#bigpick').children()[0] == undefined) {
+                    $('#bigpick').append(`<div id='nowpick'></div>`)
+                }
                 $('#nowpick').append(`<div class='${$(this).children().first().attr('class')
                     } pick'></div>`)
 
@@ -523,8 +556,8 @@
 
 
                 if ($('.open').length > 1) {
-
                     if (array[0] == $(this).children().first().attr('class')) {
+                        $('#bigpick').append(`<div id='skilling' style=" background-image: url('./material/${array[0]}_skilling.gif')"></div>`)
                         combo++
                         combopoint *= 1.5
                         skillcount++
@@ -746,6 +779,28 @@
             bosshp -= atk
             $('#hp').text(`${hp}`)
             $('#dleft').append(`<li class='dleft'>詠唱出${attr}之魔法，對${bossid}造成${atk}點傷害，並從${bossid}身上吸取${heal}點HP</li>`)
+
+            switch (attr) {
+                case '火':
+                    $('#skill').css('background', `url('./material/fire_skill.gif') no-repeat left/cover`)
+                    setTimeout(() => {
+                        $('#skill').css('background', '')
+                    }, 1000);
+                    break;
+                case '水':
+                    $('#skill').css('background', `url('./material/water_skill.gif') no-repeat left/cover`)
+                    setTimeout(() => {
+                        $('#skill').css('background', '')
+                    }, 1000);
+                    break;
+                case '木':
+                    $('#skill').css('background', `url('./material/leaf_skill.gif') no-repeat left/cover`)
+                    setTimeout(() => {
+                        $('#skill').css('background', '')
+                    }, 1000);
+                    break;
+
+            }
         }
         // BOSS行為-----------------------------------------------------------
         const bossattack = () => {
@@ -822,7 +877,6 @@
             }, 1000, animatenone())
 
             bossatk = rand(100) + 100
-            console.log(bossatk);
             setTimeout(() => {
                 if ((bossatk - def) < 0) {
                     def -= bossatk
@@ -831,9 +885,9 @@
                     $('#dleft').append(`<li class="dleft">你成功擋下${bossid}的吐襲</li>`)
                 }
                 else {
-                    hp -= (bossatk - def)
+                    bossatk -= def
+                    hp -= (bossatk)
                     def = 0
-                    bossattack -= def
                     $('#defensevalue').text(def)
                     $('#dleft').append(`<li class='dleft'>${bossid}向你發動龍之吐襲，你受到${(bossatk)} 點傷害</li>`)
                     $('#hp').text(`${hp}`)
