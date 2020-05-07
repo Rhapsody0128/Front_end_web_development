@@ -926,8 +926,11 @@
                 $('#bossskill').animate({
                     width: '500px',
                     top: '50%',
-                }, 1000, animatenone())
-                $('#bossskill').fadeOut()
+                }, 1000)
+                setTimeout(() => {
+                    animatenone()
+                }, 3000);
+
             }
             if (bossid == '水蛟龍') {
                 $('#bossskill').css('background', 'url(./material/boss_water_skill.gif) no-repeat center/contain')
@@ -945,8 +948,10 @@
                 $('#bossskill').animate({
                     width: '500px',
                     top: '45%',
-                }, 1000, animatenone())
-                $('#bossskill').fadeOut()
+                }, 1000)
+                setTimeout(() => {
+                    animatenone()
+                }, 3000);
             }
             if (bossid == '翡翠龍') {
 
@@ -966,8 +971,11 @@
                     width: '1000px',
                     left: '24%',
                     top: '28%',
-                }, 1000, animatenone())
-                $('#bossskill').fadeOut()
+                }, 1000)
+                setTimeout(() => {
+                    animatenone()
+                }, 3000);
+
             }
 
             $('#tright').append(`<li class='tright'>${bossid}向你發動龍之吐襲</li>`)
@@ -1093,6 +1101,7 @@
                 width: 0,
                 height: 0,
                 top: '0%',
+                left: '37%',
                 display: 'block'
             })
         }
