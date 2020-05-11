@@ -78,8 +78,21 @@
         <h1 :class='class1'>aa</h1>
         <h1 :class='{red:isRed,big:true}'>aa</h1>
 
-        <input type="text" v-model="color">{{text + color}}
-        <!-- v-mode=>會跟輸入欄位的value去綁定 -->
+        <hr>
+
+        <input type="text" v-model="text" @keydown.enter='add'>{{text}}
+        <!-- v-model=>會跟輸入欄位的value去綁定 -->
+
+
+        <input type="button" value="按鈕" v-on:click="add">
+        <input type="button" value="按鈕" @click="add">
+        <!-- 簡寫 -->
+
+        <hr>
+
+        <a href="https://fb.com" @click.prevent="click">連結</a>
+
+        <p> 我有{{count}}個水果</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -117,8 +130,29 @@
                 },
                 color: 'blue',
                 isRed: 'true',
-                text: '顏色:'
+                text: ''
+            },
+            methods: {
+                // 在methods放會執行的Function
+                add() {
+                    // 可以用this代指這個new vue
+                    if (this.text.length > 0) {
+                        this.fruits.push(this.text)
+                        this.text = ''
+                    }
+                },
+                click(event) {
+                    console.log(event.target);
+                    alert(event.target.tagName)
+                }
+
+            },
+            computed: {
+                count() {
+                    return this.fruits.length
+                }
             }
+
         })
 
     </script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 30px;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="buyshop">
+        <input type="text" v-model="text" @keydown.enter='add' :style="{border:'5px solid '+bordercolor}">
+        <input type="button" value="按鈕" @click='add'>
+        <ul>
+            <li v-for='(item,index) in items'>
+                <input type="checkbox" :checked='item.check' @change=change(item)>
+                <span v-if='item.check'>{{item.text}}</span>
+                <del v-else>{{item.text}}</del>
+                <input type="button" value="X" @click='del(index)'>
+            </li>
+        </ul>
+    </div>
+    <script src="../jq.vue/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#buyshop',
+            name: 'buyshop',
+            data: {
+                newitem: '',
+                items: [],
+                text: '',
+                check: true
+            },
+            methods: {
+                add() {
+                    if (this.text.length > 2) {
+                        this.items.push({ text: this.text, check: true })
+                        this.text = ''
+
+                        console.log(this.check);
+                    }
+                },
+                change(item) {
+                    item.check = !item.check
+                },
+                del(index) {
+                    this.items.splice(index, 1)
+                }
+            },
+            computed: {
+                bordercolor() {
+                    if (this.text.length < 3 && this.text.length != 0) {
+                        return 'red'
+                    }
+                    else if (this.text.length == 0) {
+                        return 'black'
+                    }
+                    else {
+                        return 'blue'
+                    }
+                }
+            },
+            watch: {
+                items: {
+                    deep: true,
+                    handler() {
+
+                        localStorage.setItem('buy', JSON.stringify(this.items))
+                    }
+                }
+            },
+            mounted() {
+                const data = localStorage.getItem('buy')
+                if (data != null) {
+                    this.items = JSON.parse(data)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
