@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+            font-size: 30px;
+        }
+
+        #app {
+            transition: 1s;
+        }
+
+        .red {
+            color: red
+        }
+
+        .big {
+            font-size: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p v-text='msg'></p>
+        <p>{{msg2}}</p>
+        <p v-html='msg2'></p>
+        <!-- {{}}=>的簡寫寫法無法呈現HTML 需要用V-HTML屬性來帶入 -->
+
+        <hr>
+
+        <p v-if="number === 1">數字是1</p>
+        <p v-else-if="number === 2">數字是2</p>
+        <p v-else>數字是其他</p>
+        <!-- 符合條件才會出現在DOM -->
+
+        <p v-show='number===1'>數字是1(v-show)</p>
+        <!--符合條件才顯示，不符合是display:none -->
+
+        <hr>
+
+
+        <ul>
+            <li v-for="fruit in fruits">{{fruit}}</li>
+        </ul>
+        <ul>
+            <li v-for="(fruit,index) in fruits">{{index +1 + " - " + fruit}}</li>
+
+        </ul>
+        <ul>
+            <li v-for="(web,key,index) in webs">{{index +1 + " . " +key +'=>' + web}}</li>
+        </ul>
+
+        <hr>
+
+
+        <img v-bind:src="img">
+        <img :src="img">
+        <br>
+        <!-- 簡寫 -->
+        <img v-for='img in imgs' :src="img" alt="">
+
+        <hr>
+
+        <h1 :style="style">aa</h1>
+        <h1 :style="{backgroundColor:color,fontSize:'50px'}">aa</h1>
+
+        <h1 :class='class1'>aa</h1>
+        <h1 :class='{red:isRed,big:true}'>aa</h1>
+
+        <hr>
+
+        <input type="text" v-model="text" @keydown.enter='add'>{{text}}
+        <!-- v-model=>會跟輸入欄位的value去綁定 -->
+
+
+        <input type="button" value="按鈕" v-on:click="add">
+        <input type="button" value="按鈕" @click="add">
+        <!-- 簡寫 -->
+
+        <hr>
+
+        <a href="https://fb.com" @click.prevent="click">連結</a>
+
+        <p> 我有{{count}}個水果</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#app',
+            // el => 要把哪個元素變成Vue元件
+            name: 'app',
+            data: {
+                msg: 'Hello Vue',
+                msg2: '<a href="https://google.com">連結</a>',
+                number: 2,
+                fruits: ['apple', 'banana', 'watermelom', 'mango'],
+                webs: {
+                    fb: 'facebook',
+                    yt: 'youtube',
+                    tt: 'twitter'
+                },
+                img: 'https://picsum.photos/300/300/?random=5',
+                imgs: [
+                    "https://picsum.photos/300/300/?random=1",
+                    "https://picsum.photos/300/300/?random=2",
+                    "https://picsum.photos/300/300/?random=3",
+                    "https://picsum.photos/300/300/?random=4"
+                ],
+                style: {
+                    backgroundColor: 'red',
+                    // 需轉成駝峰式命名法
+                    fontSize: '50px'
+
+                },
+                class1: {
+                    red: true,
+                    big: false
+                },
+                color: 'blue',
+                isRed: 'true',
+                text: ''
+            },
+            methods: {
+                // 在methods放會執行的Function
+                add() {
+                    // 可以用this代指這個new vue
+                    if (this.text.length > 0) {
+                        this.fruits.push(this.text)
+                        this.text = ''
+                    }
+                },
+                click(event) {
+                    console.log(event.target);
+                    alert(event.target.tagName)
+                }
+
+            },
+            computed: {
+                count() {
+                    return this.fruits.length
+                }
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
