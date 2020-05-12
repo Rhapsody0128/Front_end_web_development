@@ -12,13 +12,17 @@
         <input type="text" v-model='newthing' placeholder="請輸入代辦事項" @keydown.enter='add'
             :style="{border:'5px solid '+borderColor}">
         <input type="button" value="新增" @click='add'>
+        <hr>
+        <input type="button" value="標示全部已完成" @click='allfin'>
+        <hr>
         <ul>
             <li v-for='(thing,index) in things'>
                 <input type="checkbox" :checked='thing.check' @change="thing.check = !thing.check">
                 <del v-if='thing.check'>{{thing.text}}</del>
 
-                <span v-else @dblclick='thing.edit = true'>{{thing.text}}</span>
-                <input v-if='thing.edit === true' :value='thing.text' type="text" @keydown.enter="replace">
+                <span v-else @dblclick=' thing.edit = true'>{{thing.text}}</span>
+                <input v-if='thing.edit == true' v-model='thing.newedit' type="text"
+                    @keydown.enter="thing.text = thing.newedit ; thing.edit = false">
 
                 <input type="button" value="X" @click='things.splice(index,1)'>
             </li>
@@ -38,21 +42,20 @@
             methods: {
                 add() {
                     if (this.newthing.length > 2) {
-                        this.things.push({ text: this.newthing, check: false, edit: false })
-
-                        this.newedit = this.newthing
-                        console.log(this.newedit);
+                        this.things.push({ text: this.newthing, check: false, edit: false, newedit: this.newthing })
                         this.newthing = ''
 
                     }
                 },
-                replace() {
-                    this.things.text = this.value
-                    edit = false
-                    console.log('aa');
+                allfin() {
+                    for (i = 0; i < this.things.length + 1; i++) {
+                        console.log(this.things[i].check);
+                        if (this.things[i].check == false) {
+                            this.things.splice(i, 1)
+                        }
+
+                    }
                 }
-
-
             },
             computed: {
                 borderColor() {
