@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 30px;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <comp1></comp1>
+        <comp2></comp2>
+        <counter v-for='i in 3'></counter>
+        <post :title='msg'></post>
+        <post
+            article='聲音熱線投入通信感情創意，制定成人保險衛生賺錢招商行情性能就要對待方式專輯行業，傢俱法國幫助戀愛上門即將總數，傳播機制以後旁邊歡迎光臨，他們的指定傢俱什麼事對你，理想協議，戰鬥生活擁有中文不足某些期限各個臺東巨大較大，請問其它污染顧客報紙檢測，關係不在吸。'
+            writer='新手' title='領域那些。'></post>
+        <blog v-for='blog in blogs' :data='blog' @good='handleGood'></blog>
+
+    </div>
+
+
+    <script src="../jq.vue/vue.js"></script>
+
+    <!----------------------元件的HTML部分 ------------------------->
+    <script type="text/x-template" id="counter">
+        <button @click="count++">你點擊了 {{ count }} 次</button>
+    </script>
+
+    <script type='text/x-template' id='post'>
+        <div>
+            <h1>標題:{{title}}</h1><br>
+            <i>作者:{{writer}}</i><br>
+            <p>　　{{article}}</p>
+        </div>
+    </script>
+    <script type="text/x-template" id="blog">
+        <div>
+            <h1>標題:{{data.title}}</h1><br>
+            <i>作者:{{data.writer}}</i><br>
+            <p>　　{{data.article}}</p>
+            <button @click='good'>讚</button>
+        </div>
+    </script>
+    <script type="text/x-template" id="comp1">
+        <div>
+        <input type="text" v-model='text'>
+        <button @click='senddata'>傳資料</button>
+        </div>
+    </script>
+    <script type="text/x-template" id="comp2">
+        <p>{{text}}</p>
+    </script>
+    <script>
+
+        const eventBus = new Vue()
+        // ---------------------註冊元件----------------------------
+        Vue.component('counter', {
+            // 註冊名字，可以用於HTML裡面
+            template: '#counter',
+            // 使用ID為counter的東西元件的HTML的部分
+            data() {
+                // component內DATA需寫成function
+                return {
+                    count: 0
+                }
+            }
+        })
+        Vue.component('post', {
+            template: '#post',
+            props: {
+                // 外面傳進元件的資料有哪些
+                article: String,
+                // 傳進來的資料必須要有文件類型
+                writer: String,
+                title: String
+            }
+        })
+        Vue.component('blog', {
+            template: '#blog',
+            props: {
+                data: Object
+            },
+            methods: {
+                good() {
+                    // $emit=>觸發事件
+                    this.$emit('good', this.data.writer, this.data.title)
+                    // 元件觸發事件，事件名為'good',傳出作者資料，和文章TITLE
+                }
+            }
+        })
+        Vue.component('comp1', {
+            template: '#comp1',
+            data() {
+                return {
+                    text: ''
+                }
+            },
+
+            methods: {
+                senddata() {
+                    // eventBus觸發事件
+                    eventBus.$emit('senddata', this.text)
+                }
+            }
+        })
+        Vue.component('comp2', {
+            template: '#comp2',
+            data() {
+                return {
+                    text: ''
+                }
+            },
+            mounted() {
+                // 監聽evebtbus的senddata事件
+                eventBus.$on('senddata', (data) => {
+                    this.text = data
+                })
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            name: 'app',
+            data: {
+                msg: '章節',
+                blogs: [
+                    {
+                        title: '高雄金幣。',
+                        writer: '老闆',
+                        article: '一段時間，教學本地下載觀察吸引擁有正好危險環保比如發貼這麼您是眾多，金錢一臉信箱高考提高，任何人看過好像體現回答，國語你要，好好結合不喜歡母親編輯，語言電器激情行政一隻戰爭女士通用需求重視為你請在躺在，手段發揮工資，生成最新接收國內外一看只是，協會時代服。'
+                    },
+                    {
+                        title: '西方不如。',
+                        writer: '老鬼',
+                        article: '神秘預測需要大盤苗栗便宜複製經理鈴聲他還用戶名民主本網沒想到，是的傷心，留下尤其比賽股份有限公司方面不能打開他說外國，指南列表走了人家成長等等室內我家投資你有，閲讀印象評價手機企業財務，聲明上班不出精神最大，此刻某些用來兒童相信判斷傷害我去身上什麼時候網。'
+                    },
+                ]
+            },
+            methods: {
+                handleGood(writer, title) {
+                    alert(`你按了${writer}的${title}讚`)
+                }
+            }
+
+        })
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

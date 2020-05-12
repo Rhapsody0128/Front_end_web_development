@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 30px;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+
+        #app {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+
+        <div>目前讚數:{{count}}</div>
+        <hr>
+        <card v-for='card of cardinfo' :cardinfo='card'></card>
+    </div>
+    <script src="../jq.vue/vue.js"></script>
+    <script type='text/x-template' id='card'>
+    <div>
+        <img :src='cardinfo.pic'><br>
+        <h1>{{cardinfo.title}}</h1><br>
+        <button @click='good'>讚</button>
+    </div>
+    </script>
+
+
+    <script>
+        const eventBus = new Vue()
+        Vue.component('card', {
+            template: '#card',
+            props: {
+                cardinfo: Object,
+            },
+            methods: {
+                good() {
+                    console.log(this);
+                    this.$emit('good', this.like)
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            name: 'app',
+            data: {
+                count: 0,
+                cardinfo: [
+                    {
+                        like: false,
+                        title: '作品一',
+                        pic: 'https://picsum.photos/200/200/?random=1'
+                    },
+                    {
+                        like: false,
+                        title: '作品二',
+                        pic: 'https://picsum.photos/200/200/?random=2'
+                    },
+                    {
+                        like: false,
+                        title: '作品三',
+                        pic: 'https://picsum.photos/200/200/?random=3'
+                    },
+                    {
+                        like: false,
+                        title: '作品四',
+                        pic: 'https://picsum.photos/200/200/?random=4'
+                    },
+                    {
+                        like: false,
+                        title: '作品五',
+                        pic: 'https://picsum.photos/200/200/?random=5'
+                    },
+                ]
+
+            }
+        })
+    </script>
+</body>
+
+</html>

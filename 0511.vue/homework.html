@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            font-size: 30px;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,18 +21,27 @@
             :style="{border:'5px solid '+borderColor}">
         <input type="button" value="新增" @click='add'>
         <hr>
-        <input type="button" value="標示全部已完成" @click='allfin'>
+        <input type="button" value="顯示全部" @click="filter= '全部'">
+        <input type="button" value="顯示已完成" @click="filter= '已完成'">
+        <input type="button" value="顯示未完成" @click="filter= '未完成'">
         <hr>
+        <input type="button" value="刪除全部" @click="del('全部')">
+        <input type="button" value="刪除已完成" @click="del('已完成')">
+        <input type="button" value="刪除未完成" @click="del('未完成')">
+        <hr>
+        <input type="button" value="全部標記已完成" @click="done(true)">
+        <input type="button" value="全部標記未完成" @click="done(false)">
+        <hr>
+        <p>目前顯示{{filter}}，數量為{{filteredthings.length}}</p>
         <ul>
-            <li v-for='(thing,index) in things'>
+            <li v-for='(thing,index) in filteredthings'>
                 <input type="checkbox" :checked='thing.check' @change="thing.check = !thing.check">
                 <del v-if='thing.check'>{{thing.text}}</del>
 
                 <span v-else @dblclick=' thing.edit = true'>{{thing.text}}</span>
                 <input v-if='thing.edit == true' v-model='thing.newedit' type="text"
                     @keydown.enter="thing.text = thing.newedit ; thing.edit = false">
-
-                <input type="button" value="X" @click='things.splice(index,1)'>
+                <input type="button" value="X" @click='delX(thing)'>
             </li>
         </ul>
 
@@ -38,6 +55,8 @@
                 newthing: '',
                 newedit: '',
                 things: [],
+                filter: '全部'
+
             },
             methods: {
                 add() {
@@ -47,13 +66,33 @@
 
                     }
                 },
-                allfin() {
-                    for (i = 0; i < this.things.length + 1; i++) {
-                        console.log(this.things[i].check);
-                        if (this.things[i].check == false) {
-                            this.things.splice(i, 1)
-                        }
 
+                delX(thing) {
+                    const index = this.things.indexOf(thing)
+                    this.things.splice(index, 1)
+                },
+
+                del(filter) {
+                    switch (filter) {
+                        case '全部':
+                            this.things = []
+                            break;
+                        case '未完成':
+                            this.things = this.things.filter(thing => {
+                                return thing.check == true
+                            })
+                            break;
+                        case '已完成':
+                            this.things = this.things.filter(thing => {
+                                return thing.check == false
+                            })
+                            break;
+                    }
+                },
+
+                done(data) {
+                    for (let thing of this.things) {
+                        thing.check = data
                     }
                 }
             },
@@ -61,8 +100,26 @@
                 borderColor() {
                     return (this.newthing.length == 0) ? 'black' : (this.newthing.length < 3) ? "red" : "blue"
                 },
-            },
+                filteredthings() {
 
+                    switch (this.filter) {
+                        case '全部':
+                            return this.things
+                            break;
+                        case '已完成':
+                            return this.things.filter(thing => {
+                                return thing.check == true
+                            })
+                            break;
+                        case '未完成':
+                            return this.things.filter(thing => {
+                                return thing.check == false
+                            })
+                            break;
+                    }
+                }
+
+            }
         })
     </script>
 </body>

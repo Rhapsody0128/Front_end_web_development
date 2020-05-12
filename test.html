@@ -14,11 +14,14 @@
             font-family: 微軟正黑體;
         }
 
-        #bg {
-            background: url("https://picsum.photos/1600/1200/?random=1");
+        #word {
+            /* color: red; */
             position: absolute;
             height: 100vh;
             width: 100vw;
+            z-index: 20;
+            background-blend-mode: multiply;
+            /* background: red */
         }
 
         #front {
@@ -26,8 +29,9 @@
             height: 100vh;
             width: 100vw;
             position: absolute;
-            opacity: 90%;
-            mix-blend-mode: multiply
+
+            background-blend-mode: multiply;
+
         }
 
         #light {
@@ -37,20 +41,36 @@
             border-radius: 50%;
             position: absolute;
             transform: translate(-50%, -50%);
-            background: wheat;
-            mix-blend-mode: difference
+            background: white;
+            z-index: 10;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: 1600px 1200px;
+        }
+
+        #light::after {
+            content: '';
+            background-image: url("https://picsum.photos/1200/1200/?random=1");
+            background-attachment: fixed !Important;
+            background-repeat: no-repeat;
+            background-size: 1600px 1600px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            position: absolute;
         }
     </style>
 
 </head>
 
 <body>
-    <div id='bg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ex porro similique ad illo id
+    <div id="bg"></div>
+    <div id='word'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ex porro similique ad illo id
         distinctio deserunt asperiores quibusdam sed, eaque sequi sint assumenda facere! Accusantium doloribus quo ut
         illo.</div>
-    <div id="front"></div>
     <div id="light"></div>
-    <script src="jq.vue/jquery-3.5.0.min.js"></script>
+    <div id="front"></div>
+    <script src="./jq.vue/jquery-3.5.0.min.js"></script>
     <script>
 
         window.addEventListener('mousemove', (event) => {
