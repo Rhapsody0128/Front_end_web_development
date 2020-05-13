@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <title>Hello, world!</title>
+    <style>
+        * {
+            font-size: 30px;
+            list-style: none;
+            box-sizing: border-box;
+            transition: 1s;
+            font-family: 微軟正黑體;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-primary container">固定寬度</div>
+    <div class="bg-secondary fluild">滿版</div>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg col-sm bg-success">
+                One of three columns
+            </div>
+            <div class="col-lg col-sm-5 bg-danger">
+                One of three columns
+            </div>
+
+            <div class="col-lg col-sm bg-warning">
+                One of three columns
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2 bg-danger">
+                1 of 3
+            </div>
+            <div class="col-md-auto  bg-warning">
+                2 of 3
+            </div>
+            <div class="col col-lg-2 bg-success">
+                3 of 3
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-2 bg-warning">
+                1 of 3
+            </div>
+            <div class="col-md-2-auto bg-success">
+                2 of 3
+            </div>
+            <div class="col col-lg-2 bg-danger">
+                3 of 3
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container px-lg-5">
+        <div class="row mx-lg-n5">
+            <div class="col py-3 px-lg-5 border bg-light">Custom column padding</div>
+            <div class="col py-3 px-lg-5 border bg-dark" style="color: antiquewhite;">Custom column padding</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="bg-primary container" style='height: 80%'>
+        <div class="row justify-content-between align-items-center h-100">
+            <div class="col-2 form-control bg-warning">
+                One
+            </div>
+            <div class="col-2 form-control bg-success">
+                Two
+            </div>
+            <div class="col-2 form-control bg-danger">
+                Three
+            </div>
+            <div class="col-2 form-control bg-dark">
+                Four
+            </div>
+        </div>
+        <script src="../jq.vue/jquery-3.5.0.min.js"></script>
+        <script src="../bootstrap/js/popper.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
