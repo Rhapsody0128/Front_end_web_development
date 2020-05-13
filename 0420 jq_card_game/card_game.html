@@ -978,7 +978,7 @@
 
             }
 
-            $('#tright').append(`<li class='tright'>${bossid}向你發動龍之吐襲</li>`)
+            $('#tright').append(`<li class='tright'>${bossid}向你發動龍之吐息</li>`)
 
             bossatk = rand(100) + 100
             setTimeout(() => {
@@ -986,14 +986,14 @@
                     def -= bossatk
                     bossatk = 0
                     $('#defensevalue').text(def)
-                    $('#dleft').append(`<li class="dleft">你成功擋下${bossid}的吐襲</li>`)
+                    $('#dleft').append(`<li class="dleft">你成功擋下${bossid}的吐息</li>`)
                 }
                 else {
                     bossatk -= def
                     hp -= (bossatk)
                     def = 0
                     $('#defensevalue').text(def)
-                    $('#dleft').append(`<li class='dleft'>${bossid}向你發動龍之吐襲，你受到${(bossatk)} 點傷害</li>`)
+                    $('#dleft').append(`<li class='dleft'>${bossid}向你發動龍之吐息，你受到${(bossatk)} 點傷害</li>`)
                     $('#hp').text(`${hp}`)
                     $('.card').addClass('open')
                 }
