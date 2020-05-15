@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <title>Hello, world!</title>
+    <style>
+
+    </style>
+</head>
+<div class=" embed-responsive embed-responsive-16by9">
+    <div id="player"></div>
+</div>
+
+<body>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="../jq.vue/jquery-3.5.0.min.js"></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: 'k3F_4oIydsE',
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+    </script>
+</body>
+
+</html>
