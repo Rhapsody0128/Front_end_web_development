@@ -12,6 +12,14 @@ JASONPlaceholder - 虛擬API
 datatable - 套用可索引table
 fullcalendar - 月曆
 
+
+vue + 組件
+*BootstrapVue
+*Element
+*Vesax
+*Vuetify
+
+
 D3 - 圖形圖表
 
 圖表
