@@ -100,7 +100,6 @@ const week = async () => {
   let re = []
   const array = []
   try {
-    // const rand = Math.floor(Math.random() * 271302) + 1
     const html = await rp('https://memes.tw/wtf?sort=top-week')
     const $ = cheerio.load(html)
     for (let i = 0; i < $('.col-lg-8.text-center').length; i++) {
@@ -128,7 +127,6 @@ const month = async () => {
   let re = []
   const array = []
   try {
-    // const rand = Math.floor(Math.random() * 271302) + 1
     const html = await rp('https://memes.tw/wtf?sort=top-month')
     const $ = cheerio.load(html)
     for (let i = 0; i < $('.col-lg-8.text-center').length; i++) {
@@ -155,7 +153,7 @@ const year = async () => {
   let re = []
   const array = []
   try {
-    // const rand = Math.floor(Math.random() * 271302) + 1
+  
     const html = await rp('https://memes.tw/wtf?sort=top-year')
     const $ = cheerio.load(html)
     for (let i = 0; i < $('.col-lg-8.text-center').length; i++) {
