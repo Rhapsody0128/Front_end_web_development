@@ -72,7 +72,7 @@ const search = async (keyword) => {
   let re = []
   const array = []
   try {
-    const html = await rp('https://memes.tw/maker?q=' + escape(keyword))
+    const html = await rp('https://memes.tw/maker?q=' + encodeURI(keyword))
 
     const $ = cheerio.load(html)
 
@@ -153,7 +153,6 @@ const year = async () => {
   let re = []
   const array = []
   try {
-  
     const html = await rp('https://memes.tw/wtf?sort=top-year')
     const $ = cheerio.load(html)
     for (let i = 0; i < $('.col-lg-8.text-center').length; i++) {
