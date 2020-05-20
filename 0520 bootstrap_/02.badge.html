@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      font-size: 25px;
+      font-family: 微軟正黑體;
+    }
+  </style>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>01.套用相應的字體大小和 em 單位使標籤繼承父元素的尺寸。</h1>
+        <h1>Example heading <span class="badge badge-secondary">New</span></h1>
+        <h2>Example heading <span class="badge badge-secondary">New</span></h2>
+        <h3>Example heading <span class="badge badge-secondary">New</span></h3>
+        <h4>Example heading <span class="badge badge-secondary">New</span></h4>
+        <h5>Example heading <span class="badge badge-secondary">New</span></h5>
+        <h6>Example heading <span class="badge badge-secondary">New</span></h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="container ">
+    <h1>02.標籤可以作為連結或按鈕的計數器。</h1>
+    <div class="row">
+      <div class="col">
+        <button id='btn1' type="button" class="btn btn-danger">Notification
+          <span id="badge1" class="badge badge-light">0</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>03.情境變化。</h1>
+    <div class="row">
+      <div class="col">
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-secondary">Secondary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-danger">Danger</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-info">Info</span>
+        <span class="badge badge-light">Light</span>
+        <span class="badge badge-dark">Dark</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>04.膠囊標籤</h1>
+    <div class="row">
+      <div class="col">
+        <span class="badge badge-pill badge-primary">Primary</span>
+        <span class="badge badge-pill badge-secondary">Secondary</span>
+        <span class="badge badge-pill badge-success">Success</span>
+        <span class="badge badge-pill badge-danger">Danger</span>
+        <span class="badge badge-pill badge-warning">Warning</span>
+        <span class="badge badge-pill badge-info">Info</span>
+        <span class="badge badge-pill badge-light">Light</span>
+        <span class="badge badge-pill badge-dark">Dark</span>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>05.使用情境色彩 .badge-* 在 a 元素上提供可操作的標籤 hover 和 focus 狀態。</h1>
+    <div class="row">
+      <div class="col">
+        <a href="#" class="badge badge-primary">Primary</a>
+        <a href="#" class="badge badge-secondary">Secondary</a>
+        <a href="#" class="badge badge-success">Success</a>
+        <a href="#" class="badge badge-danger">Danger</a>
+        <a href="#" class="badge badge-warning">Warning</a>
+        <a href="#" class="badge badge-info">Info</a>
+        <a href="#" class="badge badge-light">Light</a>
+        <a href="#" class="badge badge-dark">Dark</a>
+      </div>
+    </div>
+  </div>
+
+  <script src='../jq.vue/jquery-3.5.0.min.js'></script>
+  <script src='../bootstrap/js/popper.min.js'></script>
+  <script src='../bootstrap/js/bootstrap.min.js'></script>
+  <script>
+    let count = 0
+
+    $('#btn1').on('click', function () {
+      $('#badge1').text(count++)
+      $('#badge1').text(count)
+    })
+  </script>
+</body>
+
+</html>
