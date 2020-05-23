@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        transition: 1s;
+        list-style: none;
+        box-sizing: border-box;
+        font-family: 微軟正黑體;
+        font-size: 30px;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    #cards {
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .card img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+
+    .card {
+        border: 1px solid black;
+        margin-left: 5px;
+        margin-top: 5px;
+        padding: 1rem;
+        text-align: center;
+        width: 350px;
+        height: 100%;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h1>攝影比賽</h1>
+        <h3>總共 {{ goods }} 個讚</h3>
+        <div id="cards">
+            <card v-for='card in cards' :data="card" @good='handlegood'></card>
+        </div>
+    </div>
+
+    <script src="../jq.vue/vue.js"></script>
+    <script type="text/x-template" id='card'>
+        <div class="card">
+            
+            <img :src="data.img" alt="">
+            <h1>{{data.title}}</h1>
+            <button @click="toggleGood">{{ good ? '收回讚': '讚' }}</button>
+        </div>
+    </script>
+
+
+    <script>
+
+        Vue.component('card', {
+            template: '#card',
+            data() {
+                return {
+                    good: false
+                }
+            },
+            props: {
+                data: Object
+            },
+            methods: {
+                toggleGood() {
+                    this.good = !this.good
+                    this.$emit('good', this.good)
+
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                goods: 0,
+                cards: [
+                    {
+                        img: "https://picsum.photos/500/500/?random=1",
+                        title: '作品一'
+                    },
+                    {
+                        img: "https://picsum.photos/500/500/?random=2",
+                        title: '作品二'
+                    },
+                    {
+                        img: "https://picsum.photos/500/500/?random=3",
+                        title: '作品三'
+                    },
+                    {
+                        img: "https://picsum.photos/500/500/?random=4",
+                        title: '作品四'
+                    },
+                    {
+                        img: "https://picsum.photos/500/500/?random=5",
+                        title: '作品五'
+                    },
+                ]
+            },
+            methods: {
+                handlegood(good) {
+                    if (good) {
+                        this.goods++
+                    }
+                    else {
+                        this.goods--
+                    }
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
