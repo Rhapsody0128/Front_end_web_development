@@ -11,9 +11,7 @@ export default new Vuex.Store({
   mutations: {
     // 修改vuex資料的function
     addCart (state, data) {
-      console.log(data.id)
       state.cart.push(data)
-      console.log(state.cart)
     },
     delCart (state, index) {
       state.cart.splice(index, 1)
