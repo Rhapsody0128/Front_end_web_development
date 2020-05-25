@@ -10,7 +10,8 @@
     | |
     router-link(to='/cart') Cart
   keep-alive
-    router-view.
+    vue-page-transition(name="fade")
+      router-view.
 
 </template>
 

@@ -10,6 +10,9 @@
         span.text-primary {{ data.value }}
       template(v-slot:cell(action)='data')
         b-btn(variant="danger" @click="delCart(data.index)") 移除
+    h1.text-center 總共 {{cart.length}}個商品
+    h1.text-center 總共 {{totalPrice}}元
+
 </template>
 <script>
 export default {
@@ -41,6 +44,13 @@ export default {
     cart () {
       // 以getters取得資料
       return this.$store.getters.cart
+    },
+    totalPrice () {
+      let price = 0
+      for (const item of this.cart) {
+        price += item.price
+      }
+      return price
     }
   },
   methods: {
