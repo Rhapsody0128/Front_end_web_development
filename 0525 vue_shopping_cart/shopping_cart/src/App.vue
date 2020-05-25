@@ -9,8 +9,8 @@
     router-link(to='/product') Product
     | |
     router-link(to='/cart') Cart
-  keep-alive
     vue-page-transition(name="fade")
+    keep-alive
       router-view.
 
 </template>
