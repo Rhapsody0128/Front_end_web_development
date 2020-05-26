@@ -8,11 +8,11 @@ import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faPen, faTimes, faUndo, faSave, faPlay, faPause, faStepForward } from '@fortawesome/free-solid-svg-icons'
 
 import draggable from 'vuedraggable'
 
-library.add(faCheck)
+library.add(faCheck, faPen, faTimes, faUndo, faSave, faPlay, faPause, faStepForward)
 
 // 註冊元件
 Vue.component('font-awesome-icon', FontAwesomeIcon)
