@@ -1,225 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700);
-
-    @import url(https://fonts.googleapis.com/css?family=Cutive+Mono);
-
-    body {
-        font-family: 'Cutive Mono';
-        background-color: rgba(0, 0, 0, 1.00);
-        color: rgba(255, 255, 255, 1.00);
-        /*overflow:hidden;*/
-    }
-
-    body * {
-        z-index: 20;
-        color: rgba(0, 0, 0, 1);
-        /* background: red; */
-    }
-
-    .text-container {
-        position: relative;
-        width: 80%;
-        top: 50px;
-        float: right;
-    }
-
-    #fs {
-        position: relative;
-        color: #000;
-        margin: 20px;
-        cursor: pointer;
-    }
-
-    header {
-        font-family: 'Old Standard TT', serif;
-        font-size: 200%;
-        font-weight: 700;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-        text-decoration: underline;
-
-    }
-
-    h2 {
-        font-family: 'Old Standard TT', serif;
-        font-weight: bold;
-        font-size: 20px;
-        height: 20px;
-        margin: 0px;
-
-
-    }
-
-    h3 {
-        font-family: 'Old Standard TT', serif;
-        font-weight: 400;
-        margin: 0px;
-        margin-top: -10px;
-    }
-
-    h4 {
-        font-family: 'Old Standard TT', serif;
-        font-style: italic;
-        font-weight: 400;
-        font-size: 12px;
-        margin: 0px;
-        margin-top: -15px;
-    }
-
-    .section {
-        margin: 10px;
-        margin-left: 2%;
-        width: 35%;
-    }
-
-    #experience {
-        float: left;
-    }
-
-    #education {
-        float: left;
-    }
-
-    #skills {
-        float: left;
-    }
-
-    /*#fs {
-    position: relative;
-    color: #000;
-    margin: 20px;
-    cursor: pointer;
-}*/
-
-    #about {
-        float: left;
-    }
-
-    #contact {
-        float: left;
-    }
-
-
-
-    /*/////////////////////////////////  FLASHLIGHT EFFECT ////////////////////////////  */
-
-    #light {
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background-color: #fff;
-        z-index: 10;
-        /* box-shadow: inset 0px 0px 150px 166px rgba(0, 0, 0, 1); */
-    }
-
-
-    /*//////////////////////////////// END FLASHLIGHT EFFECT ///////////////////////////  */
-</style>
-
 <body>
-    <div id='light'></div>
-
-    <div id="resumewrap">
-
-
-
-        <div class="text-container" align="left">
-            <div id="experience" class="section">
-                <header id="resumeheader">Experience </header>
-                <h2 id="resumeh2">CREATIVE INTERN</h2><br>
-                <h3 id="resumeh3">22Squared</h3> <br>
-                <h4 id="resumeh4">Jun 2014-July 2014 </h4><br>
-
-                Created over 30 illustrations for an agency presentation, assisted in designing and building online
-                banner ads, social posts, and print material for clients such as Publix, Hanes, and Southeast Toyota.
-                <br><br>
-                <h2 id="resumeh2">FREELANCE GRAPHIC DESIGNER</h2><br>
-                <h4 id="resumeh4">Jan 2013- May 2014</h4><br>
-                Created illustrations, ads, and written articles for print &amp; web for various clients.
-                <br><br>
-                <h2 id="resumeh2">CALENDAR EDITOR</h2><br>
-                <h3 id="resumeh3">Lewiston-Auburn Magazine</h3> <br>
-                <h4 id="resumeh4">June 2012-May 2014</h4><br>
-
-                Produced content and designed the layout for each month's print calendar; designed additional layouts.
-                <br><br>
-                <h2 id="resumeh2">GRAPHIC DESIGN INTERN</h2><br>
-                <h3 id="resumeh3">The Dempsey Challenge</h3> <br>
-                <h4 id="resumeh4">Jul-Aug 2011, 2012</h4><br>
-                Created designs for clothing, print material, and web content for the event.
-                <br><br>
-                <h2 id="resumeh2">VISUAL DISPLAYS ASSOCIATE</h2><br>
-                <h3 id="resumeh3">Madewell</h3> <br>
-                <h4 id="resumeh4">Feb 2012- June 2012</h4><br>
-
-                Set up visual displays for store windows &amp; in-store displays. Organized inventory for assisted in
-                checkout.
-                <br><br>
-                <h2 id="resumeh2">Teen Vogue Fashion University</h2><br>
-                <h4 id="resumeh4">Sept 2013</h4><br>
-
-                Selected to attend a yearly fashion conference in New York City to learn about careers and the current
-                state of the fashion industry.
-            </div>
-
-            <div id="education" class="section">
-                <header id="resumeheader">Education </header>
-                <h2 id="resumeh2">UNIVERSITY OF TAMPA <br>Honors College</h2><br><br>
-                BFA in Graphic Design, GPA 3.75<br>
-                Expected graduation: May 2015<br>
-                Studied architecture in Paris June 2013<br>
-                <br><br>
-                <h2 id="resumeh2">AMERICAN UNIVERSITY <br>Honors College</h2><br><br>
-                Studied Communications &amp; Graphic Design, end GPA 3.74<br>
-                Made Dean's List 3 semesters.<br>
-            </div>
-
-            <div id="skills" class="section">
-                <header id="resumeheader">Skills </header>
-                indesign<br>
-                photoshop<br>
-                illustrator<br>
-                dreamweaver<br>
-                css<br>
-                html<br>
-                javascript<br>
-                php<br>
-                after effects<br>
-            </div>
-            <div id="about" class="section">
-                <header id="resumeheader">About </header>
-                Once I realized design is all about visually interesting organization, it was love at first sight. I
-                have a passion for grids, typography, and experimentation. View my portfolio online at beccabarton.net.
-            </div>
-            <div id="contact" class="section">
-                <header id="resumeheader">Contact </header>
-                beccabarton.com<br>
-                @becckitt<br>
-
-            </div>
-
-        </div>
-
-
-    </div>
-    <script src="/jq.vue/jquery-3.5.0.min.js"></script>
+    <script src="jq.vue/jquery-3.5.0.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $(document).mousemove(function (event) {
-                $(" #light").css({ "top": event.pageY - 250, "left": event.pageX - 300 });
-            });
-        }); 
+
+  // -------------------------------------------------------------------------------------------
+  class Leaderboard {
+    constructor () {
+      this.ary = []
+      this.want = [0, 1, 2, 3, 4, 5, 6, 25, 26]
+      this.option = {
+        uri: 'https://api.kkbox.com/v1.1/charts',
+        qs: {
+          territory: 'TW'
+        },
+        auth: {
+          bearer: token
+        },
+        json: true
+      }
+    }
+
+    async info () {
+      try {
+        const response = await rp(this.option)
+        for (const i of this.want) {
+          this.ary.push(
+            {
+              thumbnailImageUrl: response.data[i].images[0].url,
+              title: response.data[i].title,
+              text: response.data[i].description,
+              actions: [{
+                type: 'postback',
+                label: '看看歌單',
+                data: response.data[i].id
+              }, {
+                type: 'uri',
+                label: 'KKbox官網',
+                uri: response.data[i].url
+              }]
+            }
+          )
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+      event.reply({
+        type: 'template',
+        altText: 'this is a carousel template',
+        template: {
+          type: 'carousel',
+          columns: this.ary
+        }
+      })
+    }
+  }
+  // -------------------------------------------------------------------------------------------
+  class Search {
+    constructor (searchtype) {
+      this.ary = []
+      this.artistid = ''
+      this.artisttracksary = []
+      this.option = {
+        uri: 'https://api.kkbox.com/v1.1/search',
+        qs: {
+          q: event.message.text.substr(1),
+          territory: 'TW',
+          limit: 10,
+          type: searchtype
+        },
+        auth: {
+          bearer: token
+        },
+        json: true
+      }
+      this.artoption = {
+        uri: 'https://api.kkbox.com/v1.1/artists/' + this.artistid + '/top-tracks',
+        qs: {
+          q: event.message.text.substr(1),
+          territory: 'TW',
+          limit: 10
+        },
+        auth: {
+          bearer: token
+        },
+        json: true
+      }
+    }
+
+    async trackinfo () {
+      try {
+        const response = await rp(this.option)
+        for (const i of response.tracks.data) {
+          const art = this.ary.map(num => {
+            return num.text
+          })
+          if (!art.includes(i.album.artist.name) && art.length < 11) {
+            this.ary.push(
+              {
+                thumbnailImageUrl: i.album.images[0].url,
+                title: i.name.substr(0, 40),
+                text: i.album.artist.name.substr(0, 60),
+                actions: [{
+                  type: 'postback',
+                  label: '立即試聽',
+                  data: i.name + ',' + i.album.artist.name
+                }, {
+                  type: 'uri',
+                  label: '看看歌詞',
+                  uri: i.url
+                }]
+              }
+            )
+          }
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+      if (this.ary.length === 0) {
+        event.reply('找不到此歌曲')
+      } else {
+        event.reply({
+          type: 'template',
+          altText: 'this is a carousel template',
+          template: {
+            type: 'carousel',
+            columns: this.ary
+          }
+        })
+      }
+    }
+
+    async artistinfo () {
+      try {
+        const response = await rp(this.option)
+        this.artoption.uri = 'https://api.kkbox.com/v1.1/artists/' + response.artists.data[0].id + '/top-tracks'
+        const artisttracks = await rp(this.artoption)
+        for (const i of artisttracks.data) {
+          this.artisttracksary.push(
+            {
+              thumbnailImageUrl: i.album.images[0].url,
+              title: i.name.substr(0, 30),
+              text: i.album.name.substr(0, 60),
+              actions: [{
+                type: 'postback',
+                label: '立即試聽',
+                data: i.name + ',' + i.album.artist.name
+              }, {
+                type: 'uri',
+                label: '看看歌詞',
+                uri: i.url
+              }]
+            }
+          )
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+      if (this.artisttracksary.length === 0) {
+        event.reply('找不到此歌手')
+      } else {
+        event.reply({
+          type: 'template',
+          altText: 'this is a carousel template',
+          template: {
+            type: 'carousel',
+            columns: this.artisttracksary
+          }
+        })
+      }
+    }
+  }
+  // -------------------------------------------------------------------------------------------
+  if (event.message.text.toLowerCase() === 'rank') {
+    const top = new Leaderboard()
+    top.info()
+  } else if (event.message.text.includes('!')) {
+    const seartrack = new Search('track')
+    seartrack.trackinfo()
+  } else if (event.message.text.includes('@')) {
+    const searchartist = new Search('artist')
+    searchartist.artistinfo()
+    // console.log(searchartist)
+  } else {
+    // event.reply('請輸入以下指令\n 我很好 ★')
+    event.reply('請輸入以下指令\n ★ rank：搜尋各大榜單\n ★ !歌曲名稱：搜尋歌曲\n ★ @歌手：搜尋歌手TOP歌曲')
+  }
+})
+
+bot.on('postback', async (event) => {
+  class LeaderboardTrack {
+    constructor (id) {
+      this.id = id
+      this.ary = []
+      this.option = {
+        uri: 'https://api.kkbox.com/v1.1/charts/chart_id/tracks',
+        qs: {
+          territory: 'TW',
+          limit: 10
+        },
+        auth: {
+          bearer: token
+        },
+        json: true
+      }
+    }
+
+    async info () {
+      try {
+        this.option.uri = 'https://api.kkbox.com/v1.1/charts/' + this.id + '/tracks'
+        const response = await rp(this.option)
+        for (const i of response.data) {
+          this.ary.push(
+            {
+              thumbnailImageUrl: i.album.images[0].url,
+              title: i.name,
+              text: i.album.artist.name,
+              actions: [{
+                type: 'postback',
+                label: '立即試聽',
+                data: i.name + ',' + i.album.artist.name
+              }, {
+                type: 'uri',
+                label: '看看歌詞',
+                uri: i.url
+              }]
+            }
+          )
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+      event.reply({
+        type: 'template',
+        altText: 'this is a carousel template',
+        template: {
+          type: 'carousel',
+          columns: this.ary
+        }
+      })
+    }
+  }
+  const youtubeData = event.postback.data.split(',')
+  if (youtubeData.length === 2) {
+    const youtube = await search(youtubeData[1] + youtubeData[0], opts)
+    event.reply(youtube.results[0].link)
+  } else {
+    const getTracks = new LeaderboardTrack(event.postback.data)
+    getTracks.info()
+  }
+})
+
+// https://www.postman.com/collections/5cd6236e9e9748fd1ed1
+
+// 在 port 啟動
+bot.listen('/', process.env.PORT, () => {
+  console.log('機器人已啟動')
+})
     </script>
-
 </body>
-
 </html>
