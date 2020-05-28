@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: armenian;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+      font-size: 30px;
+    }
+
+    h4 {
+      margin: 1rem 0;
+    }
+
+    .container {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .progress {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>進度條(progress)</h1>
+    <ul>
+      <li>使用 .progress 作為包裝器來指示進度條的最大值。</li>
+      <li>內部的 .progress-bar 來表示到目前為止的進度。</li>
+      <li>.progress-bar 需要行內樣式，通用類別的 Class 或自訂 CSS 來設置它們的寬度。</li>
+      <li>.progress-bar 還需要一些 role 和 aria 屬性來使其具親和性。</li>
+    </ul>
+    <div class="row">
+      <div class="col">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0"
+            aria-valuemax="100">50%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0"
+            aria-valuemax="100">100%</div>
+        </div>
+        <hr>
+        <h4>設置高度</h4>
+        <div class="progress h-50">
+          <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100">battery</div>
+        </div>
+        <hr>
+        <h4>多進度條</h4>
+        <div class="progress ">
+          <div class="progress-bar bg-danger" role="progressbar" style="width: 33.333%" aria-valuenow="75"
+            aria-valuemin="0" aria-valuemax="100">步驟一</div>
+          <div class="progress-bar bg-info" role="progressbar" style="width: 33.333%" aria-valuenow="75"
+            aria-valuemin="0" aria-valuemax="100">步驟二</div>
+          <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.333%" aria-valuenow="75"
+            aria-valuemin="0" aria-valuemax="100">步驟三</div>
+        </div>
+        <hr>
+        <h4>條紋、動態條紋</h4>
+        <p>可以加上.progress-bar-striped來增加條紋，在加上.progress-bar-animated來動態條紋</p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
+            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated  bg-dark" role="progressbar"
+            style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">L</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src='../jq.vue/jquery-3.5.0.min.js'></script>
+  <script src='../bootstrap/js/popper.min.js'></script>
+  <script src='../bootstrap/js/bootstrap.min.js'></script>
+  <script>
+  </script>
+</body>
+
+</html>

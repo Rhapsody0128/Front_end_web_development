@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+  <style>
+     * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+      font-size:20px;
+    }
+    h4{
+      margin:  1rem 0;
+      }
+      .container{
+        margin-top:1rem ;
+        margin-bottom: 2rem;
+      }
+  </style>
+</head>
+
+<body>
+  <!-- 需要設定JS啟動
+  data-toggle="tooltip"，啟動彈出工具提示框
+  data-placement="top，可以設定彈出方向top、right、bottom、left"
+  data-trigger="click"預設click可更改為滑入(hover)，或在foucs在畫面上下一次點擊會關閉
+  data-offset="x,y"可設定彈出視窗的位置偏移
+  title="彈出框的標題" 
+  data-content="彈出框的內容"-->
+  
+  <div class="container">
+    <h4>工具提示框(tooltips)</h4>
+      <div class="row">
+        <div class="col">
+          <button type="button" boundary class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltipaaa on top">
+            Tooltip on top
+          </button>
+          <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+            Tooltip on right
+          </button>
+          <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+            Tooltip on bottom
+          </button>
+          <button type="button" data-offset="0,100" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+            Tooltip on left
+          </button>
+        </div>
+      </div>
+  </div>
+  
+<script src='../jq.vue/jquery-3.5.0.min.js'></script>
+<script src='../bootstrap/js/popper.min.js'></script>
+<script src='../bootstrap/js/bootstrap.min.js'></script>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+</script>
+</body>
+</html>
