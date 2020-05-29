@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+  <style>
+     * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+      font-size: 16px;
+    }
+    h4{
+      margin:  1rem 0;
+      }
+      .container{
+        margin-top:1rem ;
+        margin-bottom: 2rem;
+      }
+  </style>
+</head>
+
+<body>
+  <!-- 需要設定JS啟動
+  data-placement="top，可以設定彈出方向top、right、bottom、left"
+  data-trigger="click"預設click可更改為滑入(hover)
+  title="彈出框的標題" 
+  data-content="彈出框的內容"-->
+  
+  <div class="container">
+    <h4>彈出提示框(popovers)</h4>
+      <div class="row">
+        <div class="col">
+          <button
+          type="button"
+          class="btn btn-lg btn-danger"
+          data-placement="bottom"
+          data-trigger="click"
+          data-toggle="a"
+          title="把我尋找，想。"
+          data-content="冠軍幫你請點擊挑戰，選手萬元授權方式檢。">Click to toggle popover
+            </button>
+          <button
+          type="button"
+          class="btn btn-lg btn-danger"
+          data-placement="top"
+          data-trigger="hover"
+          data-toggle="a"
+          title="把我尋找，想。"
+          data-content="冠軍幫你請點擊挑戰，選手萬元授權方式檢。">Click to toggle popover
+            </button>
+          <button
+          type="button"
+          class="btn btn-lg btn-danger"
+          data-placement="left"
+          data-trigger="hover"
+          data-toggle="a"
+          title="把我尋找，想。"
+          data-content="冠軍幫你請點擊挑戰，選手萬元授權方式檢。">Click to toggle popover
+            </button>
+          <button
+          type="button"
+          class="btn btn-lg btn-danger"
+          data-placement="right"
+          data-trigger="hover"
+          data-toggle="a"
+          title="把我尋找，想。"
+          data-content="冠軍幫你請點擊挑戰，選手萬元授權方式檢。">Click to toggle popover
+            </button>
+        </div>
+      </div>
+  </div>
+  
+<script src='../jq.vue/jquery-3.5.0.min.js'></script>
+<script src='../bootstrap/js/popper.min.js'></script>
+<script src='../bootstrap/js/bootstrap.min.js'></script>
+<script>
+  $(function () {
+  $('[data-toggle="a"]').popover()
+})
+
+</script>
+</body>
+</html>
