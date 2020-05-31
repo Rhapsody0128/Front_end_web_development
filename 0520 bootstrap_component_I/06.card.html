@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+      font-size: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h4>1.卡片</h4>
+    <p>卡片是bootstrap很好用的資訊容器，跟欄位系統很和拍，可以放置圖片、標題、段落、按鈕、清單等等，主要資訊放在card-body裡</p>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="container">
+    <h4>2.卡片配合群組列表(list-group)</h4>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-header">
+            Featured
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <h4>3.卡片頭和尾</h4>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container">
+    <h4>4.卡片的縮放</h4>
+    <p>卡片假設沒有特定的 width，那麼除非另有聲明，否則它們的寬度將是100％。您可以根據需求自訂 CSS、網格系統、Sass mixins grid
+      或通用類別來調整。通常放在有寬度的容器內，如網格系統或自訂義的CSS寬度內，.col的card每個內容資訊不同可能造成高度不同</p>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card h-100">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body  d-flex flex-column ">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text flex-fill">Some quick example text to build on the card title and make up
+              the bulk of
+              the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              quick example text to build on the card title and make up the bulk of the card's quick example text to
+              build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card  h-100">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text  flex-grow-1">Some quick example text to build on the card title and make up the bulk of
+              the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>5.卡片與導覽的組合</h4>
+    <div class="row">
+      <div class="col">
+        <div class="card text-center">
+          <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle='tab' href="#a">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle='tab' href="#b">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle='tab' href="#c" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-content">
+            <div id="a" class="card-body tab-pane fade show active">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">asdasdasdsadasddsaext below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div id="b" class="card-body tab-pane fade ">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">Witzxczzzzxcsasdasddsaext below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div id="c" class="card-body tab-pane fade ">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With sadadsasdasddsaext below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>6.圖像覆蓋</h4>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card bg-dark text-white">
+          <img src="https://picsum.photos/1920/1080/?random=1" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider cardleor with supporting text below as a natural lead-in to additional
+              content. This content is a little bit asdasdasdasdasdasdasdlonger.</p>
+            <p class="card-text">Last updated 3 mins ago</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card-body text-white" style="background: url('https://picsum.photos/1920/1080/?random=1') no-repeat center
+          center/cover">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider cardleor with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+          <p class="card-text">Last updated 3 mins ago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src='../jq.vue/jquery-3.5.0.min.js'></script>
+<script src='../bootstrap/js/popper.min.js'></script>
+<script src='../bootstrap/js/bootstrap.min.js'></script>
+
+</html>

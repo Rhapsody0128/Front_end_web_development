@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+      font-size: 30px;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <h4>下拉選單 (Dropdowns)</h4>
+  <p>下拉選單是可切換的，內文框用於顯示連結列表或其他。這些交互功能於 Bootstrap JavaScript 下拉選單插件提供。透過點擊切換，而不是滑入的方式，這是一個策劃好了的</p>
+  <div class="container-fluid d-flex justify-content-around align-items-center h-75 bg-dark">
+    <div class="row">
+      <div class="col">
+        <div class="dropdown">
+          <div class="btn-group dropup">
+            <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" data-display="static" aria-expanded="false">
+              電腦ctloasdasdsdaaskads;lkasdpaksdpoasd
+            </button>
+            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
+              <span class="dropdown-item-text">電腦</span>
+              <a class="dropdown-item active" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item disabled" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="dropleft">
+          <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="70,10"
+            data-reference="parent">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <!-- Example split danger button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary">Action</button>
+          <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../jq.vue/jquery-3.5.0.min.js"></script>
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

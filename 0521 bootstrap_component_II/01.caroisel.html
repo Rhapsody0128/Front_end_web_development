@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+    }
+
+    body {
+      background: #eee;
+    }
+
+    .carousel-item {
+      transition: transform 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+
+    .carousel-item img {
+      object-fit: cover;
+    }
+
+    @media(max-widtg:575.98px) {
+      .carousel {
+        height: auto !important;
+      }
+
+      .carousel-inner img {
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid p-0 bg-danger vh-100">
+    <h4>輪播 (Carousel)</h4>
+    <div class="row no-gutters">
+      <div class="col">
+        <div id="rhapsody" class="carousel slide " data-ride="carousel" data-interval="1000">
+          <ol class="carousel-indicators">
+            <li data-target="#rhapsody" data-slide-to="0" class="active"></li>
+            <li data-target="#rhapsody" data-slide-to="1"></li>
+            <li data-target="#rhapsody" data-slide-to="2"></li>
+            <li data-target="#rhapsody" data-slide-to="3"></li>
+          </ol>
+          <div class="carousel-inner w-100 h-100">
+            <div class="carousel-item active  h-100" data-interval="1000">
+              <img src="https://picsum.photos/1920/1080/?random=1" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>如何他的特。</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quia quibusdam, eaque adipisci hic
+                  voluptatibus sapiente ex tempora commodi inventore ratione nulla eveniet obcaecati esse blanditiis?
+                  Cum
+                  modi fugiat laboriosam?</p>
+              </div>
+            </div>
+            <div class="carousel-item w-100 h-100" data-interval="3000">
+              <img src="https://picsum.photos/1920/1080/?random=2" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>如何他的特。</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quia quibusdam, eaque adipisci hic
+                  voluptatibus sapiente ex tempora commodi inventore ratione nulla eveniet obcaecati esse blanditiis?
+                  Cum
+                  modi fugiat laboriosam?</p>
+              </div>
+            </div>
+            <div class="carousel-item w-100 h-100" data-interval="2000">
+              <img src="https://picsum.photos/19/1080/?random=3" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>如何他的特。</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quia quibusdam, eaque adipisci hic
+                  voluptatibus sapiente ex tempora commodi inventore ratione nulla eveniet obcaecati esse blanditiis?
+                  Cum
+                  modi fugiat laboriosam?</p>
+              </div>
+            </div>
+            <div class="carousel-item w-100 h-100" data-interval="7000">
+              <img src="https://picsum.photos/1920/1080/?random=4" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>如何他的特。</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quia quibusdam, eaque adipisci hic
+                  voluptatibus sapiente ex tempora commodi inventore ratione nulla eveniet obcaecati esse blanditiis?
+                  Cum
+                  modi fugiat laboriosam?</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#rhapsody" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#rhapsody" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../jq.vue/jquery-3.5.0.min.js"></script>
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
