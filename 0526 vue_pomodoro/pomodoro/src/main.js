@@ -12,6 +12,9 @@ import { faCheck, faPen, faTimes, faUndo, faSave, faPlay, faPause, faStepForward
 
 import draggable from 'vuedraggable'
 
+import 'fontsource-noto-sans-tc/chinese-traditional.css'
+import './style/style.styl'
+
 library.add(faCheck, faPen, faTimes, faUndo, faSave, faPlay, faPause, faStepForward)
 
 // 註冊元件

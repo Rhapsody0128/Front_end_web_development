@@ -11,6 +11,7 @@ sweetalert - 漂亮提醒
 JASONPlaceholder - 虛擬API
 datatable - 套用可索引table
 fullcalendar - 月曆
+collectui - UI設計
 
 
 vue + 組件
