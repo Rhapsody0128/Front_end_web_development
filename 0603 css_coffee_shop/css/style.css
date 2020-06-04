@@ -63,7 +63,7 @@
 
 body{
   font-family: '微軟正黑體','Microsoft JhengHei',Arial,Helvetica,sans-serif;
-  
+  background: var(--coffee1);
 }
 
 #navbar{
@@ -141,33 +141,260 @@ opacity: 1;
   text-align: center;
   padding-top: var(--s4);
   color:var(--coffee1);
-  color: var(--coffee1);
+  margin-bottom: 4rem;
 }
 
 #section02 > .container > .row{
   padding: var(--s2);
 }
 
-#section02 .list-group{
-  font-size: 1rem;
-  margin: 1rem 0;
+#section02 .col-lg-3{
+  padding-left: var(--s2);
+  padding-right: var(--s2);
+  margin-bottom: var(--s2);
 }
+#section02 .list-group{
+  margin: var(--s3) 0;
+  margin-bottom: var(--s4);
+}
+
+
 
 #section02 .list-group .nav-link{
   color:var(--coffee2);
-  padding:0.5rem
+  padding:(--s2);
+  transition:0.3s;
+}
+
+#section02 .nav-item.active{
+  color:var(--coffee2);
+  background: var(--coffee4);
+  border: var(--s1) inset var(--coffee5);
 }
 
 #section02 .card{
+  transition: 0.3s;
   border: 5px double var(--coffee2) !important;
+  box-shadow: 0 0 0 1px var(--coffee4);
+  height: 100%;
 }
 #section02 .card:hover{
   transform: translate(0.1rem,-0.3rem);
-  transition: 0.3s;
+}
+
+#section02 .card-body h5{
+  margin: 0;
+  font-size: 1.1rem;
+}
+#section02 .card-body p{
+  margin: 0;
+}
+
+#section03 .view img{
+  transition: 0.5s;
+}
+#section03{
+  padding-bottom: var(--s4);
+}
+
+#section03 h1{
+  text-align: center;
+  padding-top: var(--s5);
+  margin: var(--s3) 0;
+  color: var(--coffee5);
+}
+
+#section03 > .container > .row{
+  background: var(--black50);
+  padding: var(--s2);
+  padding-top: var(--s4);
+}
+
+#section03 .col-lg-3{
+  padding-left: var(--s2);
+  padding-right: var(--s2);
+  margin-top: var(--s4);
+}
+
+#section03 .view{
+  overflow: hidden;
+  position: relative;
+}
+
+#section03 .view .text{
+  width: 100%;
+  color: white;
+  background: var(--black50);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#section03 .view .text p {
+  display: none;
+  text-align: center;
+}
+
+
+#section03 .view:hover img {
+  transform: scale(1.2);
+}
+
+#section03 .view:hover .text {
+  background: var(--black75);
+}
+
+#section04 .embed-responsive{
+  position: absolute;
+  filter: brightness(50%);
+  transition: 1s;
+}
+#section04 .embed-responsive:hover{
+filter:brightness(80%);
+}
+
+#section04 .infomation{
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#section04 .infomation h3{
+  color: var(--primary);
+  text-align: center;
+  background: var(--coffee5);
+  border-radius: 0.25rem;
+  padding: var(--s3);
+  box-shadow: var(--shadow1);
+  position: relative;
+}
+
+#section04 .infomation .accordion{
+  box-shadow: var(--shadow1);
+  position: relative;
+}
+
+#section04 .infomation_switch{
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  z-index: 1;
+}
+
+#section04 .infomation_switch .close{
+  font-size: 2rem;
+  color: var(--primary);
+  padding: 0.3rem 0.2rem 0.2rem;
+  cursor: pointer;
+}
+
+#traffic{
+  transition: 1s;
+}
+
+#accordion:checked + #traffic{
+  /* 利用checked狀態讓隔壁元素去做動作 */
+  transform: translateX(97%);
+}
+
+.infomation_switch label .fa-angle-double-left{
+  /* 關閉左邊方向的鍵 */
+  display: none;
+}
+#accordion:checked + #traffic .infomation_switch label .fa-angle-double-left {
+  display: block;
+}
+#accordion:checked + #traffic .infomation_switch label .fa-angle-double-right,
+#accordion:checked + #traffic .card  {
+  display: none;
+}
+
+#section05{
+  color: var(--coffee2);
+  background: var(--coffee4);
+  padding: 2rem 0 ;
+}
+#section05 .container{
+  width: 95%;
+}
+#section05 h1 {
+  text-align: center;
+  padding-top: 2.5rem;
+  padding-bottom: 0.5rem;
+}
+
+#section05 h5{
+  font-size: 1.5rem;
+  text-align: center;
+  margin: bottom;
+}
+
+#section05 small{
+  display: block;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+#section05 .row .col-12:first-child{
+  padding-bottom: 0.2rem;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 1px solid var(--coffee3);
+}
+
+#section05 .row .col-lg-12:last-child{
+  padding-bottom:2rem;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 1px solid var(--coffee3);
+}
+
+#section05 .form-control:focus,
+#section05 .input-group:focus
+{
+  border: var(--coffee3);
+  box-shadow: var(--shadow2);
+}
+
+#section06{
+  padding: 2rem 0 ;
+}
+
+#section06 h1{
+  text-align: center;
+  padding-top: var(--s5);
+  padding-bottom: var(--s2);
+}
+
+#section06 #nav-img{
+  box-shadow:var(--shadow3);
+}
+
+#footer{
+  color: var(--coffee5);
 }
 
 @media(max-width:575px){
-  
+  #main_menu.navbar-nav{
+    padding-left:var(--s3) ;
+    padding-bottom: var(--s2);
+  }
+
+  #login_menu.navbar-nav{
+    padding-left:var(--s3) ;
+    padding-bottom: var(--s2);
+  }
 }
 @media(min-width:992px){
   #section01,
@@ -178,14 +405,29 @@ opacity: 1;
   #section06{
     height: 100vh;
   }
+
+  #section03 .text p {
+    display: block !important;
+    text-align: center;
+  }
+
+  #section04 .infomation .accordion{
+    width: 30%;
+
+  }
+  #section04 .infomation{
+    align-items: flex-end;
+  }
 }
+
 
 section:nth-child(odd){
   background: var(--coffee4);
 }
 
 /* modal */
-#login .modal-content,#register .modal-content{
+#login .modal-content,
+#register .modal-content{
   box-shadow: var(--shadow3);
 }
 
@@ -194,6 +436,26 @@ section:nth-child(odd){
   border: var(--coffee3);
   box-shadow: var(--shadow2);
 } 
+
+#go_top_page{
+  width: 50px;
+  height: 50px;
+  background: var(--coffee3);
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+  box-shadow: inset 0 0 0 2px var(--coffee3), inset 0 0 0 4px var(--coffee5);
+}
+#go_top_page a{
+  display: block;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 50px;
+  color: var(--coffee5);
+  text-decoration: none;
+}
 
 #section02 ul{
   list-style: none;
