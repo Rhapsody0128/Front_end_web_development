@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    #checkbox input {
+      display: none;
+    }
+
+    #checkbox input + label::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2.5rem;
+      height: 1.2rem;
+      background-color: #777777;
+      border-radius: 0.5rem;
+    }
+
+    #checkbox input + label::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    #checkbox input:checked + label::after {
+      left: 1.3rem;
+    }
+
+    #checkbox input + label > span {
+      position: absolute;
+      top: 0;
+      left: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div id="checkbox">
+          <input id="check1" type="checkbox">
+          <label for="check1"><span>check Me!</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../jq.vue/jquery-3.5.0.min.js"></script>
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
