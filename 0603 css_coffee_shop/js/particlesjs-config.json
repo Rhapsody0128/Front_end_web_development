@@ -1,0 +1,110 @@
+{
+  "particles": {
+    "number": {
+      "value": 192,
+      "density": {
+        "enable": true,
+        "value_area": 2084.43567912518
+      }
+    },
+    "color": {
+      "value": "#b63030"
+    },
+    "shape": {
+      "type": "image",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "https://png2.cleanpng.com/sh/bf41e5ea9f19a75cb35ea15054ccbc1b/L0KzQYm3U8E0N6VofZH0aYP2gLBuTfNifF5mhdNFb36wc7F0TfRwb151feY2dHB8PbTolL1rfZ51gdDwLUXkcYiBWMU5OWVnTNg9Lkm6SYW3UsM2OWY3SKs7OEi4RoGBVMgveJ9s/kisspng-cat-amazon-com-dog-pet-toy-cat-jumping-5aa7885814b4f4.9794023515209288560848.png",
+        "width": 500,
+        "height": 500
+      }
+    },
+    "opacity": {
+      "value": 0.5772283419115882,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 1,
+        "opacity_min": 0,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 124.26443471707802,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 4,
+        "size_min": 0.3,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": false,
+      "distance": 304.6482915644493,
+      "color": "#ffffff",
+      "opacity": 1,
+      "width": 4.970577388683121
+    },
+    "move": {
+      "enable": true,
+      "speed": 11.048066982851818,
+      "direction": "top",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 600
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "bubble"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 535.9709601188878,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 377.61590372012546,
+        "size": 0,
+        "duration": 2,
+        "opacity": 0.1867777588293094,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 194.89853095232283,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}

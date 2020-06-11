@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/fontawesome.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/magnicfic-popup-single.css">
+  <!-- wow.js使用舊版的animate -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css' />
   <style>
@@ -22,16 +23,17 @@
 <body>
 
   <nav id='navbar' class=" navbar navbar-expand-lg navbar-dark fixed-top">
-    <a class="navbar-brand" href="#section01"><img src="images/logo.png" alt="泰山莊園咖啡" width="40">
-      <span class="ml-2 align-middle">泰山咖啡莊園</span></a>
-
+    <div class="menu-left">
+      <a class="pl-2 navbar-brand" href="#section01"><img src="images/logo.png" alt="泰山莊園咖啡" width="40">
+        <span class="ml-2  align-middle">泰山咖啡莊園</span></a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#coffee-navbar"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="coffee-navbar" class="collapse navbar-collapse justify-content-end">
-      <ul id='main_menu' class="navbar-nav">
+      <ul id='main_menu' class="navbar-nav menu-left">
         <li class="nav-item">
           <a class="nav-link" href="#section02"><i class="fas fa-hamburger"></i>菜單餐點</a>
         </li>
@@ -49,7 +51,7 @@
         </li>
       </ul>
 
-      <ul id="login_menu" class="navbar-nav">
+      <ul id="login_menu" class="navbar-nav menu-left">
         <li class="nav-item">
           <a id="btn-login" class="nav-link" href="#login" data-toggle="modal"><i class="fas fa-user"></i>登入</a>
         </li>
@@ -162,12 +164,21 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    <div id="textillate">
+      <ul class="textillate_texts">
+        <li>香濃原味，伴您悠閒享生活</li>
+        <li>輕鬆愉悅，重溫浪漫時光</li>
+        <li>與您相約，戀上幸福好味道</li>
+        <li>用對待人生的態度，對待一杯咖啡</li>
+        <li>簡單即是美，一杯一世界</li>
+      </ul>
+    </div>
   </section>
 
   <section id='section02'>
     <!-- 菜單餐點 -->
     <div class="container h-100 ">
-      <h1>菜單餐點</h1>
+      <h1 class="wow flip" data-wow-offset="600" data-wow-duration="1.5s" data-wow-iteration="infinite">菜單餐點</h1>
       <div class="row">
         <div class="col-12 col-lg-2">
           <ul class="list-group flex-row justify-content-center flex-lg-column">
@@ -591,8 +602,15 @@
 
   <section id='section03'>
     <!-- 周邊景點 -->
+    <div id="scene1" class="position-absolute" style="z-index: -1">
+      <div class="layer" data-depth="0.5">
+        <div class="bleed bg1">
+        </div>
+      </div>
+    </div>
+    <div id="particles-js" class="position-absolute h-100 w-100" style="z-index: 1;"></div>
     <div class="container h-100">
-      <h1>周邊景點</h1>
+      <h1 class="wow flip" data-wow-offset="600" data-wow-duration="1.5s" data-wow-iteration="infinite">周邊景點</h1>
       <div class="row">
         <div class="col-6 col-lg-3">
           <a class="image-popup-no-margins" href="https://picsum.photos/1920/1080/?random=1">
@@ -797,7 +815,7 @@
   <section id='section05'>
     <!-- 聯絡我們 -->
     <div class="container">
-      <h1>聯絡我們</h1>
+      <h1 class="wow flip" data-wow-offset="600" data-wow-duration="1.5s" data-wow-iteration="infinite">聯絡我們</h1>
 
       <div class="row">
         <div class="col-12">
@@ -882,8 +900,14 @@
 
   <section id='section06'>
     <!-- 咖啡故事 -->
+    <div id="scene2" class="position-absolute" style="z-index:-1">
+      <div class="layer" data-depth="0.5">
+        <div class="bleed bg2">
+        </div>
+      </div>
+    </div>
     <div class="container">
-      <h1>咖啡故事</h1>
+      <h1 class="wow flip" data-wow-offset="600" data-wow-duration="1.5s" data-wow-iteration="infinite">咖啡故事</h1>
       <div class="row">
         <div class="col-lg-6">
           <img id="nav-img" class="h-100 w-100" src="./images/section02_01.jpg"
@@ -897,7 +921,7 @@
               <a id="coffee3" class="nav-item nav-link" data-toggle="tab" href="#coffee-03">咖啡壞處</a>
             </div>
           </nav>
-          <div class="tab-content overflow-auto" id="nav-tabContent" style="height: 500px;" data-spy="scroll"
+          <div class="tab-content overflow-auto bg-white p-3" id="nav-tabContent" style="height: 500px;"
             data-target="#nav-tab">
             <div id="coffee-01" class="tab-pane fade show active">
               <h2>咖啡起源</h2>
@@ -950,9 +974,10 @@
     </div>
   </section>
   <footer id="footer">
-    <div class="container-fluid h-100 vertical-align">
+    <div class="container-fluid h-100 vertical-align align-lign-middle d-flex justify-content-center mt-3">
       <div class="row h-100 vertical-align">
-        <div class="col-auto"><i class="fas fa-map-marker-alt align-middle"></i><span class="align-middle">新北市泰山區貴子里致遠新村
+        <div class="col-auto"><i class="fas fa-map-marker-alt mr-2 align-middle "></i><span
+            class="align-middle">新北市泰山區貴子里致遠新村
             55 之 1 號</span></div>
         <div class="col-auto"><i class="fas fa-clock mr-2 align-middle"></i><span class="align-middle"> 營業時間：週一至週五
             08:10~16:35，六、日 08:10~16:35</span></div>
@@ -964,32 +989,48 @@
                 data-offset="0,10" title="泰山職訓局"><i class="fab fa-facebook" style="font-size:30px;color:white;"></i></a>
             </li>
             <li class="mr-2"><a href="https://wdaweb.github.io" data-toggle="tooltip" data-container="#footer"
-                data-offset="0,10" title="網頁設計課程介紹"><img src=" ./images/wda.png" width="30" alt=""></a></li>
-            <li><a href="https://www.taiwanjobs.gov.tw/home/new_index.aspx" data-toggle=" tooltip"
+                data-offset="0,10" title="網頁設計課程介紹"><img src="./images/wda.png" width="30" alt=""></a></li>
+            <li><a href="https://www.taiwanjobs.gov.tw/home/new_index.aspx" data-toggle="tooltip"
                 data-container="#footer" data-offset="0,10" title="台灣就業通"><img src="./images/twjb.png" width="30"
                   alt=""></a></li>
           </ul>
-
-
-
-
         </div>
       </div>
   </footer>
 
-  <div id="go_top_page">
+  <div id="go_top_page" class="animated bounce" style="animation-duration:3s">
     <a href="#section01"><i class="fas fa-chevron-up"></i></a>
   </div>
+
 
   <script src='../jq.vue/jquery-3.5.0.min.js'></script>
   <script src='../bootstrap/js/popper.min.js'></script>
   <script src='../bootstrap/js/bootstrap.min.js'></script>
+  <!-- scrollpag -->
   <script src="js/jquery.easing.1.3.js"></script>
   <script src="js/scrollpage.js"></script>
-
+  <!-- magnific-popup -->
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/magnicfic-popup-single.js"></script>
+  <!-- parallax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+  <!-- particles.js -->
+  <script src="js/particles.min.js"></script>
+  <script src="js/particles.app.js"></script>
+  <!-- wow.js -->
+  <script src="js/wow.min.js"></script>
+  <!-- textillate.js -->
+  <script src="js/jquery.fittext.js"></script>
+  <script src="js/jquery.lettering.js"></script>
+  <script src="js/jquery.textillate.js"></script>
   <script>
+
+    var scene1 = document.getElementById('scene1');
+    var parallaxInstance1 = new Parallax(scene1);
+    var scene2 = document.getElementById('scene2');
+    var parallaxInstance2 = new Parallax(scene2);
+
+
     $('.carousel-control-prev, .carousel-control-next, #btn-login, #btn-register,[data-toggle="pill"],#coffee1,#coffee2,#coffee3').on('click', function (event) {
       event.preventDefault()
       $('html,body').stop()
@@ -1009,6 +1050,93 @@
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
+
+    new WOW().init();
+
+    $('#go_top_page').css({ display: 'none' })
+
+    $(window).on('scroll', function () {
+      nowloc = $(window).scrollTop()
+      if (nowloc > 1500) {
+        $('#go_top_page').fadeIn(1000)
+        $('#go_top_page').css({ 'animation-iteration-count': 3 })
+      } else {
+        $('#go_top_page').fadeOut(1000)
+        $('#go_top_page').css({ 'animation-iteration-count': 'none' })
+      }
+
+      if (nowloc <= 300) {
+        $('#navbar').css({
+          background: 'transparent'
+        })
+      } else {
+        $('#navbar').css({
+          background: 'var(--coffee1)'
+        })
+      }
+
+    })
+
+    $('.navbar-toggler').on('click', function () {
+      $('#navbar').toggleClass('toogle_black')
+    })
+
+    $('#textillate').textillate({
+      // textillate.js
+      selector: '.textillate_texts',
+      // 被選擇到的子選擇器，在他裡面的多行文字會逐一播放動畫
+      loop: true,
+      // 重複
+      minDisplayTime: 2000,
+      // 每段文字顯示的時間長度
+      initialDelay: 500,
+      // 延遲
+      autoStart: true,
+      // 自動開始
+      inEffects: [],
+      outEffects: ['hinge'],
+      in: {
+        // 進場動畫
+        effect: 'zoomIn',
+        // 動畫名稱
+        delayScale: 1.5,
+        // 每個字元延遲的時間倍率
+        delay: 50,
+        // 每個字元的延遲時間
+        sync: false,
+        // 同步出現
+        shuffle: true,
+        // 隨機字元出現
+        reverse: false,
+        // 反轉出現
+        callback: function () {
+          $('#textillate').css('background', 'linear-gradient(270deg,transparent,rgba(128, 127, 300, 0.3),transparent)')
+        }
+        // 回呼函式
+      },
+
+      out: {
+        // 離場動畫
+        effect: 'zoomOut',
+        delayScale: 1.5,
+        delay: 50,
+        sync: false,
+        shuffle: true,
+        reverse: true,
+        callback: function () {
+          $('#textillate').css('background', 'none')
+        }
+      },
+
+      callback: function () { },
+
+      type: 'char'
+      // 設定word是以單字為單位
+      // 設定char是以字元為單位
+
+    });
+
+
   </script>
 </body>
 

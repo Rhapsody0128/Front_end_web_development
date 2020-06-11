@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 微軟正黑體;
+      font-size: 40px;
+    }
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    body {
+      background: url('./視差_圖片/nebula.jpg') fixed no-repeat center/cover;
+      /* overflow: hidden; */
+    }
+
+    #scene {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      z-index: -1;
+    }
+
+    #content {
+      text-align: center;
+      overflow: auto;
+    }
+
+    .planet2 {
+      position: absolute;
+      left: 75% !important;
+      top: 35% !important;
+    }
+
+    .planet3 {
+      position: absolute;
+      left: 35% !important;
+      top: 40% !important;
+    }
+
+    .planet4 {
+      position: absolute;
+      left: 60% !important;
+      top: 70% !important;
+      z-index: 1 !important;
+    }
+  </style>
+</head>
+
+<div id="scene">
+  <div class="planet1" data-depth="0.1"><img src="./視差_圖片/planet01.png" width="1000" alt=""></div>
+  <div class="planet2" data-depth="0.7"><img src="./視差_圖片/planet02.png" width="400" alt=""></div>
+  <div class="planet3" data-depth="1.2"><img src="./視差_圖片/planet03.png" width="600" alt=""></div>
+  <div class="planet4" data-depth="2"><img src="./視差_圖片/planet04.png" width="200" alt=""></div>
+  <div data-depth="0.05" id="content">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis soluta delectus sit, error a deleniti sint
+      corporis debitis unde, veniam rem eveniet consequuntur natus nemo quis reiciendis vero omnis ratione harum dolores
+      commodi quo! Enim numquam officia excepturi, modi, accusantium esse voluptatum perspiciatis veniam quasi vitae eos
+      sit? Quaerat eius quibusdam dicta culpa ullam? Architecto fugit non, sequi praesentium, voluptas unde modi culpa
+      in, autem tempore quae quas possimus blanditiis ullam. Cupiditate ullam fugit praesentium repudiandae deserunt
+      consequatur accusantium est numquam magni sint ipsa corporis modi voluptates quo quos illo assumenda illum,
+      blanditiis neque rerum animi eius! Sint optio doloremque, velit nesciunt ullam excepturi quis ipsam quae laborum
+      illum, harum repellat facilis odio consequatur in, nisi quo. Harum facere tempora voluptatem voluptas voluptatum
+      quos, in doloribus dolore quo nesciunt atque consequatur cumque voluptate labore quod. Nisi libero deserunt
+      consequatur nam, ad blanditiis architecto ipsa cum quidem debitis sit, autem natus iure dolorem amet inventore
+      consequuntur at tempore repellendus vel culpa voluptatibus et veritatis. Quo consectetur blanditiis rem, et
+      voluptatibus, sunt voluptatem aperiam temporibus facilis labore deleniti repudiandae cumque eaque. Quis
+      voluptatibus dolor voluptas id! Esse, blanditiis soluta rem consequatur ullam cumque! Iusto maiores error, dolore
+      veritatis dolorum sunt, minima unde dignissimos cupiditate reprehenderit optio similique quo necessitatibus
+      blanditiis, quasi officiis perferendis distinctio tempore illum ullam natus temporibus! Ea eum, amet distinctio
+      officia nemo sit minima, ducimus ipsum consequatur veritatis animi enim porro quidem ratione quibusdam optio
+      tempore quis quae quaerat provident, cum atque temporibus! Enim sequi repellat inventore? Perferendis esse
+      aspernatur a vitae earum nisi est. Amet similique est reprehenderit dicta mollitia laboriosam quo itaque obcaecati
+      laborum eos blanditiis, quos architecto ullam doloribus vero. Itaque, incidunt, dolore placeat dolorum laboriosam
+      in, ut sequi atque officiis corporis ipsam! Ut illo delectus animi et at earum aspernatur, quasi ea quam odio.
+      Eaque animi itaque quasi similique libero? Ullam qui harum a beatae blanditiis distinctio ex fugit obcaecati
+      laborum voluptatibus nihil, error dolor ab quam sed? Voluptatem pariatur labore repudiandae aliquam perferendis
+      error, itaque minima neque rem accusantium a in quos, architecto nesciunt cum magni corporis deleniti atque vitae
+      voluptatum nam veniam. Odit, rerum, quidem quaerat id quia dignissimos itaque expedita, non nihil beatae ea amet
+      magnam qui cumque iusto consectetur sequi nesciunt aspernatur sint consequuntur nam! Quos neque ipsum, aspernatur
+      incidunt in ducimus labore, placeat velit culpa repudiandae laboriosam officiis reprehenderit. Possimus, id
+      facere. Tempore et, quae dolores ipsam harum aspernatur facilis earum mollitia minima, modi accusamus beatae
+      deleniti? Dolor nostrum dolores earum! Obcaecati dignissimos numquam ducimus modi eius vitae debitis deserunt! A,
+      cumque iste porro fugit expedita ipsum rerum eligendi. Facilis sint quidem totam assumenda ipsum doloremque qui
+      laborum hic magnam distinctio iusto veniam, natus perspiciatis voluptatibus recusandae voluptatum dolor! Incidunt
+      voluptatibus aspernatur ea esse, sint iusto in consequuntur blanditiis! Sequi voluptate pariatur explicabo minima
+      dolores, qui fugiat expedita adipisci voluptatum quidem praesentium sapiente quam ea inventore, quas perferendis
+      autem! Illum modi fugit autem! Veritatis accusamus quasi molestiae fuga nesciunt dolorum, deserunt, mollitia omnis
+      saepe corrupti incidunt. Perspiciatis a sint vitae!</p>
+  </div>
+</div>
+
+
+
+<body>
+  <script src='../jq.vue/jquery-3.5.0.min.js'></script>
+  <script src='../bootstrap/js/popper.min.js'></script>
+  <script src='../bootstrap/js/bootstrap.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+  <script>
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene);
+  </script>
+</body>
+
+</html>

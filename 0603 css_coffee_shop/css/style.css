@@ -64,6 +64,7 @@
 body{
   font-family: '微軟正黑體','Microsoft JhengHei',Arial,Helvetica,sans-serif;
   background: var(--coffee1);
+  overflow-x: hidden;
 }
 
 #navbar{
@@ -188,20 +189,24 @@ opacity: 1;
 }
 #section02 .card-body p{
   margin: 0;
+  z-index: 2;
 }
 
 #section03 .view img{
   transition: 0.5s;
+  z-index: 2;
 }
 #section03{
   padding-bottom: var(--s4);
 }
 
 #section03 h1{
+  position: relative;
   text-align: center;
   padding-top: var(--s5);
   margin: var(--s3) 0;
   color: var(--coffee5);
+  z-index: 3
 }
 
 #section03 > .container > .row{
@@ -219,6 +224,7 @@ opacity: 1;
 #section03 .view{
   overflow: hidden;
   position: relative;
+  z-index: 2;
 }
 
 #section03 .view .text{
@@ -317,7 +323,7 @@ filter:brightness(80%);
   display: block;
 }
 #accordion:checked + #traffic .infomation_switch label .fa-angle-double-right,
-#accordion:checked + #traffic .card  {
+#accordion:checked + #traffic .card {
   display: none;
 }
 
@@ -404,6 +410,7 @@ filter:brightness(80%);
   #section05,
   #section06{
     height: 100vh;
+    overflow: hidden;
   }
 
   #section03 .text p {
@@ -420,10 +427,6 @@ filter:brightness(80%);
   }
 }
 
-
-section:nth-child(odd){
-  background: var(--coffee4);
-}
 
 /* modal */
 #login .modal-content,
@@ -459,4 +462,92 @@ section:nth-child(odd){
 
 #section02 ul{
   list-style: none;
+}
+
+#scene1{
+  width: 100%;
+  height: 100%;
+}
+
+.layer{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.bg1 {
+  background: url(../images/parallax_01.jpg) no-repeat center/cover;
+}
+.bleed{
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  right: -5%;
+  bottom: -5%;
+  width: 120%;
+  height: 120%;
+}
+
+#scene2{
+  width: 100%;
+  height: 100%;
+}
+
+.bg2 {
+  background: url(../images/parallax_02.jpg) no-repeat center/cover;
+}
+
+.toogle_black{
+  background: var(--coffee1) !important;
+}
+
+.menu-left a{
+  display:inline-block;
+  position: relative;
+  padding-bottom: 0.5rem;
+  transition: color 0.35s ease;
+}
+
+.menu-left a::before{
+  content: '';
+  width: 0;
+  height: 1px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 0.35s ease;
+}
+
+.menu-left a:hover::before{
+  width: 100%;
+  background: #fff;
+  transition: 1s;
+}
+
+.menu-left a::after{
+  content: '';
+  width: 0;
+  height: 1px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  transition: width 0.35s ease;
+}
+.menu-left a:hover::after{
+  width: 100%;
+  background: transparent;
+  transition: 0.5s;
+}
+
+#textillate{
+  position: absolute;
+  z-index: 99;
+  color: white;
+  font-size: 2rem;
+  width: 50%;
+  text-align: center;
+  list-style: none;
+  text-shadow: 0.15rem 0.15rem black;
+  
+  transition: background 1s;
 }
