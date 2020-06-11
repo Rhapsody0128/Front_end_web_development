@@ -12,7 +12,9 @@ JASONPlaceholder - 虛擬API
 datatable - 套用可索引table
 fullcalendar - 月曆
 collectui - UI設計
-
+LayoutIt - bootstrap layout拉版
+Balsamiq - 網頁UI版面設計
+axure - 網頁版面+模擬場景轉換
 
 vue + 組件
 *BootstrapVue
