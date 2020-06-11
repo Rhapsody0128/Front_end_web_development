@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+</head>
+
+<body>
+  <div class="container">
+    <h4>互動視窗 (Modal)</h4>
+    <p>使用 Bootstrap JavaScript 的互動視窗插件來增加一個對話視窗、用戶提示或完整的自訂內容。</p>
+    <div class="row">
+      <div class="col">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Launch demo modal
+        </button>
+
+        <a class="btn btn-primary" data-toggle="modal" data-backdrop="static" data-target="#exampleModal">
+          Launch demo modal
+        </a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h4>滾動長內容</h4>
+    <p>當使用者的動態視窗變得太長時，它們的滾動不依賴於頁面本身。</p>
+    <div class="row">
+      <div class="col">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+          Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Soluta, ab aliquam. Nihil labore odit consequatur impedit officia? Officiis minus excepturi vero
+                  exercitationem, pariatur esse aut cupiditate facere ipsum sunt earum.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem iure earum ex nam pariatur et placeat
+                inventore aliquid, saepe tempora consectetur optio, eum enim voluptatem labore. Veniam architecto quia
+                ea.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='../jq.vue/jquery-3.5.0.min.js'></script>
+  <script src='../bootstrap/js/popper.min.js'></script>
+  <script src='../bootstrap/js/bootstrap.min.js'></script>
+  <script>
+  </script>
+</body>
+
+</html>

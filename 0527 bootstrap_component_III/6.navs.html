@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='../bootstrap/css/bootstrap.css'>
+</head>
+
+<body>
+  <div class="container">
+    <h4>導覽 (Navs)</h4>
+    <p>Bootstrap 中提供的導覽共用通用標記和樣式，從基礎 .nav 到啟用與禁用的狀態。 交換 class 在每種樣式之間切換。</p>
+    <div class="row">
+      <div class="col">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h4>垂直</h4>
+    <p>通過使用 .flex-column 通用類別更改 flex 項目的軸項。如果在特定 viewports 需要堆疊，可使用響應式版本（例如 .flex-sm-column）。</p>
+    <div class="row">
+      <div class="col">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h4>分頁標籤</h4>
+    <p>
+      從上面了解基本導覽，並加入 .nav-tabs 以生成具有分頁標籤的介面。 使用我們的 分頁 JavaScript 插件。</p>
+    <div class="row">
+      <div class="col">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>片狀</h4>
+    <div class="row">
+      <div class="col">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>填充和對齊</h4>
+    <p>
+      .nav 內容有兩種寬度擴展用的 Class，使用 .nav-fill 會將 .nav-item 內容按照比例分配空間。注意，這會佔用所有的水平空間，但並不是每個導覽項目都具有相同寬度。
+
+      Active</p>
+    <div class="row">
+      <div class="col">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bg-danger" href="#">Longer nav link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bg-dark" href="#">Link</a>
+          </li>
+          <li class="nav-item bg-success">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p>對於等寬元素使用 .nav-justified。 所有的水平空間將被導覽連結佔據，但與上面的 .nav-fill 不同，每個導覽項都將是相同的寬度。</p>
+    <div class="row">
+      <div class="col">
+        <nav class="nav nav-pills nav-justified">
+          <a class="nav-item nav-link active" href="#">Active</a>
+          <a class="nav-item bg-danger nav-link" href="#">Link</a>
+          <a class="nav-item bg-dark nav-link" href="#">Link</a>
+          <a class="nav-item bg-success nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>JavaScript 行為
+    </h4>
+    <p>使用 JavaScript 分頁標籤插件 - 單獨或透過編譯的 bootstrap.js 檔 - 擴展我們的導覽分頁標籤和片狀的，以創建可選的分頁標籤、甚至是下拉選單。</p>
+    <div class="row">
+      <div class="col">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+              aria-selected="true">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+              aria-selected="false">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+              aria-selected="false">Contact</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem ipsum dolor
+            sit amet, consectetur adipisicing elit. Aspernatur rem vel ducimus ipsam, asperiores quo eveniet sit odio,
+            adipisci quidem libero enim fugiat! Magni ab quam iusto possimus sit! Repellat?</div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Lorem ipsum dolor sit
+            amet consectetur, adipisicing elit. Molestiae officiis, quasi quam, molestias sit itaque reiciendis iste
+            voluptatem iusto velit aperiam quos neque maxime perferendis dolor quas eum. Provident, cum.</div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Nostrum recusandae possimus quia quibusdam iure alias distinctio dolorum
+            numquam reprehenderit harum debitis assumenda incidunt voluptates, non id, fugit at vitae? Eos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>也可以用片狀結構</h4>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                aria-controls="v-pills-home" aria-selected="true">Home</a>
+              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                aria-labelledby="v-pills-home-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae nisi
+                quae dignissimos aliquid facilis eum aliquam blanditiis ad? Laborum qui incidunt illo vitae corporis,
+                quam ex? Numquam voluptas adipisci repudiandae.</div>
+              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, rem commodi inventore iure illum
+                quisquam, quia quis nisi totam quasi aperiam, quaerat quae labore consequatur exercitationem. Eligendi
+                amet deserunt velit?
+              </div>
+              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos amet temporibus, autem explicabo odio
+                dolor est molestias facere voluptas, assumenda at nisi quae accusantium illum fugit asperiores possimus
+                voluptatum veritatis!</div>
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit debitis similique atque nulla fuga
+                voluptates aspernatur, dolores quibusdam error cupiditate labore placeat quia nesciunt porro sequi ipsum
+                eaque totam omnis?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='../jq.vue/jquery-3.5.0.min.js'></script>
+  <script src='../bootstrap/js/popper.min.js'></script>
+  <script src='../bootstrap/js/bootstrap.min.js'></script>
+</body>
+
+</html>
