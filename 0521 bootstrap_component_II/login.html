@@ -24,6 +24,7 @@
     html,
     body {
       height: 100%;
+      background: url('https://data.photo-ac.com/data/thumbnails/68/68e31b27d4ff8e2f9e1f7cd77a3cecfd_t.jpeg')no-repeat center center/cover;
     }
 
     #a {
@@ -41,10 +42,10 @@
 <body class="bg-success">
   <div class="container">
     <div class="d-flex justify-content-center pt-5 mt-5">
-      <div class="text-center rounded-circle bg-primary" style="width: 100px ;height: 100px;opacity: 0.5;">
+      <div class="text-center rounded-circle bg-primary" style="width: 100px ;height: 100px;z-index: 9;opacity: 0.5;">
       </div>
-      <div class="position-absolute">
-        <span style="color: white; font-size: 1.7rem;z-index: 1;line-height: 115px;">
+      <div class="position-absolute" style="z-index: 11">
+        <span style="color: white; font-size: 1.2rem;line-height: 115px;">
           <i class="far fa-user fa-2x "></i>
         </span>
       </div>
@@ -52,7 +53,7 @@
 
     <div class="d-flex justify-content-center m-n5">
       <div class="bg-light d-flex justify-content-center"
-        style="width:450px;height: 500px;opacity: 0.5;border-radius: 2rem;">
+        style="width:400px;height: 450px;opacity: 0.5;border-radius: 2rem;">
         <h2 class="mt-5">Sign In</h2>
 
       </div>
@@ -79,10 +80,19 @@
             <input type="text" class="form-control" placeholder="Username">
           </div>
           <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <div class="d-flex flex-nowrap">
+            <div class="col-7 mt-5 text-white" style="font-size: 13px; text-shadow: 1px 1px 1px black;">
+              <input type="checkbox" aria-label="Checkbox for following text input">　Remember me
+            </div>
+            <div class="col-6 mt-5 text-white" style="font-size: 13px;text-shadow: 1px 1px 1px black;">
+              Forget Password?
+            </div>
+          </div>
         </form>
       </div>
     </div>
   </div>
+
   <script src='../jq.vue/jquery-3.5.0.min.js'></script>
   <script src='../bootstrap/js/popper.min.js'></script>
   <script src='../bootstrap/js/bootstrap.min.js'></script>
