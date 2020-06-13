@@ -101,19 +101,28 @@
         .chess {
             /* border: 1px black solid; */
             border-radius: 50%;
-            font-size: 80px;
+            font-size: 65px;
             align-self: flex-start;
-            flex-basis: 100px;
-            height: 100px;
+            flex-basis: 80px;
+            height: 80px;
+            /* background-color: aqua; */
         }
 
-        #chesses {
+        #chessesbord {
             width: 900px;
-            height: 200px;
+            height: 1000px;
             position: absolute;
             /* background-color: brown; */
             left: -50px;
             top: -50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chesses {
+            /* background: blue; */
+            width: 900px;
+            height: 200px;
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
@@ -211,99 +220,118 @@
             <div class="board"></div>
             <div class="board"></div>
             <div class="board"></div>
-            <div id="chesses">
-                <div class="chess chessblack">車</div>
-                <div class="chess chessblack">馬</div>
-                <div class="chess chessblack">象</div>
-                <div class="chess chessblack">士</div>
-                <div class="chess chessblack">將</div>
-                <div class="chess chessblack">士</div>
-                <div class="chess chessblack">象</div>
-                <div class="chess chessblack">馬</div>
-                <div class="chess chessblack">車</div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess chessblack">包</div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess chessblack">包</div>
-                <div class="chess"></div>
-                <div class="chess chessblack">卒</div>
-                <div class="chess"></div>
-                <div class="chess chessblack">卒</div>
-                <div class="chess"></div>
-                <div class="chess chessblack">卒</div>
-                <div class="chess"></div>
-                <div class="chess chessblack">卒</div>
-                <div class="chess"></div>
-                <div class="chess chessblack">卒</div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess chessred">兵</div>
-                <div class="chess"></div>
-                <div class="chess chessred">兵</div>
-                <div class="chess"></div>
-                <div class="chess chessred">兵</div>
-                <div class="chess"></div>
-                <div class="chess chessred">兵</div>
-                <div class="chess"></div>
-                <div class="chess chessred">兵</div>
-                <div class="chess"></div>
-                <div class="chess chessred">炮</div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess chessred">炮</div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess"></div>
-                <div class="chess chessred">俥</div>
-                <div class="chess chessred">傌</div>
-                <div class="chess chessred">相</div>
-                <div class="chess chessred">仕</div>
-                <div class="chess chessred">帥</div>
-                <div class="chess chessred">仕</div>
-                <div class="chess chessred">相</div>
-                <div class="chess chessred">傌</div>
-                <div class="chess chessred">俥</div>
+            <div id="chessesbord">
+                <div class="chesses">
+                    <div class="chess chessblack">車</div>
+                    <div class="chess chessblack">馬</div>
+                    <div class="chess chessblack">象</div>
+                    <div class="chess chessblack">士</div>
+                    <div class="chess chessblack">將</div>
+                    <div class="chess chessblack">士</div>
+                    <div class="chess chessblack">象</div>
+                    <div class="chess chessblack">馬</div>
+                    <div class="chess chessblack">車</div>
+                </div>
+                <div class="chesses">
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                </div>
+                <div class="chesses">
+                    <div class="chess"></div>
+                    <div class="chess chessblack">包</div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess chessblack">包</div>
+                    <div class="chess"></div>
+                </div>
+                <div class="chesses">
+                    <div class="chess chessblack">卒</div>
+                    <div class="chess"></div>
+                    <div class="chess chessblack">卒</div>
+                    <div class="chess"></div>
+                    <div class="chess chessblack">卒</div>
+                    <div class="chess"></div>
+                    <div class="chess chessblack">卒</div>
+                    <div class="chess"></div>
+                    <div class="chess chessblack">卒</div>
+                </div>
+                <div class="chesses">
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                </div>
+                <div class="chesses">
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                </div>
+                <div class="chesses">
+                    <div class="chess chessred">兵</div>
+                    <div class="chess"></div>
+                    <div class="chess chessred">兵</div>
+                    <div class="chess"></div>
+                    <div class="chess chessred">兵</div>
+                    <div class="chess"></div>
+                    <div class="chess chessred">兵</div>
+                    <div class="chess"></div>
+                    <div class="chess chessred">兵</div>
+                </div>
+                <div class="chesses">
+                    <div class="chess"></div>
+                    <div class="chess chessred">炮</div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess chessred">炮</div>
+                    <div class="chess"></div>
+                </div>
+                <div class="chesses">
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                    <div class="chess"></div>
+                </div>
+                <div class="chesses">
+                    <div class="chess chessred">俥</div>
+                    <div class="chess chessred">傌</div>
+                    <div class="chess chessred">相</div>
+                    <div class="chess chessred">仕</div>
+                    <div class="chess chessred">帥</div>
+                    <div class="chess chessred">仕</div>
+                    <div class="chess chessred">相</div>
+                    <div class="chess chessred">傌</div>
+                    <div class="chess chessred">俥</div>
+                </div>
             </div>
-
         </div>
     </div>
 </body>
