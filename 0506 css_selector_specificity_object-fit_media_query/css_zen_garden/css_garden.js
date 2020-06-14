@@ -9,7 +9,7 @@ window.addEventListener('mousemove', (event) => {
   }
 })
 
-$('.extra3').append(`<span>Welcome　to　zen-garden</span><span>Enjoy the RhaPsoDy</span> `)
+$('.extra3').append(`<span>Welcome to zen-garden</span><span>Enjoy the RhaPsoDy</span> `)
 $('.extra3').on('click', function () {
   $('#page-wrapper').fadeIn(3000)
   $('.extra3').fadeOut(1000)
