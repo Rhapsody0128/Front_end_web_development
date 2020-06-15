@@ -302,6 +302,7 @@
         let bossatk = 0
         let atk = 0
         let def = 0
+        let finaldef = 0
         let combo = 1
         let skillcount = 1
         let combopoint = 1
@@ -329,10 +330,10 @@
             if (hp < 0 || bosshp < 0) {
                 over()
             }
-            if (def > 0) {
+            if (finaldef > 0) {
                 $('#dright').css('background', 'url(./material/shield.gif) no-repeat center/auto')
             }
-            if (def == 0) {
+            if (finaldef == 0) {
                 $('#dright').css('background', '')
             }
 
@@ -534,6 +535,7 @@
             combopoint = 1
             skillcount = 1
             atk = 0
+            def = 0
         }
 
 
@@ -558,6 +560,7 @@
                 combopoint = 1
                 skillcount = 1
                 atk = 0
+                def = 0
             }, 2000);
 
             setTimeout(() => {
@@ -764,7 +767,8 @@
 
                 def *= combopoint
                 def = Math.round(def)
-                $('#defensevalue').text(def)
+                finaldef += def
+                $('#defensevalue').text(finaldef)
                 $('#dleft').append(`<li class='dleft'>架起了${attr}之盾，對${bossid}具有${def}點防禦減免</li>`)
             }
         }
@@ -873,17 +877,17 @@
             $('#tright').append(`<li class='tright'>${bossid}向你衝了過來</li>`)
             bossatk = rand(50) + 50
             setTimeout(() => {
-                if ((bossatk - def) < 0) {
-                    def -= bossatk
+                if ((bossatk - finaldef) < 0) {
+                    finaldef -= bossatk
                     bossatk = 0
-                    $('#defensevalue').text(def)
+                    $('#defensevalue').text(finaldef)
                     $('#dleft').append(`<li class='dleft'>你成功擋下${bossid}的攻擊</li>`)
                 }
                 else {
-                    hp -= (bossatk - def)
-                    bossatk -= def
-                    def = 0
-                    $('#defensevalue').text(def)
+                    hp -= (bossatk - finaldef)
+                    bossatk -= dfinaldefef
+                    finaldef = 0
+                    $('#defensevalue').text(finaldef)
                     $('#dleft').append(`<li class='dleft'>被${bossid}抓傷，你受到${(bossatk)}點傷害</li>`)
                     $('#hp').text(`${hp}`)
 
@@ -982,17 +986,17 @@
 
             bossatk = rand(100) + 100
             setTimeout(() => {
-                if ((bossatk - def) < 0) {
-                    def -= bossatk
+                if ((bossatk - finaldef) < 0) {
+                    finaldef -= bossatk
                     bossatk = 0
-                    $('#defensevalue').text(def)
+                    $('#defensevalue').text(finaldef)
                     $('#dleft').append(`<li class="dleft">你成功擋下${bossid}的吐息</li>`)
                 }
                 else {
-                    bossatk -= def
+                    bossatk -= finaldef
                     hp -= (bossatk)
-                    def = 0
-                    $('#defensevalue').text(def)
+                    finaldef = 0
+                    $('#defensevalue').text(finaldef)
                     $('#dleft').append(`<li class='dleft'>${bossid}向你發動龍之吐息，你受到${(bossatk)} 點傷害</li>`)
                     $('#hp').text(`${hp}`)
                     $('.card').addClass('open')

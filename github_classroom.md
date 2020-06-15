@@ -11,6 +11,6 @@
 
 - 0514 [BS Name Card](https://classroom.github.com/a/D7alqO-X)OK
 - 0520 [BS Layout](https://classroom.github.com/a/5vbWvOk_)OK
-- 0521 [BS Login](https://classroom.github.com/a/TX8ArH3A)OJ
+- 0521 [BS Login](https://classroom.github.com/a/TX8ArH3A)OK
 - 0527 [BS Component](https://classroom.github.com/a/pGAwHMP8)OK
 - 0528 [BS Backdrop-filter](https://classroom.github.com/a/5aK4Mylp)OK
