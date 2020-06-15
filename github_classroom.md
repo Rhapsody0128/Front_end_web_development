@@ -5,7 +5,7 @@
 - 0424 [CSS 針筒](https://classroom.github.com/a/XFDsL_TG)OK
 - 0430 [CSS 棋盤](https://classroom.github.com/a/qrdFYjoJ)OK
 - 0506 [CSS 媒體查詢](https://classroom.github.com/a/Ew6pU06A)OK
-- 0506 [CSS Zen Garden](https://classroom.github.com/a/LHv7rnl9)
+- 0506 [CSS Zen Garden](https://classroom.github.com/a/LHv7rnl9)OK
 
 ## Bootstrap
 
