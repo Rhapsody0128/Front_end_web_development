@@ -4,44 +4,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sass</title>
+  <title>Document</title>
+
+  <!-- My Style CSS -->
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-  <div class="container">
-    <section>
-      <h1 style="text-align:center;margin-bottom: 1rem">Sass</h1>
+  <section>
+    <div class="container">
+      <h1 style="text-align: center;">Sass</h1>
       <p style="margin-bottom: 1rem;">
-        Sass是CSS的預處理器(preprocessor)，目的在撰寫css時減少反覆重工的動作以及更有效率的樣式結構維護，Sass必須進行編譯(complier)成原生的CSS才能使用，也就是說瀏覽器不懂Sass語法，需經過編譯才能進行閱讀
+        Sass 是 CSS的預處理器(preprocessor),目前在撰寫css時減少反覆重工的動作及更有效率的樣式結構維護，Sass
+        必須進行編譯(complier)成員生的CSS才能使用，也就是說瀏覽器不懂Sass，需要通過編譯才能閱讀。</p>
+      <p>CSS 不是程式語言，沒有流程控制、函式這種功能，Sass 除了可以使用嵌套規則(nested
+        rules)、繼承(extends)、混合(mixins)這些功能，還可以使用變數(variables)、函式(Functions)、流程控制等等，所以也可以稱為 CSS 程式語言。
       </p>
-      <p>CSS不是程式語言，沒有流程控制，函式這些功能，Sass除了可以使用嵌套規則(nested
-        rules)、繼承(extends)、混合(mixins)這些功能，還可以使用變數(variables)、函式(fuction)、流程控制(flow control)等等，所以也可以稱為CSS的程式語言</p>
-      <h3 style="margin: 1rem 0 0;">Sass 與 Scss</h3>
-      <p style="margin-bottom: 1rem;">Sass 分為兩種 Sass 和 Scss，都稱為Sass，相異點如下:
-      </p>
+      <h3>Sass 與 Scss</h3>
+      <p style="margin-bottom: 1rem;">Sass 分為兩種， Sass 與 Scss，都稱為 Sass‧不同點如下:</p>
       <table border="1">
         <tr>
-          <th width=5%>副檔名</th>
-          <th width=5%>年份</th>
-          <th width=5%>語法</th>
-          <th width=5%>說明</th>
+          <th width="5%">副檔名</th>
+          <th width="15%">年份</th>
+          <th width="20%">語法</th>
+          <th width="55%">說明</th>
         </tr>
         <tr>
           <td>.sass</td>
           <td>2007年，最早的預處理器</td>
-          <td>縮排語法<br>沒有CSS大括號，結尾分號</td>
-          <td>語法不能被大眾接受，無法兼容CSS</td>
+          <td>縮排語法<br />沒有css大括號，結尾分號</td>
+          <td>語法不能被大眾接受，無法兼容css</td>
         </tr>
         <tr>
           <td>.scss</td>
-          <td>推出時期大約在less之後</td>
-          <td>塊語法<br>寫法與CSS一致，兼容CSS</td>
-          <td>受less影響，scss可兼容CSS，撰寫起來親和彈性，成為普及受歡迎的預處理器</td>
+          <td>推出時期less之後</td>
+          <td>塊語法<br />寫法與css一樣，兼容css</td>
+          <td>受到less影響，scss可以相容css，撰寫起來親和彈性，成為普及受歡迎的預處理器。</td>
         </tr>
       </table>
-    </section>
+    </div>
+  </section>
+
+  <section id="section01">
+    <div class="container">
+      <h1>1.變數(Variables)</h1>
+      <p>變數使用時機，當一個值被重複使用兩次以上時，就可以考慮使用</p>
+      <p>變數可以統一定義網站規範，只需改變數值，不須在CSS原始檔一一修改數值</p>
+      <p>底線(_)和連結線(-)的使用可以互換。定義變數名稱是$bg_black，但可以透過 $bg-black提取。</p>
+    </div>
+  </section>
+
+  <!-- 2. 嵌套(Nested) -->
+  <div id="section02">
+    <div class="container">
+      <h1>2. 嵌套(Nested)</h1>
+      <ul class="menu">
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+      </ul>
+    </div>
   </div>
+
+  <div id="exercise">
+    <div class="container">
+      <h2>練習:使用嵌套建立三欄結構</h2>
+      <div class="row">
+        <div class="col">
+          <img src="https://picsum.photos/400/300/?random=1">
+          <h2><a href="#">Title Link</a></h2>
+          <p>
+            保密緊急大戰配套勝利準備，為您花園高手彼此學歷尷尬可能會，推坑大魔王人物還是說了，像是手指姑娘我去，適用於印象豐原放棄韓國新鮮可能整合股份有限公司尺寸，協助給他事項搜尋引擎黃金人士記住凱文可能車輛，現代化他不討論由此顏色，出了升級大幅咱們病毒機器說話，外。
+          </p>
+        </div>
+        <div class="col">
+          <img src="https://picsum.photos/400/300/?random=1">
+          <h2><a href="#">Title Link</a></h2>
+          <p>
+            保密緊急大戰配套勝利準備，為您花園高手彼此學歷尷尬可能會，推坑大魔王人物還是說了，像是手指姑娘我去，適用於印象豐原放棄韓國新鮮可能整合股份有限公司尺寸，協助給他事項搜尋引擎黃金人士記住凱文可能車輛，現代化他不討論由此顏色，出了升級大幅咱們病毒機器說話，外。
+          </p>
+        </div>
+        <div class="col">
+          <img src="https://picsum.photos/400/300/?random=1">
+          <h2><a href="#">Title Link</a></h2>
+          <p>
+            保密緊急大戰配套勝利準備，為您花園高手彼此學歷尷尬可能會，推坑大魔王人物還是說了，像是手指姑娘我去，適用於印象豐原放棄韓國新鮮可能整合股份有限公司尺寸，協助給他事項搜尋引擎黃金人士記住凱文可能車輛，現代化他不討論由此顏色，出了升級大幅咱們病毒機器說話，外。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </body>
 
 </html>
