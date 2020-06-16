@@ -58,6 +58,9 @@
   <div id="section02">
     <div class="container">
       <h1>2. 嵌套(Nested)</h1>
+      <p>嵌套雖然很好使用，不表示所以層級都該寫入嵌套裡面。可考旅是用最少的選擇起選擇到位置</p>
+      <p>過度崁入編譯後選擇器過長，會影響效能的執行，也會造成CSS檔案容量過大</p>
+      <p>以區塊嵌套有個優點，partials的概念讓結構區塊模組化，專案維護時只需針對錯誤找到模組位置修改</p>
       <ul class="menu">
         <li><a href="#">LINK</a></li>
         <li><a href="#">LINK</a></li>
@@ -96,8 +99,248 @@
       </div>
     </div>
   </div>
+  <div id="section03">
+    <div class="container">
+      <h1>3. Extend(繼承)</h1>
+      <p>繼承可以用css選擇器或%命名</p>
+      <p>使用CSS選擇器，會被編譯到CSS，而%佔位符不會被編譯到CSS</p>
+      <p>使用@extend盡量統一放在樣是最前面</p>
+      <p>相同的繼承樣式在編譯後會被使用群組選擇器合併在一起</p>
+      <div id="extend">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+      </div>
+    </div>
+  </div>
 
+  <!-- 4. Sass的數學計算 -->
+  <section id="section04">
+    <div class="container">
+      <h1>4.計算</h1>
+      <p>可做加、減、乘、除和取餘數的計算</p>
+      <p>除法比較特別，遇到處法的計算要用括號</p>
+      <p>Sass計算和calc()不同點在於預處理前已經計算號結果，不會造成瀏覽器負擔，calc()是在文件正在被柳覽器解讀時進行，會消耗瀏覽器資源</p>
+      <div class="box4">
+      </div>
+    </div>
+  </section>
+  <div id="section05">
+    <div class="container">
+      <h1>5. fuction函式</h1>
+      <p style="margin-bottom: 1rem;">
+        @function與@mixin有點像，都是在做運算處裡，兩者差異在於@function必須使用@retrun來返回結果，而且輸出的是一個值，並非一段CSS樣式，@mixin則可使用@inclide產生一段樣式
+      </p>
+    </div>
+    <div class="container">
+      <h2>使用函式計算欄為寬度</h2>
+      <div class="row">
+        <div class="col">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda quo illum doloremque possimus.
+            Assumenda
+            dolores aspernatur similique? Voluptas vero asperiores quia, eius ratione officiis consequuntur aut vitae
+            aspernatur itaque eum.</p>
+        </div>
+        <div class="col">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda quo illum doloremque possimus.
+            Assumenda
+            dolores aspernatur similique? Voluptas vero asperiores quia, eius ratione officiis consequuntur aut vitae
+            aspernatur itaque eum.</p>
+        </div>
+        <div class="col">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda quo illum doloremque possimus.
+            Assumenda
+            dolores aspernatur similique? Voluptas vero asperiores quia, eius ratione officiis consequuntur aut vitae
+            aspernatur itaque eum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- 6.Mixins(混合) -->
+  <section id="section06">
+    <div class="container">
+      <h1>6. Mixins(混合) </h1>
+      <p style="margin-bottom:1rem;">
+        @mixin就像@function可下參數，大掛號裡面可以存放變數、自訂樣式、函式，是一種重複使用的樣式加工概念，慘生一組可以重複使用的樣式並使用@include放在選擇器內容中
+      </p>
+      <h2>使用mixin建立按鈕</h2>
+
+      <a class="btn btn-primary box-shadow" href="#">按鈕</a>
+      <a class="btn btn-success box-shadow" href="#">按鈕</a>
+      <a class="btn btn-danger box-shadow" href="#">按鈕</a>
+      <a class="btn btn-black box-shadow" href="#">按鈕</a>
+      <h2 style="margin-top: 30px;">mixims多參數+for:建立多個不同顏色的盒子</h2>
+      <p>1.多參數會以LIST型態帶入</p>
+      <p>2.@for有兩種</p>
+      <p>@for $from(start number)through(end number){...}會包含end number </p>
+      <p>@for $from(start number) to (end number){...}會排除end number </p>
+      <div class="b1"></div>
+      <div class="b2"></div>
+      <div class="b3"></div>
+      <div class="b4"></div>
+      <div class="b5"></div>
+    </div>
+  </section>
+
+  <section id="section07">
+    <div class="container">
+      <h1>7.使用@mixin + @content 來設計RWD</h1>
+      <div class="row">
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+        <div class="col">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dolore incidunt delectus
+          provident, mollitia
+          nemo laboriosam molestias, labore obcaecati autem dolores est ducimus, voluptas temporibus quibusdam quos
+          numquam quia vero.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id='section08'>
+    <div class="container">
+      <h1>8.資料型態</h1>
+      <ul>
+        <li>1. number(數字):數字有分無單位或有單位，1,2,13,10px</li>
+        <li>2. string(字串):有(單)引號字串，"foo"、'範例'，無引號字串baz</li>
+        <li>3. color(顏色):blue,#00000,rgba(0,0,0,0.5)</li>
+        <li>4. boolean(布林值):true、false</li>
+        <li>5. null(空值):null</li>
+        <li>6. list(像陣列):用空格或逗號作為分隔。，1.5rem 1rem 0 2rem 或 "Helvetica,Arial,sans-serif"</li>
+        <li>7. map(物件):類似js的物件</li>
+      </ul>
+    </div>
+  </section>
 </body>
 
 </html>
