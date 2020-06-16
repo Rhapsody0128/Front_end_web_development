@@ -17,19 +17,95 @@ section{
   margin-bottom: 2rem !important;
 }
 
+:root{
+  --primary:#007bff;
+  --secondary:#6c757d;
+  --success:#28a745;
+  --info:#17a2b8;
+  --waring:#ffc107;
+  --danger:#dc3545;
+  --white:#ffffff;
+}
+
 // 用註解單行不會被編譯出來
 /* 多行就會被編譯到CSS
 ..
 ..
 */
 /* 1. Variables(變數)*/
+// 變數可以用來控制網站的一致性，例如顏色、兼具、寬度、動畫轉場數值等等
 $primary:#007bff;
 $secondary:#6c757d;
 $success:#28a745;
 $info:#17a2b8;
 $waring:#ffc107;
+$danger:#dc3545;
 $white:#ffffff;
 $gradient:linear-gradient(0deg,rgba(4,0,74,1) 0% , rgba(0,12,198,1)54%,rgba(0,23,255,1)100%);
 $border:5px solid #fff;
+$border-radius:0.5rem;
+$paddig:0.5rem;
 $margin-bottom:1rem;
 $shadow:0 0 5px rgba(0,0,0,0.8);
+
+h1{
+  background: $primary $gradient;
+  color:$white;
+  border:$border;
+  padding: $paddig;
+  box-shadow: $shadow;
+  border-radius:$border-radius;
+  margin-bottom: $margin-bottom;
+}
+
+// 2.嵌套(Nested)
+// 改善CSS重複撰寫選擇器的工作，減少重工
+
+#section02{
+  .menu{
+    margin-top: 1rem;
+    font-size: 0;
+    li{
+      display: inline-block;
+      width: 100px;
+      text-align: center;
+      font-size: 1rem;
+      a{
+        display: block;
+        background: black;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem;
+        // & = 佔位符號，可以替換父層選擇器
+          &:hover{
+          color: yellow;
+          background: #aaa;
+        }
+      }
+    }
+    li + li{
+      border-left:1px solid #fff
+    }
+  }
+}
+
+.clearfix{
+  &::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+// 嵌套屬性
+nav {
+  font: {
+    family:'微軟正黑體';
+    size:1rem;
+    weight:bolder;
+  }
+  border: {
+    style:solid;
+    width: 1px;
+    color: #ccc;
+  }
+}
