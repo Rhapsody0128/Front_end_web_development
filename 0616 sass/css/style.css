@@ -1,0 +1,390 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: '微軟正黑體';
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  width: 75%;
+  padding-left: 15;
+  padding-right: 15px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 2rem !important;
+}
+
+:root {
+  --primary:#007bff;
+  --secondary:#6c757d;
+  --success:#28a745;
+  --info:#17a2b8;
+  --waring:#ffc107;
+  --danger:#dc3545;
+  --white:#ffffff;
+}
+
+/* 多行就會被編譯到CSS
+..
+..
+*/
+/* 1. Variables(變數)*/
+h1 {
+  background: #007bff -webkit-gradient(linear, left bottom, left top, from(#04004a), color-stop(54%, #000cc6), to(#0017ff));
+  background: #007bff linear-gradient(0deg, #04004a 0%, #000cc6 54%, #0017ff 100%);
+  color: #ffffff;
+  border: 5px solid #fff;
+  padding: 0.5rem;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#section02 .menu {
+  margin-top: 1rem;
+  font-size: 0;
+}
+
+#section02 .menu li {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#section02 .menu li a {
+  display: block;
+  background: black;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+#section02 .menu li a:hover {
+  color: yellow;
+  background: #aaa;
+}
+
+#section02 .menu li + li {
+  border-left: 1px solid #fff;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+nav {
+  font-family: '微軟正黑體';
+  font-size: 1rem;
+  font-weight: bolder;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+}
+
+#exercise .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#exercise .col {
+  width: 31.3333333%;
+  margin: 1%;
+  background: #fff;
+  border: 1px solid #333333;
+  padding: 1rem;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#exercise .col:hover {
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+}
+
+#exercise a {
+  text-decoration: none;
+  color: black;
+}
+
+#exercise a:hover {
+  color: green;
+}
+
+#exercise img {
+  max-width: 100%;
+}
+
+.box1, .box2 {
+  width: 350px;
+  height: 200px;
+  float: left;
+}
+
+.extend, .box3 {
+  width: 350px;
+  height: 200px;
+  float: left;
+}
+
+#extend {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.box1 {
+  background: red;
+}
+
+.box2 {
+  background: green;
+}
+
+.box3 {
+  background: blue;
+}
+
+/*4. Sass的數學計算*/
+.box4 {
+  background: #000;
+  width: 100px;
+  height: 100px;
+  width: 50px;
+  height: 50px;
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 3rem;
+}
+
+#section05 .container p {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+#section05 .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#section05 .row .col {
+  border: 1px solid #333333;
+  padding: 1%;
+  margin: 1% 0;
+  width: 33.33333%;
+  background: #efca86;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0 0 0.3rem 0.1rem black;
+          box-shadow: 0 0 0.3rem 0.1rem black;
+}
+
+.btn {
+  display: inline-block;
+  color: #fff;
+  padding: 0.3rem 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  margin: 0 0.2rem;
+}
+
+.btn-primary {
+  background-color: #3395ff;
+}
+
+.btn-primary:hover {
+  background-color: #0062cc;
+}
+
+.btn-success {
+  background-color: #34ce57;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+.btn-danger {
+  background-color: #e4606d;
+}
+
+.btn-danger:hover {
+  background-color: #bd2130;
+}
+
+.btn-black {
+  background-color: #1a1a1a;
+}
+
+.btn-black:hover {
+  background-color: gray;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0 0 10px blue, 0 0 20px red;
+          box-shadow: 0 0 10px blue, 0 0 20px red;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.b1, .b2, .b3, .b4, .b5 {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+}
+
+.b1 {
+  background: #566464;
+}
+
+.b2 {
+  background: #4c6464;
+}
+
+.b3 {
+  background: #9c6464;
+}
+
+.b4 {
+  background: #016464;
+}
+
+.b5 {
+  background: #8a6464;
+}
+
+#section07 .container {
+  width: 100%;
+}
+
+#section07 .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#section07 .col {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #333;
+}
+
+@media (min-width: 576px) {
+  #section07 .container {
+    width: 75%;
+  }
+  #section07 .col {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  #section07 .col {
+    width: 33.3333%;
+  }
+}
+
+@media (min-width: 992px) {
+  #section07 .col {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #section07 .col {
+    width: 20%;
+  }
+}
+
+.list {
+  width: 100px;
+  width: 200px;
+  width: 300px;
+  background: red;
+  background: green;
+  background: blue;
+}
+
+.index {
+  line-height: 1;
+  line-height: 3;
+  line-height: 2;
+  z-index: 1;
+  z-index: 2;
+  z-index: 3;
+}
+
+.length {
+  z-index: 3;
+}
+
+.bg-color-red {
+  background-color: "red";
+}
+
+.bg-color-blue {
+  background-color: "blue";
+}
+
+.bg-color-green {
+  background-color: "green";
+}
+
+.color1 {
+  color: "red";
+}
+
+.color2 {
+  color: "blue";
+}
+
+.color3 {
+  color: "green";
+}
+
+.btn-default {
+  width: 100px;
+  height: 100px;
+}
+
+.btn-box1 {
+  width: 200px;
+  height: 200px;
+}
+
+.btn-box2 {
+  width: 300px;
+  height: 300px;
+}
