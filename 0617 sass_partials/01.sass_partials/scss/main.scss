@@ -1,0 +1,9 @@
+@import 'function';
+@import 'variables';
+@import 'mixin';
+@import 'reset';
+
+
+h1{
+  background: $white;
+}
