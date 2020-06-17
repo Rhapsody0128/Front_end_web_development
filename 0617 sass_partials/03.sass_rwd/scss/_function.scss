@@ -1,0 +1,12 @@
+// 計算間距
+@function space($spacelevel){
+  @return ceil($space5 * $spacelevel);
+}
+// 計算文字
+@function fontSize($level: 1){
+  @return ceil($fontBaseSize * $level);
+}
+// 計算行高
+@function lineHeight($lineHeightLevel){
+  @return ceil($fontBaseSize * $lineHeightLevel)
+}

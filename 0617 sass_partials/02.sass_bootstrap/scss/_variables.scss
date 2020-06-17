@@ -86,7 +86,9 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       $dark,
+    "coffee":     rgb(161,104,51),
+    "rhapsody":   rgb(145,55,133)
   ),
   $theme-colors
 );
@@ -159,6 +161,7 @@ $sizes: map-merge(
     25: 25%,
     50: 50%,
     75: 75%,
+    90: 90%,
     100: 100%,
     auto: auto
   ),

@@ -13,8 +13,8 @@
       </div>
   <div>
     <label for="range-1">Example range with min and max</label>
-    <b-form-input id="range-1" v-model="totaltime"  type="range" min="0" max="20"></b-form-input>
-    <div class="mt-2">Value: {{ value }}</div>
+    <b-form-input id="range-1" v-model="totaltimebreak" step="1" type="range" min="0" max="3"></b-form-input>
+    <div class="mt-2">Value: {{ totaltimebreak }}</div>
   </div>
       <radial-progress-bar v-if="!isBreak" class="m-auto" :diameter="400" :completed-steps="timeleft" :total-steps="totaltime" startColor="#eee"   stopColor="#e74" innerStrokeColor="#444">
           <b-btn variant='primary' v-if='status!=1'     @click='start' >
@@ -65,7 +65,7 @@ export default {
       // 1 = 播放
       // 2 = 暫停
       status: 0,
-      tiemer: 0
+      tiemer: 0,
     }
   },
   computed: {
