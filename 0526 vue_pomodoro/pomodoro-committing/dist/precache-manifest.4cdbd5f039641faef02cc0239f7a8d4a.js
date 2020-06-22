@@ -12,11 +12,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "alarms/nofeel.mp3"
   },
   {
-    "revision": "888b68d4e03515e90201",
+    "revision": "cb343af992fa2b5d6485",
     "url": "css/app.cafa1df1.css"
   },
   {
-    "revision": "1f6d91b78b7a229a9b2f",
+    "revision": "bc058eb19a2aac06dbf0",
     "url": "css/chunk-vendors.0b7d78b7.css"
   },
   {
@@ -136,16 +136,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/strategy.svg"
   },
   {
-    "revision": "c8a8095989d9da659b14910403857d53",
+    "revision": "ffd6f69c50692ffd01fa2b92a1649baa",
     "url": "index.html"
   },
   {
-    "revision": "888b68d4e03515e90201",
-    "url": "js/app.60e9ee2c.js"
+    "revision": "cb343af992fa2b5d6485",
+    "url": "js/app.16c66d66.js"
   },
   {
-    "revision": "1f6d91b78b7a229a9b2f",
-    "url": "js/chunk-vendors.6f45565b.js"
+    "revision": "bc058eb19a2aac06dbf0",
+    "url": "js/chunk-vendors.b9cdc849.js"
   },
   {
     "revision": "49ad0e9214ae3b071407",
