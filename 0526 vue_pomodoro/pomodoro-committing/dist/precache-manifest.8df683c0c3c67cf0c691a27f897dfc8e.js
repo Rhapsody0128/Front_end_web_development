@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "alarms/nofeel.mp3"
   },
   {
-    "revision": "cb343af992fa2b5d6485",
+    "revision": "3a6936b8567b0907ac40",
     "url": "css/app.cafa1df1.css"
   },
   {
@@ -136,12 +136,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/strategy.svg"
   },
   {
-    "revision": "ffd6f69c50692ffd01fa2b92a1649baa",
+    "revision": "b5bfe124da1f3f18e0c3af0519107573",
     "url": "index.html"
   },
   {
-    "revision": "cb343af992fa2b5d6485",
-    "url": "js/app.16c66d66.js"
+    "revision": "3a6936b8567b0907ac40",
+    "url": "js/app.80964acc.js"
   },
   {
     "revision": "bc058eb19a2aac06dbf0",
