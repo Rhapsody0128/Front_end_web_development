@@ -1,7 +1,11 @@
-
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import beautifyUnique from 'mongoose-beautiful-unique-validation'
+
+mongoose.set('useNewUrlParser', true)
+mongoose.set('useFindAndModify', false)
+mongoose.set('useCreateIndex', true)
+mongoose.set('useUnifiedTopology', true)
 
 dotenv.config()
 

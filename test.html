@@ -1,90 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            box-sizing: border-box;
-            font-family: 微軟正黑體;
-            font-size: 90px;
-        }
-
-        body {
-            overflow: hidden;
-        }
-
-        #word {
-            color: black;
-            position: absolute;
-            height: 100vh;
-            width: 100vw;
-            z-index: 0;
-
-        }
-
-        #front {
-            background: black;
-            height: 100vh;
-            width: 100vw;
-            position: absolute;
-            z-index: -2;
-        }
-
-        #back {
-            background: url("https://picsum.photos/1600/1600/?random=1");
-            height: 100vh;
-            width: 100vw;
-            position: absolute;
-            z-index: 0;
-            mix-blend-mode: multiply;
-            /* pointer-events: none; */
-        }
-
-        #light {
-            width: 500px;
-            height: 500px;
-            border: 1px solid red;
-            border-radius: 50%;
-            position: absolute;
-            background: white;
-            transform: translate(-50%, -50%);
-            z-index: -1;
+        #a{
+            width: 100px;
+            height: 100px;
+            background: chocolate;
         }
     </style>
-
 </head>
-
 <body>
-    <div id="back"></div>
-    <div id="front"></div>
-    <div id='word'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ex porro similique ad illo id
-        distinctio deserunt asperiores quibusdam sed, eaque sequi sint assumenda facere! Accusantium doloribus quo ut
-        illo.</div>
-    <div id="light"></div>
-    <script src="./jq.vue/jquery-3.5.0.min.js"></script>
-    <script>
-
-        window.addEventListener('mousemove', (event) => {
-            console.log(`${event.pageX},${event.pageY}`)
-
-            $('#light').css({
-                top: `${event.pageY}px`,
-                left: `${event.pageX}px`
-            })
-        })
-
-        console.log(future)
-
-
-
-
-    </script>
+    <div id="a"></div>
 </body>
-
+<script src="jq.vue/jquery-3.5.0.min.js"></script>
+<script>
+$('#a').on('touchend',function(){
+    console.log('a');
+})
+</script>
 </html>
