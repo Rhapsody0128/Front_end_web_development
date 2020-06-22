@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import connectMongo from 'connect-mongo'
 import session from 'express-session'
+import multer from 'multer'
 import md5 from 'md5'
 import dotenv from 'dotenv'
 
@@ -12,6 +13,7 @@ dotenv.config()
 const MongoStore = connectMongo(session)
 
 const app = express()
+
 app.use(bodyParser.json())
 app.use(cors({
   origin (origin, callback) {
@@ -29,14 +31,13 @@ app.use(cors({
   credentials: true
   // 允許認證資訊
 }))
-
 app.use(session({
   secret: 'album',
   // 將 session 存入 mongodb
   store: new MongoStore({
     // 使用 mongoose 的資料庫連接
     mongooseConnection: db.connection,
-    //  設定存入的 collection
+    // 設定存入的 collection
     collection: process.env.COLLECTION_SESSION
   }),
   cookie: {

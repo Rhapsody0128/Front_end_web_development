@@ -3,7 +3,7 @@
     b-row
       b-col(cols="12")
         h1.text-center 註冊
-        b-form
+        b-form(@submit="submit")
           b-form-group(
             label="帳號"
             label-for="input-account"
@@ -47,6 +47,29 @@ export default {
           return true
         }
       }
+    },
+    submit (event) {
+      event.preventDefault()
+      if (this.account.length < 4 || this.account.length > 20) {
+        alert('帳號格式不符')
+      } else if (this.password.length < 4 || this.password.length > 20) {
+        alert('密碼格式不符')
+      }
+      this.axios.post(process.env.VUE_APP_APIURL + '/users', { account: this.account, password: this.password })
+        .then(response => {
+          const data = response.data
+          if (data.success) {
+          // 如果回來的資料 success是true
+            alert('註冊成功')
+          } else {
+            // 不是就顯示回來的message
+            alert(data.message)
+          }
+        })
+        .catch(error => {
+          // 如果回來的狀態不是200，顯示回來的message
+          alert(error.response.data.message)
+        })
     }
   }
 }
