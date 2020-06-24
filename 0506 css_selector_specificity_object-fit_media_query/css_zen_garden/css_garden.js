@@ -33,7 +33,7 @@ $('.extra4').on('click', function () {
   }
   else {
     $('.extra4').text('show')
-    $('*').css('color', '')
+    $('*').css('color', 'wheat')
     $('.extra1').fadeIn(2000)
     $('.extra2').fadeIn(2000)
     toggle = !toggle

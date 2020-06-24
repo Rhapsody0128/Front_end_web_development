@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body{
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <css-doodle>
+:doodle{
+  @grid:3x4/100%;
+  gap:10px;
+}
+background-color:rgb(@rand(128),@rand(128),@rand(128));
+@shape:cross;
+@size:@calc(50 + 30*@index)px;
+@place-cell:center;
+opacity:0.2;
+
+animation:rotate 10s linear infinite @calc(0.1 * @index)s;
+@keyframes rotate {
+  100%{
+    transform:rotate(@calc(360+30*@index)deg);
+  }
+}
+  </css-doodle>
+  <script src="https://unpkg.com/css-doodle@0.8.5/css-doodle.min.js"></script>
+</body>
+</html>
