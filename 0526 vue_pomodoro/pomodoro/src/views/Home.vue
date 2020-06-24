@@ -11,7 +11,7 @@
         <font-awesome-icon color='purple' :icon="['fas','minus']"></font-awesome-icon>
         </b-btn>
       </div>
-      <radial-progress-bar v-if="!isBreak" class="m-auto col-12 col-lg-6 p-0" :diameter="400" :completed-steps="timeleft" :total-steps="totaltime" startColor="#eee"   stopColor="#e74" innerStrokeColor="#444">
+      <radial-progress-bar v-if="!isBreak" class="m-auto h-25  col-12 col-lg-4 p-0" :diameter="300" :completed-steps="timeleft" :total-steps="totaltime" startColor="#eee"   stopColor="#e74" innerStrokeColor="#444">
           <b-btn variant='primary' v-if='status!=1' @click='start' >
             <font-awesome-icon :icon="['fas','play']" ></font-awesome-icon>
           </b-btn>
@@ -23,7 +23,7 @@
           </b-btn>
           <span class="bg-primary text-white shadow-lg border rounded">{{timetext}}</span>
       </radial-progress-bar>
-      <radial-progress-bar v-else class="m-auto" :diameter="400" :completed-steps="timeleft" :total-steps="totaltimebreak" startColor="#ccc"   stopColor="#c11" innerStrokeColor="#333">
+      <radial-progress-bar v-else class="m-auto" :diameter="300" :completed-steps="timeleft" :total-steps="totaltimebreak" startColor="#ccc"   stopColor="#c11" innerStrokeColor="#333">
           <b-btn variant='primary' v-if='status!=1'     @click='start' >
           <font-awesome-icon :icon="['fas','play']" ></font-awesome-icon>
           </b-btn>
