@@ -124,6 +124,9 @@ app.post('/users', async (req, res) => {
       const message = error.errors[key].message
       res.status(400)
       res.send({ success: false, message })
+    } else if (error.name === 'ValidationError') {
+      res.status(400)
+      res.send({ success: false, message: '帳號重複' })
     } else {
       res.status(500)
       res.send({ success: false, message: '伺服器錯誤' })
