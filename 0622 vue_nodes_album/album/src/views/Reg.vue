@@ -52,10 +52,14 @@ export default {
       event.preventDefault()
       if (this.account.length < 4 || this.account.length > 20) {
         alert('帳號格式不符')
+        return
       } else if (this.password.length < 4 || this.password.length > 20) {
         alert('密碼格式不符')
+        return
       }
-      this.axios.post(process.env.VUE_APP_APIURL + '/users', { account: this.account, password: this.password })
+      this.axios.post(
+        process.env.VUE_APP_APIURL + '/users', { account: this.account, password: this.password }
+      )
         .then(response => {
           const data = response.data
           if (data.success) {

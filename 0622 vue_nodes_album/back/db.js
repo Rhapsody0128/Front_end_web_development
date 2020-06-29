@@ -1,11 +1,6 @@
-import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import mongoose from 'mongoose'
 import beautifyUnique from 'mongoose-beautiful-unique-validation'
-
-mongoose.set('useNewUrlParser', true)
-mongoose.set('useFindAndModify', false)
-mongoose.set('useCreateIndex', true)
-mongoose.set('useUnifiedTopology', true)
 
 dotenv.config()
 
@@ -17,8 +12,8 @@ const userSchema = new Schema({
   account: {
     type: String,
     minlength: [4, '帳號必須四個字以上'],
-    maxlength: [20, '帳號不可超過二十個字'],
-    unique: '帳號已使用',
+    maxlength: [20, '帳號必須二十個字以下'],
+    unique: [false, '帳號已使用'],
     required: [true, '請輸入帳號']
   },
   password: {
@@ -36,7 +31,7 @@ const fileSchema = new Schema({
   },
   description: {
     type: String,
-    maxlength: [200, '帳號不可超過五十個字']
+    maxlength: [200, '說明必須兩百個字以下']
   },
   name: {
     type: String,
