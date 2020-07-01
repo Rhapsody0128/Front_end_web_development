@@ -1,13 +1,21 @@
 <template>
+<div id="main">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <img src="https://picsum.photos/2000/2000/?random=1">
+    <div class="row w-100">
+      <div class="col col-12 m-auto">
+        <img :src="monitor">
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
-
+export default {
+  data () {
+    return {
+      monitor: 'https://picsum.photos/1024/768/?random=1'
+    }
+  }
+}
 </script>

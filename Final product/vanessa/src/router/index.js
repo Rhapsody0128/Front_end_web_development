@@ -11,9 +11,9 @@ const routes = [
     component: main
   },
   {
-    path: '/navbar',
-    name: 'navbar',
-    component: () => import(/* webpackChunkName: "navbar" */ '../views/navbar.vue')
+    path: '/menu',
+    name: 'menu',
+    component: () => import(/* webpackChunkName: "menu" */ '../views/menu.vue')
   }
 ]
 
