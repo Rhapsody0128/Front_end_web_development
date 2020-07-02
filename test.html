@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #all{
+    width: 300px;
+    height:300px;
+    transform-style: preserve-3d;
+    transform: rotate3d(2, -1, 1, 0deg);
+    margin: auto;
+    margin-top: 5rem;
+    border-radius: 50%;
+    }
+    .box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+    font-size:60px;
+    color: black;
+    }
+    .a{
+      background: transparent;
+    transform: translateZ(150px);
+    border: 1px solid black;
+    box-shadow: 0rem 0rem 1rem black;
+    }
+    .b{
+      background: transparent;
+    transform: rotateY(180deg) translateZ(150px);
+    border: 1px solid black;
+    box-shadow: 0rem 0rem 1rem black;
+    }
+    .c{
+      background:transparent;
+    transform: rotateY(90deg) translateZ(150px);
+    border: 1px solid black;
+    box-shadow: 0rem 0rem 1rem black;
+    }
+    .d{
+      background: transparent;
+    transform: rotateY(-90deg) translateZ(150px);
+    border: 1px solid black;
+    box-shadow: 0rem 0rem 1rem black;
+    }
+    .e{
+      background: transparent;
+    transform: rotateX(90deg) translateZ(150px);
+    border: 1px solid black;
+    box-shadow: 0rem 0rem 1rem black;
+    }
+    .f{
+      background: transparent;
+    transform: rotateX(-90deg) translateZ(150px);
+    border: 1px solid black;
+    box-shadow: 0rem 0rem 1rem black;
+    }
+    
+  </style>
+
+</head>
+<body>
+  <div id="all">
+    <div class="box a">x</div>
+    <div class="box b">y</div>
+    <div class="box c">z</div>
+    <div class="box d">w</div>
+    <div class="box e">m</div>
+    <div class="box f">n</div>
+  </div>
+  <div class="moniter"></div>
+  
+  <script src="jq.vue/jquery-3.5.0.min.js"></script>
+  <script>
+    // $('#all').on('click',function(){
+    //   let rand=()=>{return Math.random()*2-1}  
+    //   console.log(rand());
+    //   let random = Math.random()*180
+    //   $('#all').css('transform',`rotate3d(${rand()},${rand()},${rand()}, ${random}deg)`)
+    // })
+    let xs = ''
+    let ys= ''
+    window.addEventListener('touchstart', function(event) {
+      xs = event.changedTouches[0].clientX
+      ys = event.changedTouches[0].clientY
+    })
+    window.addEventListener('touchmove', function(event) {
+      var x = event.changedTouches[0].clientX
+      var y = event.changedTouches[0].clientY
+      let xf = Math.abs(xs-x)/300
+      let yf = Math.abs(ys-y)/300
+      let zf = 0
+      $('#all').css('transform',`rotate3d(${yf},${zf},${zf}, ${(xf+yf)*300}deg)`)
+      console.log($('#all')[0].attr);
+    })
+  </script>
+</body>
+</html>
