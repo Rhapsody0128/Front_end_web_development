@@ -1,104 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    #all{
-    width: 300px;
-    height:300px;
-    transform-style: preserve-3d;
-    transform: rotate3d(2, -1, 1, 0deg);
-    margin: auto;
-    margin-top: 5rem;
-    border-radius: 50%;
+    body {
+      transition: 1s;
     }
-    .box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: inherit;
-    font-size:60px;
-    color: black;
+
+    #all {
+      width: 300px;
+      height: 300px;
+      transform-style: preserve-3d;
+      transform: rotate3d(0, 0, 0, 0deg);
+      margin: auto;
+      margin-top: 5rem;
+      border-radius: 50%;
+      transition: 1s;
+      font-family: '微軟正黑體';
     }
-    .a{
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      font-size: 60px;
+      color: black;
+      /* border: 1px solid black; */
+      box-shadow: 0rem 0rem 1rem rgba(255, 255, 255, 0.5);
+      /* backdrop-filter: blur(1rem) */
+    }
+
+    .a {
       background: transparent;
-    transform: translateZ(150px);
-    border: 1px solid black;
-    box-shadow: 0rem 0rem 1rem black;
+      transform: translateZ(150px);
     }
-    .b{
+
+    .b {
       background: transparent;
-    transform: rotateY(180deg) translateZ(150px);
-    border: 1px solid black;
-    box-shadow: 0rem 0rem 1rem black;
+      transform: rotateY(180deg) translateZ(150px);
     }
-    .c{
-      background:transparent;
-    transform: rotateY(90deg) translateZ(150px);
-    border: 1px solid black;
-    box-shadow: 0rem 0rem 1rem black;
-    }
-    .d{
+
+    .c {
       background: transparent;
-    transform: rotateY(-90deg) translateZ(150px);
-    border: 1px solid black;
-    box-shadow: 0rem 0rem 1rem black;
+      transform: rotateY(90deg) translateZ(150px);
     }
-    .e{
+
+    .d {
       background: transparent;
-    transform: rotateX(90deg) translateZ(150px);
-    border: 1px solid black;
-    box-shadow: 0rem 0rem 1rem black;
+      transform: rotateY(-90deg) translateZ(150px);
     }
-    .f{
+
+    .e {
       background: transparent;
-    transform: rotateX(-90deg) translateZ(150px);
-    border: 1px solid black;
-    box-shadow: 0rem 0rem 1rem black;
+      transform: rotateX(90deg) translateZ(150px);
     }
-    
+
+    .f {
+      background: transparent;
+      transform: rotateX(-90deg) translateZ(150px);
+    }
   </style>
 
 </head>
+
 <body>
   <div id="all">
-    <div class="box a">x</div>
-    <div class="box b">y</div>
-    <div class="box c">z</div>
-    <div class="box d">w</div>
-    <div class="box e">m</div>
-    <div class="box f">n</div>
+    <div class="box a">紅</div>
+    <div class="box b">橙</div>
+    <div class="box c">黃</div>
+    <div class="box d">綠</div>
+    <div class="box e">藍</div>
+    <div class="box f">紫</div>
   </div>
   <div class="moniter"></div>
-  
+
   <script src="jq.vue/jquery-3.5.0.min.js"></script>
   <script>
-    // $('#all').on('click',function(){
-    //   let rand=()=>{return Math.random()*2-1}  
-    //   console.log(rand());
-    //   let random = Math.random()*180
-    //   $('#all').css('transform',`rotate3d(${rand()},${rand()},${rand()}, ${random}deg)`)
-    // })
-    let xs = ''
-    let ys= ''
-    window.addEventListener('touchstart', function(event) {
-      xs = event.changedTouches[0].clientX
-      ys = event.changedTouches[0].clientY
+    $('#all').on('click', function () {
+      $('#all').css('transition', '1s')
+      let rand = () => { return Math.random() * 2 - 1 }
+      console.log(rand());
+      let random = Math.random() * 180
+      $('#all').css('transform', `rotate3d(${rand()},${rand()},${rand()}, ${random}deg)`)
+
+      setTimeout(() => {
+        let array = $('#all').css('transform').split(',');
+        array[0] = array[0].substr(9, 99)
+        judge = array[0]
+        judge2 = array[2]
+        judge3 = array[6]
+
+        if (judge3 > 0.5) {
+          $('body').css('background', 'purple')
+        }
+        else if (judge3 < -0.5) {
+          $('body').css('background', 'blue')
+        }
+        else {
+          if (judge > 0.7) {
+            $('body').css('background', 'red')
+          }
+          else if (-0.7 > judge) {
+            $('body').css('background', 'orange')
+          }
+          if (judge2 < 0) {
+            if (0.7 > judge && judge > -0.7) {
+              $('body').css('background', 'green')
+            }
+          }
+          else {
+            if (0.7 > judge && judge > -0.7) {
+              $('body').css('background', 'yellow')
+            }
+          }
+        }
+      }, 500);
     })
-    window.addEventListener('touchmove', function(event) {
-      var x = event.changedTouches[0].clientX
-      var y = event.changedTouches[0].clientY
-      let xf = Math.abs(xs-x)/300
-      let yf = Math.abs(ys-y)/300
-      let zf = 0
-      $('#all').css('transform',`rotate3d(${yf},${zf},${zf}, ${(xf+yf)*300}deg)`)
-      console.log($('#all')[0].attr);
+
+    let xs = 0
+    let ys = 0
+    let array = []
+    let judge = ''
+    let toggle = true
+    let start = false
+
+
+    window.addEventListener('touchstart', function (event) {
+      if (toggle) {
+        $('#all').css('transition', 'none')
+        xs = event.changedTouches[0].clientX
+        ys = event.changedTouches[0].clientY
+        console.log(xs);
+      }
+    })
+    window.addEventListener('mousedown', function (event) {
+      if (toggle) {
+        $('#all').css('transition', 'none')
+        xs = event.clientX
+        console.log(xs);
+      }
+    })
+
+    window.addEventListener('touchmove', function (event) {
+
+      if (toggle) {
+
+        var x = event.changedTouches[0].clientX
+        var y = event.changedTouches[0].clientY
+        let xf = (x - xs) / 300
+        let yf = (y - ys) / 300
+        let zf = 0
+        console.log(xf * 300);
+        $('#all').css('transform', `rotate3d(${Math.abs(yf)},${Math.abs(xf)},${zf}, ${(xf + yf) * 300}deg)`)
+
+        let array = $('#all').css('transform').split(',');
+        array[0] = array[0].substr(9, 99)
+        judge = array[0]
+        judge2 = array[2]
+        judge3 = array[6]
+        judge4 = array[10]
+        if (judge3 > 0.7) {
+          $('body').css('background', 'purple')
+        }
+        else if (judge3 < -0.7) {
+          $('body').css('background', 'blue')
+        }
+        else if (judge4 < -0.7) {
+          if (-0.7 < judge3 || judge3 < 0.7) {
+            $('body').css('background', 'orange')
+          }
+        }
+        else {
+          if (judge > 0.7) {
+            $('body').css('background', 'red')
+          }
+          else if (-0.7 > judge) {
+            $('body').css('background', 'orange')
+          }
+          if (judge2 < 0) {
+            if (0.7 > judge && judge > -0.7) {
+              $('body').css('background', 'green')
+            }
+          }
+          else {
+            if (0.7 > judge && judge > -0.7) {
+              $('body').css('background', 'yellow')
+            }
+          }
+        }
+      }
+    })
+
+    window.addEventListener('touchend', function (event) {
+      toggle = false
+      setTimeout(() => {
+        let array = $('#all').css('transform').split(',');
+        array[0] = array[0].substr(9, 99)
+        judge = array[0]
+        judge2 = array[2]
+        judge3 = array[6]
+        judge4 = array[10]
+        if (judge3 > 0.7) {
+          $('body').css('background', 'purple')
+        }
+        else if (judge3 < -0.7) {
+          $('body').css('background', 'blue')
+        }
+        else if (judge4 < -0.7) {
+          if (-0.7 < judge3 || judge3 < 0.7) {
+            $('body').css('background', 'orange')
+          }
+        }
+        else {
+          if (judge > 0.7) {
+            $('body').css('background', 'red')
+          }
+          else if (-0.7 > judge) {
+            $('body').css('background', 'orange')
+          }
+          if (judge2 < 0) {
+            if (0.7 > judge && judge > -0.7) {
+              $('body').css('background', 'green')
+            }
+          }
+          else {
+            if (0.7 > judge && judge > -0.7) {
+              $('body').css('background', 'yellow')
+            }
+          }
+        }
+
+        toggle = true
+      }, 500);
     })
   </script>
 </body>
+
 </html>
