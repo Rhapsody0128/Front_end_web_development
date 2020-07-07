@@ -30,12 +30,14 @@
         <div id ="showtime"></div>
         <script> src="js/example.js"</script>
         <script>
-            var btn = document.getElementByID("btn");
-            btn.oneclick = function () {
-                setInterval(() => {
-                    document.getElementByID("showtime").innerText = Data();
-                },1000);
-            }
+            const btn= document.getElementById("btn");
+            console.log(btn);
+            // btn.click = function () {
+            //     console.log('object');
+            //     setInterval(() => {
+            //         document.getElementByID("showtime").innerText = Data();
+            //     },1000);
+            // }
         </script>
         <!-- script = 腳本 = 本頁使用的JS程式碼 -->
     </body>

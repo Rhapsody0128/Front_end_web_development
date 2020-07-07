@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div  >
-      <Slide id="sidebar" :closeOnNavigation="true" :width="screenWidth - 50" class="position-absoulte">
+    <div>
+      <Slide id="sidebar" :closeOnNavigation="true" :width="(screenWidth - 50).toString()" class="position-absoulte">
         <router-link to='/'><span>凡妮莎</span></router-link>
         <router-link to='/menu'><span>菜單</span></router-link>
       </Slide>

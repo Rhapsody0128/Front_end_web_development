@@ -150,7 +150,6 @@
         $('#all').css('transform', `rotate3d(${Math.abs(yf)},${Math.abs(xf)},${zf}, ${(xf + yf) * 400}deg)`)
 
         let array = $('#all').css('transform').split(',');
-        console.log(array);
         array[0] = array[0].substr(9, 99)
         judge = array[0]
         judge2 = array[2]
