@@ -1,45 +1,49 @@
 <template>
   <div id="menu">
     <h1 class="text-center mt-4 mb-4">MENU</h1>
-    <div id="spcialmeal" class="container-fluid d-flex">
-      <div class="row flex-wrap justify-content-center">
-        <div class="col-10 col-lg-4">
-            <img class="img-fluid img-thumbnail" src="/img/9677717700_3b10b4f206_o.jpg" alt="">
-        </div>
-        <div class='col-12 col-lg-6'>
-          <h1>Spcial Meal</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ea dignissimos modi corrupti! Voluptatem, sapiente. Veritatis dolorum, vel quaerat ab ut voluptatem nihil, beatae libero eaque atque velit labore animi.</p>
-        </div>
+    <div id="spcialmeal" class="row flex-wrap justify-content-center">
+      <div class="col-10 col-lg-4">
+        <img class="img-fluid img-thumbnail" src="/img/9677717700_3b10b4f206_o.jpg" alt />
       </div>
-
-    <hr>
-    <div id="meal" >
-      <b-form-group>
-        <template v-slot:label>
-          <b>Menu</b><br>
-          <b-form-checkbox
-            v-model="allSelected"
-            :indeterminate="indeterminate"
-            @change="toggleAll">
-            {{ allSelected ? '取消全選' : '全選' }}
-          </b-form-checkbox>
-        </template>
+      <div class="col-10 col-lg-6 text-center">
+        <h1>Spcial Meal</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ea dignissimos modi corrupti! Voluptatem, sapiente. Veritatis dolorum, vel quaerat ab ut voluptatem nihil, beatae libero eaque atque velit labore animi.</p>
+      </div>
+    </div>
+    <hr />
+    <div id="meal" class="row justify-content-center ">
+      <div class="col-10 col-lg-2 ">
+        <b-form-group>
+          <template v-slot:label>
+            <h1>菜單</h1>
+            <br >
+            <b-form-checkbox
+              v-model="allSelected"
+              :indeterminate="indeterminate"
+              @change="toggleAll"
+              checked=true
+            >{{ allSelected ? '取消全選' : '全選' }}</b-form-checkbox>
+          </template>
           <b-form-checkbox-group
             id="flavors"
             v-model="selected"
             :options="flavours"
             name="flavors"
             class="ml-4"
-            aria-label="Individual flavours"
-            stacked>
-          </b-form-checkbox-group>
-      </b-form-group>
-      <div>
-        Selected: <strong>{{ selected }}</strong><br>
-        All Selected: <strong>{{ allSelected }}</strong><br>
-        Indeterminate: <strong>{{ indeterminate }}</strong>
+            switches
+            size="lg"
+            :stacked='ScreenWidth>768'
+          ></b-form-checkbox-group>
+        </b-form-group>
       </div>
-    </div>
+      <div id="showmenu" class="col-12 col-lg-8 d-flex justify-content-center flex-wrap">
+        <div class="mealcard d-flex" v-for="(meal,index) in menu" :key="index">
+          <div v-if="selected.includes(meal.type)">
+            <div class="mealpic"><img :src="meal.src"></div>
+            <div class="mealdes">{{meal.description}}</div>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -48,15 +52,70 @@
 export default {
   data () {
     return {
-      flavours: ['前菜', '主餐', '湯品', '甜點', '飲料', '披薩'],
-      selected: [],
-      allSelected: false,
-      indeterminate: false
+      flavours: ['前菜', '主餐', '湯品', '飲料', '披薩', '甜點'],
+      selected: ['前菜', '主餐', '湯品', '飲料', '披薩', '甜點'],
+      allSelected: true,
+      indeterminate: false,
+      menu: [
+        {
+          src: '/img/1472660456_1e1841d24e_o.jpg',
+          type: '前菜',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/1472660456_1e1841d24e_o.jpg',
+          type: '前菜',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/36271782954_f7aa950180_o.jpg',
+          type: '主餐',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/36271782954_f7aa950180_o.jpg',
+          type: '主餐',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/36271782954_f7aa950180_o.jpg',
+          type: '主餐',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/36271782954_f7aa950180_o.jpg',
+          type: '主餐',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/36271782954_f7aa950180_o.jpg',
+          type: '主餐',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/36271782954_f7aa950180_o.jpg',
+          type: '主餐',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/9677717700_3b10b4f206_o.jpg',
+          type: '湯品',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        },
+        {
+          src: '/img/9677717700_3b10b4f206_o.jpg',
+          type: '湯品',
+          description: '毫無反應就是香腸毫無反應就是香腸'
+        }
+      ]
     }
   },
   methods: {
     toggleAll (checked) {
       this.selected = checked ? this.flavours.slice() : []
+    },
+    ScreenWidth () {
+      return this.$store.getters.screenWidth
     }
   },
   watch: {
@@ -78,8 +137,32 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
-.a{
-  width 50px;
-}
+  .mealpic{
+    width 10rem
+    height 10rem
+    img{
+      border-radius:50%
+      width 100%
+      height 100%
+      object-fit cover
+      padding 1rem
+    }
+  }
+  .mealdes{
+    width 8rem
+    height 8rem
+    padding 1rem
+    margin auto
+    }
+    @media (min-width : 768px) {
+      .mealpic{
+        width 15rem
+        height 15rem
+      }
+      .mealdes{
+      width 12rem
+      height 12rem
+      font-size 1.2rem
+      }
+    }
 </style>

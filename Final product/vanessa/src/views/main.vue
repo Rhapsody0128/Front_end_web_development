@@ -247,8 +247,8 @@ export default {
     width: 100%;
     height: 100%;
     position: absolute;
-    // border: 10px double black;
-    box-shadow: 0rem 0rem 2rem rgba(255, 255, 255, 0.5);
+    border: 1px solid white;
+    // box-shadow: 0rem 0rem 2rem rgba(255, 255, 255, 0.5);
     pointer-events: none
   }
   .a {
