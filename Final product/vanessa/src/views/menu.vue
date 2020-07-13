@@ -1,6 +1,6 @@
 <template>
   <div id="menu">
-    <h1 class="text-center mt-4 mb-4">MENU</h1>
+    <h1 class="text-center mt-4 mb-4">Menu</h1>
     <div id="spcialmeal" class="row flex-wrap justify-content-center">
       <div class="col-10 col-lg-4">
         <img class="img-fluid img-thumbnail" src="/img/9677717700_3b10b4f206_o.jpg" alt />
@@ -45,8 +45,8 @@
         </div>
       </div>
     </div>
+    <div id="down"></div>
   </div>
-
 </template>
 <script>
 export default {
@@ -137,6 +137,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  #down{
+    width 1px
+    height 1px
+    position absolute
+    bottom -1px
+  }
   .mealpic{
     width 10rem
     height 10rem
