@@ -14,7 +14,7 @@
     <div class="box e"></div>
     <div class="box f"></div>
   </div>
-<button class="x btn btn-dark text-center" @click="rand">explore</button>
+<button class="explore btn btn-dark text-center" @click="rand">explore</button>
   <div id="text" class='container'>
     <div v-if="style===0" class="aa">
           <h1>商業空間設計施工</h1>
@@ -206,7 +206,7 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-  .x{
+  .explore{
     margin-left 50%
     transform translate(-50%,-50%)
     opacity 0.7
@@ -247,32 +247,32 @@ export default {
     width: 100%;
     height: 100%;
     position: absolute;
-    border: 1px solid white;
-    // box-shadow: 0rem 0rem 2rem rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0rem 0rem 2rem rgba(255, 255, 255, 0.5);
     pointer-events: none
   }
   .a {
-    /* background: transparent; */
+    background: rgba(255, 255, 0, 0.2);
     transform: translateZ(125px);
   }
   .b {
-    /* background: transparent; */
+    background: rgba(0,0, 0, 0.2);
     transform: rotateY(180deg) translateZ(125px);
   }
   .c {
-    /* background: transparent; */
+    background:  rgba(255,0, 0, 0.2)
     transform: rotateY(90deg) translateZ(125px);
   }
   .d {
-    /* background: transparent; */
+    background:  rgba(0,255, 0, 0.2);
     transform: rotateY(-90deg) translateZ(125px);
   }
   .e {
-    /* background: transparent; */
+    background:  rgba(0,0, 255, 0.2)
     transform: rotateX(90deg) translateZ(125px);
   }
   .f {
-    /* background: transparent; */
+    background:  rgba(0,255, 255, 0.2)
     transform: rotateX(-90deg) translateZ(125px);
   }
   @media (min-width : 768px) {

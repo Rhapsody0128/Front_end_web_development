@@ -1,11 +1,11 @@
 <template>
   <div id="menu">
-    <h1 class="text-center mt-4 mb-4">Menu</h1>
+    <h1 class="text-center mt-4 mb-4">菜單</h1>
     <div id="spcialmeal" class="row flex-wrap justify-content-center">
       <div class="col-10 col-lg-4">
         <img class="img-fluid img-thumbnail" src="/img/9677717700_3b10b4f206_o.jpg" alt />
       </div>
-      <div class="col-10 col-lg-6 text-center">
+      <div class="col-10 col-lg-6 text-center d-flex flex-column justify-content-center">
         <h1>Spcial Meal</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ea dignissimos modi corrupti! Voluptatem, sapiente. Veritatis dolorum, vel quaerat ab ut voluptatem nihil, beatae libero eaque atque velit labore animi.</p>
       </div>
@@ -38,14 +38,17 @@
       </div>
       <div id="showmenu" class="col-12 col-lg-8 d-flex justify-content-center flex-wrap">
         <div class="mealcard d-flex" v-for="(meal,index) in menu" :key="index">
-          <div v-if="selected.includes(meal.type)">
-            <div class="mealpic"><img :src="meal.src"></div>
-            <div class="mealdes">{{meal.description}}</div>
-        </div>
+          <transition name="fade">
+            <div @click="bigpic(index)" v-if="selected.includes(meal.type)">
+              <div class="mealpic">
+                <img :src="meal.src"></div>
+              <div class="mealdes">{{meal.description}}</div>
+            </div>
+          </transition>
         </div>
       </div>
     </div>
-    <div id="down"></div>
+    <div :style="showstyle" id="show"></div>
   </div>
 </template>
 <script>
@@ -56,6 +59,7 @@ export default {
       selected: ['前菜', '主餐', '湯品', '飲料', '披薩', '甜點'],
       allSelected: true,
       indeterminate: false,
+      showstyle: {},
       menu: [
         {
           src: '/img/1472660456_1e1841d24e_o.jpg',
@@ -116,11 +120,13 @@ export default {
     },
     ScreenWidth () {
       return this.$store.getters.screenWidth
+    },
+    bigpic (index) {
+
     }
   },
   watch: {
     selected (newVal, oldVal) {
-      // Handle changes in individual flavour checkboxes
       if (newVal.length === 0) {
         this.indeterminate = false
         this.allSelected = false
@@ -137,7 +143,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  #down{
+  #show{
     width 1px
     height 1px
     position absolute
@@ -170,5 +176,11 @@ export default {
       height 12rem
       font-size 1.2rem
       }
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+      opacity: 0;
     }
 </style>
