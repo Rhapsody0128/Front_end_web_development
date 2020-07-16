@@ -15,7 +15,7 @@
               <b-tab v-for="(tra,index) in traffic" :key='index' :title="tra.medthods" active>
                 <b-card-text>
                   <ul>
-                    <li v-for="(de,index) in tra.des" :key="index">{{de}}</li>
+                    <li class="ml-5" v-for="(de,index) in tra.des" :key="index">{{de}}</li>
                   </ul>
                 </b-card-text>
               </b-tab>
@@ -34,7 +34,7 @@ export default {
       traffic: [
         {
           medthods: '腳踏車',
-          des: ['騎車到河裡', '掰']
+          des: ['騎車到河裡', '掰', '福活', '隨便', '沒了', '騎車到河裡', '掰', '福活', '隨便', '沒了']
         },
         {
           medthods: '開車',
@@ -46,7 +46,7 @@ export default {
         },
         {
           medthods: '貨車',
-          des: ['asd']
+          des: ['來個蹦蹦']
         }
       ]
     }

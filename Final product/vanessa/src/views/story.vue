@@ -5,7 +5,7 @@
       <div class="text">
       </div>
     </div>
-    <div class="d-flex flex-wrap">
+    <div id="flipbook " class="d-flex flex-wrap">
       <flipbook
       class="flipbook col-12 col-lg-6 p-0"
       :pages="array"
@@ -43,6 +43,16 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+#flipbook{
+  .flipbook{
+    .viewport{
+      .container{
+        margin auto !important
+        padding 0px !important
+      }
+    }
+  }
+}
   .story{
     width 100%
     height 30rem

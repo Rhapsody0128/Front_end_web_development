@@ -8,6 +8,7 @@
         <router-link to='/news'><span>最新消息</span></router-link>
         <router-link to='/location'><span>店家資訊</span></router-link>
         <router-link to='/member'><span>會員專區</span></router-link>
+        <router-link to='/member_login'><span>會員專區(LOGIN TEST)</span></router-link>
       </Slide>
     </div>
     <router-view />
