@@ -1,0 +1,88 @@
+2020-07-17T11:28:23.281+0800 I  CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
+2020-07-17T11:28:23.948+0800 W  ASIO     [main] No TransportLayer configured during NetworkInterface startup
+2020-07-17T11:28:23.951+0800 I  CONTROL  [initandlisten] MongoDB starting : pid=11132 port=27017 dbpath=.\data 64-bit host=1114-17
+2020-07-17T11:28:23.951+0800 I  CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2020-07-17T11:28:23.951+0800 I  CONTROL  [initandlisten] db version v4.2.7
+2020-07-17T11:28:23.951+0800 I  CONTROL  [initandlisten] git version: 51d9fe12b5d19720e72dcd7db0f2f17dd9a19212
+2020-07-17T11:28:23.951+0800 I  CONTROL  [initandlisten] allocator: tcmalloc
+2020-07-17T11:28:23.951+0800 I  CONTROL  [initandlisten] modules: none
+2020-07-17T11:28:23.952+0800 I  CONTROL  [initandlisten] build environment:
+2020-07-17T11:28:23.952+0800 I  CONTROL  [initandlisten]     distmod: 2012plus
+2020-07-17T11:28:23.952+0800 I  CONTROL  [initandlisten]     distarch: x86_64
+2020-07-17T11:28:23.952+0800 I  CONTROL  [initandlisten]     target_arch: x86_64
+2020-07-17T11:28:23.952+0800 I  CONTROL  [initandlisten] options: { config: ".\mongod.config", storage: { dbPath: ".\data" }, systemLog: { destination: "file", path: ".\log\log.txt" } }
+2020-07-17T11:28:23.962+0800 I  STORAGE  [initandlisten] Detected data files in .\data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2020-07-17T11:28:23.963+0800 I  STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=7611M,cache_overflow=(file_max=0M),session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000,close_scan_interval=10,close_handle_minimum=250),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress],
+2020-07-17T11:28:24.101+0800 I  STORAGE  [initandlisten] WiredTiger message [1594956504:101112][11132:140719679037008], txn-recover: Recovering log 6 through 7
+2020-07-17T11:28:24.162+0800 I  STORAGE  [initandlisten] WiredTiger message [1594956504:162240][11132:140719679037008], txn-recover: Recovering log 7 through 7
+2020-07-17T11:28:24.224+0800 I  STORAGE  [initandlisten] WiredTiger message [1594956504:224074][11132:140719679037008], txn-recover: Main recovery loop: starting at 6/2527616 to 7/256
+2020-07-17T11:28:24.317+0800 I  STORAGE  [initandlisten] WiredTiger message [1594956504:316826][11132:140719679037008], txn-recover: Recovering log 6 through 7
+2020-07-17T11:28:24.386+0800 I  STORAGE  [initandlisten] WiredTiger message [1594956504:386639][11132:140719679037008], txn-recover: Recovering log 7 through 7
+2020-07-17T11:28:24.428+0800 I  STORAGE  [initandlisten] WiredTiger message [1594956504:428555][11132:140719679037008], txn-recover: Set global recovery timestamp: (0, 0)
+2020-07-17T11:28:24.449+0800 I  RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2020-07-17T11:28:24.553+0800 I  STORAGE  [initandlisten] Timestamp monitor starting
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] 
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] 
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2020-07-17T11:28:24.555+0800 I  CONTROL  [initandlisten] 
+2020-07-17T11:28:24.601+0800 I  SHARDING [initandlisten] Marking collection local.system.replset as collection version: <unsharded>
+2020-07-17T11:28:24.636+0800 I  STORAGE  [initandlisten] Flow Control is enabled on this deployment.
+2020-07-17T11:28:24.638+0800 I  SHARDING [initandlisten] Marking collection admin.system.roles as collection version: <unsharded>
+2020-07-17T11:28:24.640+0800 I  SHARDING [initandlisten] Marking collection admin.system.version as collection version: <unsharded>
+2020-07-17T11:28:24.684+0800 I  SHARDING [initandlisten] Marking collection local.startup_log as collection version: <unsharded>
+2020-07-17T11:28:25.126+0800 I  FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/diagnostic.data'
+2020-07-17T11:28:25.130+0800 I  SHARDING [LogicalSessionCacheReap] Marking collection config.system.sessions as collection version: <unsharded>
+2020-07-17T11:28:25.130+0800 I  NETWORK  [listener] Listening on 127.0.0.1
+2020-07-17T11:28:25.130+0800 I  NETWORK  [listener] waiting for connections on port 27017
+2020-07-17T11:28:25.133+0800 I  SHARDING [LogicalSessionCacheReap] Marking collection config.transactions as collection version: <unsharded>
+2020-07-17T11:28:26.001+0800 I  SHARDING [ftdc] Marking collection local.oplog.rs as collection version: <unsharded>
+2020-07-17T11:29:25.210+0800 I  SHARDING [TTLMonitor] Marking collection album.sessions as collection version: <unsharded>
+2020-07-17T11:29:49.790+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3639 #1 (1 connection now open)
+2020-07-17T11:29:49.791+0800 I  NETWORK  [conn1] received client metadata from 127.0.0.1:3639 conn1: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:29:49.813+0800 I  NETWORK  [conn1] end connection 127.0.0.1:3639 (0 connections now open)
+2020-07-17T11:29:53.625+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3640 #2 (1 connection now open)
+2020-07-17T11:29:53.625+0800 I  NETWORK  [conn2] received client metadata from 127.0.0.1:3640 conn2: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:01.031+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3649 #3 (2 connections now open)
+2020-07-17T11:30:01.032+0800 I  NETWORK  [conn3] received client metadata from 127.0.0.1:3649 conn3: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:07.174+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3672 #4 (3 connections now open)
+2020-07-17T11:30:07.174+0800 I  NETWORK  [conn4] received client metadata from 127.0.0.1:3672 conn4: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:08.354+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3675 #5 (4 connections now open)
+2020-07-17T11:30:08.355+0800 I  NETWORK  [conn5] received client metadata from 127.0.0.1:3675 conn5: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:12.105+0800 I  COMMAND  [conn5] CMD: drop admin.system.version
+2020-07-17T11:30:50.227+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3713 #6 (5 connections now open)
+2020-07-17T11:30:50.227+0800 I  NETWORK  [conn6] received client metadata from 127.0.0.1:3713 conn6: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:50.760+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3715 #7 (6 connections now open)
+2020-07-17T11:30:50.760+0800 I  NETWORK  [conn7] received client metadata from 127.0.0.1:3715 conn7: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:50.766+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3716 #8 (7 connections now open)
+2020-07-17T11:30:50.767+0800 I  NETWORK  [conn8] received client metadata from 127.0.0.1:3716 conn8: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:50.767+0800 I  NETWORK  [conn7] end connection 127.0.0.1:3715 (6 connections now open)
+2020-07-17T11:30:51.383+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3717 #9 (7 connections now open)
+2020-07-17T11:30:51.383+0800 I  NETWORK  [conn9] received client metadata from 127.0.0.1:3717 conn9: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:51.391+0800 I  NETWORK  [conn9] end connection 127.0.0.1:3717 (6 connections now open)
+2020-07-17T11:30:51.391+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3718 #10 (7 connections now open)
+2020-07-17T11:30:51.392+0800 I  NETWORK  [conn10] received client metadata from 127.0.0.1:3718 conn10: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:52.228+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3719 #11 (8 connections now open)
+2020-07-17T11:30:52.228+0800 I  NETWORK  [conn11] received client metadata from 127.0.0.1:3719 conn11: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:30:52.233+0800 I  NETWORK  [conn11] end connection 127.0.0.1:3719 (7 connections now open)
+2020-07-17T11:30:52.233+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3720 #12 (8 connections now open)
+2020-07-17T11:30:52.234+0800 I  NETWORK  [conn12] received client metadata from 127.0.0.1:3720 conn12: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:31:06.253+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3735 #13 (9 connections now open)
+2020-07-17T11:31:06.253+0800 I  NETWORK  [conn13] received client metadata from 127.0.0.1:3735 conn13: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:31:06.687+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3736 #14 (10 connections now open)
+2020-07-17T11:31:06.690+0800 I  NETWORK  [conn14] received client metadata from 127.0.0.1:3736 conn14: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:31:09.477+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3738 #15 (11 connections now open)
+2020-07-17T11:31:09.478+0800 I  NETWORK  [conn15] received client metadata from 127.0.0.1:3738 conn15: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:31:10.308+0800 I  SHARDING [conn15] Marking collection album.users as collection version: <unsharded>
+2020-07-17T11:31:19.486+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3749 #16 (12 connections now open)
+2020-07-17T11:31:19.486+0800 I  NETWORK  [conn16] received client metadata from 127.0.0.1:3749 conn16: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:31:19.490+0800 I  NETWORK  [conn16] end connection 127.0.0.1:3749 (11 connections now open)
+2020-07-17T11:43:39.109+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4505 #17 (12 connections now open)
+2020-07-17T11:43:39.109+0800 I  NETWORK  [conn17] received client metadata from 127.0.0.1:4505 conn17: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-07-17T11:43:39.110+0800 I  NETWORK  [conn17] end connection 127.0.0.1:4505 (11 connections now open)

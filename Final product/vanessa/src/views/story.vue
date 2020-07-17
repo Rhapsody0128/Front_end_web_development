@@ -5,7 +5,7 @@
       <div class="text">
       </div>
     </div>
-    <div id="flipbook " class="d-flex flex-wrap">
+    <div id="flipbook" class="d-flex flex-wrap justify-content-start">
       <flipbook
       class="flipbook col-12 col-lg-6 p-0"
       :pages="array"
@@ -47,7 +47,6 @@ export default {
   .flipbook{
     .viewport{
       .container{
-        margin auto !important
         padding 0px !important
       }
     }

@@ -1,0 +1,607 @@
+2020-06-15T09:35:47.160+0800 I  CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
+2020-06-15T09:35:47.162+0800 W  ASIO     [main] No TransportLayer configured during NetworkInterface startup
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten] MongoDB starting : pid=12148 port=27017 dbpath=.\data 64-bit host=1114-17
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten] db version v4.2.7
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten] git version: 51d9fe12b5d19720e72dcd7db0f2f17dd9a19212
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten] allocator: tcmalloc
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten] modules: none
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten] build environment:
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten]     distmod: 2012plus
+2020-06-15T09:35:47.163+0800 I  CONTROL  [initandlisten]     distarch: x86_64
+2020-06-15T09:35:47.164+0800 I  CONTROL  [initandlisten]     target_arch: x86_64
+2020-06-15T09:35:47.164+0800 I  CONTROL  [initandlisten] options: { config: ".\mongod.config", storage: { dbPath: ".\data" }, systemLog: { destination: "file", path: ".\log\log.txt" } }
+2020-06-15T09:35:47.165+0800 I  STORAGE  [initandlisten] Detected data files in .\data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2020-06-15T09:35:47.166+0800 I  STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=7611M,cache_overflow=(file_max=0M),session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000,close_scan_interval=10,close_handle_minimum=250),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress],
+2020-06-15T09:35:47.202+0800 I  STORAGE  [initandlisten] WiredTiger message [1592184947:201577][12148:140733012926032], txn-recover: Recovering log 3 through 4
+2020-06-15T09:35:47.248+0800 I  STORAGE  [initandlisten] WiredTiger message [1592184947:248480][12148:140733012926032], txn-recover: Recovering log 4 through 4
+2020-06-15T09:35:47.306+0800 I  STORAGE  [initandlisten] WiredTiger message [1592184947:305328][12148:140733012926032], txn-recover: Main recovery loop: starting at 3/4736 to 4/256
+2020-06-15T09:35:47.391+0800 I  STORAGE  [initandlisten] WiredTiger message [1592184947:390105][12148:140733012926032], txn-recover: Recovering log 3 through 4
+2020-06-15T09:35:47.447+0800 I  STORAGE  [initandlisten] WiredTiger message [1592184947:446949][12148:140733012926032], txn-recover: Recovering log 4 through 4
+2020-06-15T09:35:47.490+0800 I  STORAGE  [initandlisten] WiredTiger message [1592184947:490837][12148:140733012926032], txn-recover: Set global recovery timestamp: (0, 0)
+2020-06-15T09:35:47.510+0800 I  RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2020-06-15T09:35:47.514+0800 I  STORAGE  [initandlisten] Timestamp monitor starting
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] 
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] 
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2020-06-15T09:35:47.515+0800 I  CONTROL  [initandlisten] 
+2020-06-15T09:35:47.518+0800 I  SHARDING [initandlisten] Marking collection local.system.replset as collection version: <unsharded>
+2020-06-15T09:35:47.520+0800 I  STORAGE  [initandlisten] Flow Control is enabled on this deployment.
+2020-06-15T09:35:47.520+0800 I  SHARDING [initandlisten] Marking collection admin.system.roles as collection version: <unsharded>
+2020-06-15T09:35:47.520+0800 I  SHARDING [initandlisten] Marking collection admin.system.version as collection version: <unsharded>
+2020-06-15T09:35:47.521+0800 I  SHARDING [initandlisten] Marking collection local.startup_log as collection version: <unsharded>
+2020-06-15T09:35:47.788+0800 I  FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/diagnostic.data'
+2020-06-15T09:35:47.790+0800 I  SHARDING [LogicalSessionCacheRefresh] Marking collection config.system.sessions as collection version: <unsharded>
+2020-06-15T09:35:47.790+0800 I  SHARDING [LogicalSessionCacheReap] Marking collection config.transactions as collection version: <unsharded>
+2020-06-15T09:35:47.790+0800 I  NETWORK  [listener] Listening on 127.0.0.1
+2020-06-15T09:35:47.790+0800 I  NETWORK  [listener] waiting for connections on port 27017
+2020-06-15T09:35:48.001+0800 I  SHARDING [ftdc] Marking collection local.oplog.rs as collection version: <unsharded>
+2020-06-15T09:35:54.374+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:5581 #1 (1 connection now open)
+2020-06-15T09:35:54.376+0800 I  NETWORK  [conn1] received client metadata from 127.0.0.1:5581 conn1: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T09:35:54.387+0800 I  NETWORK  [conn1] end connection 127.0.0.1:5581 (0 connections now open)
+2020-06-15T09:43:19.294+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6098 #2 (1 connection now open)
+2020-06-15T09:43:19.295+0800 I  NETWORK  [conn2] received client metadata from 127.0.0.1:6098 conn2: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T09:43:19.352+0800 I  NETWORK  [conn2] end connection 127.0.0.1:6098 (0 connections now open)
+2020-06-15T09:44:24.923+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6205 #3 (1 connection now open)
+2020-06-15T09:44:24.923+0800 I  NETWORK  [conn3] received client metadata from 127.0.0.1:6205 conn3: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T09:54:27.356+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:7307 #4 (2 connections now open)
+2020-06-15T09:54:27.357+0800 I  NETWORK  [conn4] received client metadata from 127.0.0.1:7307 conn4: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T09:54:27.993+0800 I  SHARDING [conn4] Marking collection test.admin as collection version: <unsharded>
+2020-06-15T09:54:31.186+0800 I  SHARDING [conn3] Marking collection user.users as collection version: <unsharded>
+2020-06-15T10:04:26.025+0800 I  NETWORK  [conn4] end connection 127.0.0.1:7307 (1 connection now open)
+2020-06-15T10:04:26.025+0800 I  NETWORK  [conn3] end connection 127.0.0.1:6205 (0 connections now open)
+2020-06-15T10:52:10.878+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9630 #5 (1 connection now open)
+2020-06-15T10:52:10.881+0800 I  NETWORK  [conn5] received client metadata from 127.0.0.1:9630 conn5: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:52:19.187+0800 I  NETWORK  [conn5] end connection 127.0.0.1:9630 (0 connections now open)
+2020-06-15T10:52:19.719+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9636 #6 (1 connection now open)
+2020-06-15T10:52:19.722+0800 I  NETWORK  [conn6] received client metadata from 127.0.0.1:9636 conn6: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:52:48.524+0800 I  NETWORK  [conn6] end connection 127.0.0.1:9636 (0 connections now open)
+2020-06-15T10:52:49.056+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9642 #7 (1 connection now open)
+2020-06-15T10:52:49.059+0800 I  NETWORK  [conn7] received client metadata from 127.0.0.1:9642 conn7: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:53:14.433+0800 I  NETWORK  [conn7] end connection 127.0.0.1:9642 (0 connections now open)
+2020-06-15T10:53:14.964+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9653 #8 (1 connection now open)
+2020-06-15T10:53:14.968+0800 I  NETWORK  [conn8] received client metadata from 127.0.0.1:9653 conn8: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:53:57.542+0800 I  NETWORK  [conn8] end connection 127.0.0.1:9653 (0 connections now open)
+2020-06-15T10:54:56.824+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9683 #9 (1 connection now open)
+2020-06-15T10:54:56.827+0800 I  NETWORK  [conn9] received client metadata from 127.0.0.1:9683 conn9: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:55:26.199+0800 I  NETWORK  [conn9] end connection 127.0.0.1:9683 (0 connections now open)
+2020-06-15T10:55:31.412+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9694 #10 (1 connection now open)
+2020-06-15T10:55:31.415+0800 I  NETWORK  [conn10] received client metadata from 127.0.0.1:9694 conn10: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:55:37.785+0800 I  NETWORK  [conn10] end connection 127.0.0.1:9694 (0 connections now open)
+2020-06-15T10:55:38.311+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9700 #11 (1 connection now open)
+2020-06-15T10:55:38.314+0800 I  NETWORK  [conn11] received client metadata from 127.0.0.1:9700 conn11: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:56:20.263+0800 I  NETWORK  [conn11] end connection 127.0.0.1:9700 (0 connections now open)
+2020-06-15T10:56:20.793+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9715 #12 (1 connection now open)
+2020-06-15T10:56:20.796+0800 I  NETWORK  [conn12] received client metadata from 127.0.0.1:9715 conn12: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:56:41.764+0800 I  NETWORK  [conn12] end connection 127.0.0.1:9715 (0 connections now open)
+2020-06-15T10:56:42.306+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9724 #13 (1 connection now open)
+2020-06-15T10:56:42.309+0800 I  NETWORK  [conn13] received client metadata from 127.0.0.1:9724 conn13: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:56:48.732+0800 I  NETWORK  [conn13] end connection 127.0.0.1:9724 (0 connections now open)
+2020-06-15T10:57:24.576+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9745 #14 (1 connection now open)
+2020-06-15T10:57:24.579+0800 I  NETWORK  [conn14] received client metadata from 127.0.0.1:9745 conn14: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T10:58:10.629+0800 I  NETWORK  [conn14] end connection 127.0.0.1:9745 (0 connections now open)
+2020-06-15T11:02:40.099+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9845 #15 (1 connection now open)
+2020-06-15T11:02:40.102+0800 I  NETWORK  [conn15] received client metadata from 127.0.0.1:9845 conn15: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:02:48.819+0800 I  NETWORK  [conn15] end connection 127.0.0.1:9845 (0 connections now open)
+2020-06-15T11:02:49.341+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9850 #16 (1 connection now open)
+2020-06-15T11:02:49.344+0800 I  NETWORK  [conn16] received client metadata from 127.0.0.1:9850 conn16: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:03:02.981+0800 I  NETWORK  [conn16] end connection 127.0.0.1:9850 (0 connections now open)
+2020-06-15T11:03:03.518+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9855 #17 (1 connection now open)
+2020-06-15T11:03:03.521+0800 I  NETWORK  [conn17] received client metadata from 127.0.0.1:9855 conn17: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:03:09.687+0800 I  NETWORK  [conn17] end connection 127.0.0.1:9855 (0 connections now open)
+2020-06-15T11:03:10.251+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9858 #18 (1 connection now open)
+2020-06-15T11:03:10.254+0800 I  NETWORK  [conn18] received client metadata from 127.0.0.1:9858 conn18: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:03:12.689+0800 I  NETWORK  [conn18] end connection 127.0.0.1:9858 (0 connections now open)
+2020-06-15T11:03:13.231+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9861 #19 (1 connection now open)
+2020-06-15T11:03:13.235+0800 I  NETWORK  [conn19] received client metadata from 127.0.0.1:9861 conn19: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:04:29.830+0800 I  NETWORK  [conn19] end connection 127.0.0.1:9861 (0 connections now open)
+2020-06-15T11:04:30.358+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9881 #20 (1 connection now open)
+2020-06-15T11:04:30.361+0800 I  NETWORK  [conn20] received client metadata from 127.0.0.1:9881 conn20: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:04:38.959+0800 I  NETWORK  [conn20] end connection 127.0.0.1:9881 (0 connections now open)
+2020-06-15T11:04:39.491+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9884 #21 (1 connection now open)
+2020-06-15T11:04:39.494+0800 I  NETWORK  [conn21] received client metadata from 127.0.0.1:9884 conn21: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:05:01.167+0800 I  NETWORK  [conn21] end connection 127.0.0.1:9884 (0 connections now open)
+2020-06-15T11:05:01.709+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9892 #22 (1 connection now open)
+2020-06-15T11:05:01.713+0800 I  NETWORK  [conn22] received client metadata from 127.0.0.1:9892 conn22: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:07:13.001+0800 I  NETWORK  [conn22] end connection 127.0.0.1:9892 (0 connections now open)
+2020-06-15T11:07:13.530+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9928 #23 (1 connection now open)
+2020-06-15T11:07:13.558+0800 I  NETWORK  [conn23] received client metadata from 127.0.0.1:9928 conn23: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:07:20.381+0800 I  NETWORK  [conn23] end connection 127.0.0.1:9928 (0 connections now open)
+2020-06-15T11:07:20.912+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9933 #24 (1 connection now open)
+2020-06-15T11:07:20.916+0800 I  NETWORK  [conn24] received client metadata from 127.0.0.1:9933 conn24: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:11:54.807+0800 I  NETWORK  [conn24] end connection 127.0.0.1:9933 (0 connections now open)
+2020-06-15T11:11:58.800+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9984 #25 (1 connection now open)
+2020-06-15T11:11:58.803+0800 I  NETWORK  [conn25] received client metadata from 127.0.0.1:9984 conn25: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:12:49.175+0800 I  NETWORK  [conn25] end connection 127.0.0.1:9984 (0 connections now open)
+2020-06-15T11:12:49.737+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9994 #26 (1 connection now open)
+2020-06-15T11:12:49.741+0800 I  NETWORK  [conn26] received client metadata from 127.0.0.1:9994 conn26: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:12:51.747+0800 I  NETWORK  [conn26] end connection 127.0.0.1:9994 (0 connections now open)
+2020-06-15T11:12:52.283+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:9996 #27 (1 connection now open)
+2020-06-15T11:12:52.287+0800 I  NETWORK  [conn27] received client metadata from 127.0.0.1:9996 conn27: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:13:53.806+0800 I  NETWORK  [conn27] end connection 127.0.0.1:9996 (0 connections now open)
+2020-06-15T11:13:54.350+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10012 #28 (1 connection now open)
+2020-06-15T11:13:54.353+0800 I  NETWORK  [conn28] received client metadata from 127.0.0.1:10012 conn28: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:14:47.812+0800 I  SHARDING [conn28] Marking collection 0615advanced_api.products as collection version: <unsharded>
+2020-06-15T11:14:47.813+0800 I  STORAGE  [conn28] createCollection: 0615advanced_api.products with generated UUID: a7f3f173-4eb0-4144-85fe-cd23c970bd19 and options: {}
+2020-06-15T11:14:47.821+0800 I  INDEX    [conn28] index build: done building index _id_ on ns 0615advanced_api.products
+2020-06-15T11:17:29.679+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10064 #29 (2 connections now open)
+2020-06-15T11:17:29.681+0800 I  NETWORK  [conn29] received client metadata from 127.0.0.1:10064 conn29: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T11:17:29.694+0800 I  NETWORK  [conn29] end connection 127.0.0.1:10064 (1 connection now open)
+2020-06-15T11:17:35.944+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10066 #30 (2 connections now open)
+2020-06-15T11:17:35.944+0800 I  NETWORK  [conn30] received client metadata from 127.0.0.1:10066 conn30: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T11:17:35.949+0800 I  NETWORK  [conn30] end connection 127.0.0.1:10066 (1 connection now open)
+2020-06-15T11:17:37.034+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10067 #31 (2 connections now open)
+2020-06-15T11:17:37.034+0800 I  NETWORK  [conn31] received client metadata from 127.0.0.1:10067 conn31: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T11:19:48.534+0800 I  NETWORK  [conn28] end connection 127.0.0.1:10012 (1 connection now open)
+2020-06-15T11:19:49.073+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10103 #32 (2 connections now open)
+2020-06-15T11:19:49.077+0800 I  NETWORK  [conn32] received client metadata from 127.0.0.1:10103 conn32: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:19:57.062+0800 I  NETWORK  [conn32] end connection 127.0.0.1:10103 (1 connection now open)
+2020-06-15T11:19:57.599+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10108 #33 (2 connections now open)
+2020-06-15T11:19:57.602+0800 I  NETWORK  [conn33] received client metadata from 127.0.0.1:10108 conn33: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:19:58.789+0800 I  NETWORK  [conn33] end connection 127.0.0.1:10108 (1 connection now open)
+2020-06-15T11:19:59.324+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10110 #34 (2 connections now open)
+2020-06-15T11:19:59.327+0800 I  NETWORK  [conn34] received client metadata from 127.0.0.1:10110 conn34: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:20:00.953+0800 I  NETWORK  [conn34] end connection 127.0.0.1:10110 (1 connection now open)
+2020-06-15T11:20:01.491+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10111 #35 (2 connections now open)
+2020-06-15T11:20:01.494+0800 I  NETWORK  [conn35] received client metadata from 127.0.0.1:10111 conn35: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:20:46.170+0800 I  NETWORK  [conn35] end connection 127.0.0.1:10111 (1 connection now open)
+2020-06-15T11:20:46.694+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10143 #36 (2 connections now open)
+2020-06-15T11:20:46.697+0800 I  NETWORK  [conn36] received client metadata from 127.0.0.1:10143 conn36: { driver: { name: "nodejs", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (legacy)" }
+2020-06-15T11:20:59.302+0800 I  NETWORK  [conn36] end connection 127.0.0.1:10143 (1 connection now open)
+2020-06-15T11:21:09.261+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10154 #37 (2 connections now open)
+2020-06-15T11:21:09.266+0800 I  NETWORK  [conn37] received client metadata from 127.0.0.1:10154 conn37: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:21:13.662+0800 I  NETWORK  [conn37] end connection 127.0.0.1:10154 (1 connection now open)
+2020-06-15T11:21:14.184+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10155 #38 (2 connections now open)
+2020-06-15T11:21:14.189+0800 I  NETWORK  [conn38] received client metadata from 127.0.0.1:10155 conn38: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:32:45.750+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10269 #39 (3 connections now open)
+2020-06-15T11:32:45.751+0800 I  NETWORK  [conn39] received client metadata from 127.0.0.1:10269 conn39: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T11:32:48.846+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10270 #40 (4 connections now open)
+2020-06-15T11:32:48.846+0800 I  NETWORK  [conn40] received client metadata from 127.0.0.1:10270 conn40: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T11:33:14.506+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10282 #41 (5 connections now open)
+2020-06-15T11:33:14.506+0800 I  NETWORK  [conn41] received client metadata from 127.0.0.1:10282 conn41: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:33:26.537+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10290 #42 (6 connections now open)
+2020-06-15T11:33:26.537+0800 I  NETWORK  [conn42] received client metadata from 127.0.0.1:10290 conn42: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T11:33:26.543+0800 I  NETWORK  [conn42] end connection 127.0.0.1:10290 (5 connections now open)
+2020-06-15T11:33:26.549+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10291 #43 (6 connections now open)
+2020-06-15T11:33:26.549+0800 I  NETWORK  [conn43] received client metadata from 127.0.0.1:10291 conn43: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T11:35:39.520+0800 I  NETWORK  [conn41] end connection 127.0.0.1:10282 (5 connections now open)
+2020-06-15T11:35:39.520+0800 I  NETWORK  [conn38] end connection 127.0.0.1:10155 (4 connections now open)
+2020-06-15T11:37:02.141+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10372 #44 (5 connections now open)
+2020-06-15T11:37:02.146+0800 I  NETWORK  [conn44] received client metadata from 127.0.0.1:10372 conn44: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:37:27.766+0800 I  NETWORK  [conn44] end connection 127.0.0.1:10372 (4 connections now open)
+2020-06-15T11:37:28.287+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10382 #45 (5 connections now open)
+2020-06-15T11:37:28.293+0800 I  NETWORK  [conn45] received client metadata from 127.0.0.1:10382 conn45: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:37:43.755+0800 I  NETWORK  [conn45] end connection 127.0.0.1:10382 (4 connections now open)
+2020-06-15T11:37:44.293+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10389 #46 (5 connections now open)
+2020-06-15T11:37:44.298+0800 I  NETWORK  [conn46] received client metadata from 127.0.0.1:10389 conn46: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:38:04.005+0800 I  NETWORK  [conn46] end connection 127.0.0.1:10389 (4 connections now open)
+2020-06-15T11:38:04.567+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10399 #47 (5 connections now open)
+2020-06-15T11:38:04.573+0800 I  NETWORK  [conn47] received client metadata from 127.0.0.1:10399 conn47: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:38:26.931+0800 I  NETWORK  [conn47] end connection 127.0.0.1:10399 (4 connections now open)
+2020-06-15T11:38:27.468+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10407 #48 (5 connections now open)
+2020-06-15T11:38:27.474+0800 I  NETWORK  [conn48] received client metadata from 127.0.0.1:10407 conn48: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:39:54.746+0800 I  NETWORK  [conn48] end connection 127.0.0.1:10407 (4 connections now open)
+2020-06-15T11:39:55.269+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10433 #49 (5 connections now open)
+2020-06-15T11:39:55.274+0800 I  NETWORK  [conn49] received client metadata from 127.0.0.1:10433 conn49: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:40:02.270+0800 I  NETWORK  [conn49] end connection 127.0.0.1:10433 (4 connections now open)
+2020-06-15T11:40:02.793+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10436 #50 (5 connections now open)
+2020-06-15T11:40:02.799+0800 I  NETWORK  [conn50] received client metadata from 127.0.0.1:10436 conn50: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:40:12.037+0800 I  NETWORK  [conn50] end connection 127.0.0.1:10436 (4 connections now open)
+2020-06-15T11:40:12.561+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10445 #51 (5 connections now open)
+2020-06-15T11:40:12.567+0800 I  NETWORK  [conn51] received client metadata from 127.0.0.1:10445 conn51: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:40:41.338+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10458 #52 (6 connections now open)
+2020-06-15T11:40:41.339+0800 I  NETWORK  [conn52] received client metadata from 127.0.0.1:10458 conn52: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:41:04.861+0800 I  NETWORK  [conn51] end connection 127.0.0.1:10445 (5 connections now open)
+2020-06-15T11:41:04.861+0800 I  NETWORK  [conn52] end connection 127.0.0.1:10458 (4 connections now open)
+2020-06-15T11:41:05.419+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10472 #53 (5 connections now open)
+2020-06-15T11:41:05.425+0800 I  NETWORK  [conn53] received client metadata from 127.0.0.1:10472 conn53: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:41:09.526+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10477 #54 (6 connections now open)
+2020-06-15T11:41:09.526+0800 I  NETWORK  [conn54] received client metadata from 127.0.0.1:10477 conn54: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:41:52.565+0800 I  NETWORK  [conn53] end connection 127.0.0.1:10472 (5 connections now open)
+2020-06-15T11:41:52.565+0800 I  NETWORK  [conn54] end connection 127.0.0.1:10477 (4 connections now open)
+2020-06-15T11:41:53.086+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10540 #55 (5 connections now open)
+2020-06-15T11:41:53.092+0800 I  NETWORK  [conn55] received client metadata from 127.0.0.1:10540 conn55: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:42:37.845+0800 I  NETWORK  [conn55] end connection 127.0.0.1:10540 (4 connections now open)
+2020-06-15T11:42:38.408+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10556 #56 (5 connections now open)
+2020-06-15T11:42:38.415+0800 I  NETWORK  [conn56] received client metadata from 127.0.0.1:10556 conn56: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:42:43.152+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10610 #57 (6 connections now open)
+2020-06-15T11:42:43.153+0800 I  NETWORK  [conn57] received client metadata from 127.0.0.1:10610 conn57: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:44:28.767+0800 I  NETWORK  [conn56] end connection 127.0.0.1:10556 (5 connections now open)
+2020-06-15T11:44:28.767+0800 I  NETWORK  [conn57] end connection 127.0.0.1:10610 (4 connections now open)
+2020-06-15T11:44:29.297+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10657 #58 (5 connections now open)
+2020-06-15T11:44:29.302+0800 I  NETWORK  [conn58] received client metadata from 127.0.0.1:10657 conn58: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:44:45.488+0800 I  NETWORK  [conn58] end connection 127.0.0.1:10657 (4 connections now open)
+2020-06-15T11:44:46.026+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10664 #59 (5 connections now open)
+2020-06-15T11:44:46.031+0800 I  NETWORK  [conn59] received client metadata from 127.0.0.1:10664 conn59: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:45:09.127+0800 I  NETWORK  [conn59] end connection 127.0.0.1:10664 (4 connections now open)
+2020-06-15T11:45:09.668+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10675 #60 (5 connections now open)
+2020-06-15T11:45:09.675+0800 I  NETWORK  [conn60] received client metadata from 127.0.0.1:10675 conn60: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:45:33.034+0800 I  NETWORK  [conn60] end connection 127.0.0.1:10675 (4 connections now open)
+2020-06-15T11:45:33.547+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10683 #61 (5 connections now open)
+2020-06-15T11:45:33.552+0800 I  NETWORK  [conn61] received client metadata from 127.0.0.1:10683 conn61: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:46:38.112+0800 I  NETWORK  [conn61] end connection 127.0.0.1:10683 (4 connections now open)
+2020-06-15T11:46:38.656+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10705 #62 (5 connections now open)
+2020-06-15T11:46:38.662+0800 I  NETWORK  [conn62] received client metadata from 127.0.0.1:10705 conn62: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:46:43.857+0800 I  NETWORK  [conn62] end connection 127.0.0.1:10705 (4 connections now open)
+2020-06-15T11:46:44.388+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10707 #63 (5 connections now open)
+2020-06-15T11:46:44.394+0800 I  NETWORK  [conn63] received client metadata from 127.0.0.1:10707 conn63: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:47:50.075+0800 I  NETWORK  [conn63] end connection 127.0.0.1:10707 (4 connections now open)
+2020-06-15T11:47:50.603+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10729 #64 (5 connections now open)
+2020-06-15T11:47:50.609+0800 I  NETWORK  [conn64] received client metadata from 127.0.0.1:10729 conn64: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:49:37.282+0800 I  NETWORK  [conn64] end connection 127.0.0.1:10729 (4 connections now open)
+2020-06-15T11:49:37.819+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10762 #65 (5 connections now open)
+2020-06-15T11:49:37.825+0800 I  NETWORK  [conn65] received client metadata from 127.0.0.1:10762 conn65: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:50:09.295+0800 I  NETWORK  [conn65] end connection 127.0.0.1:10762 (4 connections now open)
+2020-06-15T11:50:09.830+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10774 #66 (5 connections now open)
+2020-06-15T11:50:09.836+0800 I  NETWORK  [conn66] received client metadata from 127.0.0.1:10774 conn66: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:50:20.888+0800 I  NETWORK  [conn66] end connection 127.0.0.1:10774 (4 connections now open)
+2020-06-15T11:50:21.411+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10780 #67 (5 connections now open)
+2020-06-15T11:50:21.416+0800 I  NETWORK  [conn67] received client metadata from 127.0.0.1:10780 conn67: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:50:30.263+0800 I  NETWORK  [conn67] end connection 127.0.0.1:10780 (4 connections now open)
+2020-06-15T11:50:30.807+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10786 #68 (5 connections now open)
+2020-06-15T11:50:30.812+0800 I  NETWORK  [conn68] received client metadata from 127.0.0.1:10786 conn68: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:50:33.523+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10789 #69 (6 connections now open)
+2020-06-15T11:50:33.524+0800 I  NETWORK  [conn69] received client metadata from 127.0.0.1:10789 conn69: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:50:48.954+0800 I  NETWORK  [conn69] end connection 127.0.0.1:10789 (4 connections now open)
+2020-06-15T11:50:48.954+0800 I  NETWORK  [conn68] end connection 127.0.0.1:10786 (5 connections now open)
+2020-06-15T11:50:49.477+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10795 #70 (5 connections now open)
+2020-06-15T11:50:49.483+0800 I  NETWORK  [conn70] received client metadata from 127.0.0.1:10795 conn70: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:50:50.299+0800 I  NETWORK  [conn70] end connection 127.0.0.1:10795 (4 connections now open)
+2020-06-15T11:50:50.840+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10796 #71 (5 connections now open)
+2020-06-15T11:50:50.845+0800 I  NETWORK  [conn71] received client metadata from 127.0.0.1:10796 conn71: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:52:09.843+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10824 #72 (6 connections now open)
+2020-06-15T11:52:09.843+0800 I  NETWORK  [conn72] received client metadata from 127.0.0.1:10824 conn72: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:53:33.599+0800 I  NETWORK  [conn72] end connection 127.0.0.1:10824 (5 connections now open)
+2020-06-15T11:53:33.599+0800 I  NETWORK  [conn71] end connection 127.0.0.1:10796 (4 connections now open)
+2020-06-15T11:53:34.120+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10875 #73 (5 connections now open)
+2020-06-15T11:53:34.126+0800 I  NETWORK  [conn73] received client metadata from 127.0.0.1:10875 conn73: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:53:37.050+0800 I  NETWORK  [conn73] end connection 127.0.0.1:10875 (4 connections now open)
+2020-06-15T11:53:37.564+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10878 #74 (5 connections now open)
+2020-06-15T11:53:37.570+0800 I  NETWORK  [conn74] received client metadata from 127.0.0.1:10878 conn74: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:53:59.120+0800 I  NETWORK  [conn74] end connection 127.0.0.1:10878 (4 connections now open)
+2020-06-15T11:53:59.646+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10897 #75 (5 connections now open)
+2020-06-15T11:53:59.652+0800 I  NETWORK  [conn75] received client metadata from 127.0.0.1:10897 conn75: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:54:01.077+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10901 #76 (6 connections now open)
+2020-06-15T11:54:01.078+0800 I  NETWORK  [conn76] received client metadata from 127.0.0.1:10901 conn76: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:55:18.744+0800 I  NETWORK  [conn76] end connection 127.0.0.1:10901 (5 connections now open)
+2020-06-15T11:55:18.744+0800 I  NETWORK  [conn75] end connection 127.0.0.1:10897 (4 connections now open)
+2020-06-15T11:55:19.265+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10956 #77 (5 connections now open)
+2020-06-15T11:55:19.271+0800 I  NETWORK  [conn77] received client metadata from 127.0.0.1:10956 conn77: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:55:27.683+0800 I  NETWORK  [conn77] end connection 127.0.0.1:10956 (4 connections now open)
+2020-06-15T11:55:28.200+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10963 #78 (5 connections now open)
+2020-06-15T11:55:28.206+0800 I  NETWORK  [conn78] received client metadata from 127.0.0.1:10963 conn78: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:55:31.215+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10969 #79 (6 connections now open)
+2020-06-15T11:55:31.216+0800 I  NETWORK  [conn79] received client metadata from 127.0.0.1:10969 conn79: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:55:38.292+0800 I  NETWORK  [conn78] end connection 127.0.0.1:10963 (5 connections now open)
+2020-06-15T11:55:38.292+0800 I  NETWORK  [conn79] end connection 127.0.0.1:10969 (4 connections now open)
+2020-06-15T11:55:38.814+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10979 #80 (5 connections now open)
+2020-06-15T11:55:38.820+0800 I  NETWORK  [conn80] received client metadata from 127.0.0.1:10979 conn80: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:55:47.287+0800 I  NETWORK  [conn80] end connection 127.0.0.1:10979 (4 connections now open)
+2020-06-15T11:55:47.813+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10986 #81 (5 connections now open)
+2020-06-15T11:55:47.819+0800 I  NETWORK  [conn81] received client metadata from 127.0.0.1:10986 conn81: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:55:48.396+0800 I  NETWORK  [conn81] end connection 127.0.0.1:10986 (4 connections now open)
+2020-06-15T11:55:48.974+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10988 #82 (5 connections now open)
+2020-06-15T11:55:48.979+0800 I  NETWORK  [conn82] received client metadata from 127.0.0.1:10988 conn82: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:55:50.789+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:10992 #83 (6 connections now open)
+2020-06-15T11:55:50.790+0800 I  NETWORK  [conn83] received client metadata from 127.0.0.1:10992 conn83: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:56:53.916+0800 I  NETWORK  [conn82] end connection 127.0.0.1:10988 (5 connections now open)
+2020-06-15T11:56:53.916+0800 I  NETWORK  [conn83] end connection 127.0.0.1:10992 (4 connections now open)
+2020-06-15T11:56:54.442+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11039 #84 (5 connections now open)
+2020-06-15T11:56:54.447+0800 I  NETWORK  [conn84] received client metadata from 127.0.0.1:11039 conn84: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:56:59.515+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11045 #85 (6 connections now open)
+2020-06-15T11:56:59.515+0800 I  NETWORK  [conn85] received client metadata from 127.0.0.1:11045 conn85: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:58:09.722+0800 I  NETWORK  [conn85] end connection 127.0.0.1:11045 (5 connections now open)
+2020-06-15T11:58:09.722+0800 I  NETWORK  [conn84] end connection 127.0.0.1:11039 (4 connections now open)
+2020-06-15T11:58:10.236+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11092 #86 (5 connections now open)
+2020-06-15T11:58:10.242+0800 I  NETWORK  [conn86] received client metadata from 127.0.0.1:11092 conn86: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:58:35.057+0800 I  NETWORK  [conn86] end connection 127.0.0.1:11092 (4 connections now open)
+2020-06-15T11:58:35.579+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11108 #87 (5 connections now open)
+2020-06-15T11:58:35.585+0800 I  NETWORK  [conn87] received client metadata from 127.0.0.1:11108 conn87: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T11:58:54.130+0800 I  NETWORK  [conn87] end connection 127.0.0.1:11108 (4 connections now open)
+2020-06-15T11:58:54.651+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11116 #88 (5 connections now open)
+2020-06-15T11:58:54.657+0800 I  NETWORK  [conn88] received client metadata from 127.0.0.1:11116 conn88: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T12:00:14.119+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11133 #89 (6 connections now open)
+2020-06-15T12:00:14.120+0800 I  NETWORK  [conn89] received client metadata from 127.0.0.1:11133 conn89: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T12:01:06.415+0800 I  NETWORK  [conn89] end connection 127.0.0.1:11133 (5 connections now open)
+2020-06-15T12:01:06.415+0800 I  NETWORK  [conn88] end connection 127.0.0.1:11116 (4 connections now open)
+2020-06-15T12:01:06.951+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11149 #90 (5 connections now open)
+2020-06-15T12:01:06.957+0800 I  NETWORK  [conn90] received client metadata from 127.0.0.1:11149 conn90: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T12:34:33.592+0800 I  NETWORK  [conn90] end connection 127.0.0.1:11149 (4 connections now open)
+2020-06-15T12:34:38.626+0800 I  NETWORK  [conn40] end connection 127.0.0.1:10270 (3 connections now open)
+2020-06-15T12:34:38.626+0800 I  NETWORK  [conn39] end connection 127.0.0.1:10269 (2 connections now open)
+2020-06-15T12:34:38.626+0800 I  NETWORK  [conn31] end connection 127.0.0.1:10067 (1 connection now open)
+2020-06-15T12:34:38.626+0800 I  NETWORK  [conn43] end connection 127.0.0.1:10291 (0 connections now open)
+2020-06-15T13:11:23.838+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11898 #91 (1 connection now open)
+2020-06-15T13:11:23.839+0800 I  NETWORK  [conn91] received client metadata from 127.0.0.1:11898 conn91: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T13:11:23.849+0800 I  NETWORK  [conn91] end connection 127.0.0.1:11898 (0 connections now open)
+2020-06-15T13:11:24.609+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11899 #92 (1 connection now open)
+2020-06-15T13:11:24.609+0800 I  NETWORK  [conn92] received client metadata from 127.0.0.1:11899 conn92: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T13:11:33.474+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11901 #93 (2 connections now open)
+2020-06-15T13:11:33.475+0800 I  NETWORK  [conn93] received client metadata from 127.0.0.1:11901 conn93: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T13:11:33.478+0800 I  STORAGE  [conn93] createCollection: 0615advanced_api.users with generated UUID: ccc76403-7b8e-4d5c-a968-89d6066547f2 and options: {}
+2020-06-15T13:11:33.491+0800 I  INDEX    [conn93] index build: done building index _id_ on ns 0615advanced_api.users
+2020-06-15T13:11:33.493+0800 I  SHARDING [conn93] Marking collection 0615advanced_api.users as collection version: <unsharded>
+2020-06-15T13:11:33.503+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11902 #94 (3 connections now open)
+2020-06-15T13:11:33.505+0800 I  NETWORK  [conn94] received client metadata from 127.0.0.1:11902 conn94: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T13:11:33.708+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11903 #95 (4 connections now open)
+2020-06-15T13:11:33.709+0800 I  NETWORK  [conn95] received client metadata from 127.0.0.1:11903 conn95: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T13:13:12.506+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11939 #96 (5 connections now open)
+2020-06-15T13:13:12.507+0800 I  NETWORK  [conn96] received client metadata from 127.0.0.1:11939 conn96: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T13:13:12.512+0800 I  NETWORK  [conn96] end connection 127.0.0.1:11939 (4 connections now open)
+2020-06-15T13:13:12.513+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:11940 #97 (5 connections now open)
+2020-06-15T13:13:12.513+0800 I  NETWORK  [conn97] received client metadata from 127.0.0.1:11940 conn97: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T13:16:07.186+0800 I  NETWORK  [conn94] end connection 127.0.0.1:11902 (4 connections now open)
+2020-06-15T13:16:12.180+0800 I  NETWORK  [conn93] end connection 127.0.0.1:11901 (3 connections now open)
+2020-06-15T13:16:12.180+0800 I  NETWORK  [conn95] end connection 127.0.0.1:11903 (2 connections now open)
+2020-06-15T13:16:12.181+0800 I  NETWORK  [conn97] end connection 127.0.0.1:11940 (1 connection now open)
+2020-06-15T13:16:12.181+0800 I  NETWORK  [conn92] end connection 127.0.0.1:11899 (0 connections now open)
+2020-06-15T14:18:16.779+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:14526 #98 (1 connection now open)
+2020-06-15T14:18:16.785+0800 I  NETWORK  [conn98] received client metadata from 127.0.0.1:14526 conn98: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T14:19:07.462+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:14566 #99 (2 connections now open)
+2020-06-15T14:19:07.463+0800 I  NETWORK  [conn99] received client metadata from 127.0.0.1:14566 conn99: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T14:25:07.466+0800 I  NETWORK  [conn99] end connection 127.0.0.1:14566 (1 connection now open)
+2020-06-15T14:30:19.264+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:1186 #100 (2 connections now open)
+2020-06-15T14:30:19.265+0800 I  NETWORK  [conn100] received client metadata from 127.0.0.1:1186 conn100: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T14:33:25.374+0800 I  NETWORK  [conn100] end connection 127.0.0.1:1186 (1 connection now open)
+2020-06-15T14:33:25.374+0800 I  NETWORK  [conn98] end connection 127.0.0.1:14526 (0 connections now open)
+2020-06-15T14:56:31.775+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2004 #101 (1 connection now open)
+2020-06-15T14:56:31.792+0800 I  NETWORK  [conn101] received client metadata from 127.0.0.1:2004 conn101: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T14:56:36.090+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2012 #102 (2 connections now open)
+2020-06-15T14:56:36.090+0800 I  NETWORK  [conn102] received client metadata from 127.0.0.1:2012 conn102: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:01:57.119+0800 I  NETWORK  [conn102] end connection 127.0.0.1:2012 (1 connection now open)
+2020-06-15T15:01:57.119+0800 I  NETWORK  [conn101] end connection 127.0.0.1:2004 (0 connections now open)
+2020-06-15T15:01:57.705+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2277 #103 (1 connection now open)
+2020-06-15T15:01:57.710+0800 I  NETWORK  [conn103] received client metadata from 127.0.0.1:2277 conn103: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:02:52.170+0800 I  NETWORK  [conn103] end connection 127.0.0.1:2277 (0 connections now open)
+2020-06-15T15:07:56.127+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2484 #104 (1 connection now open)
+2020-06-15T15:07:56.136+0800 I  NETWORK  [conn104] received client metadata from 127.0.0.1:2484 conn104: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:07:56.143+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2485 #105 (2 connections now open)
+2020-06-15T15:07:56.143+0800 I  NETWORK  [conn105] received client metadata from 127.0.0.1:2485 conn105: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:07:56.145+0800 I  STORAGE  [conn105] createCollection: 0615advanced_api.sessions with provided UUID: 878ce0c7-bbf6-472a-9f13-229e1b1c105c and options: { uuid: UUID("878ce0c7-bbf6-472a-9f13-229e1b1c105c") }
+2020-06-15T15:07:56.155+0800 I  INDEX    [conn105] index build: done building index _id_ on ns 0615advanced_api.sessions
+2020-06-15T15:07:56.162+0800 I  INDEX    [conn105] index build: starting on 0615advanced_api.sessions properties: { v: 2, key: { expires: 1 }, name: "expires_1", ns: "0615advanced_api.sessions", expireAfterSeconds: 0 } using method: Hybrid
+2020-06-15T15:07:56.162+0800 I  INDEX    [conn105] build may temporarily use up to 200 megabytes of RAM
+2020-06-15T15:07:56.162+0800 I  INDEX    [conn105] index build: collection scan done. scanned 0 total records in 0 seconds
+2020-06-15T15:07:56.163+0800 I  INDEX    [conn105] index build: inserted 0 keys from external sorter into index in 0 seconds
+2020-06-15T15:07:56.167+0800 I  INDEX    [conn105] index build: done building index expires_1 on ns 0615advanced_api.sessions
+2020-06-15T15:08:33.197+0800 I  NETWORK  [conn104] end connection 127.0.0.1:2484 (1 connection now open)
+2020-06-15T15:08:33.197+0800 I  NETWORK  [conn105] end connection 127.0.0.1:2485 (0 connections now open)
+2020-06-15T15:08:33.799+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2493 #106 (1 connection now open)
+2020-06-15T15:08:33.804+0800 I  NETWORK  [conn106] received client metadata from 127.0.0.1:2493 conn106: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:08:33.810+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2494 #107 (2 connections now open)
+2020-06-15T15:08:33.811+0800 I  NETWORK  [conn107] received client metadata from 127.0.0.1:2494 conn107: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:09:46.773+0800 I  NETWORK  [conn107] end connection 127.0.0.1:2494 (1 connection now open)
+2020-06-15T15:09:46.773+0800 I  NETWORK  [conn106] end connection 127.0.0.1:2493 (0 connections now open)
+2020-06-15T15:12:01.815+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2529 #108 (1 connection now open)
+2020-06-15T15:12:01.821+0800 I  NETWORK  [conn108] received client metadata from 127.0.0.1:2529 conn108: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:12:01.827+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2530 #109 (2 connections now open)
+2020-06-15T15:12:01.827+0800 I  NETWORK  [conn109] received client metadata from 127.0.0.1:2530 conn109: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:13:11.056+0800 I  NETWORK  [conn109] end connection 127.0.0.1:2530 (1 connection now open)
+2020-06-15T15:13:11.056+0800 I  NETWORK  [conn108] end connection 127.0.0.1:2529 (0 connections now open)
+2020-06-15T15:13:11.657+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2540 #110 (1 connection now open)
+2020-06-15T15:13:11.662+0800 I  NETWORK  [conn110] received client metadata from 127.0.0.1:2540 conn110: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:13:11.668+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2541 #111 (2 connections now open)
+2020-06-15T15:13:11.668+0800 I  NETWORK  [conn111] received client metadata from 127.0.0.1:2541 conn111: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:13:23.704+0800 I  NETWORK  [conn111] end connection 127.0.0.1:2541 (1 connection now open)
+2020-06-15T15:13:23.704+0800 I  NETWORK  [conn110] end connection 127.0.0.1:2540 (0 connections now open)
+2020-06-15T15:13:24.291+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2544 #112 (1 connection now open)
+2020-06-15T15:13:24.297+0800 I  NETWORK  [conn112] received client metadata from 127.0.0.1:2544 conn112: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:13:24.302+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2545 #113 (2 connections now open)
+2020-06-15T15:13:24.303+0800 I  NETWORK  [conn113] received client metadata from 127.0.0.1:2545 conn113: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:13:58.899+0800 I  NETWORK  [conn113] end connection 127.0.0.1:2545 (1 connection now open)
+2020-06-15T15:13:58.899+0800 I  NETWORK  [conn112] end connection 127.0.0.1:2544 (0 connections now open)
+2020-06-15T15:13:59.497+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2550 #114 (1 connection now open)
+2020-06-15T15:13:59.502+0800 I  NETWORK  [conn114] received client metadata from 127.0.0.1:2550 conn114: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:13:59.508+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2551 #115 (2 connections now open)
+2020-06-15T15:13:59.508+0800 I  NETWORK  [conn115] received client metadata from 127.0.0.1:2551 conn115: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:14:34.527+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2558 #116 (3 connections now open)
+2020-06-15T15:14:34.530+0800 I  NETWORK  [conn116] received client metadata from 127.0.0.1:2558 conn116: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:14:34.541+0800 I  NETWORK  [conn116] end connection 127.0.0.1:2558 (2 connections now open)
+2020-06-15T15:14:34.937+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2559 #117 (3 connections now open)
+2020-06-15T15:14:34.939+0800 I  NETWORK  [conn117] received client metadata from 127.0.0.1:2559 conn117: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:14:38.215+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2560 #118 (4 connections now open)
+2020-06-15T15:14:38.215+0800 I  NETWORK  [conn118] received client metadata from 127.0.0.1:2560 conn118: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:14:38.220+0800 I  NETWORK  [conn118] end connection 127.0.0.1:2560 (3 connections now open)
+2020-06-15T15:14:39.703+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2561 #119 (4 connections now open)
+2020-06-15T15:14:39.703+0800 I  NETWORK  [conn119] received client metadata from 127.0.0.1:2561 conn119: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:14:58.787+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2567 #120 (5 connections now open)
+2020-06-15T15:14:58.788+0800 I  NETWORK  [conn120] received client metadata from 127.0.0.1:2567 conn120: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:15:03.654+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2568 #121 (6 connections now open)
+2020-06-15T15:15:03.655+0800 I  NETWORK  [conn121] received client metadata from 127.0.0.1:2568 conn121: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:16:33.735+0800 I  NETWORK  [conn114] end connection 127.0.0.1:2550 (5 connections now open)
+2020-06-15T15:16:33.735+0800 I  NETWORK  [conn115] end connection 127.0.0.1:2551 (4 connections now open)
+2020-06-15T15:16:34.340+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2605 #122 (5 connections now open)
+2020-06-15T15:16:34.345+0800 I  NETWORK  [conn122] received client metadata from 127.0.0.1:2605 conn122: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:16:34.351+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2606 #123 (6 connections now open)
+2020-06-15T15:16:34.351+0800 I  NETWORK  [conn123] received client metadata from 127.0.0.1:2606 conn123: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:16:49.875+0800 I  NETWORK  [conn123] end connection 127.0.0.1:2606 (5 connections now open)
+2020-06-15T15:16:49.876+0800 I  NETWORK  [conn122] end connection 127.0.0.1:2605 (4 connections now open)
+2020-06-15T15:16:50.457+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2619 #124 (5 connections now open)
+2020-06-15T15:16:50.462+0800 I  NETWORK  [conn124] received client metadata from 127.0.0.1:2619 conn124: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:16:50.468+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2620 #125 (6 connections now open)
+2020-06-15T15:16:50.468+0800 I  NETWORK  [conn125] received client metadata from 127.0.0.1:2620 conn125: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:16:52.550+0800 I  NETWORK  [conn124] end connection 127.0.0.1:2619 (5 connections now open)
+2020-06-15T15:16:52.550+0800 I  NETWORK  [conn125] end connection 127.0.0.1:2620 (4 connections now open)
+2020-06-15T15:16:53.156+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2625 #126 (5 connections now open)
+2020-06-15T15:16:53.162+0800 I  NETWORK  [conn126] received client metadata from 127.0.0.1:2625 conn126: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:16:53.168+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2626 #127 (6 connections now open)
+2020-06-15T15:16:53.169+0800 I  NETWORK  [conn127] received client metadata from 127.0.0.1:2626 conn127: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:18:20.185+0800 I  NETWORK  [conn127] end connection 127.0.0.1:2626 (5 connections now open)
+2020-06-15T15:18:20.185+0800 I  NETWORK  [conn126] end connection 127.0.0.1:2625 (4 connections now open)
+2020-06-15T15:18:20.759+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2696 #128 (5 connections now open)
+2020-06-15T15:18:20.764+0800 I  NETWORK  [conn128] received client metadata from 127.0.0.1:2696 conn128: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:18:20.769+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2697 #129 (6 connections now open)
+2020-06-15T15:18:20.770+0800 I  NETWORK  [conn129] received client metadata from 127.0.0.1:2697 conn129: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:18:50.399+0800 I  NETWORK  [conn129] end connection 127.0.0.1:2697 (4 connections now open)
+2020-06-15T15:18:50.399+0800 I  NETWORK  [conn128] end connection 127.0.0.1:2696 (5 connections now open)
+2020-06-15T15:18:50.983+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2717 #130 (5 connections now open)
+2020-06-15T15:18:50.989+0800 I  NETWORK  [conn130] received client metadata from 127.0.0.1:2717 conn130: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:18:50.995+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2718 #131 (6 connections now open)
+2020-06-15T15:18:50.995+0800 I  NETWORK  [conn131] received client metadata from 127.0.0.1:2718 conn131: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:20:23.872+0800 I  NETWORK  [conn131] end connection 127.0.0.1:2718 (4 connections now open)
+2020-06-15T15:20:23.872+0800 I  NETWORK  [conn130] end connection 127.0.0.1:2717 (5 connections now open)
+2020-06-15T15:21:01.145+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2831 #132 (5 connections now open)
+2020-06-15T15:21:01.151+0800 I  NETWORK  [conn132] received client metadata from 127.0.0.1:2831 conn132: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:21:01.157+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2832 #133 (6 connections now open)
+2020-06-15T15:21:01.158+0800 I  NETWORK  [conn133] received client metadata from 127.0.0.1:2832 conn133: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:21:32.578+0800 I  NETWORK  [conn132] end connection 127.0.0.1:2831 (5 connections now open)
+2020-06-15T15:21:32.578+0800 I  NETWORK  [conn133] end connection 127.0.0.1:2832 (4 connections now open)
+2020-06-15T15:21:33.170+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2854 #134 (5 connections now open)
+2020-06-15T15:21:33.176+0800 I  NETWORK  [conn134] received client metadata from 127.0.0.1:2854 conn134: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:21:33.182+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2855 #135 (6 connections now open)
+2020-06-15T15:21:33.182+0800 I  NETWORK  [conn135] received client metadata from 127.0.0.1:2855 conn135: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:22:00.254+0800 I  NETWORK  [conn135] end connection 127.0.0.1:2855 (5 connections now open)
+2020-06-15T15:22:00.254+0800 I  NETWORK  [conn134] end connection 127.0.0.1:2854 (4 connections now open)
+2020-06-15T15:22:00.890+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2879 #136 (5 connections now open)
+2020-06-15T15:22:00.895+0800 I  NETWORK  [conn136] received client metadata from 127.0.0.1:2879 conn136: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:22:00.901+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2880 #137 (6 connections now open)
+2020-06-15T15:22:00.902+0800 I  NETWORK  [conn137] received client metadata from 127.0.0.1:2880 conn137: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:22:38.245+0800 I  NETWORK  [conn137] end connection 127.0.0.1:2880 (5 connections now open)
+2020-06-15T15:22:38.245+0800 I  NETWORK  [conn136] end connection 127.0.0.1:2879 (4 connections now open)
+2020-06-15T15:22:38.869+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2909 #138 (5 connections now open)
+2020-06-15T15:22:38.877+0800 I  NETWORK  [conn138] received client metadata from 127.0.0.1:2909 conn138: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:22:38.883+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2910 #139 (6 connections now open)
+2020-06-15T15:22:38.883+0800 I  NETWORK  [conn139] received client metadata from 127.0.0.1:2910 conn139: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:23:05.536+0800 I  NETWORK  [conn139] end connection 127.0.0.1:2910 (5 connections now open)
+2020-06-15T15:23:05.536+0800 I  NETWORK  [conn138] end connection 127.0.0.1:2909 (4 connections now open)
+2020-06-15T15:23:06.133+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2940 #140 (5 connections now open)
+2020-06-15T15:23:06.169+0800 I  NETWORK  [conn140] received client metadata from 127.0.0.1:2940 conn140: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:23:06.176+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:2941 #141 (6 connections now open)
+2020-06-15T15:23:06.176+0800 I  NETWORK  [conn141] received client metadata from 127.0.0.1:2941 conn141: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:30:45.862+0800 I  NETWORK  [conn141] end connection 127.0.0.1:2941 (5 connections now open)
+2020-06-15T15:32:07.137+0800 I  NETWORK  [conn140] end connection 127.0.0.1:2940 (4 connections now open)
+2020-06-15T15:32:07.150+0800 I  NETWORK  [conn117] end connection 127.0.0.1:2559 (3 connections now open)
+2020-06-15T15:32:12.139+0800 I  NETWORK  [conn119] end connection 127.0.0.1:2561 (2 connections now open)
+2020-06-15T15:32:12.139+0800 I  NETWORK  [conn121] end connection 127.0.0.1:2568 (0 connections now open)
+2020-06-15T15:32:12.139+0800 I  NETWORK  [conn120] end connection 127.0.0.1:2567 (1 connection now open)
+2020-06-15T15:33:02.109+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3441 #142 (1 connection now open)
+2020-06-15T15:33:02.115+0800 I  NETWORK  [conn142] received client metadata from 127.0.0.1:3441 conn142: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:33:02.123+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3442 #143 (2 connections now open)
+2020-06-15T15:33:02.124+0800 I  NETWORK  [conn143] received client metadata from 127.0.0.1:3442 conn143: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:33:16.424+0800 I  NETWORK  [conn143] end connection 127.0.0.1:3442 (1 connection now open)
+2020-06-15T15:33:16.424+0800 I  NETWORK  [conn142] end connection 127.0.0.1:3441 (0 connections now open)
+2020-06-15T15:34:02.411+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3477 #144 (1 connection now open)
+2020-06-15T15:34:02.416+0800 I  NETWORK  [conn144] received client metadata from 127.0.0.1:3477 conn144: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:34:02.424+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3478 #145 (2 connections now open)
+2020-06-15T15:34:02.424+0800 I  NETWORK  [conn145] received client metadata from 127.0.0.1:3478 conn145: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:37:20.070+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3704 #146 (3 connections now open)
+2020-06-15T15:37:20.072+0800 I  NETWORK  [conn146] received client metadata from 127.0.0.1:3704 conn146: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:37:20.082+0800 I  NETWORK  [conn146] end connection 127.0.0.1:3704 (2 connections now open)
+2020-06-15T15:37:20.497+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3705 #147 (3 connections now open)
+2020-06-15T15:37:20.499+0800 I  NETWORK  [conn147] received client metadata from 127.0.0.1:3705 conn147: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:37:21.781+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3706 #148 (4 connections now open)
+2020-06-15T15:37:21.782+0800 I  NETWORK  [conn148] received client metadata from 127.0.0.1:3706 conn148: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:37:21.787+0800 I  NETWORK  [conn148] end connection 127.0.0.1:3706 (3 connections now open)
+2020-06-15T15:37:22.655+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:3708 #149 (4 connections now open)
+2020-06-15T15:37:22.656+0800 I  NETWORK  [conn149] received client metadata from 127.0.0.1:3708 conn149: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:40:02.428+0800 I  NETWORK  [conn145] end connection 127.0.0.1:3478 (3 connections now open)
+2020-06-15T15:42:10.451+0800 I  NETWORK  [conn144] end connection 127.0.0.1:3477 (2 connections now open)
+2020-06-15T15:42:11.069+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4013 #150 (3 connections now open)
+2020-06-15T15:42:11.075+0800 I  NETWORK  [conn150] received client metadata from 127.0.0.1:4013 conn150: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:42:11.081+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4014 #151 (4 connections now open)
+2020-06-15T15:42:11.082+0800 I  NETWORK  [conn151] received client metadata from 127.0.0.1:4014 conn151: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:42:58.809+0800 I  NETWORK  [conn150] end connection 127.0.0.1:4013 (3 connections now open)
+2020-06-15T15:42:58.809+0800 I  NETWORK  [conn151] end connection 127.0.0.1:4014 (2 connections now open)
+2020-06-15T15:43:05.697+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4064 #152 (3 connections now open)
+2020-06-15T15:43:05.704+0800 I  NETWORK  [conn152] received client metadata from 127.0.0.1:4064 conn152: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:43:05.711+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4065 #153 (4 connections now open)
+2020-06-15T15:43:05.711+0800 I  NETWORK  [conn153] received client metadata from 127.0.0.1:4065 conn153: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:43:54.399+0800 I  NETWORK  [conn153] end connection 127.0.0.1:4065 (3 connections now open)
+2020-06-15T15:43:54.400+0800 I  NETWORK  [conn152] end connection 127.0.0.1:4064 (2 connections now open)
+2020-06-15T15:43:55.029+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4112 #154 (3 connections now open)
+2020-06-15T15:43:55.038+0800 I  NETWORK  [conn154] received client metadata from 127.0.0.1:4112 conn154: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:43:55.044+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4113 #155 (4 connections now open)
+2020-06-15T15:43:55.048+0800 I  NETWORK  [conn155] received client metadata from 127.0.0.1:4113 conn155: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:43:55.587+0800 I  NETWORK  [conn155] end connection 127.0.0.1:4113 (2 connections now open)
+2020-06-15T15:43:55.587+0800 I  NETWORK  [conn154] end connection 127.0.0.1:4112 (3 connections now open)
+2020-06-15T15:43:56.253+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4114 #156 (3 connections now open)
+2020-06-15T15:43:56.261+0800 I  NETWORK  [conn156] received client metadata from 127.0.0.1:4114 conn156: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:43:56.267+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4115 #157 (4 connections now open)
+2020-06-15T15:43:56.268+0800 I  NETWORK  [conn157] received client metadata from 127.0.0.1:4115 conn157: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:44:07.374+0800 I  NETWORK  [conn157] end connection 127.0.0.1:4115 (3 connections now open)
+2020-06-15T15:44:07.374+0800 I  NETWORK  [conn156] end connection 127.0.0.1:4114 (2 connections now open)
+2020-06-15T15:44:07.950+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4121 #158 (3 connections now open)
+2020-06-15T15:44:07.956+0800 I  NETWORK  [conn158] received client metadata from 127.0.0.1:4121 conn158: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:44:07.962+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4122 #159 (4 connections now open)
+2020-06-15T15:44:07.963+0800 I  NETWORK  [conn159] received client metadata from 127.0.0.1:4122 conn159: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:44:17.385+0800 I  NETWORK  [conn158] end connection 127.0.0.1:4121 (3 connections now open)
+2020-06-15T15:44:17.385+0800 I  NETWORK  [conn159] end connection 127.0.0.1:4122 (2 connections now open)
+2020-06-15T15:44:24.912+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4135 #160 (3 connections now open)
+2020-06-15T15:44:24.919+0800 I  NETWORK  [conn160] received client metadata from 127.0.0.1:4135 conn160: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:44:24.925+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4136 #161 (4 connections now open)
+2020-06-15T15:44:24.925+0800 I  NETWORK  [conn161] received client metadata from 127.0.0.1:4136 conn161: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T15:44:41.129+0800 I  SHARDING [conn161] Marking collection 0615advanced_api.sessions as collection version: <unsharded>
+2020-06-15T15:49:16.576+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4350 #162 (5 connections now open)
+2020-06-15T15:49:16.579+0800 I  NETWORK  [conn162] received client metadata from 127.0.0.1:4350 conn162: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:49:16.588+0800 I  NETWORK  [conn162] end connection 127.0.0.1:4350 (4 connections now open)
+2020-06-15T15:49:17.002+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4351 #163 (5 connections now open)
+2020-06-15T15:49:17.003+0800 I  NETWORK  [conn163] received client metadata from 127.0.0.1:4351 conn163: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:49:20.844+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4380 #164 (6 connections now open)
+2020-06-15T15:49:20.844+0800 I  NETWORK  [conn164] received client metadata from 127.0.0.1:4380 conn164: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:49:20.849+0800 I  NETWORK  [conn164] end connection 127.0.0.1:4380 (5 connections now open)
+2020-06-15T15:49:21.964+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:4381 #165 (6 connections now open)
+2020-06-15T15:49:21.965+0800 I  NETWORK  [conn165] received client metadata from 127.0.0.1:4381 conn165: { driver: { name: "nodejs", version: "3.5.5" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v12.8.1, LE (legacy)" }
+2020-06-15T15:51:45.367+0800 I  NETWORK  [conn161] end connection 127.0.0.1:4136 (5 connections now open)
+2020-06-15T16:16:35.574+0800 I  NETWORK  [conn160] end connection 127.0.0.1:4135 (4 connections now open)
+2020-06-15T16:16:36.183+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:5365 #166 (5 connections now open)
+2020-06-15T16:16:36.188+0800 I  NETWORK  [conn166] received client metadata from 127.0.0.1:5365 conn166: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:16:36.194+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:5366 #167 (6 connections now open)
+2020-06-15T16:16:36.195+0800 I  NETWORK  [conn167] received client metadata from 127.0.0.1:5366 conn167: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:17:21.105+0800 I  NETWORK  [conn166] end connection 127.0.0.1:5365 (4 connections now open)
+2020-06-15T16:17:21.105+0800 I  NETWORK  [conn167] end connection 127.0.0.1:5366 (5 connections now open)
+2020-06-15T16:17:21.724+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:5394 #168 (5 connections now open)
+2020-06-15T16:17:21.729+0800 I  NETWORK  [conn168] received client metadata from 127.0.0.1:5394 conn168: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:17:21.736+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:5395 #169 (6 connections now open)
+2020-06-15T16:17:21.737+0800 I  NETWORK  [conn169] received client metadata from 127.0.0.1:5395 conn169: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:23:21.740+0800 I  NETWORK  [conn169] end connection 127.0.0.1:5395 (5 connections now open)
+2020-06-15T16:28:31.804+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:5860 #170 (6 connections now open)
+2020-06-15T16:28:31.805+0800 I  NETWORK  [conn170] received client metadata from 127.0.0.1:5860 conn170: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:00.824+0800 I  NETWORK  [conn170] end connection 127.0.0.1:5860 (5 connections now open)
+2020-06-15T16:32:00.824+0800 I  NETWORK  [conn168] end connection 127.0.0.1:5394 (4 connections now open)
+2020-06-15T16:32:01.444+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6126 #171 (5 connections now open)
+2020-06-15T16:32:01.449+0800 I  NETWORK  [conn171] received client metadata from 127.0.0.1:6126 conn171: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:01.455+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6127 #172 (6 connections now open)
+2020-06-15T16:32:01.456+0800 I  NETWORK  [conn172] received client metadata from 127.0.0.1:6127 conn172: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:04.857+0800 I  NETWORK  [conn163] end connection 127.0.0.1:4351 (5 connections now open)
+2020-06-15T16:32:05.847+0800 I  NETWORK  [conn165] end connection 127.0.0.1:4381 (4 connections now open)
+2020-06-15T16:32:06.774+0800 I  NETWORK  [conn171] end connection 127.0.0.1:6126 (3 connections now open)
+2020-06-15T16:32:06.774+0800 I  NETWORK  [conn172] end connection 127.0.0.1:6127 (2 connections now open)
+2020-06-15T16:32:07.388+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6134 #173 (3 connections now open)
+2020-06-15T16:32:07.394+0800 I  NETWORK  [conn173] received client metadata from 127.0.0.1:6134 conn173: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:07.400+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6135 #174 (4 connections now open)
+2020-06-15T16:32:07.400+0800 I  NETWORK  [conn174] received client metadata from 127.0.0.1:6135 conn174: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:19.572+0800 I  NETWORK  [conn173] end connection 127.0.0.1:6134 (3 connections now open)
+2020-06-15T16:32:19.572+0800 I  NETWORK  [conn174] end connection 127.0.0.1:6135 (2 connections now open)
+2020-06-15T16:32:23.573+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6157 #175 (3 connections now open)
+2020-06-15T16:32:23.579+0800 I  NETWORK  [conn175] received client metadata from 127.0.0.1:6157 conn175: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:23.585+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6158 #176 (4 connections now open)
+2020-06-15T16:32:23.586+0800 I  NETWORK  [conn176] received client metadata from 127.0.0.1:6158 conn176: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:53.684+0800 I  NETWORK  [conn176] end connection 127.0.0.1:6158 (3 connections now open)
+2020-06-15T16:32:53.684+0800 I  NETWORK  [conn175] end connection 127.0.0.1:6157 (2 connections now open)
+2020-06-15T16:32:54.284+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6184 #177 (3 connections now open)
+2020-06-15T16:32:54.289+0800 I  NETWORK  [conn177] received client metadata from 127.0.0.1:6184 conn177: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:32:54.296+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6185 #178 (4 connections now open)
+2020-06-15T16:32:54.296+0800 I  NETWORK  [conn178] received client metadata from 127.0.0.1:6185 conn178: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:33:00.379+0800 I  NETWORK  [conn177] end connection 127.0.0.1:6184 (3 connections now open)
+2020-06-15T16:33:00.380+0800 I  NETWORK  [conn178] end connection 127.0.0.1:6185 (2 connections now open)
+2020-06-15T16:33:00.974+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6189 #179 (3 connections now open)
+2020-06-15T16:33:00.979+0800 I  NETWORK  [conn179] received client metadata from 127.0.0.1:6189 conn179: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:33:00.986+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6190 #180 (4 connections now open)
+2020-06-15T16:33:00.986+0800 I  NETWORK  [conn180] received client metadata from 127.0.0.1:6190 conn180: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:36:54.752+0800 I  NETWORK  [conn147] end connection 127.0.0.1:3705 (3 connections now open)
+2020-06-15T16:36:54.770+0800 I  NETWORK  [conn180] end connection 127.0.0.1:6190 (2 connections now open)
+2020-06-15T16:36:54.770+0800 I  NETWORK  [conn179] end connection 127.0.0.1:6189 (1 connection now open)
+2020-06-15T16:36:55.399+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6431 #181 (2 connections now open)
+2020-06-15T16:36:55.404+0800 I  NETWORK  [conn181] received client metadata from 127.0.0.1:6431 conn181: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:36:55.410+0800 I  NETWORK  [listener] connection accepted from 127.0.0.1:6432 #182 (3 connections now open)
+2020-06-15T16:36:55.411+0800 I  NETWORK  [conn182] received client metadata from 127.0.0.1:6432 conn182: { driver: { name: "nodejs|Mongoose", version: "3.5.8" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.18363" }, platform: "'Node.js v14.0.0, LE (unified)", version: "3.5.8|5.9.18" }
+2020-06-15T16:36:59.737+0800 I  NETWORK  [conn149] end connection 127.0.0.1:3708 (2 connections now open)
+2020-06-15T16:36:59.763+0800 I  NETWORK  [conn182] end connection 127.0.0.1:6432 (1 connection now open)
+2020-06-15T16:36:59.763+0800 I  NETWORK  [conn181] end connection 127.0.0.1:6431 (0 connections now open)
