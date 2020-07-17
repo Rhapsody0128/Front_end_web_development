@@ -23,7 +23,6 @@ import Flipbook from 'flipbook-vue'
 export default {
   data () {
     return {
-      cover: '/img/4903092900_ff43be2aff_o.jpg',
       array: [
         '',
         '/img/9677717700_3b10b4f206_o.jpg',
