@@ -10,7 +10,7 @@ import path from 'path'
 import FTPStorage from 'multer-ftp'
 import fs from 'fs'
 
-import db from './db.js'
+import db from './database.js'
 
 dotenv.config()
 

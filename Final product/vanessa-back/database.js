@@ -13,7 +13,7 @@ dotenv.config()
 const Schema = mongoose.Schema
 
 // 連接資料庫
-mongoose.connect(process.env.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect(process.env.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // 引用插件
 mongoose.plugin(beautifyUnique)

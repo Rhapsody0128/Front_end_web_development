@@ -7,7 +7,7 @@ import cors from 'cors'
 // MD5 加密
 import md5 from 'md5'
 // 資料庫檔案
-import db from './db.js'
+import db from './database.js'
 
 const app = express()
 
@@ -26,51 +26,6 @@ app.use(cors({
   // 允許跨域認證
   credentials: true
 }))
-
-app.post('/users', async (req, res) => {
-  // 拒絕不是 json 的資料格式
-  if (!req.headers['content-type'].includes('application/json')) {
-    // 回傳錯誤狀態碼
-    res.status(400)
-    res.send({ success: false, message: '格式不符' })
-    return
-  }
-
-  // 新增資料
-  try {
-    const result = await db.users.create(
-      {
-        name: req.body.name,
-        password: md5(req.body.password),
-        age: req.body.age,
-        email: req.body.email
-      }
-    )
-    res.status(200)
-    res.send({
-      success: true,
-      message: '',
-      id: result.id,
-      name: result.name,
-      age: result.age,
-      email: result.email
-    })
-  } catch (error) {
-    // 資料格式錯誤
-    if (error.name === 'ValidationError') {
-      // 錯誤的訊息的 key 值為欄位名稱，不固定
-      // 所以用 Object.keys(err.errors)[0] 取得第一個 key 值
-      const key = Object.keys(error.errors)[0]
-      const message = error.errors[key].message
-      res.status(400)
-      res.send({ success: false, message })
-    } else {
-      res.status(500)
-      res.send({ success: false, message: '伺服器發生錯誤' })
-      console.log(error)
-    }
-  }
-})
 
 // 啟動網頁伺服器
 app.listen(3000, () => {
