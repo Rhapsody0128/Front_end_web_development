@@ -1,8 +1,6 @@
 <template>
   <div id="member">
     <h1 class="text-center mt-4 mb-4">會員專區</h1>
-    <div class="row">
-      <div class="col">
         <form>
           <fieldset class="p-2 fieldset m-2 m-lg-5">
             <legend class="legend">註冊</legend>
@@ -109,10 +107,6 @@
             </div>
           </fieldset>
         </form>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
         <form>
           <fieldset class="p-2 fieldset m-2 m-lg-5">
             <legend class="legend">登入</legend>
@@ -157,8 +151,6 @@
             </div>
           </fieldset>
         </form>
-      </div>
-    </div>
   </div>
 </template>
 <script>

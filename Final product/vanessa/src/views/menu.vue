@@ -3,7 +3,7 @@
     <h1 class="text-center mt-4 mb-4">菜單</h1>
     <div id="spcialmeal" class="row flex-wrap justify-content-center">
       <div class="col-10 col-lg-4">
-        <img class="img-fluid img-thumbnail" :src=specialmeal.src alt />
+        <img v-preview class="img-fluid img-thumbnail" :src=specialmeal.src alt />
       </div>
       <div class="col-10 col-lg-6 text-center d-flex flex-column justify-content-center">
         <h1>Spcial Meal</h1>
@@ -40,7 +40,7 @@
       <div id="showmenu" class="col-12 col-lg-8 d-flex justify-content-center flex-wrap">
         <div class="mealcard d-flex" v-for="(meal,index) in menu" :key="index">
           <transition name="fade">
-            <div @click="bigpic(index)" v-if="selected.includes(meal.type)">
+            <div v-if="selected.includes(meal.type)">
               <div class="mealpic">
                 <img :src="meal.src"></div>
               <div class="mealdes">{{meal.description}}</div>
@@ -53,7 +53,11 @@
   </div>
 </template>
 <script>
+import createPreviewDirective from 'vue-photoswipe-directive'
 export default {
+  directives: {
+    preview: createPreviewDirective()
+  },
   data () {
     return {
       flavours: ['前菜', '主餐', '湯品', '飲料', '披薩', '甜點'],
@@ -70,52 +74,62 @@ export default {
         {
           src: './images/1472660456_1e1841d24e_o.jpg',
           type: '前菜',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 200
         },
         {
           src: './images/1472660456_1e1841d24e_o.jpg',
           type: '前菜',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 100
         },
         {
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 10
         },
         {
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 30
         },
         {
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 300
         },
         {
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 500
         },
         {
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 900
         },
         {
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 40
         },
         {
           src: './images/9677717700_3b10b4f206_o.jpg',
           type: '湯品',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 20
         },
         {
           src: './images/9677717700_3b10b4f206_o.jpg',
           type: '湯品',
-          description: '毫無反應就是香腸毫無反應就是香腸'
+          description: '毫無反應就是香腸毫無反應就是香腸',
+          value: 99
         }
       ]
     }
@@ -126,9 +140,6 @@ export default {
     },
     ScreenWidth () {
       return this.$store.getters.screenWidth
-    },
-    bigpic (index) {
-
     }
   },
   watch: {
@@ -186,7 +197,7 @@ export default {
     .fade-enter-active, .fade-leave-active {
       transition: opacity .5s;
     }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    .fade-enter, .fade-leave-to {
       opacity: 0;
     }
 </style>

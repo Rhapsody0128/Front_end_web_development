@@ -12,6 +12,7 @@
       </Slide>
     </div>
     <router-view />
+    <footer class="footer fixed-bottom"></footer>
   </div>
 </template>
 <script>
@@ -44,3 +45,10 @@ export default {
   }
 }
 </script>
+<style lang="stylus" scoped>
+.footer{
+  width 100%
+  height 3rem
+  background rgba(0,0,0,0.3)
+}
+</style>

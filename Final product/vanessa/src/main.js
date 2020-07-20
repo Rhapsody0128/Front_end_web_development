@@ -6,8 +6,6 @@ import router from './router'
 import store from './store'
 import VCalendar from 'v-calendar'
 
-// Use v-calendar & v-date-picker components
-
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './style/style.styl'
