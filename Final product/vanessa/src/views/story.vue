@@ -21,15 +21,15 @@ export default {
     return {
       array: [
         '',
-        '/images/9677717700_3b10b4f206_o.jpg',
-        '/images/4903092900_ff43be2aff_o.jpg',
-        '/images/36271782954_f7aa950180_o.jpg',
-        '/images/36420482760_fe0771f10d_o.jpg',
-        '/images/1472660456_1e1841d24e_o.jpg',
-        '/images/9677717700_3b10b4f206_o.jpg'
+        './images/9677717700_3b10b4f206_o.jpg',
+        './images/4903092900_ff43be2aff_o.jpg',
+        './images/36271782954_f7aa950180_o.jpg',
+        './images/36420482760_fe0771f10d_o.jpg',
+        './images/1472660456_1e1841d24e_o.jpg',
+        './images/9677717700_3b10b4f206_o.jpg'
       ],
       storystyle: {
-        background: "url('/img/36271782954_f7aa950180_o.jpg')no-repeat fixed center/cover"
+        background: "url('./images/36271782954_f7aa950180_o.jpg')no-repeat fixed center/cover"
       }
 
     }

@@ -43,25 +43,25 @@ export default {
           title: '中元節',
           date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
           des: '中元節好棒棒',
-          src: '/images/36271782954_f7aa950180_o.jpg'
+          src: './images/36271782954_f7aa950180_o.jpg'
         },
         {
           title: '萬聖節',
           date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
           des: '萬聖節好棒棒',
-          src: '/images/4903092900_ff43be2aff_o.jpg'
+          src: './images/4903092900_ff43be2aff_o.jpg'
         },
         {
           title: '萬聖節',
           date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
           des: '萬聖節好棒棒',
-          src: '/images/4903092900_ff43be2aff_o.jpg'
+          src: './images/4903092900_ff43be2aff_o.jpg'
         },
         {
           title: '萬聖節',
           date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
           des: '萬聖節好棒棒',
-          src: '/images/4903092900_ff43be2aff_o.jpg'
+          src: './images/4903092900_ff43be2aff_o.jpg'
         }
       ],
       attrs: [
@@ -79,7 +79,7 @@ export default {
             label: '中元節'
           },
           dates: { start: new Date(2020, 6, 1), end: new Date(2020, 6, 5) },
-          src: '/images/36271782954_f7aa950180_o.jpg'
+          src: './images/36271782954_f7aa950180_o.jpg'
         },
         {
           highlight: 'yellow',

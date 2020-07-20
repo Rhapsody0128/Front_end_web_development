@@ -54,14 +54,13 @@ export default {
       mainstyle: {
         transition: '1s'
       },
-
       background: [
-        "url('/images/1472660456_1e1841d24e_o.jpg')no-repeat center/cover",
-        "url('/images/36271782954_f7aa950180_o.jpg')no-repeat center/cover",
-        "url('/images/36420482760_fe0771f10d_o.jpg')no-repeat center/cover",
-        "url('/images/36420486130_f1c3388269_o.jpg')no-repeat center/cover",
-        "url('/images/4903092900_ff43be2aff_o.jpg')no-repeat center/cover",
-        "url('/images/9677717700_3b10b4f206_o.jpg')no-repeat center/cover"],
+        "url('./images/1472660456_1e1841d24e_o.jpg')no-repeat center/cover",
+        "url('./images/36271782954_f7aa950180_o.jpg')no-repeat center/cover",
+        "url('./images/36420482760_fe0771f10d_o.jpg')no-repeat center/cover",
+        "url('./images/36420486130_f1c3388269_o.jpg')no-repeat center/cover",
+        "url('./images/4903092900_ff43be2aff_o.jpg')no-repeat center/cover",
+        "url('./images/9677717700_3b10b4f206_o.jpg')no-repeat center/cover"],
       boxmove: {
         xs: 0,
         ys: 0,
