@@ -3,11 +3,12 @@
     <h1 class="text-center mt-4 mb-4">菜單</h1>
     <div id="spcialmeal" class="row flex-wrap justify-content-center">
       <div class="col-10 col-lg-4">
-        <img class="img-fluid img-thumbnail" src="/img/9677717700_3b10b4f206_o.jpg" alt />
+        <img class="img-fluid img-thumbnail" :src=specialmeal.src alt />
       </div>
       <div class="col-10 col-lg-6 text-center d-flex flex-column justify-content-center">
         <h1>Spcial Meal</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ea dignissimos modi corrupti! Voluptatem, sapiente. Veritatis dolorum, vel quaerat ab ut voluptatem nihil, beatae libero eaque atque velit labore animi.</p>
+        <h2>{{specialmeal.title}}</h2>
+        <p>{{specialmeal.description}}</p>
       </div>
     </div>
     <hr />
@@ -60,54 +61,59 @@ export default {
       allSelected: true,
       indeterminate: false,
       showstyle: {},
+      specialmeal: {
+        src: '/images/4903092900_ff43be2aff_o.jpg',
+        title: '好吃豬腳',
+        description: '豬腳切斷後，努力絞成碎片，端上桌'
+      },
       menu: [
         {
-          src: '/img/1472660456_1e1841d24e_o.jpg',
+          src: '/images/1472660456_1e1841d24e_o.jpg',
           type: '前菜',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/1472660456_1e1841d24e_o.jpg',
+          src: '/images/1472660456_1e1841d24e_o.jpg',
           type: '前菜',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/36271782954_f7aa950180_o.jpg',
+          src: '/images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/36271782954_f7aa950180_o.jpg',
+          src: '/images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/36271782954_f7aa950180_o.jpg',
+          src: '/images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/36271782954_f7aa950180_o.jpg',
+          src: '/images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/36271782954_f7aa950180_o.jpg',
+          src: '/images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/36271782954_f7aa950180_o.jpg',
+          src: '/images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/9677717700_3b10b4f206_o.jpg',
+          src: '/images/9677717700_3b10b4f206_o.jpg',
           type: '湯品',
           description: '毫無反應就是香腸毫無反應就是香腸'
         },
         {
-          src: '/img/9677717700_3b10b4f206_o.jpg',
+          src: '/images/9677717700_3b10b4f206_o.jpg',
           type: '湯品',
           description: '毫無反應就是香腸毫無反應就是香腸'
         }

@@ -6,11 +6,7 @@
       </div>
     </div>
     <div id="flipbook" class="d-flex flex-wrap justify-content-start">
-      <flipbook
-      class="flipbook col-12 col-lg-6 p-0"
-      :pages="array"
-      :singlePage=true
-      ></flipbook>
+      <flipbook class="flipbook col-12 col-lg-6 p-0" :pages="array" :singlePage=true></flipbook>
       <div class="col-12 col-lg-6 pl-5 d-flex flex-column justify-content-center p-0">
         <h2>員工</h2>
         <p>asdasd</p>
@@ -25,12 +21,12 @@ export default {
     return {
       array: [
         '',
-        '/img/9677717700_3b10b4f206_o.jpg',
-        '/img/4903092900_ff43be2aff_o.jpg',
-        '/img/36271782954_f7aa950180_o.jpg',
-        '/img/36420482760_fe0771f10d_o.jpg',
-        '/img/1472660456_1e1841d24e_o.jpg',
-        '/img/9677717700_3b10b4f206_o.jpg'
+        '/images/9677717700_3b10b4f206_o.jpg',
+        '/images/4903092900_ff43be2aff_o.jpg',
+        '/images/36271782954_f7aa950180_o.jpg',
+        '/images/36420482760_fe0771f10d_o.jpg',
+        '/images/1472660456_1e1841d24e_o.jpg',
+        '/images/9677717700_3b10b4f206_o.jpg'
       ],
       storystyle: {
         background: "url('/img/36271782954_f7aa950180_o.jpg')no-repeat fixed center/cover"
