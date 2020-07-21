@@ -3,7 +3,7 @@
     <h1 class="text-center mt-4 mb-4">菜單</h1>
     <div id="spcialmeal" class="row flex-wrap justify-content-center">
       <div class="col-10 col-lg-4">
-        <img v-preview class="img-fluid img-thumbnail" :src=specialmeal.src alt />
+        <img class="img-fluid img-thumbnail" :src=specialmeal.src alt />
       </div>
       <div class="col-10 col-lg-6 text-center d-flex flex-column justify-content-center">
         <h1>Spcial Meal</h1>
@@ -40,12 +40,17 @@
       <div id="showmenu" class="col-12 col-lg-8 d-flex justify-content-center flex-wrap">
         <div class="mealcard d-flex" v-for="(meal,index) in menu" :key="index">
           <transition name="fade">
-            <div v-if="selected.includes(meal.type)">
+            <div @click="meal.popupActivo=true" v-if="selected.includes(meal.type)">
               <div class="mealpic">
                 <img :src="meal.src"></div>
               <div class="mealdes">{{meal.description}}</div>
             </div>
           </transition>
+          <vs-popup class="holamundo text-center" :title=meal.title :active.sync="meal.popupActivo">
+            <img class="bigpic" :src="meal.src">
+            <h2>{{meal.description}}</h2>
+            <p>價格:{{meal.value}}元</p>
+          </vs-popup>
         </div>
       </div>
     </div>
@@ -53,11 +58,7 @@
   </div>
 </template>
 <script>
-import createPreviewDirective from 'vue-photoswipe-directive'
 export default {
-  directives: {
-    preview: createPreviewDirective()
-  },
   data () {
     return {
       flavours: ['前菜', '主餐', '湯品', '飲料', '披薩', '甜點'],
@@ -72,64 +73,84 @@ export default {
       },
       menu: [
         {
+          title: '齁家六里',
           src: './images/1472660456_1e1841d24e_o.jpg',
           type: '前菜',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 200
+          value: 200,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/1472660456_1e1841d24e_o.jpg',
           type: '前菜',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 100
+          value: 100,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 10
+          value: 10,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 30
+          value: 30,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 300
+          value: 300,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 500
+          value: 500,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 900
+          value: 900,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/36271782954_f7aa950180_o.jpg',
           type: '主餐',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 40
+          value: 40,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/9677717700_3b10b4f206_o.jpg',
           type: '湯品',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 20
+          value: 20,
+          popupActivo: false
         },
         {
+          title: '齁家六里',
           src: './images/9677717700_3b10b4f206_o.jpg',
           type: '湯品',
           description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 99
+          value: 99,
+          popupActivo: false
         }
       ]
     }
@@ -160,6 +181,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .bigpic{
+    width 80%
+    height 80%
+  }
   #show{
     width 1px
     height 1px

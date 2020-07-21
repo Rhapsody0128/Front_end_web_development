@@ -245,32 +245,33 @@ export default {
     width: 100%;
     height: 100%;
     position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0rem 0rem 2rem rgba(255, 255, 255, 0.5);
-    pointer-events: none
+    pointer-events: none;
+    background url('/images/box.png') center/cover
   }
   .a {
-    background: rgba(255, 255, 0, 0.2);
+    // background: rgba(255, 255, 0, 0.2);
     transform: translateZ(125px);
   }
   .b {
-    background: rgba(0,0, 0, 0.2);
+    // background: rgba(0,0, 0, 0.2);
     transform: rotateY(180deg) translateZ(125px);
   }
   .c {
-    background:  rgba(255,0, 0, 0.2)
+    // background:  rgba(255,0, 0, 0.2)
     transform: rotateY(90deg) translateZ(125px);
   }
   .d {
-    background:  rgba(0,255, 0, 0.2);
+    // background:  rgba(0,255, 0, 0.2);
     transform: rotateY(-90deg) translateZ(125px);
   }
   .e {
-    background:  rgba(0,0, 255, 0.2)
+    // background:  rgba(0,0, 255, 0.2)
     transform: rotateX(90deg) translateZ(125px);
   }
   .f {
-    background:  rgba(0,255, 255, 0.2)
+    // background:  rgba(0,255, 255, 0.2)
     transform: rotateX(-90deg) translateZ(125px);
   }
   @media (min-width : 768px) {

@@ -23,45 +23,37 @@ mongoose.plugin(idPlugin)
 const userSchema = new Schema(
   {
     // 欄位名稱
-    name: { 
+    name: {
       // 資料類型是文字
       type: String,
-      // 最小長度，自訂錯誤訊息 
-      minlength: [4, '使用者名稱最小 4 個字'],
+      // 最小長度，自訂錯誤訊息
+      minlength: [1, '使用者名稱最小 1 個字'],
       // 最大長度，自訂錯誤訊息
-      maxlength: [12, '使用者名稱最大 12 個字'],
+      maxlength: [20, '使用者名稱最大 20 個字'],
       // 必填欄位，自訂錯誤訊息
       required: [true, '使用者名稱必填'],
       // 避免重複，只能設定 true，無法自訂錯誤訊息，除非使用插件
       unique: '使用者名稱重複'
     },
-    password: { 
-      type: String, 
+    account: {
+      type: String,
+      maxlength: [20, '使用者密碼最大 20 個字'],
       required: [true, '密碼必填'],
+      unique: '使用者名稱重複'
     },
-    age: {
+    password: {
+      type: String,
+      maxlength: [20, '使用者密碼最大 20 個字'],
+      required: [true, '密碼必填']
+    },
+    phone: {
       type: Number,
       // 最小值，自訂錯誤訊息
-      min: [18, '必須大於 18 歲'],
+      min: [6, '必須大於 6 碼'],
       // 最大值，自訂錯誤訊息
-      max: [99, '請輸入有效年齡'],
-      required: [true, '年齡必填'],
-    },
-    email: {
-      type: String,
-      required: [true, '信箱必填'],
-      unique: '信箱已使用',
-      // 自訂驗證規則
-      validate: {
-        // 驗證 function
-        validator (value) {
-          return validator.isEmail(value)
-        },
-        // 錯誤訊息
-        message: '信箱格式錯誤'
-      }
-    },
-  }, 
+      required: [true, '電話必填']
+    }
+  },
   {
     // 不要紀錄資料修改次數
     versionKey: false

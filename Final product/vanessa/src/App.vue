@@ -11,7 +11,9 @@
         <router-link to='/member_login'><span>會員專區(LOGIN TEST)</span></router-link>
       </Slide>
     </div>
-    <router-view />
+    <vue-page-transition name="fade-in-up">
+      <router-view/>
+    </vue-page-transition>
     <footer class="footer fixed-bottom"></footer>
   </div>
 </template>
