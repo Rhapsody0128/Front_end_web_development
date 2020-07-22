@@ -15,9 +15,6 @@
                 trim>
               </b-form-input>
               <b-form-text class="col-6"></b-form-text>
-              <b-form-invalid-feedback class="col-6">
-                未輸入姓名
-              </b-form-invalid-feedback>
             </div>
             <div class="d-flex flex-wrap justify-content-center align-items-center mt-3">
               <label class="col-4 col-lg-1 text" for="account">帳號：</label>
@@ -30,9 +27,6 @@
                 trim>
               </b-form-input>
               <b-form-text class="col-6"></b-form-text>
-              <b-form-invalid-feedback class="col-6">
-                帳號格式不符
-              </b-form-invalid-feedback>
             </div>
             <div class="d-flex flex-wrap justify-content-center align-items-center mt-3">
               <label class="col-4 col-lg-1 text" for="password">密碼：</label>
@@ -46,9 +40,6 @@
                 trim>
               </b-form-input>
               <b-form-text class="col-6" ></b-form-text>
-              <b-form-invalid-feedback class="col-6">
-                密碼格式不符
-              </b-form-invalid-feedback>
             </div>
             <div class="d-flex flex-wrap justify-content-center align-items-center mt-3">
               <label class="col-4 col-lg-1 text" for="repassword">確認：</label>
@@ -58,13 +49,10 @@
                 v-model="repassword"
                 :state="repasswordState"
                 type="password"
-                placeholder="請輸入至少8個字"
+                placeholder="請重複輸入密碼"
                 trim>
               </b-form-input>
               <b-form-text class="col-6" ></b-form-text>
-              <b-form-invalid-feedback class="col-6">
-                確認密碼不符
-              </b-form-invalid-feedback>
             </div>
             <div class="d-flex flex-wrap justify-content-center align-items-center mt-3">
               <label class="col-4 col-lg-1 text" for="phone">電話：</label>
@@ -73,14 +61,10 @@
                 id="phone"
                 v-model="phone"
                 :state="phoneState"
-                type="number"
-                placeholder="請輸入至少8個字"
+                placeholder="請輸入電話號碼"
                 trim>
               </b-form-input>
               <b-form-text class="col-6" ></b-form-text>
-              <b-form-invalid-feedback class="col-6">
-                電話格式不符
-              </b-form-invalid-feedback>
             </div>
             <div class="row justify-content-center align-items-center mt-5">
               <div class="col-6 col-lg-2 text-right ">
@@ -99,7 +83,7 @@
             </div>
             <div class="row mt-5 justify-content-center align-items-center flex-nowrap">
               <div class="col-lg-2 text-right">
-                <button class="btn btn-primary">確認</button>
+                <button @click="registering" class="btn btn-primary">確認</button>
               </div>
               <div class="col-lg-2 text-left">
                 <button class="btn btn-danger">重寫</button>
@@ -121,9 +105,6 @@
                 trim>
               </b-form-input>
               <b-form-text class="col-6"></b-form-text>
-              <b-form-invalid-feedback class="col-6">
-                帳號格式不符
-              </b-form-invalid-feedback>
             </div>
             <div class="d-flex flex-wrap justify-content-center align-items-center mt-3">
               <label class="col-4 col-lg-1 text" for="loginpassword">密碼：</label>
@@ -137,16 +118,13 @@
                 trim>
               </b-form-input>
               <b-form-text class="col-6" ></b-form-text>
-              <b-form-invalid-feedback class="col-6">
-                密碼格式不符
-              </b-form-invalid-feedback>
             </div>
             <div class="row mt-5 justify-content-center align-items-center flex-nowrap">
               <div class="col-lg-2 text-right">
-                <button class="btn btn-primary">確認</button>
+                <button @click="login" type="submit" class="btn btn-primary">確認</button>
               </div>
               <div class="col-lg-2 text-left">
-                <button class="btn btn-danger">重寫</button>
+                <button type="reset" class="btn btn-danger">重寫</button>
               </div>
             </div>
           </fieldset>
@@ -187,6 +165,40 @@ export default {
     },
     loginpasswordState () {
       return this.loginpassword.length > 7
+    }
+  },
+  methods: {
+    registering () {
+      this.axios.post('http://localhost:3000/registering', {
+        name: this.name,
+        account: this.account,
+        password: this.password,
+        phone: this.phone
+      })
+        .then(res => {
+          console.log(res)
+          if (res.data.success) {
+            alert('註冊成功')
+            this.name = ''
+            this.account = ''
+            this.password = ''
+            this.repassword = ''
+            this.phone = ''
+          } else {
+            alert(res.data.message)
+          }
+        })
+    },
+    login () {
+      this.axios.post('http://localhost:3000/login', { account: this.loginaccount, password: this.loginpassword })
+        .then(res => {
+          if (res.data.success) {
+            alert('登入成功')
+            this.$router.push('/member_login')
+          } else {
+            alert(res.data.message)
+          }
+        })
     }
   }
 }

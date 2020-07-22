@@ -17,7 +17,6 @@
                 trim
               ></b-form-input>
               <b-form-text class="col-6"></b-form-text>
-              <b-form-invalid-feedback class="col-6">未輸入姓名</b-form-invalid-feedback>
             </div>
             <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center mt-3 align-items-center">
               <label class="col-12 col-lg-4 text" for="phone">電話：</label>
@@ -26,12 +25,10 @@
                 id="phone"
                 v-model="phone"
                 :state="phoneState"
-                type="number"
-                placeholder="請輸入至少8個字"
+                placeholder="請輸入電話"
                 trim
               ></b-form-input>
               <b-form-text class="col-6"></b-form-text>
-              <b-form-invalid-feedback class="col-6">電話格式不符</b-form-invalid-feedback>
             </div>
           </div>
         </div>

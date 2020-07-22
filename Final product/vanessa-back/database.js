@@ -1,5 +1,5 @@
 // 引用驗證工具
-import validator from 'validator'
+// import validator from 'validator'
 // 引用 mongoose
 import mongoose from 'mongoose'
 // 引用 dotenv
@@ -10,10 +10,15 @@ import beautifyUnique from 'mongoose-beautiful-unique-validation'
 import idPlugin from 'mongoose-id'
 
 dotenv.config()
+
 const Schema = mongoose.Schema
 
+mongoose.set('useCreateIndex', true)
+mongoose.set('useNewUrlParser', true)
+mongoose.set('useUnifiedTopology', true)
+
 // 連接資料庫
-mongoose.connect(process.env.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DBURL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // 引用插件
 mongoose.plugin(beautifyUnique)
@@ -31,23 +36,22 @@ const userSchema = new Schema(
       // 最大長度，自訂錯誤訊息
       maxlength: [20, '使用者名稱最大 20 個字'],
       // 必填欄位，自訂錯誤訊息
-      required: [true, '使用者名稱必填'],
+      required: [true, '使用者名稱必填']
       // 避免重複，只能設定 true，無法自訂錯誤訊息，除非使用插件
-      unique: '使用者名稱重複'
     },
     account: {
       type: String,
-      maxlength: [20, '使用者密碼最大 20 個字'],
-      required: [true, '密碼必填'],
-      unique: '使用者名稱重複'
+      minlength: [8, '使用者帳號最小 8 個字'],
+      maxlength: [20, '使用者帳號最大 20 個字'],
+      required: [true, '帳號必填'],
+      unique: '使用者帳號重複'
     },
     password: {
       type: String,
-      maxlength: [20, '使用者密碼最大 20 個字'],
       required: [true, '密碼必填']
     },
     phone: {
-      type: Number,
+      type: String,
       // 最小值，自訂錯誤訊息
       min: [6, '必須大於 6 碼'],
       // 最大值，自訂錯誤訊息
@@ -64,8 +68,10 @@ const userSchema = new Schema(
 // mongoose.model('資料表名稱', Schema)
 // 資料表名稱必須為複數，結尾加 s
 const users = mongoose.model('users', userSchema)
+const connection = mongoose.connection
 
 // 匯出變數
 export default {
-  users
+  users,
+  connection
 }

@@ -7,6 +7,8 @@ import store from './store'
 import VCalendar from 'v-calendar'
 import Vuesax from 'vuesax'
 import VuePageTransition from 'vue-page-transition'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -18,6 +20,7 @@ Vue.use(IconsPlugin)
 Vue.use(VCalendar)
 Vue.use(Vuesax)
 Vue.use(VuePageTransition)
+Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 
