@@ -100,9 +100,10 @@ app.post('/login', async (req, res) => {
     console.log(result)
     if (result.length > 0) {
       const account = result[0].account
+      const name = result[0].name
       req.session.user = result[0]
       res.status(200)
-      res.send({ success: true, message: '', account })
+      res.send({ success: true, message: '', account, name })
     } else {
       res.status(200)
       res.send({ success: false, message: '帳號密碼錯誤' })

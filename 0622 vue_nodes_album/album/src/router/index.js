@@ -10,7 +10,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    mata: {
+    meta: {
       login: false,
       title: '線上相簿'
     }
@@ -19,7 +19,7 @@ const routes = [
     path: '/reg',
     name: 'Reg',
     component: () => import(/* webpackChunkName: "reg" */ '../views/Reg.vue'),
-    mata: {
+    meta: {
       login: false,
       title: '線上相簿 | 註冊'
     }
@@ -28,7 +28,7 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
-    mata: {
+    meta: {
       login: false,
       title: '線上相簿 | 登入'
     }
@@ -37,7 +37,7 @@ const routes = [
     path: '/album',
     name: 'Album',
     component: () => import(/* webpackChunkName: "album" */ '../views/Album.vue'),
-    mata: {
+    meta: {
       login: true
     }
   }
@@ -48,7 +48,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // 判斷是否登入並導向的頁面
   if (to.meta.login && !store.state.user) {
     next('/login')
   } else {
@@ -57,9 +56,9 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from) => {
-  document.title = (to.name !== 'Albem') ? to.meta.title : store.state.user + '的相簿'
-  // if (to.name !== 'Albem') document.title = to.meta.title
-  // else document, title = store.state.user + '的相簿'
+  document.title = (to.name !== 'Album') ? to.meta.title : store.state.user + ' 的相簿'
+  // if(to.name !== 'Album') document.title = to.meta.title
+  // else document.title = store.state.user + ' 的相簿'
 })
 
 export default router

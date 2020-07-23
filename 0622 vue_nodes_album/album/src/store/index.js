@@ -21,9 +21,5 @@ export default new Vuex.Store({
       return state.user
     }
   },
-  actions: {
-  },
-  modules: {
-  },
   plugins: [createPersistedState()]
 })

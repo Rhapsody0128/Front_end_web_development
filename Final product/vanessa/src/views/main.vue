@@ -176,7 +176,6 @@ export default {
         const deg = array[3] % 360
         array[0] = array[0].split('(')[1]
         const judge = array[0] % 1.4
-        console.log(array)
         if (judge > 0.2 && judge < 0.5) {
           this.mainstyle.background = this.background[0]
           this.style = 0

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import main from '../views/main.vue'
+import store from '../store/index.js'
 
 Vue.use(VueRouter)
 
@@ -79,6 +80,17 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  // 如果要去的頁面需要登入，但是 vuex 使用者資料長度===0
+  if (to.meta.login && store.state.name.length === 0) {
+    Vue.swal('未登入', '請先登入', 'error')
+    next('/member')
+  } else {
+    // 正常導向
+    next()
+  }
 })
 
 export default router

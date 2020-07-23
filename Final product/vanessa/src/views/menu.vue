@@ -16,7 +16,6 @@
       <div class="col-10 col-lg-2 ">
         <b-form-group>
           <template v-slot:label>
-            <h1>菜單</h1>
             <br >
             <b-form-checkbox
               v-model="allSelected"

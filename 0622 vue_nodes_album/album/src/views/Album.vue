@@ -32,7 +32,14 @@
           b-col(cols="12" md="6" lg="3" v-for="(image, idx) in images" :key="idx")
             b-card
               b-card-img(:src="image.src" v-pswp="image")
-              b-card-body {{ image.title }}
+              b-card-body
+                b-btn(v-if="image.edit" variant="danger" @click="cancel(image)") 取消
+                b-btn(v-else variant="success" @click="edit(image)") 編輯
+                b-btn(v-if="image.edit" variant="success" @click="update(image)") 更新
+                b-btn(v-else variant="danger" @click="del(image, idx)") 刪除
+                hr
+                pre(v-if="!image.edit") {{ image.title }}
+                b-form-textarea(v-else v-model="image.model")
 </template>
 
 <script>
@@ -94,13 +101,41 @@ export default {
               _id: response.data._id,
               edit: false,
               model: response.data.name
-            })
+            }
+          )
           this.file = null
           this.description = ''
         }).catch(error => {
           alert(error.response.data.message)
         })
       }
+    },
+    edit (image) {
+      image.edit = true
+      image.model = image.title
+    },
+    update (image) {
+      this.axios.patch(process.env.VUE_APP_APIURL + '/file/' + image._id, { description: image.model })
+        .then(response => {
+          image.edit = false
+          image.title = image.model
+        })
+        .catch(() => {
+          alert('發生錯誤')
+        })
+    },
+    cancel (image) {
+      image.edit = false
+      image.model = image.title
+    },
+    del (image, idx) {
+      this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + image._id)
+        .then(response => {
+          this.images.splice(idx, 1)
+        })
+        .catch(() => {
+          alert('發生錯誤')
+        })
     }
   },
   mounted () {

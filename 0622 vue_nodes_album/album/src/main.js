@@ -10,8 +10,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// axios預設傳送認證資訊
+// axios 預設傳送認證資訊
 axios.defaults.withCredentials = true
+
 Vue.use(VueAxios, axios)
 Vue.use(Photoswipe)
 
