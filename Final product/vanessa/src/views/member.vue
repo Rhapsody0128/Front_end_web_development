@@ -1,6 +1,7 @@
 <template>
   <div id="member">
     <h1 class="text-center mt-4 mb-4">會員專區</h1>
+    <div class="container">
     <form>
       <fieldset class="p-2 fieldset m-2 m-lg-5">
         <legend class="legend">登入</legend>
@@ -144,7 +145,7 @@
                 :state="emailState"
                 placeholder="請輸入E-mail"
                 trim
-              >></b-form-input>
+              ></b-form-input>
               <b-form-text class="col-6"></b-form-text>
             </div>
           </div>
@@ -174,6 +175,7 @@
         </div>
       </fieldset>
     </form>
+    </div>
   </div>
 </template>
 <script>
@@ -230,7 +232,8 @@ export default {
             name: this.name,
             account: this.account,
             password: this.password,
-            phone: this.phone
+            phone: this.phone,
+            email: this.email
           })
             .then(res => {
               if (res.data.success) {
@@ -240,6 +243,7 @@ export default {
                 this.password = ''
                 this.repassword = ''
                 this.phone = ''
+                this.email = ''
               } else {
                 this.$swal('錯誤', `${res.data.message}`, 'error')
               }
@@ -258,7 +262,6 @@ export default {
           if (res.data.success) {
             this.$swal('成功', '登入成功', 'success')
             this.$store.commit('login', res.data.name)
-            console.log(res.data)
             this.$router.push('/member_login')
           } else {
             alert(res.data.message)

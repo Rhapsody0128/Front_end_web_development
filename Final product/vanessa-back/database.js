@@ -56,6 +56,11 @@ const userSchema = new Schema(
       min: [6, '必須大於 6 碼'],
       // 最大值，自訂錯誤訊息
       required: [true, '電話必填']
+    },
+    email: {
+      type: String,
+      required: [true, '信箱必填'],
+      unique: '此信箱已被註冊'
     }
   },
   {

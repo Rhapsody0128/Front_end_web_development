@@ -29,20 +29,20 @@
             v-model="selected"
             :options="flavours"
             name="flavors"
-            class="ml-4"
+            class="ml-4 d-lg-flex flex-lg-nowrap flex-lg-column"
             switches
             size="lg"
             :stacked='ScreenWidth>768'
           ></b-form-checkbox-group>
         </b-form-group>
       </div>
-      <div id="showmenu" class="col-12 col-lg-8 d-flex justify-content-center flex-wrap">
+      <div id="showmenu" class="col-12 col-lg-8 d-flex justify-content-start flex-wrap">
         <div class="mealcard d-flex" v-for="(meal,index) in menu" :key="index">
           <transition name="fade">
             <div @click="meal.popupActivo=true" v-if="selected.includes(meal.type)">
               <div class="mealpic">
                 <img :src="meal.src"></div>
-              <div class="mealdes">{{meal.description}}</div>
+              <div class="mealdes text-center">{{meal.title}}</div>
             </div>
           </transition>
           <vs-popup class="holamundo text-center" :title=meal.title :active.sync="meal.popupActivo">
@@ -54,100 +54,114 @@
       </div>
     </div>
     <div :style="showstyle" id="show"></div>
+    <div class="realmenu">
+      <flipbook class="flipbook" :pages="realmenu"></flipbook>
+    </div>
   </div>
 </template>
 <script>
+import Flipbook from 'flipbook-vue'
 export default {
   data () {
     return {
-      flavours: ['前菜', '主餐', '湯品', '飲料', '披薩', '甜點'],
-      selected: ['前菜', '主餐', '湯品', '飲料', '披薩', '甜點'],
+      popupActivo: false,
+      flavours: ['前菜', '沙拉', '主餐', '披薩', '湯品', '甜點', '鬆餅', '飲料'],
+      selected: ['前菜', '沙拉', '主餐', '披薩', '湯品', '甜點', '鬆餅', '飲料'],
       allSelected: true,
       indeterminate: false,
       showstyle: {},
       specialmeal: {
-        src: './images/4903092900_ff43be2aff_o.jpg',
-        title: '好吃豬腳',
-        description: '豬腳切斷後，努力絞成碎片，端上桌'
+        src: './images/others/42889852_1935202126561338_5121489574081593344_o.jpg',
+        title: '漁人海灣手工墨魚麵',
+        description: '嚴選鮮蝦，小章魚，蛤蜊，墨魚搭配手工墨魚麵，是秋天首選'
       },
+      realmenu: [
+        '',
+        './images/menu/01.jpg',
+        './images/menu/02.jpg',
+        './images/menu/03.jpg',
+        './images/menu/04.jpg',
+        './images/menu/05.jpg',
+        './images/menu/06.jpg'
+      ],
       menu: [
         {
-          title: '齁家六里',
-          src: './images/1472660456_1e1841d24e_o.jpg',
+          title: '焗烤田螺',
+          src: './images/meal/10623342_711455995602630_7133017122918877083_o.jpg',
           type: '前菜',
-          description: '毫無反應就是香腸毫無反應就是香腸',
+          description: '香焗烤田螺，滑順入口，新鮮美味',
           value: 200,
           popupActivo: false
         },
         {
-          title: '齁家六里',
-          src: './images/1472660456_1e1841d24e_o.jpg',
-          type: '前菜',
-          description: '毫無反應就是香腸毫無反應就是香腸',
+          title: '脆皮豬腳',
+          src: './images/meal/1446024568-1030571037.jpg',
+          type: '主菜',
+          description: '烘烤至金黃色的豬腳皮，Q彈口感讓你回味無窮',
           value: 100,
           popupActivo: false
         },
         {
-          title: '齁家六里',
-          src: './images/36271782954_f7aa950180_o.jpg',
-          type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 10,
+          title: '南瓜濃湯',
+          src: './images/meal/1446024560-3657730813.jpg',
+          type: '湯品',
+          description: '慢火燉煮的南瓜濃湯搭上香濃起司',
+          value: 100,
           popupActivo: false
         },
         {
-          title: '齁家六里',
-          src: './images/36271782954_f7aa950180_o.jpg',
+          title: '波士頓龍蝦',
+          src: './images/meal/15585190_1203215873093304_5619001710840901032_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸',
+          description: '美國空運來台波士頓龍蝦，當日到貨需要預定的好美味',
           value: 30,
           popupActivo: false
         },
         {
-          title: '齁家六里',
-          src: './images/36271782954_f7aa950180_o.jpg',
-          type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸',
+          title: '巧克力碎片咖啡',
+          src: './images/meal/24172712_1559740427440845_187802088775107612_o.jpg',
+          type: '飲料',
+          description: '碎巧克力粉灑在香醇濃郁卡布奇諾，入口絕對讓您回味無窮',
           value: 300,
           popupActivo: false
         },
         {
-          title: '齁家六里',
-          src: './images/36271782954_f7aa950180_o.jpg',
-          type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸',
+          title: 'OREO巧克力冰沙',
+          src: './images/meal/102561187_3084463884968484_6852134654456102912_o.jpg',
+          type: '飲料',
+          description: '炎炎夏日的好選擇，巧克力冰沙和OREO的絕妙搭配，值得您來品嘗',
           value: 500,
           popupActivo: false
         },
         {
-          title: '齁家六里',
-          src: './images/36271782954_f7aa950180_o.jpg',
+          title: '明太子手工披薩',
+          src: './images/meal/87051272_2843385012409707_6816016157045161984_o.jpg',
+          type: '披薩',
+          description: '明太子醬和新鮮海鮮和烤到酥脆的薄皮披薩皮的美味三重奏，挑戰你的味蕾',
+          value: 300,
+          popupActivo: false
+        },
+        {
+          title: '青醬沙拉佐新鮮水果',
+          src: './images/meal/1446024564-728212007.jpg',
+          type: '沙拉',
+          description: '羅勒醬和沙拉的清爽新搭配，健康高纖，美味又健康',
+          value: 80,
+          popupActivo: false
+        },
+        {
+          title: '義式海鮮焗烤燉飯',
+          src: './images/meal/88052986_2856344687780406_4312487979428872192_o.jpg',
           type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 900,
+          description: '小章魚、蝦仁、鮮嫩魚片...各式新鮮海產加上獨特醬料和焗烤一起燉煮，滿分飽足感滿足你的胃',
+          value: 200,
           popupActivo: false
         },
         {
-          title: '齁家六里',
-          src: './images/36271782954_f7aa950180_o.jpg',
-          type: '主餐',
-          description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 40,
-          popupActivo: false
-        },
-        {
-          title: '齁家六里',
-          src: './images/9677717700_3b10b4f206_o.jpg',
-          type: '湯品',
-          description: '毫無反應就是香腸毫無反應就是香腸',
-          value: 20,
-          popupActivo: false
-        },
-        {
-          title: '齁家六里',
-          src: './images/9677717700_3b10b4f206_o.jpg',
-          type: '湯品',
-          description: '毫無反應就是香腸毫無反應就是香腸',
+          title: '綜合歐風手工麵包',
+          src: './images/meal/10441269_845008455580716_637845452021698813_n.jpg',
+          type: '前菜',
+          description: '入口酥脆，回味無窮，平凡的外表，不平凡的美味',
           value: 99,
           popupActivo: false
         }
@@ -175,7 +189,8 @@ export default {
         this.allSelected = false
       }
     }
-  }
+  },
+  components: { Flipbook }
 }
 </script>
 
@@ -223,5 +238,9 @@ export default {
     }
     .fade-enter, .fade-leave-to {
       opacity: 0;
+    }
+    .flipbook{
+      width 80%
+      height 90vh
     }
 </style>

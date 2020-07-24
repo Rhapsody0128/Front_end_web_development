@@ -1,9 +1,9 @@
 <template>
 <div id="news">
   <h1 class="text-center mt-4 mb-4">最新活動</h1>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row justify-content-center">
-      <div class="col-10">
+      <div class="col-12">
         <v-calendar
         :attributes='attrs'
         is-expanded
@@ -13,7 +13,7 @@
     </div>
     <hr>
     <div class="row justify-content-center mt-4">
-      <div class="col-10">
+      <div class="col-12">
         <div>
   <b-tabs content-class="mt-3 mb-5" >
     <b-tab v-for="(act,index) in acts" :key="index" :title="act.title" active>

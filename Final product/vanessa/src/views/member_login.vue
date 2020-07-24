@@ -1,6 +1,7 @@
 <template>
   <div id="member_login">
     <h1 class="text-center mt-4 mb-4">會員專區</h1>
+    <div class="container">
     <form>
       <fieldset class="p-2 fieldset m-2 m-lg-5">
         <legend class="legend">訂位</legend>
@@ -123,10 +124,11 @@
       <div class="row">
         <div class="col p-5">
           <h1>徵才資訊</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur architecto optio facere natus eveniet repellat magnam autem soluta non cumque sint placeat assumenda minima, dolorem exercitationem voluptas amet rerum atque.</p>
+          <p>目前沒有職缺</p>
         </div>
       </div>
     </fieldset>
+  </div>
   </div>
 </template>
 <script>

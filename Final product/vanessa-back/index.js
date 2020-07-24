@@ -57,6 +57,7 @@ app.post('/registering', async (req, res) => {
   if (req.body.name === '' ||
     req.body.account === '' ||
     req.body.password === '' ||
+    req.body.phone === '' ||
     req.body.email === ''
   ) {
     res.status(400)
@@ -70,7 +71,8 @@ app.post('/registering', async (req, res) => {
         name: req.body.name,
         account: req.body.account,
         password: md5(req.body.password),
-        phone: req.body.phone
+        phone: req.body.phone,
+        email: req.body.email
       }
     )
     console.log(result)

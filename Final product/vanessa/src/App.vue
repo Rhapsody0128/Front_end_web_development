@@ -37,18 +37,21 @@
           <span>會員服務</span>
         </router-link>
         <b-navbar class="bottomnav" >
-        <b-navbar-brand><span v-if="screenWidth>768">聯絡我們:</span></b-navbar-brand>
+        <b-navbar-brand><span v-if="screenWidth>768">聯絡我們</span></b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="#">
-              <font-awesome-icon color='green' class='icon' size="lg" :icon="['fab','line']" />
+            <b-nav-item href="https://lin.ee/efWwSJs">
+              <font-awesome-icon color='white' class='icon' size="lg" :icon="['fab','line']" />
             </b-nav-item>
-            <b-nav-item href="#">
-              <font-awesome-icon color='blue' class='icon' size="lg" :icon="['fab', 'facebook']"/>
+            <b-nav-item v-if="screenWidth>768" href="https://facebook.com/vanessacafe.tw/">
+              <font-awesome-icon color='white' class='icon' size="lg" :icon="['fab', 'facebook']"/>
             </b-nav-item>
-            <b-nav-item href="#">
-              <font-awesome-icon color='purple' class='icon' size="lg" :icon="['fab', 'instagram']"/>
+            <b-nav-item v-if="screenWidth<768" href="https://m.facebook.com/vanessacafe.tw/">
+              <font-awesome-icon color='white' class='icon' size="lg" :icon="['fab', 'facebook']"/>
+            </b-nav-item>
+            <b-nav-item href="https://instagram.com/vanessa_restaurant?igshid=mvou4tklg3rm">
+              <font-awesome-icon color='white' class='icon' size="lg" :icon="['fab', 'instagram']"/>
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
