@@ -6,7 +6,7 @@
         <span v-if="name.length!=0">{{name}}</span>
         <span v-else>遊客</span>
       </span>
-      <b-button v-if="name.length!=0" @click="logout" variant="outline-primary">登出</b-button>
+      <b-button v-if="name.length!=0" @click="logout" variant="dark">登出</b-button>
     </div>
     <div>
       <Slide
@@ -35,6 +35,9 @@
         </router-link>
         <router-link to="/member_login">
           <span>會員服務</span>
+        </router-link>
+        <router-link to="/back">
+          <span>後臺管理</span>
         </router-link>
         <b-navbar class="bottomnav" >
         <b-navbar-brand><span v-if="screenWidth>768">聯絡我們</span></b-navbar-brand>
@@ -75,6 +78,7 @@ export default {
     logout () {
       this.$store.commit('logout')
       this.$swal('登出', '已順利登出', 'success')
+      this.$router.push('/member')
     }
   },
   computed: {
@@ -90,9 +94,6 @@ export default {
     },
     name: function (value) {
       return this.$store.getters.name
-    },
-    account: function (value) {
-      return this.$store.getters.account
     }
   },
   mounted () {

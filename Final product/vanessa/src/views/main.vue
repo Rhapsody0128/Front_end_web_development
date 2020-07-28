@@ -255,6 +255,7 @@ export default {
       margin-left:1rem
       margin-right:1rem
       margin-top:2rem;
+      text-shadow black 0.3rem 0.3rem 0.3rem
     }
   #all {
       width: 250px;

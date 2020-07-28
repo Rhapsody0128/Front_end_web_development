@@ -25,6 +25,8 @@ mongoose.plugin(beautifyUnique)
 mongoose.plugin(idPlugin)
 
 // 編寫資料表綱要
+
+// ---會員資料庫
 const userSchema = new Schema(
   {
     // 欄位名稱
@@ -60,7 +62,51 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: [true, '信箱必填'],
-      unique: '此信箱已被註冊'
+      unique: '此帳號已經被註冊'
+    }
+  },
+  {
+    // 不要紀錄資料修改次數
+    versionKey: false
+  }
+)
+
+// ---訂位資料庫
+const orderSchema = new Schema(
+  {
+    // 欄位名稱
+    account: {
+      type: String,
+      required: [true, 'BUG_ERROR_USER_NOT_LOGIN_BUT_ORDER'],
+      unique: '此帳號已訂過位，如需重新定位請先行取消'
+    },
+    name: {
+      // 資料類型是文字
+      type: String,
+      // 最小長度，自訂錯誤訊息
+      required: [true, '會員名稱必填']
+      // 避免重複，只能設定 true，無法自訂錯誤訊息，除非使用插件
+    },
+    phone: {
+      type: String,
+      minlength: [6, '電話最小 6 碼'],
+      required: [true, '電話必填']
+    },
+    date: {
+      type: String,
+      required: [true, '未輸入日期']
+    },
+    peoplecount: {
+      type: String,
+      required: [true, '請選擇人數']
+    },
+    time: {
+      type: String,
+      required: [true, '請選擇用餐時間']
+    },
+    remarks: {
+      type: String,
+      maxlength: [200, '最大 200 個字']
     }
   },
   {
@@ -73,10 +119,12 @@ const userSchema = new Schema(
 // mongoose.model('資料表名稱', Schema)
 // 資料表名稱必須為複數，結尾加 s
 const users = mongoose.model('users', userSchema)
+const orders = mongoose.model('orders', orderSchema)
 const connection = mongoose.connection
 
 // 匯出變數
 export default {
   users,
+  orders,
   connection
 }

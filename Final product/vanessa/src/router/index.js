@@ -73,7 +73,17 @@ const routes = [
     meta: {
       transition: 'fade-in-up',
       login: true,
-      title: '會員專區'
+      title: '會員服務'
+    }
+  },
+  {
+    path: '/back',
+    name: 'back',
+    component: () => import(/* webpackChunkName: "back" */ '../views/back.vue'),
+    meta: {
+      transition: 'fade-in-up',
+      login: 'control',
+      title: '後臺管理'
     }
   }
 ]
@@ -83,13 +93,21 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // 如果要去的頁面需要登入，但是 vuex 使用者資料長度===0
-  if (to.meta.login && store.state.name.length === 0) {
-    Vue.swal('未登入', '請先登入', 'error')
-    next('/member')
+  if (to.meta.login !== 'control') {
+    if (to.meta.login && store.state.name.length === 0) {
+      Vue.swal('未登入', '請先登入', 'error')
+      next('/member')
+    } else {
+      next()
+    }
   } else {
-    // 正常導向
-    next()
+    if (store.state.account === 'user1234') {
+      Vue.swal('歡迎', '老大歡迎', 'success')
+      next()
+    } else {
+      Vue.swal('權限不足', '使用者管理權限不足', 'error')
+      next('/member')
+    }
   }
 })
 

@@ -68,7 +68,7 @@
             </div>
             <div class="col-12 col-lg-8 text mt-2">
               <b-form-timepicker v-model="time" locale="tw"></b-form-timepicker>
-              <div class="mt-2">{{ time }}</div>
+              <div class="mt-2"></div>
             </div>
           </div>
           <div class="col-12 col-lg-6 d-flex align-items-center flex-wrap">
@@ -78,7 +78,7 @@
             <div class="col-12 col-lg-8 text mt-2">
               <b-form-textarea
               id="textarea"
-              v-model="textarea"
+              v-model="remarks"
               placeholder="請輸入備註..."
               rows="3"
               max-rows="6"
@@ -88,7 +88,7 @@
         </div>
         <div class="row mt-5 justify-content-center align-items-center flex-nowrap">
           <div class="col-lg-2 text-right">
-            <button class="btn btn-primary">確認</button>
+            <button @click="order" class="btn btn-primary">確認</button>
           </div>
           <div class="col-lg-2 text-left">
             <button class="btn btn-danger">重寫</button>
@@ -101,18 +101,18 @@
         <legend class="legend">查詢</legend>
           <div class="row">
             <div class="col-12 pl-5 pt-4 ">
-              <p class="text">姓名：{{name}}</p>
-              <p class="text">電話：{{phone}}</p>
-              <p class="text">人數：{{peoplecount}}</p>
-              <p class="text">日期：{{date}}</p>
-              <p class="text">時間：{{time}}</p>
-              <p class="text">備註：{{textarea}}</p>
+              <p class="text">姓名：{{orderedname}}</p>
+              <p class="text">電話：{{orderedphone}}</p>
+              <p class="text">人數：{{orderedpeoplecount}}</p>
+              <p class="text">日期：{{ordereddate}}</p>
+              <p class="text">時間：{{orderedtime}}</p>
+              <p class="text">備註：{{orderedremarks}}</p>
             </div>
           </div>
           <div class="row mt-3 justify-content-center align-items-center flex-nowrap">
           <div class="col-lg-2 text-center">
               <b-button class="btn btn-danger" v-b-modal.modal-1>取消訂位</b-button>
-              <b-modal id="modal-1" title="取消訂位">
+              <b-modal @ok='cancelorder' id="modal-1" title="取消訂位">
                 <p class="my-4">確定要取消訂位?</p>
               </b-modal>
           </div>
@@ -140,7 +140,13 @@ export default {
       phone: '',
       peoplecount: '',
       time: '',
-      textarea: ''
+      remarks: '',
+      orderedname: '',
+      ordereddate: '',
+      orderedphone: '',
+      orderedpeoplecount: '',
+      orderedtime: '',
+      orderedremarks: ''
     }
   },
   methods: {
@@ -149,6 +155,52 @@ export default {
       if (peoplecount === 9) {
         this.peoplecount = '8人以上'
       }
+    },
+    order () {
+      this.axios.post('http://localhost:3000/order', {
+        account: this.account,
+        name: this.name,
+        phone: this.phone,
+        peoplecount: this.peoplecount,
+        time: this.time,
+        remarks: this.remarks,
+        date: this.date
+      })
+        .then(res => {
+          if (res.data.success) {
+            this.$swal('成功', '訂位成功', 'success')
+            this.orderedname = res.data.result.name
+            this.orderedphone = res.data.result.phone
+            this.orderedpeoplecount = res.data.result.peoplecount
+            this.ordereddate = res.data.result.date.substr(0, 10)
+            this.orderedtime = res.data.result.time
+            this.orderedremarks = res.data.result.remarks
+          } else {
+            this.$swal('錯誤', `${res.data.message}`, 'error')
+          }
+        }).catch(error => {
+          this.$swal('錯誤', `${error.response.data.message}`, 'error')
+        })
+    },
+    cancelorder () {
+      this.axios.post('http://localhost:3000/cancelorder', {
+        account: this.account
+      })
+        .then(res => {
+          if (res.data.success) {
+            this.$swal('成功', '取消成功', 'success')
+            this.orderedname = ''
+            this.orderedphone = ''
+            this.orderedpeoplecount = ''
+            this.ordereddate = ''
+            this.orderedtime = ''
+            this.orderedremarks = ''
+          } else {
+            this.$swal('錯誤', `${res.data.message}`, 'error')
+          }
+        }).catch(error => {
+          this.$swal('錯誤', `${error.response.data.message}`, 'error')
+        })
     }
   },
   computed: {
@@ -156,10 +208,40 @@ export default {
       return this.name.length > 0
     },
     phoneState () {
-      return this.phone.length > 0
+      return this.phone.length > 8
+    },
+    account () {
+      return this.$store.getters.account
     }
+  },
+  mounted: function () {
+    this.axios.post('http://localhost:3000/checkorder', {
+      account: this.account
+    })
+      .then(res => {
+        if (res.data.result.length > 0) {
+          this.orderedname = res.data.result[0].name
+          this.orderedphone = res.data.result[0].phone
+          this.orderedpeoplecount = res.data.result[0].peoplecount
+          this.ordereddate = res.data.result[0].date.substr(0, 10)
+          this.orderedtime = res.data.result[0].time
+          this.orderedremarks = res.data.result[0].remarks
+        } else {
+          console.log('ordered not found')
+        }
+      })
+    this.axios.post('http://localhost:3000/getuserinfo', {
+      account: this.account
+    })
+      .then(res => {
+        if (res.data.success) {
+          this.name = res.data.result[0].name
+          this.phone = res.data.result[0].phone
+        }
+      })
   }
 }
+
 </script>
 <style lang="stylus">
 .fieldset {

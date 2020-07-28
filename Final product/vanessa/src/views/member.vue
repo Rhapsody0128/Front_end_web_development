@@ -33,7 +33,7 @@
                 type="password"
                 placeholder="請輸入至少8個字"
                 trim
-              >></b-form-input>
+              ></b-form-input>
               <b-form-text class="col-6"></b-form-text>
             </div>
           </div>
@@ -111,6 +111,7 @@
                 id="repassword"
                 v-model="repassword"
                 :state="repasswordState"
+                type="password"
                 placeholder="請輸入至少8個字"
                 trim
               >></b-form-input>
@@ -151,7 +152,7 @@
           </div>
         </div>
         <div class="row justify-content-center align-items-center mt-5">
-          <div class="col-6 col-lg-2 text-right">
+          <div class="col-6 text-right">
             <b-button class="btn-success" v-b-modal.modal-1>會員須知</b-button>
             <b-modal id="modal-1" title="會員須知">
               <ul class="ml-5">
@@ -161,7 +162,7 @@
               </ul>
             </b-modal>
           </div>
-          <div class="col-6 col-lg-2 mt-2 text-left">
+          <div class="col-6 mt-2 text-left">
             <input v-model="checked" type="checkbox" />我已經詳讀會員須知
           </div>
         </div>
@@ -195,77 +196,129 @@ export default {
   },
   computed: {
     nameState () {
-      return this.name.length > 0
+      if (this.name.length === 0) {
+        return null
+      } else {
+        return this.name.length > 0
+      }
     },
     accountState () {
-      return this.account.length > 7
+      if (this.account.length === 0) {
+        return null
+      } else {
+        return this.account.length > 7
+      }
     },
     passwordState () {
-      return this.password.length > 7
+      if (this.password.length === 0) {
+        return null
+      } else {
+        return this.password.length > 7
+      }
     },
     repasswordState () {
-      return this.repassword === this.password
+      if (this.repassword.length === 0) {
+        return null
+      } else {
+        return this.repassword === this.password
+      }
     },
     phoneState () {
-      return this.phone.length > 6
+      if (this.phone.length === 0) {
+        return null
+      } else {
+        return this.phone.length > 6
+      }
     },
     emailState () {
-      return this.email.includes('@')
+      if (this.email.length === 0) {
+        return null
+      } else {
+        return this.email.includes('@')
+      }
     },
     loginaccountState () {
-      return this.loginaccount.length > 7
+      if (this.loginaccount.length === 0) {
+        return null
+      } else {
+        return this.loginaccount.length > 7
+      }
     },
     loginpasswordState () {
-      return this.loginpassword.length > 7
+      if (this.loginpassword.length === 0) {
+        return null
+      } else {
+        return this.loginpassword.length > 7
+      }
     }
   },
   methods: {
     registering () {
       if (this.checked) {
-        const rand = Math.floor(Math.random() * 10)
-        const rand2 = Math.floor(Math.random() * 100)
-        const judge = prompt(`${rand}+${rand2}=?`)
-        const ans = (rand + rand2).toString()
-        console.log(ans)
-        if (judge === ans) {
-          this.axios.post('http://localhost:3000/registering', {
-            name: this.name,
-            account: this.account,
-            password: this.password,
-            phone: this.phone,
-            email: this.email
-          })
-            .then(res => {
-              if (res.data.success) {
-                this.$swal('成功', '註冊成功', 'success')
-                this.name = ''
-                this.account = ''
-                this.password = ''
-                this.repassword = ''
-                this.phone = ''
-                this.email = ''
-              } else {
-                this.$swal('錯誤', `${res.data.message}`, 'error')
-              }
-            })
+        if (this.name.length < 1) {
+          this.$swal('錯誤', '未輸入姓名', 'error')
+        } else if (this.account.length < 8) {
+          this.$swal('錯誤', '帳號格式不符', 'error')
+        } else if (this.password.length < 8) {
+          this.$swal('錯誤', '密碼格式不符', 'error')
+        } else if (this.password !== this.repassword) {
+          this.$swal('錯誤', '重複輸入密碼錯誤', 'error')
+        } else if (isNaN(this.phone) || this.phone.length < 7) {
+          this.$swal('錯誤', '電話格式錯誤', 'error')
+        } else if (!this.email.includes('@')) {
+          this.$swal('錯誤', '電子郵件格式錯誤', 'error')
         } else {
-          this.$swal('錯誤', '驗證錯誤', 'error')
+          const rand = Math.floor(Math.random() * 10)
+          const rand2 = Math.floor(Math.random() * 100)
+          const ans = (rand + rand2).toString()
+          const judge = prompt(`${rand}+${rand2}=?`)
+          if (judge === ans) {
+            this.axios.post('http://localhost:3000/registering', {
+              name: this.name,
+              account: this.account,
+              password: this.password,
+              phone: this.phone,
+              email: this.email
+            })
+              .then(res => {
+                if (res.data.success) {
+                  this.$swal('成功', '註冊成功', 'success')
+                  this.name = ''
+                  this.account = ''
+                  this.password = ''
+                  this.repassword = ''
+                  this.phone = ''
+                  this.email = ''
+                } else {
+                  this.$swal('錯誤', `${res.data.message}`, 'error')
+                }
+              }).catch(error => {
+                this.$swal('錯誤', `${error.response.data.message}`, 'error')
+              })
+          } else {
+            this.$swal('錯誤', '數字驗證錯誤', 'error')
+          }
         }
       } else {
         this.$swal('未勾選', '請先閱讀會員須知', 'question')
       }
     },
-
     login () {
       this.axios.post('http://localhost:3000/login', { account: this.loginaccount, password: this.loginpassword })
         .then(res => {
           if (res.data.success) {
             this.$swal('成功', '登入成功', 'success')
-            this.$store.commit('login', res.data.name)
-            this.$router.push('/member_login')
+            this.$store.commit('login', [res.data.name, res.data.account])
+            if (this.loginaccount === 'user1234') {
+              this.$router.push('/back')
+            } else {
+              this.$router.push('/member_login')
+            }
           } else {
-            alert(res.data.message)
+            this.$swal('錯誤', `${res.data.message}`, 'error')
           }
+        }).catch(error => {
+          this.$swal('錯誤', `${error.response.data.message}`, 'error')
         })
     }
   }

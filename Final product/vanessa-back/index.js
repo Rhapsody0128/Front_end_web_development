@@ -63,7 +63,6 @@ app.post('/registering', async (req, res) => {
     res.status(400)
     res.send({ success: false, message: '欄位不正確' })
   }
-
   // 新增資料
   try {
     const result = await database.users.create(
@@ -107,12 +106,140 @@ app.post('/login', async (req, res) => {
       res.status(200)
       res.send({ success: true, message: '', account, name })
     } else {
-      res.status(200)
+      res.status(300)
       res.send({ success: false, message: '帳號密碼錯誤' })
     }
   } catch (error) {
     res.status(400)
     res.send({ success: false, message: '帳號密碼錯誤' })
+  }
+})
+// ---
+app.post('/getuserinfo', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式錯誤' })
+    return
+  }
+  try {
+    const result = await database.users.find({
+      account: req.body.account
+    })
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在使用者資料' })
+    }
+  } catch (error) {
+    res.status(500)
+    res.send({ success: false, message: error })
+  }
+})
+// ---訂位
+app.post('/order', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  if (req.body.name === '' ||
+    req.body.account === '' ||
+    req.body.peoplecount === '' ||
+    req.body.phone === '' ||
+    req.body.time === '' ||
+    req.body.date === ''
+  ) {
+    res.status(400)
+    res.send({ success: false, message: '欄位填寫不完整' })
+  }
+  // 新增資料
+  try {
+    const result = await database.orders.create(
+      {
+        name: req.body.name,
+        account: req.body.account,
+        phone: req.body.phone,
+        peoplecount: req.body.peoplecount,
+        date: req.body.date.substr(0, 10),
+        time: req.body.time,
+        remarks: req.body.remarks
+      }
+    )
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error.errors)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+// ---取消定位
+app.post('/cancelorder', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式錯誤' })
+    return
+  }
+  try {
+    const result = await database.orders.findOneAndRemove({ account: req.body.account })
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '' })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在訂單資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---找到定位
+app.post('/checkorder', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式錯誤' })
+    return
+  }
+  try {
+    const result = await database.orders.find({ account: req.body.account })
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在訂單資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---訂位清單
+app.post('/allorder', async (req, res) => {
+  try {
+    const result = await database.orders.find()
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在訂單資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
   }
 })
 

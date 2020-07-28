@@ -6,8 +6,10 @@
         <img class="img-fluid img-thumbnail" :src=specialmeal.src alt />
       </div>
       <div class="col-10 col-lg-6 text-center d-flex flex-column justify-content-center">
-        <h1>Spcial Meal</h1>
-        <h2>{{specialmeal.title}}</h2>
+        <h1>今日特餐</h1>
+        <br>
+        <br>
+        <h3>{{specialmeal.title}}</h3>
         <p>{{specialmeal.description}}</p>
       </div>
     </div>
@@ -30,7 +32,6 @@
             :options="flavours"
             name="flavors"
             class="ml-4 d-lg-flex flex-lg-nowrap flex-lg-column"
-            switches
             size="lg"
             :stacked='ScreenWidth>768'
           ></b-form-checkbox-group>

@@ -20,12 +20,14 @@
       <div class="actcard d-flex flex-wrap">
         <div class="actpic col-12 col-lg-5"><img :src="act.src">
         </div>
-        <div class="acttext col-12 col-lg-6">
-          <h3>{{act.title}}</h3>
-          <p>{{act.des}}</p>
+        <div class="acttext col-12 col-lg-6 ">
+          <div>
+            <h3 >{{act.title}}</h3>
+            <p >{{act.des}}</p>
           </div>
         </div>
-      </b-tab>
+      </div>
+    </b-tab>
   </b-tabs>
 </div>
       </div>
@@ -43,25 +45,13 @@ export default {
           title: '中元節',
           date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
           des: '中元節好棒棒',
-          src: './images/36271782954_f7aa950180_o.jpg'
+          src: './images/human/14902862_1147369728677919_3502097085568784232_o.jpg'
         },
         {
           title: '萬聖節',
           date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
           des: '萬聖節好棒棒',
-          src: './images/4903092900_ff43be2aff_o.jpg'
-        },
-        {
-          title: '萬聖節',
-          date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
-          des: '萬聖節好棒棒',
-          src: './images/4903092900_ff43be2aff_o.jpg'
-        },
-        {
-          title: '萬聖節',
-          date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
-          des: '萬聖節好棒棒',
-          src: './images/4903092900_ff43be2aff_o.jpg'
+          src: './images/human/22894475_1527219090692979_1297712814055284220_n.jpg'
         }
       ],
       attrs: [
@@ -105,7 +95,12 @@ export default {
         height 100%
         object-fit cover
       }
-  }
-
     }
+    .acttext{
+      display flex
+      justify-content center
+      align-items center
+      text-align center
+    }
+  }
 </style>

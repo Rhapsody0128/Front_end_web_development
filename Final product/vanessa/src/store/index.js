@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     screenWidth: 0,
-    name: ''
+    name: '',
+    account: ''
   },
   getters: {
     screenWidth (state) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     name (state) {
       return state.name
+    },
+    account (state) {
+      return state.account
     }
   },
   mutations: {
@@ -22,11 +26,13 @@ export default new Vuex.Store({
       state.screenWidth = val
       return state.screenWidth
     },
-    login (state, name) {
-      state.name = name
+    login (state, data) {
+      state.name = data[0]
+      state.account = data[1]
     },
-    logout (state, name) {
+    logout (state, data) {
       state.name = ''
+      state.account = ''
     }
   },
   actions: {
