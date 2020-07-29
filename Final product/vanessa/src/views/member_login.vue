@@ -152,7 +152,7 @@ export default {
   methods: {
     changepeoplecount (peoplecount) {
       this.peoplecount = peoplecount
-      if (peoplecount === 9) {
+      if (peoplecount === '9') {
         this.peoplecount = '8人以上'
       }
     },

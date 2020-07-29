@@ -10,6 +10,9 @@ import md5 from 'md5'
 import database from './database.js'
 import session from 'express-session'
 import connectMongo from 'connect-mongo'
+import FTPStorage from 'multer-ftp'
+import multer from 'multer'
+import path from 'path'
 
 const MongoStore = connectMongo(session)
 const app = express()
@@ -33,6 +36,50 @@ app.use(session({
     mongooseConnection: database.connection
   })
 }))
+// ---檔案上傳FTP
+let storage
+if (process.env.FTP === 'false') {
+  storage = multer.diskStorage({
+    destination (req, file, cb) {
+      cb(null, 'images/')
+    },
+    filename (req, file, cb) {
+      cb(null, Date.now() + path.extname(file.originalname))
+    }
+  })
+} else {
+  // heroku 將上傳檔案放伺服器
+  storage = new FTPStorage({
+    // 上傳伺服器的路徑
+    basepath: '/',
+    // FTP 設定
+    ftp: {
+      host: process.env.FTP_HOST,
+      secure: false,
+      user: process.env.FTP_USER,
+      password: process.env.FTP_PASSWORD
+    },
+    destination (req, file, options, cb) {
+      cb(null, options.basepath + Date.now() + path.extname(file.originalname))
+    }
+  })
+}
+// ---圖檔存入
+const upload = multer({
+  storage,
+  fileFilter (req, file, cb) {
+    if (!file.mimetype.includes('image')) {
+      // 觸發 multer 錯誤，不接受檔案
+      // LIMIT_FORMAT 是自訂的錯誤 CODE，跟內建的錯誤 CODE 格式統一
+      cb(new multer.MulterError('LIMIT_FORMAT'), false)
+    } else {
+      cb(null, true)
+    }
+  },
+  limits: {
+    fileSize: 1024 * 1024
+  }
+})
 
 // 設定跨域套件
 app.use(cors({
@@ -241,6 +288,60 @@ app.post('/allorder', async (req, res) => {
     console.log(error)
     res.send({ success: false, message: error })
   }
+})
+// ---菜單上傳
+app.post('/addmeal', async (req, res) => {
+  console.log(req.headers['content-type'])
+  if (!req.headers['content-type'].includes('multipart/form-data')) {
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  upload.single('src')(req, res, async error => {
+    if (error instanceof multer.MulterError) {
+      // 上傳錯誤
+      let message = ''
+      if (error.code === 'LIMIT_FILE_SIZE') {
+        message = '檔案太大'
+      } else {
+        message = '格式不符'
+      }
+      res.status(400)
+      console.log('object')
+      res.send({ success: false, message })
+    } else if (error) {
+      res.status(500)
+      console.log('object2')
+      res.send({ success: false, message: '伺服器錯誤' })
+    } else {
+      try {
+        const result = await database.menus.create(
+          {
+            title: req.body.title,
+            value: req.body.value,
+            type: req.body.type,
+            src: req.body.src.name,
+            description: req.body.description
+          }
+        )
+        res.status(200)
+        res.send({ success: true, message: '', result })
+      } catch (error) {
+        if (error.name === 'ValidationError') {
+          // 資料格式錯誤
+          const key = Object.keys(error.errors)[0]
+          const message = error.errors[key].message
+          res.status(400)
+          res.send({ success: false, message })
+        } else {
+          console.log(error)
+          // 伺服器錯誤
+          res.status(500)
+          res.send({ success: false, message: '伺服器錯誤' })
+        }
+      }
+    }
+  })
 })
 
 // 啟動網頁伺服器

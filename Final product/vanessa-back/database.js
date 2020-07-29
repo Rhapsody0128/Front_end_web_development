@@ -115,16 +115,46 @@ const orderSchema = new Schema(
   }
 )
 
+const menuSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: [true, '餐點名稱未填']
+    },
+    src: {
+      type: String
+    },
+    description: {
+      type: String,
+      required: [true, '餐點名稱未填']
+    },
+    type: {
+      type: String,
+      required: [true, '類型必填']
+    },
+    value: {
+      type: Number,
+      required: [true, '定價未填']
+    }
+  },
+  {
+    // 不要紀錄資料修改次數
+    versionKey: false
+  }
+)
+
 // 建立 Model
 // mongoose.model('資料表名稱', Schema)
 // 資料表名稱必須為複數，結尾加 s
 const users = mongoose.model('users', userSchema)
 const orders = mongoose.model('orders', orderSchema)
+const menus = mongoose.model('menus', menuSchema)
 const connection = mongoose.connection
 
 // 匯出變數
 export default {
   users,
   orders,
+  menus,
   connection
 }

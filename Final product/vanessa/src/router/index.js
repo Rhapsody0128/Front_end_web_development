@@ -80,6 +80,68 @@ const routes = [
     path: '/back',
     name: 'back',
     component: () => import(/* webpackChunkName: "back" */ '../views/back.vue'),
+    children: [
+      {
+        path: '/back_menu',
+        name: 'back_menu',
+        component: () => import(/* webpackChunkName: "back_menu" */ '../views/back/back_menu.vue'),
+        meta: {
+          transition: 'fade-in-up',
+          login: 'control',
+          title: '後臺管理'
+        }
+      },
+      {
+        path: '/back_story',
+        name: 'back_story',
+        component: () => import(/* webpackChunkName: "back_story" */ '../views/back/back_story.vue'),
+        meta: {
+          transition: 'fade-in-up',
+          login: 'control',
+          title: '後臺管理'
+        }
+      },
+      {
+        path: '/back_news',
+        name: 'back_news',
+        component: () => import(/* webpackChunkName: "back_news" */ '../views/back/back_news.vue'),
+        meta: {
+          transition: 'fade-in-up',
+          login: 'control',
+          title: '後臺管理'
+        }
+      },
+      {
+        path: '/back_hire',
+        name: 'back_hire',
+        component: () => import(/* webpackChunkName: "back_hire" */ '../views/back/back_hire.vue'),
+        meta: {
+          transition: 'fade-in-up',
+          login: 'control',
+          title: '後臺管理'
+        }
+      },
+      {
+        path: '/back_order',
+        name: 'back_order',
+        component: () => import(/* webpackChunkName: "back_order" */ '../views/back/back_order.vue'),
+        meta: {
+          transition: 'fade-in-up',
+          login: 'control',
+          title: '後臺管理'
+        }
+      },
+      {
+        path: '/back_member',
+        name: 'back_member',
+        component: () => import(/* webpackChunkName: "back_member" */ '../views/back/back_member.vue'),
+        meta: {
+          transition: 'fade-in-up',
+          login: 'control',
+          title: '後臺管理'
+        }
+      }
+    ],
     meta: {
       transition: 'fade-in-up',
       login: 'control',
@@ -102,7 +164,6 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     if (store.state.account === 'user1234') {
-      Vue.swal('歡迎', '老大歡迎', 'success')
       next()
     } else {
       Vue.swal('權限不足', '使用者管理權限不足', 'error')

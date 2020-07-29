@@ -30,7 +30,7 @@ export default new Vuex.Store({
       state.name = data[0]
       state.account = data[1]
     },
-    logout (state, data) {
+    logout (state) {
       state.name = ''
       state.account = ''
     }
