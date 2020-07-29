@@ -208,7 +208,7 @@ export default {
       return this.name.length > 0
     },
     phoneState () {
-      return this.phone.length > 8
+      return this.phone.length > 6
     },
     account () {
       return this.$store.getters.account

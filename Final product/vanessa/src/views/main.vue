@@ -7,12 +7,12 @@
 @touchend="touchend">
 
   <div :style="boxstyle" id="all" >
-    <div class="box a"></div>
-    <div class="box b"></div>
-    <div class="box c"></div>
-    <div class="box d"></div>
-    <div class="box e"></div>
-    <div class="box f"></div>
+    <div style="background: url('./images/others/box.png') center/cover" class="box a"></div>
+    <div style="background: url('./images/others/box.png') center/cover" class="box b"></div>
+    <div style="background: url('./images/others/box.png') center/cover" class="box c"></div>
+    <div style="background: url('./images/others/box.png') center/cover" class="box d"></div>
+    <div style="background: url('./images/others/box.png') center/cover" class="box e"></div>
+    <div style="background: url('./images/others/box.png') center/cover" class="box f"></div>
   </div>
 
 <button class="explore btn btn-dark text-center" @click="rand">explore</button>
@@ -280,7 +280,6 @@ export default {
     border: 3px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0rem 0rem 2rem rgba(255, 255, 255, 0.5);
     pointer-events: none;
-    background url('/images/others/box.png') center/cover
   }
   .a {
     // background: rgba(255, 255, 0, 0.2);

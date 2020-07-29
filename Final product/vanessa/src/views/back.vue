@@ -48,15 +48,15 @@
           <div>
             <vs-table multiple v-model="selected" :data="datas">
               <template slot="header">
-                <h3>訂位資訊</h3>
+                <h1 class="text-center">訂位資訊</h1>
               </template>
               <template slot="thead">
-                <vs-th class="title">姓名</vs-th>
-                <vs-th class="title">電話</vs-th>
-                <vs-th class="title">人數</vs-th>
-                <vs-th class="title">日期</vs-th>
-                <vs-th class="title">時間</vs-th>
-                <vs-th class="title">備註</vs-th>
+                <vs-th sort-key="name" class="title">姓名</vs-th>
+                <vs-th sort-key="phone" class="title">電話</vs-th>
+                <vs-th sort-key="peoplecount" class="title">人數</vs-th>
+                <vs-th sort-key="date" class="title">日期</vs-th>
+                <vs-th sort-key="time" class="title">時間</vs-th>
+                <vs-th sort-key="remarks" class="title">備註</vs-th>
                 <vs-th class="title">刪除</vs-th>
               </template>
               <template slot-scope="{data}">
@@ -80,7 +80,7 @@
                     <span class="text">{{data[indextr].remarks}}</span>
                   </vs-td>
                   <vs-td :data="data[indextr]">
-                    <vs-button color="danger" type="filled">{{data[indextr].id}}</vs-button>
+                    <vs-button color="danger" type="filled">{{data[indextr].account}}</vs-button>
                   </vs-td>
                 </vs-tr>
               </template>

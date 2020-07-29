@@ -1,7 +1,8 @@
 <template>
   <div id="story">
     <h1 class="text-center mt-4 mb-4">關於我們</h1>
-    <div class='story p-0'></div>
+    <div v-if="ScreenWidth>768" style="background:url('./images/atmosphere/13350244_1033842330030660_1000111736185408760_o.jpg') no-repeat fixed center/auto" class='story p-0'></div>
+    <div v-else style="background:url('./images/atmosphere/150166_293460857402148_828730403_n.jpg') no-repeat fixed center/auto" class='story p-0'></div>
     <div id="flipbook" class='d-flex flex-wrap'>
       <div class="row justify-content-center mt-5 mb-5 m-0 col-12">
         <flipbook class="flipbook col-12 col-lg-7 p-0" :pages="employee"></flipbook>
@@ -86,6 +87,11 @@ export default {
       ]
     }
   },
+  computed: {
+    ScreenWidth () {
+      return this.$store.getters.screenWidth
+    }
+  },
   components: { Flipbook }
 }
 </script>
@@ -102,13 +108,6 @@ export default {
 .story{
   width 100%
   height 30rem
-  padding 0
-  background url('/images/atmosphere/13350244_1033842330030660_1000111736185408760_o.jpg') no-repeat fixed center/auto
-}
-@media (max-width: 768px) {
-.story{
-  background url('/images/atmosphere/150166_293460857402148_828730403_n.jpg') no-repeat fixed bottom /cover
-  }
 }
 .text{
   color white
