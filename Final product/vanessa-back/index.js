@@ -13,6 +13,7 @@ import connectMongo from 'connect-mongo'
 import FTPStorage from 'multer-ftp'
 import multer from 'multer'
 import path from 'path'
+import fs from 'fs'
 
 const MongoStore = connectMongo(session)
 const app = express()
@@ -41,7 +42,7 @@ let storage
 if (process.env.FTP === 'false') {
   storage = multer.diskStorage({
     destination (req, file, cb) {
-      cb(null, 'images/')
+      cb(null, './images/menu')
     },
     filename (req, file, cb) {
       cb(null, Date.now() + path.extname(file.originalname))
@@ -97,7 +98,6 @@ app.post('/registering', async (req, res) => {
   if (!req.headers['content-type'].includes('application/json')) {
     // 會回傳錯誤狀態碼(400)
     res.status(400)
-    console.log(req.headers['content-type'])
     res.send({ success: false, message: '格式不符' })
     return
   }
@@ -291,7 +291,6 @@ app.post('/allorder', async (req, res) => {
 })
 // ---菜單上傳
 app.post('/addmeal', async (req, res) => {
-  console.log(req.headers['content-type'])
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
     res.send({ success: false, message: '格式不符' })
@@ -307,11 +306,9 @@ app.post('/addmeal', async (req, res) => {
         message = '格式不符'
       }
       res.status(400)
-      console.log('object')
       res.send({ success: false, message })
     } else if (error) {
       res.status(500)
-      console.log('object2')
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
       try {
@@ -320,7 +317,7 @@ app.post('/addmeal', async (req, res) => {
             title: req.body.title,
             value: req.body.value,
             type: req.body.type,
-            src: req.body.src.name,
+            src: req.file.filename,
             description: req.body.description
           }
         )
@@ -342,6 +339,40 @@ app.post('/addmeal', async (req, res) => {
       }
     }
   })
+})
+// ---菜單清單
+app.post('/allmenu', async (req, res) => {
+  try {
+    const result = await database.menus.find()
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '沒有菜單' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---菜單圖片
+app.get('/menu/:src', async (req, res) => {
+  console.log('object')
+  if (process.env.FTP === false) {
+    const path = process.cwd() + '/images/menu' + req.params.src
+    const exists = fs.existsSync(path)
+    if (exists) {
+      res.status(200)
+      res.sendFile(path)
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '找不到圖片' })
+    }
+  } else {
+    res.redirect('http://' + process.env.FTP_HOST + '/' + process.env.FTP_USER + '/' + req.params.name)
+  }
 })
 
 // 啟動網頁伺服器

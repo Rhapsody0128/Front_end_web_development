@@ -102,6 +102,8 @@ export default {
     this.axios.post('http://localhost:3000/allorder')
       .then(res => {
         this.datas = res.data.result
+      }).catch(error => {
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }

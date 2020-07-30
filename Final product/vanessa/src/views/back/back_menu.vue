@@ -12,19 +12,7 @@
       </div>
       <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
         <h3 class="title mb-4 col-12">餐點類型</h3>
-        <vs-dropdown class="col-12">
-          <vs-button class="btn-drop col-12" type="filled">{{type}}</vs-button>
-          <vs-dropdown-menu class="w-25">
-            <vs-dropdown-item @click='selecttype("前菜")'>前菜</vs-dropdown-item>
-            <vs-dropdown-item @click='selecttype("沙拉")'>沙拉</vs-dropdown-item>
-            <vs-dropdown-item @click='selecttype("主餐")'>主餐</vs-dropdown-item>
-            <vs-dropdown-item @click='selecttype("披薩")'>披薩</vs-dropdown-item>
-            <vs-dropdown-item @click='selecttype("湯品")'>湯品</vs-dropdown-item>
-            <vs-dropdown-item @click='selecttype("甜點")'>甜點</vs-dropdown-item>
-            <vs-dropdown-item @click='selecttype("鬆餅")'>鬆餅</vs-dropdown-item>
-            <vs-dropdown-item @click='selecttype("飲料")'>飲料</vs-dropdown-item>
-          </vs-dropdown-menu>
-        </vs-dropdown>
+        <b-form-select class="col-12 mt-3" v-model="type" :options="alltype"></b-form-select>
       </div>
     </div>
     <div class="row">
@@ -48,18 +36,66 @@
     </div>
   </form>
   <hr>
+  <div class="container">
+    <vs-table :data="allmenu">
+      <template slot="thead">
+        <vs-th class="item" sort-key="title">名稱</vs-th>
+        <vs-th class="item" sort-key="value">價格</vs-th>
+        <vs-th class="item" sort-key="type">類型</vs-th>
+        <vs-th class="item" sort-key="src">圖片</vs-th>
+        <vs-th class="item" sort-key="description">描述</vs-th>
+      </template>
+      <template slot-scope="{data}">
+        <vs-tr :key="indextr" v-for="(tr, indextr) in data" >
+          <vs-td :data="tr.title">
+            <span class='text'>{{tr.title}}</span>
+            <template slot="edit">
+              <vs-input v-model="tr.title" class="inputx" placeholder="名稱"/>
+            </template>
+          </vs-td>
+          <vs-td :data="tr.value">
+            <span class='text'>{{tr.value}}</span>
+            <template slot="edit">
+              <vs-input type="number" v-model="tr.value" class="inputx" placeholder="名稱"/>
+            </template>
+          </vs-td>
+          <vs-td :data="tr.type">
+            <span class='text'>{{tr.type}}</span>
+            <template slot="edit">
+              <b-form-select class="col-12 mt-3" v-model="tr.type" :options="alltype"></b-form-select>
+            </template>
+          </vs-td>
+          <vs-td :data="tr.src">
+            <img :src="tr.src">
+            <template slot="edit">
+              <b-form-file v-model="tr.src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
+            </template>
+          </vs-td>
+          <vs-td :data="tr.description">
+            <span class='text'>{{tr.description}}</span>
+            <template slot="edit">
+              <vs-textarea class="col-12" label="餐點描述" v-model="tr.description"></vs-textarea>
+            </template>
+          </vs-td>
+        </vs-tr>
+      </template>
+    </vs-table>
+  </div>
 </div>
 </template>
 <script>
 export default {
   data () {
     return {
-      title: 'a',
-      value: 12,
-      type: '主餐',
-      description: 'a',
-      src: '',
-      state: null
+      title: '',
+      value: '',
+      type: '類型',
+      alltype: ['前菜', '沙拉', '主餐', '披薩', '湯品', '甜點', '鬆餅', '飲料'],
+      select: 1,
+      description: '',
+      src: null,
+      state: null,
+      allmenu: []
     }
   },
   methods: {
@@ -86,15 +122,12 @@ export default {
       } else if (this.description.length < 1) {
         this.$swal('錯誤', '無餐點描述', 'error')
       } else {
-        this.$swal('完成', '已成功新增菜單', 'success')
-
         const fd = new FormData()
         fd.append('title', this.title)
         fd.append('value', this.value)
         fd.append('type', this.type)
         fd.append('src', this.src)
         fd.append('description', this.description)
-        console.log(fd)
         this.title = ''
         this.value = ''
         this.type = '類型'
@@ -107,12 +140,40 @@ export default {
           }
         })
           .then(res => {
-            console.log(res)
+            this.$swal('完成', '已成功新增菜單', 'success')
           }).catch(error => {
             this.$swal('錯誤', `${error.response.data.message}`, 'error')
           })
       }
     }
+  },
+  mounted: function () {
+    // this.axios.post('http://localhost:3000/allmenu')
+    //   .then(res => {
+    //     this.allmenu = res.data.result.map(data => {
+    //       return {
+    //         title: data.title,
+    //         value: data.value,
+    //         type: data.type,
+    //         description: data.description
+    //         // src: 'http://localhost:3000' + '/menu/' + data.src
+    //       }
+    //     })
+    //   })
+    //   .catch(error => {
+    //     console.log(error.response.data.message)
+    //   })
+    this.axios.post('http://localhost:3000/allmenu')
+      .then(res => {
+        console.log(res.data.result)
+        res.data.result.map(data => {
+          data.src = 'http://localhost:3000' + '/images/menu/' + data.src
+          console.log(data.src)
+        })
+        this.allmenu = res.data.result
+      }).catch(error => {
+        console.log(error.response.data.message)
+      })
   }
 }
 </script>
@@ -136,5 +197,9 @@ export default {
 .title{
   font-size 2rem
   }
+}
+.material-icons{
+  font-size 0px !important
+  background red
 }
 </style>

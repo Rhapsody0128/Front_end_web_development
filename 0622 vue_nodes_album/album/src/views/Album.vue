@@ -144,7 +144,7 @@ export default {
         this.images = response.data.result.map(d => {
           return {
             title: d.description,
-            src: process.env.VUE_APP_APIURL + '/file/' + d.name,
+            src: process.env.VUE_APP_APIURL + '/menus/' + d.name,
             _id: d._id,
             edit: false,
             model: d.name

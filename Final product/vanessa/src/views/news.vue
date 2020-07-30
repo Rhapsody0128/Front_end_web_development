@@ -15,21 +15,21 @@
     <div class="row justify-content-center mt-4">
       <div class="col-12">
         <div>
-  <b-tabs content-class="mt-3 mb-5" >
-    <b-tab v-for="(act,index) in acts" :key="index" :title="act.title" active>
-      <div class="actcard d-flex flex-wrap">
-        <div class="actpic col-12 col-lg-5"><img :src="act.src">
+          <b-tabs content-class="mt-3 mb-5" >
+            <b-tab v-for="(act,index) in acts" :key="index" :title="act.title" active>
+              <div class="actcard d-flex flex-wrap">
+                <div class="actpic col-12 col-lg-5"><img :src="act.src">
+                </div>
+                <div class="acttext col-12 col-lg-6 ">
+                  <div>
+                    <h3 >{{act.title}}</h3>
+                    <p >{{act.des}}</p>
+                  </div>
+                </div>
+              </div>
+            </b-tab>
+          </b-tabs>
         </div>
-        <div class="acttext col-12 col-lg-6 ">
-          <div>
-            <h3 >{{act.title}}</h3>
-            <p >{{act.des}}</p>
-          </div>
-        </div>
-      </div>
-    </b-tab>
-  </b-tabs>
-</div>
       </div>
     </div>
   </div>
