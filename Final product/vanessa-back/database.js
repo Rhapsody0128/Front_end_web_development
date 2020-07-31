@@ -62,7 +62,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: [true, '信箱必填'],
-      unique: '此帳號已經被註冊'
+      unique: '此信箱已經被註冊'
     }
   },
   {

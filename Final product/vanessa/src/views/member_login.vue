@@ -243,7 +243,7 @@ export default {
 }
 
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
 .fieldset {
   border: 1px solid black;
 

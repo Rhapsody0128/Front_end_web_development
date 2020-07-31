@@ -92,16 +92,6 @@ const routes = [
         }
       },
       {
-        path: '/back_story',
-        name: 'back_story',
-        component: () => import(/* webpackChunkName: "back_story" */ '../views/back/back_story.vue'),
-        meta: {
-          transition: 'fade-in-up',
-          login: 'control',
-          title: '後臺管理'
-        }
-      },
-      {
         path: '/back_news',
         name: 'back_news',
         component: () => import(/* webpackChunkName: "back_news" */ '../views/back/back_news.vue'),

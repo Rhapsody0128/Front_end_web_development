@@ -57,14 +57,15 @@ export default {
       attrs: [
         {
           key: 'today',
-          highlight: 'red',
+          highlight: 'orange',
           popover: {
-            label: `${new Date()}`
+            label: '這是今天哦~'
           },
-          dates: new Date()
+          dates: new Date(),
+          event: []
         },
         {
-          highlight: true,
+          highlight: 'gray',
           popover: {
             label: '中元節'
           },
@@ -89,7 +90,6 @@ export default {
     height 100%
     .actpic{
       width 100%
-      height 100%
       img{
         width 100%
         height 100%

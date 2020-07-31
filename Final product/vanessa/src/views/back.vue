@@ -23,9 +23,6 @@
         <vs-sidebar-item to="/back_menu"  index="1">
           <h4>菜單</h4>
         </vs-sidebar-item>
-        <vs-sidebar-item to="/back_story"  index="2">
-          <h4>關於我們</h4>
-        </vs-sidebar-item>
         <vs-sidebar-item to="/back_news"  index="3">
           <h4>最新消息</h4>
         </vs-sidebar-item>

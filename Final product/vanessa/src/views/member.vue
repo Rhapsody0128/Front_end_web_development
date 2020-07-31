@@ -183,12 +183,12 @@
 export default {
   data () {
     return {
-      name: '',
-      account: '',
-      password: '',
-      repassword: '',
-      phone: '',
-      email: '',
+      name: 'test',
+      account: 'aaaaaaaa',
+      password: 'aaaaaaaa',
+      repassword: 'aaaaaaaa',
+      phone: '097080180',
+      email: 'adssad@',
       loginaccount: '',
       loginpassword: '',
       checked: false
@@ -324,7 +324,7 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
   .fieldset{
     border 1px solid black
     .legend{

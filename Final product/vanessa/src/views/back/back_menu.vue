@@ -1,5 +1,5 @@
 <template>
-  <div id="back_order">
+  <div id="back_menu">
     <form>
     <div class="row">
       <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -39,11 +39,11 @@
   <div class="container">
     <vs-table :data="allmenu">
       <template slot="thead">
-        <vs-th class="item" sort-key="title">名稱</vs-th>
-        <vs-th class="item" sort-key="value">價格</vs-th>
-        <vs-th class="item" sort-key="type">類型</vs-th>
-        <vs-th class="item" sort-key="src">圖片</vs-th>
-        <vs-th class="item" sort-key="description">描述</vs-th>
+        <vs-th  sort-key="title"><span class="item">名稱</span></vs-th>
+        <vs-th  sort-key="value"><span class="item">價格</span></vs-th>
+        <vs-th  sort-key="type"><span class="item">類型</span></vs-th>
+        <vs-th  sort-key="src"><span class="item picitem">圖片</span></vs-th>
+        <vs-th  sort-key="description"><span class="item">描述</span></vs-th>
       </template>
       <template slot-scope="{data}">
         <vs-tr :key="indextr" v-for="(tr, indextr) in data" >
@@ -66,16 +66,20 @@
             </template>
           </vs-td>
           <vs-td :data="tr.src">
-            <img :src="tr.src">
-            <template slot="edit">
-              <b-form-file v-model="tr.src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
-            </template>
+            <div>
+              <div class="image">
+                <img :src="tr.src">
+              </div>
+            </div>
           </vs-td>
           <vs-td :data="tr.description">
             <span class='text'>{{tr.description}}</span>
             <template slot="edit">
               <vs-textarea class="col-12" label="餐點描述" v-model="tr.description"></vs-textarea>
             </template>
+          </vs-td>
+          <vs-td :data="tr">
+            <vs-button @click="openConfirm(tr)" color="success" type="filled">儲存更變</vs-button>
           </vs-td>
         </vs-tr>
       </template>
@@ -145,39 +149,56 @@ export default {
             this.$swal('錯誤', `${error.response.data.message}`, 'error')
           })
       }
+    },
+    openConfirm (data) {
+      console.log(data)
+      this.$vs.dialog({
+        data: data,
+        type: 'confirm',
+        color: 'success',
+        title: '確認更變',
+        text: '確認更變項目嗎',
+        accept: this.acceptAlert
+      })
+    },
+    acceptAlert (data, color) {
+      this.$vs.notify({
+        color: 'primary',
+        title: '已順利更變',
+        text: '已順利所選項目'
+      })
+      console.log(data)
+      this.axios.post('http://localhost:3000/changemenu', {
+        id: this.id
+      })
+        .then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
     }
   },
   mounted: function () {
-    // this.axios.post('http://localhost:3000/allmenu')
-    //   .then(res => {
-    //     this.allmenu = res.data.result.map(data => {
-    //       return {
-    //         title: data.title,
-    //         value: data.value,
-    //         type: data.type,
-    //         description: data.description
-    //         // src: 'http://localhost:3000' + '/menu/' + data.src
-    //       }
-    //     })
-    //   })
-    //   .catch(error => {
-    //     console.log(error.response.data.message)
-    //   })
     this.axios.post('http://localhost:3000/allmenu')
       .then(res => {
-        console.log(res.data.result)
-        res.data.result.map(data => {
-          data.src = 'http://localhost:3000' + '/images/menu/' + data.src
-          console.log(data.src)
+        this.allmenu = res.data.result.map(data => {
+          return {
+            title: data.title,
+            value: data.value,
+            type: data.type,
+            description: data.description,
+            src: 'http://localhost:3000' + '/images/menu/' + data.src,
+            id: data.id
+          }
         })
-        this.allmenu = res.data.result
-      }).catch(error => {
+      })
+      .catch(error => {
         console.log(error.response.data.message)
       })
   }
 }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
 .text{
   font-size 0.5rem
 }
@@ -187,12 +208,37 @@ export default {
 .title{
   font-size 1.5rem
 }
+.image{
+  width 5rem
+  height 5rem
+  img{
+    object-fit cover
+    width 100%
+    height 100%
+    border-radius 50%
+  }
+}
+.table{
+  border 1px black solid
+}
+.vs-table-text{
+  text-align center
+  margin auto
+}
 @media (min-width : 768px){
+  .image{
+  width 10rem
+  height 10rem
+  }
 .text{
   font-size 1.5rem
+  margin auto
 }
 .item{
   font-size 2rem
+}
+.picitem{
+  margin auto
 }
 .title{
   font-size 2rem

@@ -49,7 +49,6 @@ export default {
   data () {
     return {
       index: '',
-      activeConfirm: false,
       datas: [],
       selected: []
     }
@@ -108,7 +107,7 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
 .text{
   font-size 0.5rem
 }

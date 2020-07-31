@@ -20,6 +20,8 @@ const app = express()
 
 // 讓 express 使用 body-parser，並把收到的資料轉 json
 app.use(bodyParser.json())
+app.use(express.static('public'))
+app.use(express.static('files'))
 
 app.use(session({
   // 密鑰，加密認證資料用，無特定值
@@ -161,7 +163,7 @@ app.post('/login', async (req, res) => {
     res.send({ success: false, message: '帳號密碼錯誤' })
   }
 })
-// ---
+// ---用戶資訊(byaccount)
 app.post('/getuserinfo', async (req, res) => {
   if (!req.headers['content-type'].includes('application/json')) {
     res.status(400)
@@ -181,6 +183,47 @@ app.post('/getuserinfo', async (req, res) => {
     }
   } catch (error) {
     res.status(500)
+    res.send({ success: false, message: error })
+  }
+})
+// ---用戶清單
+app.post('/alluser', async (req, res) => {
+  try {
+    const result = await database.users.find()
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在用戶資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---刪除用戶
+app.post('/deleteuser', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式錯誤' })
+    return
+  }
+  try {
+    const result = await database.users.findOneAndRemove({ account: req.body.account })
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '' })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在用戶資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
     res.send({ success: false, message: error })
   }
 })
@@ -358,10 +401,9 @@ app.post('/allmenu', async (req, res) => {
   }
 })
 // ---菜單圖片
-app.get('/menu/:src', async (req, res) => {
-  console.log('object')
-  if (process.env.FTP === false) {
-    const path = process.cwd() + '/images/menu' + req.params.src
+app.get('/images/menu/:src', async (req, res) => {
+  if (process.env.FTP === 'false') {
+    const path = process.cwd() + '/images/menu/' + req.params.src
     const exists = fs.existsSync(path)
     if (exists) {
       res.status(200)
@@ -372,6 +414,33 @@ app.get('/menu/:src', async (req, res) => {
     }
   } else {
     res.redirect('http://' + process.env.FTP_HOST + '/' + process.env.FTP_USER + '/' + req.params.name)
+  }
+})
+app.post('/changemenu', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.menus.updateMany(
+      { title: req.body.allmenu[0].title },
+      { value: req.body.allmenu.value },
+      { description: req.body.allmenu },
+      { src: req.body.allmenu },
+      { type: req.body.allmenu }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error.errors)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
   }
 })
 
