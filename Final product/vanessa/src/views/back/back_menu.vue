@@ -217,7 +217,7 @@ export default {
             value: data.value,
             type: data.type,
             description: data.description,
-            src: 'http://localhost:3000' + '/images/menu/' + data.src,
+            src: 'http://localhost:3000' + '/images/' + data.src,
             id: data.id
           }
         })

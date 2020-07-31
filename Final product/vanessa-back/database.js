@@ -122,11 +122,12 @@ const menuSchema = new Schema(
       required: [true, '餐點名稱未填']
     },
     src: {
-      type: String
+      type: String,
+      required: [true, '圖片未上傳']
     },
     description: {
       type: String,
-      required: [true, '餐點名稱未填']
+      required: [true, '餐點描述未填']
     },
     type: {
       type: String,
@@ -142,6 +143,38 @@ const menuSchema = new Schema(
     versionKey: false
   }
 )
+const eventSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: [true, '活動標題未填']
+    },
+    src: {
+      type: String,
+      required: [true, '圖片未上傳']
+    },
+    description: {
+      type: String,
+      required: [true, '活動描述未填']
+    },
+    start: {
+      type: String,
+      required: [true, '活動日期未輸入']
+    },
+    end: {
+      type: String,
+      required: [true, '活動日期未輸入']
+    },
+    color: {
+      type: String,
+      required: [true, '圓點顏色未選']
+    }
+  },
+  {
+    // 不要紀錄資料修改次數
+    versionKey: false
+  }
+)
 
 // 建立 Model
 // mongoose.model('資料表名稱', Schema)
@@ -149,6 +182,7 @@ const menuSchema = new Schema(
 const users = mongoose.model('users', userSchema)
 const orders = mongoose.model('orders', orderSchema)
 const menus = mongoose.model('menus', menuSchema)
+const events = mongoose.model('events', eventSchema)
 const connection = mongoose.connection
 
 // 匯出變數
@@ -156,5 +190,6 @@ export default {
   users,
   orders,
   menus,
+  events,
   connection
 }
