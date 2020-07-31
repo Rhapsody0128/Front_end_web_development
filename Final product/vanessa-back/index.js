@@ -386,7 +386,7 @@ app.post('/addmeal', async (req, res) => {
 // ---菜單清單
 app.post('/allmenu', async (req, res) => {
   try {
-    const result = await database.menus.find()
+    const result = await database.menus.find().sort({ type: 1 })
     if (result !== null) {
       res.status(200)
       res.send({ success: true, message: '', result })
@@ -416,7 +416,7 @@ app.get('/images/menu/:src', async (req, res) => {
     res.redirect('http://' + process.env.FTP_HOST + '/' + process.env.FTP_USER + '/' + req.params.name)
   }
 })
-app.post('/changemenu', async (req, res) => {
+app.post('/changemeal', async (req, res) => {
   // 拒絕不是JSON的資料格式
   if (!req.headers['content-type'].includes('application/json')) {
     // 會回傳錯誤狀態碼(400)
@@ -426,18 +426,45 @@ app.post('/changemenu', async (req, res) => {
   }
   // 新增資料
   try {
-    const result = await database.menus.updateMany(
-      { title: req.body.allmenu[0].title },
-      { value: req.body.allmenu.value },
-      { description: req.body.allmenu },
-      { src: req.body.allmenu },
-      { type: req.body.allmenu }
+    console.log('object')
+    const result = await database.menus.findByIdAndUpdate(
+      { _id: req.body.id },
+      {
+        title: req.body.title,
+        value: req.body.value,
+        type: req.body.type,
+        description: req.body.description
+      }
     )
     console.log(result)
     res.status(200)
     res.send({ success: true, message: '', id: result._id, result })
   } catch (error) {
-    console.log(error.errors)
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+app.post('/deletemeal', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    console.log('object')
+    const result = await database.menus.findByIdAndRemove(
+      { _id: req.body.id }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
     const key = Object.keys(error.errors)[0]
     const message = error.errors[key].message
     res.send({ success: false, message: message })

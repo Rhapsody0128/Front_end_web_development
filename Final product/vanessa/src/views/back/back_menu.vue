@@ -39,11 +39,12 @@
   <div class="container">
     <vs-table :data="allmenu">
       <template slot="thead">
-        <vs-th  sort-key="title"><span class="item">名稱</span></vs-th>
-        <vs-th  sort-key="value"><span class="item">價格</span></vs-th>
-        <vs-th  sort-key="type"><span class="item">類型</span></vs-th>
-        <vs-th  sort-key="src"><span class="item picitem">圖片</span></vs-th>
-        <vs-th  sort-key="description"><span class="item">描述</span></vs-th>
+        <vs-th sort-key="title"><span class="item">名稱</span></vs-th>
+        <vs-th sort-key="value"><span class="item">價格</span></vs-th>
+        <vs-th sort-key="type"><span class="item">類型</span></vs-th>
+        <vs-th ><span class="item ml-5">圖片</span></vs-th>
+        <vs-th ><span class="item">描述</span></vs-th>
+        <vs-th ><span class="item">動作</span></vs-th>
       </template>
       <template slot-scope="{data}">
         <vs-tr :key="indextr" v-for="(tr, indextr) in data" >
@@ -79,7 +80,8 @@
             </template>
           </vs-td>
           <vs-td :data="tr">
-            <vs-button @click="openConfirm(tr)" color="success" type="filled">儲存更變</vs-button>
+            <vs-button @click="openConfirm(tr)" color="success" type="filled"><span class="text">儲存更變</span></vs-button>
+            <vs-button @click="openDeleteConfirm(tr)" color="danger" type="filled"><span class="text">刪除餐點</span></vs-button>
           </vs-td>
         </vs-tr>
       </template>
@@ -99,7 +101,8 @@ export default {
       description: '',
       src: null,
       state: null,
-      allmenu: []
+      allmenu: [],
+      changemeal: ''
     }
   },
   methods: {
@@ -151,9 +154,8 @@ export default {
       }
     },
     openConfirm (data) {
-      console.log(data)
+      this.changemeal = data
       this.$vs.dialog({
-        data: data,
         type: 'confirm',
         color: 'success',
         title: '確認更變',
@@ -161,20 +163,48 @@ export default {
         accept: this.acceptAlert
       })
     },
-    acceptAlert (data, color) {
+    acceptAlert (color) {
       this.$vs.notify({
         color: 'primary',
         title: '已順利更變',
         text: '已順利所選項目'
       })
-      console.log(data)
-      this.axios.post('http://localhost:3000/changemenu', {
-        id: this.id
+      this.axios.post('http://localhost:3000/changemeal', {
+        title: this.changemeal.title,
+        value: this.changemeal.value,
+        type: this.changemeal.type,
+        id: this.changemeal.id,
+        description: this.changemeal.description
       })
         .then(res => {
-          console.log(res)
-        }).catch(err => {
-          console.log(err)
+          this.$swal('完成', '已成功更變菜單', 'success')
+        }).catch(error => {
+          this.$swal('錯誤', `${error.response.data.message}`, 'error')
+        })
+    },
+    openDeleteConfirm (data) {
+      this.changemeal = data
+      this.$vs.dialog({
+        type: 'confirm',
+        color: 'danger',
+        title: '確認刪除',
+        text: '確認刪除項目嗎',
+        accept: this.acceptDeleteAlert
+      })
+    },
+    acceptDeleteAlert (color) {
+      this.$vs.notify({
+        color: 'primary',
+        title: '已順利刪除',
+        text: '已順利所選項目'
+      })
+      this.axios.post('http://localhost:3000/deletemeal', {
+        id: this.changemeal.id
+      })
+        .then(res => {
+          this.$swal('完成', '已成功刪除菜單', 'success')
+        }).catch(error => {
+          this.$swal('錯誤', `${error.response.data.message}`, 'error')
         })
     }
   },
@@ -198,7 +228,7 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
+<style lang="stylus">
 .text{
   font-size 0.5rem
 }
@@ -218,9 +248,6 @@ export default {
     border-radius 50%
   }
 }
-.table{
-  border 1px black solid
-}
 .vs-table-text{
   text-align center
   margin auto
@@ -236,9 +263,6 @@ export default {
 }
 .item{
   font-size 2rem
-}
-.picitem{
-  margin auto
 }
 .title{
   font-size 2rem

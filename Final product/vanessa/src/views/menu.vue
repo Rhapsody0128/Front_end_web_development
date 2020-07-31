@@ -191,6 +191,25 @@ export default {
       }
     }
   },
+  mounted: function () {
+    this.axios.post('http://localhost:3000/allmenu')
+      .then(res => {
+        this.menu = res.data.result.map(data => {
+          return {
+            title: data.title,
+            value: data.value,
+            type: data.type,
+            description: data.description,
+            src: 'http://localhost:3000' + '/images/menu/' + data.src,
+            popupActivo: false
+          }
+        })
+      })
+      .catch(error => {
+        console.log(error.response.data.message)
+      })
+  },
+
   components: { Flipbook }
 }
 </script>
