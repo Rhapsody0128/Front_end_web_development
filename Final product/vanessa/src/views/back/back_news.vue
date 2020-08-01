@@ -48,8 +48,7 @@
       <vs-table :data="allevent">
         <template slot="thead">
           <vs-th sort-key="title"><span class="item">活動</span></vs-th>
-          <vs-th sort-key="color"><span class="item">顏色</span></vs-th>
-          <vs-th sort-key="range"><span class="item">日期</span></vs-th>
+          <vs-th sort-key="range"><span class="item">月曆呈現</span></vs-th>
           <vs-th ><span class="item ml-5">圖片</span></vs-th>
           <vs-th ><span class="item">描述</span></vs-th>
           <vs-th ><span class="item">動作</span></vs-th>
@@ -62,16 +61,13 @@
                 <vs-input v-model="tr.title" class="inputx" placeholder="名稱"/>
               </template>
             </vs-td>
-            <vs-td :data="tr.color">
-              <div class='tablecolorstyle'>{{tr.color}}</div>
+            <vs-td :data="tr">
+              <div><v-calendar
+              :attributes=tr
+              is-expanded
+        ></v-calendar>{{[tr]}}</div>
               <template slot="edit">
 
-              </template>
-            </vs-td>
-            <vs-td :data="tr.type">
-              <span class='text'>{{tr.type}}</span>
-              <template slot="edit">
-                <b-form-select class="col-12 mt-3" v-model="tr.type" :options="alltype"></b-form-select>
               </template>
             </vs-td>
             <vs-td :data="tr.src">
@@ -112,6 +108,7 @@ export default {
         end: new Date()
       },
       allevent: ''
+
     }
   },
   methods: {
@@ -132,7 +129,52 @@ export default {
       }
     },
     addevent () {
-      console.log(this.allevent)
+      const start = this.range.start.toString().substr(4, 11).split(' ')
+      const end = this.range.end.toString().substr(4, 11).split(' ')
+      // console.log(date)
+      switch (start[0]) {
+        case 'Jan':
+          start[0] = 1
+          break
+        case 'Feb':
+          start[0] = 2
+          break
+        case 'Mar':
+          start[0] = 3
+          break
+        case 'Apr':
+          start[0] = 4
+          break
+        case 'May':
+          start[0] = 5
+          break
+        case 'Jun':
+          start[0] = 6
+          break
+        case 'Jul':
+          start[0] = 7
+          break
+        case 'Aug':
+          start[0] = 8
+          break
+        case 'Sep':
+          start[0] = 9
+          break
+        case 'Oct':
+          start[0] = 10
+          break
+        case 'Nov':
+          start[0] = 11
+          break
+        case 'Dec':
+          start[0] = 12
+          break
+      }
+
+      start[1] = parseInt(start[1])
+      start[2] = parseInt(start[2])
+      console.log(start)
+      console.log(end)
       if (this.title.length < 1) {
         this.$swal('錯誤', '未輸入活動標題', 'error')
       } else if (this.color.length < 1) {
@@ -175,10 +217,13 @@ export default {
         this.allevent = res.data.result.map(data => {
           return {
             title: data.title,
-            color: data.color,
-            range: {
+            highlight: data.color,
+            dates: {
               start: data.start,
               end: data.end
+            },
+            popover: {
+              label: data.title
             },
             description: data.description,
             src: 'http://localhost:3000' + '/images/' + data.src,

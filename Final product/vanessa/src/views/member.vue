@@ -183,12 +183,12 @@
 export default {
   data () {
     return {
-      name: 'test',
-      account: 'aaaaaaaa',
-      password: 'aaaaaaaa',
-      repassword: 'aaaaaaaa',
-      phone: '097080180',
-      email: 'adssad@',
+      name: '',
+      account: '',
+      password: '',
+      repassword: '',
+      phone: '',
+      email: '',
       loginaccount: '',
       loginpassword: '',
       checked: false

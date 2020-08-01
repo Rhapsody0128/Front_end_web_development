@@ -56,28 +56,12 @@ export default {
       ],
       attrs: [
         {
-          key: 'today',
-          highlight: 'orange',
-          popover: {
-            label: '這是今天哦~'
-          },
-          dates: new Date(),
-          event: []
-        },
-        {
           highlight: 'gray',
           popover: {
             label: '中元節'
           },
-          dates: { start: new Date(2020, 6, 1), end: new Date(2020, 6, 5) },
+          dates: { start: new Date(2020, 7, 1), end: new Date(2020, 7, 5) },
           src: './images/36271782954_f7aa950180_o.jpg'
-        },
-        {
-          highlight: 'yellow',
-          popover: {
-            label: '萬聖節'
-          },
-          dates: { start: new Date(2020, 7, 5), end: new Date(2020, 7, 25) }
         }
       ]
     }
