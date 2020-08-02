@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <v-calendar
-        :attributes='attrs'
+        :attributes='allevent'
         is-expanded
         :columns="$screens({ default: 1, lg: 2 })"
         ></v-calendar>
@@ -16,14 +16,14 @@
       <div class="col-12">
         <div>
           <b-tabs content-class="mt-3 mb-5" >
-            <b-tab v-for="(act,index) in acts" :key="index" :title="act.title" active>
+            <b-tab v-for="(event,index) in allevent" :key="index" :title="event.title" active>
               <div class="actcard d-flex flex-wrap">
-                <div class="actpic col-12 col-lg-5"><img :src="act.src">
+                <div class="actpic col-12 col-lg-5"><img :src="event.src">
                 </div>
                 <div class="acttext col-12 col-lg-6 ">
                   <div>
-                    <h3 >{{act.title}}</h3>
-                    <p >{{act.des}}</p>
+                    <h3 >{{event.title}}</h3>
+                    <p >{{event.description}}</p>
                   </div>
                 </div>
               </div>
@@ -40,31 +40,31 @@
 export default {
   data () {
     return {
-      acts: [
-        {
-          title: '中元節',
-          date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
-          des: '中元節好棒棒',
-          src: './images/human/14902862_1147369728677919_3502097085568784232_o.jpg'
-        },
-        {
-          title: '萬聖節',
-          date: [new Date(2020, 6, 1), new Date(2020, 6, 5)],
-          des: '萬聖節好棒棒',
-          src: './images/human/22894475_1527219090692979_1297712814055284220_n.jpg'
-        }
-      ],
-      attrs: [
-        {
-          highlight: 'gray',
-          popover: {
-            label: '中元節'
-          },
-          dates: { start: new Date(2020, 7, 1), end: new Date(2020, 7, 5) },
-          src: './images/36271782954_f7aa950180_o.jpg'
-        }
-      ]
+      allevent: []
     }
+  },
+  mounted: function () {
+    this.axios.post('http://localhost:3000/allevent')
+      .then(res => {
+        this.allevent = res.data.result.map(data => {
+          return {
+            highlight: data.color,
+            dates: {
+              start: new Date(data.startyear, data.startmonth - 1, data.startday),
+              end: new Date(data.endyear, data.endmonth - 1, data.endday)
+            },
+            popover: {
+              label: data.title
+            },
+            title: data.title,
+            description: data.description,
+            src: 'http://localhost:3000' + '/images/' + data.src
+          }
+        })
+      })
+      .catch(error => {
+        console.log(error.response.data.message)
+      })
   }
 }
 </script>

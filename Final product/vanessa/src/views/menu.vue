@@ -1,17 +1,20 @@
 <template>
   <div id="menu">
-    <h1 class="text-center mt-4 mb-4">菜單</h1>
-    <div id="spcialmeal" class="row flex-wrap justify-content-center">
+    <h1 class="text-center mt-4 mb-4">菜單瀏覽</h1>
+    <div v-for="(meal,index) in menu" :key="index">
+
+    <div v-if="meal.type ==='特餐'" id="spcialmeal" class="row flex-wrap justify-content-center">
       <div class="col-10 col-lg-4">
-        <img class="img-fluid img-thumbnail" :src=specialmeal.src alt />
+        <img class="img-fluid img-thumbnail" :src=meal.src alt />
       </div>
       <div class="col-10 col-lg-6 text-center d-flex flex-column justify-content-center">
         <h1>今日特餐</h1>
         <br>
         <br>
-        <h3>{{specialmeal.title}}</h3>
-        <p>{{specialmeal.description}}</p>
+        <h3>{{meal.title}}</h3>
+        <p>{{meal.description}}</p>
       </div>
+    </div>
     </div>
     <hr />
     <div id="meal" class="row justify-content-center ">
@@ -49,7 +52,7 @@
           <vs-popup class="holamundo text-center" :title=meal.title :active.sync="meal.popupActivo">
             <img class="bigpic" :src="meal.src">
             <h2>{{meal.description}}</h2>
-            <p>價格:{{meal.value}}元</p>
+            <h4>價格:{{meal.value}}元</h4>
           </vs-popup>
         </div>
       </div>
@@ -200,7 +203,7 @@ export default {
             value: data.value,
             type: data.type,
             description: data.description,
-            src: 'http://localhost:3000' + '/images/menu/' + data.src,
+            src: 'http://localhost:3000' + '/images/' + data.src,
             popupActivo: false
           }
         })

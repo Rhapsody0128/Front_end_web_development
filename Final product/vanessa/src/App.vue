@@ -1,12 +1,16 @@
 <template>
   <div id="app">
     <div id="Status">
+      <router-link v-if="name.length!=0" to="/cart">
+          <span>購物車</span>
+      </router-link>
       <span class="m-3">
         Hi~
         <span v-if="name.length!=0">{{name}}</span>
         <span v-else>遊客</span>
       </span>
       <b-button v-if="name.length!=0" @click="logout" variant="dark">登出</b-button>
+
     </div>
     <div>
       <Slide
@@ -19,7 +23,10 @@
           <span>凡妮莎</span>
         </router-link>
         <router-link to="/menu">
-          <span>菜單</span>
+          <span>菜單瀏覽</span>
+        </router-link>
+        <router-link to="/market">
+          <span>購物廣場</span>
         </router-link>
         <router-link to="/story">
           <span>關於我們</span>
@@ -30,13 +37,13 @@
         <router-link to="/location">
           <span>店家資訊</span>
         </router-link>
-        <router-link to="/member">
+        <router-link v-if="account.length < 1" to="/member">
           <span>會員專區</span>
         </router-link>
-        <router-link to="/member_login">
-          <span>會員服務</span>
+        <router-link v-else to="/member_login">
+          <span>會員專區</span>
         </router-link>
-        <router-link to="/back">
+        <router-link v-if="account=='user1234'" to="/back">
           <span>後臺管理</span>
         </router-link>
         <b-navbar class="bottomnav" >
@@ -84,6 +91,9 @@ export default {
   computed: {
     name () {
       return this.$store.getters.name
+    },
+    account () {
+      return this.$store.getters.account
     }
   },
   watch: {

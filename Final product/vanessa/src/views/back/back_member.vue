@@ -93,7 +93,6 @@ export default {
     this.axios.post('http://localhost:3000/alluser')
       .then(res => {
         this.datas = res.data.result
-        console.log(this.datas)
       }).catch(error => {
         this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })

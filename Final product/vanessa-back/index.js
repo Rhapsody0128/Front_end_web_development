@@ -93,7 +93,22 @@ app.use(cors({
   },
   credentials: true
 }))
-
+// ---獲取圖片
+app.get('/images/:src', async (req, res) => {
+  if (process.env.FTP === 'false') {
+    const path = process.cwd() + '/images/' + req.params.src
+    const exists = fs.existsSync(path)
+    if (exists) {
+      res.status(200)
+      res.sendFile(path)
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '找不到圖片' })
+    }
+  } else {
+    res.redirect('http://' + process.env.FTP_HOST + '/' + process.env.FTP_USER + '/' + req.params.src)
+  }
+})
 // ----註冊
 app.post('/registering', async (req, res) => {
   // 拒絕不是JSON的資料格式
@@ -383,6 +398,70 @@ app.post('/addmeal', async (req, res) => {
     }
   })
 })
+// 特餐更新
+app.post('/specialmeal', async (req, res) => {
+  if (!req.headers['content-type'].includes('multipart/form-data')) {
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  upload.single('src')(req, res, async error => {
+    if (error instanceof multer.MulterError) {
+      // 上傳錯誤
+      let message = ''
+      if (error.code === 'LIMIT_FILE_SIZE') {
+        message = '檔案太大'
+      } else {
+        message = '格式不符'
+      }
+      res.status(400)
+      res.send({ success: false, message })
+    } else if (error) {
+      res.status(500)
+      res.send({ success: false, message: '伺服器錯誤' })
+    } else {
+      try {
+        let result = await database.menus.findOneAndUpdate(
+          { type: req.body.type },
+          {
+            title: req.body.title,
+            value: req.body.value,
+            src: req.file.filename,
+            description: req.body.description
+          }
+        )
+
+        if (result === null) {
+          result = await database.menus.create(
+            {
+              title: req.body.title,
+              value: req.body.value,
+              type: req.body.type,
+              src: req.file.filename,
+              description: req.body.description
+            }
+          )
+        }
+        console.log(result)
+        res.status(200)
+        res.send({ success: true, message: '', result })
+      } catch (error) {
+        if (error.name === 'ValidationError') {
+          // 資料格式錯誤
+          const key = Object.keys(error.errors)[0]
+          const message = error.errors[key].message
+          res.status(400)
+          res.send({ success: false, message })
+        } else {
+          console.log(error)
+          // 伺服器錯誤
+          res.status(500)
+          res.send({ success: false, message: '伺服器錯誤' })
+        }
+      }
+    }
+  })
+})
 // ---菜單清單
 app.post('/allmenu', async (req, res) => {
   try {
@@ -400,22 +479,6 @@ app.post('/allmenu', async (req, res) => {
     res.send({ success: false, message: error })
   }
 })
-// ---菜單圖片
-app.get('/images/:src', async (req, res) => {
-  if (process.env.FTP === 'false') {
-    const path = process.cwd() + '/images/' + req.params.src
-    const exists = fs.existsSync(path)
-    if (exists) {
-      res.status(200)
-      res.sendFile(path)
-    } else {
-      res.status(404)
-      res.send({ success: false, message: '找不到圖片' })
-    }
-  } else {
-    res.redirect('http://' + process.env.FTP_HOST + '/' + process.env.FTP_USER + '/' + req.params.src)
-  }
-})
 // ---更動菜單
 app.post('/changemeal', async (req, res) => {
   // 拒絕不是JSON的資料格式
@@ -427,7 +490,6 @@ app.post('/changemeal', async (req, res) => {
   }
   // 新增資料
   try {
-    console.log('object')
     const result = await database.menus.findByIdAndUpdate(
       { _id: req.body.id },
       {
@@ -458,7 +520,6 @@ app.post('/deletemeal', async (req, res) => {
   }
   // 新增資料
   try {
-    console.log('object')
     const result = await database.menus.findByIdAndRemove(
       { _id: req.body.id }
     )
@@ -497,10 +558,14 @@ app.post('/addevent', async (req, res) => {
       try {
         const result = await database.events.create(
           {
-            start: req.body.start,
-            end: req.body.end,
             title: req.body.title,
             color: req.body.color,
+            startyear: req.body.startyear,
+            startmonth: req.body.startmonth,
+            startday: req.body.startday,
+            endyear: req.body.endyear,
+            endmonth: req.body.endmonth,
+            endday: req.body.endday,
             src: req.file.filename,
             description: req.body.description
           }
@@ -527,7 +592,7 @@ app.post('/addevent', async (req, res) => {
 // ---活動清單
 app.post('/allevent', async (req, res) => {
   try {
-    const result = await database.events.find()
+    const result = await database.events.find().sort({ startday: 1 }).sort({ startmonth: 1 }).sort({ startyear: 1 })
     if (result !== null) {
       res.status(200)
       res.send({ success: true, message: '', result })
@@ -539,6 +604,187 @@ app.post('/allevent', async (req, res) => {
     res.status(500)
     console.log(error)
     res.send({ success: false, message: error })
+  }
+})
+// ---更動活動
+app.post('/changeevent', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.events.findByIdAndUpdate(
+      { _id: req.body.id },
+      {
+        title: req.body.title,
+        startyear: req.body.startyear,
+        startmonth: req.body.startmonth,
+        startday: req.body.startday,
+        endyear: req.body.endyear,
+        endmonth: req.body.endmonth,
+        endday: req.body.endday,
+        description: req.body.description
+      }
+    )
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+// ---刪除活動
+app.post('/deleteevent', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.events.findByIdAndRemove(
+      { _id: req.body.id }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+
+// ---商品上傳
+app.post('/additem', async (req, res) => {
+  if (!req.headers['content-type'].includes('multipart/form-data')) {
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  upload.single('src')(req, res, async error => {
+    if (error instanceof multer.MulterError) {
+      // 上傳錯誤
+      let message = ''
+      if (error.code === 'LIMIT_FILE_SIZE') {
+        message = '檔案太大'
+      } else {
+        message = '格式不符'
+      }
+      res.status(400)
+      res.send({ success: false, message })
+    } else if (error) {
+      res.status(500)
+      res.send({ success: false, message: '伺服器錯誤' })
+    } else {
+      try {
+        const result = await database.markets.create(
+          {
+            title: req.body.title,
+            value: req.body.value,
+            type: req.body.type,
+            src: req.file.filename,
+            description: req.body.description,
+            stock: req.body.stock
+          }
+        )
+        res.status(200)
+        res.send({ success: true, message: '', result })
+      } catch (error) {
+        if (error.name === 'ValidationError') {
+          // 資料格式錯誤
+          const key = Object.keys(error.errors)[0]
+          const message = error.errors[key].message
+          res.status(400)
+          res.send({ success: false, message })
+        } else {
+          console.log(error)
+          // 伺服器錯誤
+          res.status(500)
+          res.send({ success: false, message: '伺服器錯誤' })
+        }
+      }
+    }
+  })
+})
+// ---商品清單
+app.post('/allmarket', async (req, res) => {
+  try {
+    const result = await database.markets.find().sort({ type: 1 })
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '沒有菜單' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---更動商品
+app.post('/changeitem', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.markets.findByIdAndUpdate(
+      { _id: req.body.id },
+      {
+        title: req.body.title,
+        value: req.body.value,
+        type: req.body.type,
+        description: req.body.description
+      }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+// ---刪除商品
+app.post('/deleteitem', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.markets.findByIdAndRemove(
+      { _id: req.body.id }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
   }
 })
 

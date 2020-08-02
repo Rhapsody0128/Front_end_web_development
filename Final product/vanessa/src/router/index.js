@@ -23,7 +23,17 @@ const routes = [
     meta: {
       transition: 'fade-in-up',
       login: false,
-      title: '菜單'
+      title: '菜單瀏覽'
+    }
+  },
+  {
+    path: '/market',
+    name: 'market',
+    component: () => import(/* webpackChunkName: "market" */ '../views/market.vue'),
+    meta: {
+      transition: 'fade-in-up',
+      login: false,
+      title: '購物廣場'
     }
   },
   {
@@ -53,6 +63,16 @@ const routes = [
     meta: {
       transition: 'fade-in-up',
       login: false,
+      title: '店家資訊'
+    }
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import(/* webpackChunkName: "cart" */ '../views/cart.vue'),
+    meta: {
+      transition: 'fade-in-up',
+      login: true,
       title: '店家資訊'
     }
   },
@@ -102,9 +122,9 @@ const routes = [
         }
       },
       {
-        path: '/back_hire',
-        name: 'back_hire',
-        component: () => import(/* webpackChunkName: "back_hire" */ '../views/back/back_hire.vue'),
+        path: '/back_market',
+        name: 'back_market',
+        component: () => import(/* webpackChunkName: "back_market" */ '../views/back/back_market.vue'),
         meta: {
           transition: 'fade-in-up',
           login: 'control',

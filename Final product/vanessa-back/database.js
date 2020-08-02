@@ -13,6 +13,7 @@ dotenv.config()
 
 const Schema = mongoose.Schema
 
+mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
 mongoose.set('useNewUrlParser', true)
 mongoose.set('useUnifiedTopology', true)
@@ -143,6 +144,67 @@ const menuSchema = new Schema(
     versionKey: false
   }
 )
+
+const marketSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: [true, '餐點名稱未填']
+    },
+    src: {
+      type: String,
+      required: [true, '圖片未上傳']
+    },
+    description: {
+      type: String,
+      required: [true, '餐點描述未填']
+    },
+    type: {
+      type: String,
+      required: [true, '類型必填']
+    },
+    value: {
+      type: Number,
+      required: [true, '定價未填']
+    },
+    stock: {
+      type: Number,
+      required: [true, '庫存必填']
+    }
+  },
+  {
+    // 不要紀錄資料修改次數
+    versionKey: false
+  }
+)
+const cartSchema = new Schema(
+  {
+    account: {
+      type: String,
+      required: [true, 'BUG_ERROR_USER_NOT_LOGIN_BUT_ORDER']
+    },
+    title: {
+      type: String,
+      required: [true, '餐點名稱未填']
+    },
+    number: {
+      type: Number,
+      required: [true, '數量未填']
+    },
+    value: {
+      type: Number,
+      required: [true, '定價未填']
+    },
+    buying: {
+      type: Boolean
+    }
+  },
+  {
+    // 不要紀錄資料修改次數
+    versionKey: false
+  }
+)
+
 const eventSchema = new Schema(
   {
     title: {
@@ -157,12 +219,28 @@ const eventSchema = new Schema(
       type: String,
       required: [true, '活動描述未填']
     },
-    start: {
-      type: String,
+    startyear: {
+      type: Number,
       required: [true, '活動日期未輸入']
     },
-    end: {
-      type: String,
+    startmonth: {
+      type: Number,
+      required: [true, '活動日期未輸入']
+    },
+    startday: {
+      type: Number,
+      required: [true, '活動日期未輸入']
+    },
+    endyear: {
+      type: Number,
+      required: [true, '活動日期未輸入']
+    },
+    endmonth: {
+      type: Number,
+      required: [true, '活動日期未輸入']
+    },
+    endday: {
+      type: Number,
       required: [true, '活動日期未輸入']
     },
     color: {
@@ -183,6 +261,8 @@ const users = mongoose.model('users', userSchema)
 const orders = mongoose.model('orders', orderSchema)
 const menus = mongoose.model('menus', menuSchema)
 const events = mongoose.model('events', eventSchema)
+const markets = mongoose.model('markets', marketSchema)
+const carts = mongoose.model('carts', cartSchema)
 const connection = mongoose.connection
 
 // 匯出變數
@@ -191,5 +271,7 @@ export default {
   orders,
   menus,
   events,
+  markets,
+  carts,
   connection
 }

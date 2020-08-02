@@ -1,5 +1,6 @@
 <template>
   <div id="back_news">
+    <h1 class="text-center mt-4 mb-4">活動新增</h1>
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -30,8 +31,8 @@
           <p>圖片請在1MB以下</p>
         </div>
         <div class="col-lg-6 col-12 mt-5 d-flex justify-content-center flex-wrap">
-          <h3 class="title mb-4 col-12">活動描述</h3>
-          <vs-textarea class="col-12" label="活動描述" v-model="description"></vs-textarea>
+          <h3 class="title mb-4 col-12">活動內容</h3>
+          <vs-textarea class="col-12" label="活動內容" v-model="description"></vs-textarea>
         </div>
       </div>
       <div class="row mt-5 justify-content-center align-items-center flex-nowrap">
@@ -44,13 +45,14 @@
       </div>
     </div>
     <hr>
+      <h1 class="text-center mt-4 mb-4">活動管理</h1>
     <div class="container">
       <vs-table :data="allevent">
         <template slot="thead">
           <vs-th sort-key="title"><span class="item">活動</span></vs-th>
-          <vs-th sort-key="range"><span class="item">月曆呈現</span></vs-th>
-          <vs-th ><span class="item ml-5">圖片</span></vs-th>
-          <vs-th ><span class="item">描述</span></vs-th>
+          <vs-th sort-key="range"><span class="item m-auto">月曆呈現</span></vs-th>
+          <vs-th ><span class="item ml-lg-5 ml-4">圖片</span></vs-th>
+          <vs-th ><span class="item">內容</span></vs-th>
           <vs-th ><span class="item">動作</span></vs-th>
         </template>
         <template slot-scope="{data}">
@@ -58,17 +60,16 @@
             <vs-td :data="tr.title">
               <span class='text'>{{tr.title}}</span>
               <template slot="edit">
-                <vs-input v-model="tr.title" class="inputx" placeholder="名稱"/>
+                <vs-input class="inputx col-12" label-placeholder="活動標題" v-model="tr.title"/>
               </template>
             </vs-td>
             <vs-td :data="tr">
-              <div><v-calendar
-              :attributes=tr
-              is-expanded
-        ></v-calendar>{{[tr]}}</div>
-              <template slot="edit">
-
-              </template>
+              <v-calendar
+              :attributes=[tr]
+            ></v-calendar>
+            <template slot="edit">
+              <v-date-picker class="w-100 col-12" mode='range' v-model='tr.dates'/>
+            </template>
             </vs-td>
             <vs-td :data="tr.src">
               <div>
@@ -77,15 +78,17 @@
                 </div>
               </div>
             </vs-td>
-            <vs-td :data="tr.description">
-              <span class='text'>{{tr.description}}</span>
+            <vs-td class="w-25" :data="tr.description">
+              <div class="overflow-hidden">
+                <span class='text'>{{tr.description}}</span>
+              </div>
               <template slot="edit">
-                <vs-textarea class="col-12" label="餐點描述" v-model="tr.description"></vs-textarea>
+                <vs-textarea class="col-12" label="活動內容" v-model="tr.description"></vs-textarea>
               </template>
             </vs-td>
             <vs-td :data="tr">
-              <vs-button @click="openConfirm(tr)" color="success" type="filled"><span class="text">儲存更變</span></vs-button>
-              <vs-button @click="openDeleteConfirm(tr)" color="danger" type="filled"><span class="text">刪除餐點</span></vs-button>
+              <vs-button class="d-block" @click="openConfirm(tr)" color="success" type="filled"><span class="btntext">儲存</span></vs-button>
+              <vs-button class="d-block" @click="openDeleteConfirm(tr)" color="danger" type="filled"><span class="btntext">刪除</span></vs-button>
             </vs-td>
           </vs-tr>
         </template>
@@ -94,21 +97,106 @@
   </div>
 </template>
 <script>
+var changedatesformat = (datastart, dataend) => {
+  const start = datastart.toString().substr(4, 11).split(' ')
+  const end = dataend.toString().substr(4, 11).split(' ')
+  switch (start[0]) {
+    case 'Jan':
+      start[0] = 1
+      break
+    case 'Feb':
+      start[0] = 2
+      break
+    case 'Mar':
+      start[0] = 3
+      break
+    case 'Apr':
+      start[0] = 4
+      break
+    case 'May':
+      start[0] = 5
+      break
+    case 'Jun':
+      start[0] = 6
+      break
+    case 'Jul':
+      start[0] = 7
+      break
+    case 'Aug':
+      start[0] = 8
+      break
+    case 'Sep':
+      start[0] = 9
+      break
+    case 'Oct':
+      start[0] = 10
+      break
+    case 'Nov':
+      start[0] = 11
+      break
+    case 'Dec':
+      start[0] = 12
+      break
+  }
+  switch (end[0]) {
+    case 'Jan':
+      end[0] = 1
+      break
+    case 'Feb':
+      end[0] = 2
+      break
+    case 'Mar':
+      end[0] = 3
+      break
+    case 'Apr':
+      end[0] = 4
+      break
+    case 'May':
+      end[0] = 5
+      break
+    case 'Jun':
+      end[0] = 6
+      break
+    case 'Jul':
+      end[0] = 7
+      break
+    case 'Aug':
+      end[0] = 8
+      break
+    case 'Sep':
+      end[0] = 9
+      break
+    case 'Oct':
+      end[0] = 10
+      break
+    case 'Nov':
+      end[0] = 11
+      break
+    case 'Dec':
+      end[0] = 12
+      break
+  }
+  start[1] = parseInt(start[1])
+  start[2] = parseInt(start[2])
+  end[1] = parseInt(end[1])
+  end[2] = parseInt(end[2])
+  return [start, end]
+}
 export default {
   data () {
     return {
-      color: 'sad',
+      color: '',
       pickcolorstyle: {},
       state: null,
-      title: 'asd',
+      title: '',
       src: null,
-      description: 'sad',
+      description: '',
       range: {
         start: new Date(),
         end: new Date()
       },
-      allevent: ''
-
+      allevent: '',
+      changeevent: ''
     }
   },
   methods: {
@@ -129,64 +217,22 @@ export default {
       }
     },
     addevent () {
-      const start = this.range.start.toString().substr(4, 11).split(' ')
-      const end = this.range.end.toString().substr(4, 11).split(' ')
-      // console.log(date)
-      switch (start[0]) {
-        case 'Jan':
-          start[0] = 1
-          break
-        case 'Feb':
-          start[0] = 2
-          break
-        case 'Mar':
-          start[0] = 3
-          break
-        case 'Apr':
-          start[0] = 4
-          break
-        case 'May':
-          start[0] = 5
-          break
-        case 'Jun':
-          start[0] = 6
-          break
-        case 'Jul':
-          start[0] = 7
-          break
-        case 'Aug':
-          start[0] = 8
-          break
-        case 'Sep':
-          start[0] = 9
-          break
-        case 'Oct':
-          start[0] = 10
-          break
-        case 'Nov':
-          start[0] = 11
-          break
-        case 'Dec':
-          start[0] = 12
-          break
-      }
-
-      start[1] = parseInt(start[1])
-      start[2] = parseInt(start[2])
-      console.log(start)
-      console.log(end)
       if (this.title.length < 1) {
         this.$swal('錯誤', '未輸入活動標題', 'error')
       } else if (this.color.length < 1) {
         this.$swal('錯誤', '未圓點選擇顏色', 'error')
       } else if (this.description.length < 1) {
-        this.$swal('錯誤', '無活動描述', 'error')
+        this.$swal('錯誤', '無活動內容', 'error')
       } else {
         const fd = new FormData()
         fd.append('title', this.title)
         fd.append('color', this.color)
-        fd.append('start', this.range.start)
-        fd.append('end', this.range.end)
+        fd.append('startyear', changedatesformat(this.range.start, this.range.end)[0][2])
+        fd.append('startmonth', changedatesformat(this.range.start, this.range.end)[0][0])
+        fd.append('startday', changedatesformat(this.range.start, this.range.end)[0][1])
+        fd.append('endyear', changedatesformat(this.range.start, this.range.end)[1][2])
+        fd.append('endmonth', changedatesformat(this.range.start, this.range.end)[1][0])
+        fd.append('endday', changedatesformat(this.range.start, this.range.end)[1][1])
         fd.append('src', this.src)
         fd.append('description', this.description)
         this.title = ''
@@ -209,22 +255,83 @@ export default {
             this.$swal('錯誤', `${error.response.data.message}`, 'error')
           })
       }
+    },
+    openConfirm (data) {
+      this.changeevent = data
+      this.$vs.dialog({
+        type: 'confirm',
+        color: 'success',
+        title: '確認更變',
+        text: '確認更變項目嗎',
+        accept: this.acceptAlert
+      })
+    },
+    acceptAlert (color) {
+      this.$vs.notify({
+        color: 'primary',
+        title: '已順利更變',
+        text: '已順利所選項目'
+      })
+      console.log(changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[0][1])
+      this.axios.post('http://localhost:3000/changeevent', {
+        title: this.changeevent.title,
+        startyear: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[0][2],
+        startmonth: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[0][0],
+        startday: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[0][1],
+        endyear: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[1][2],
+        endmonth: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[1][0],
+        endday: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[1][1],
+        id: this.changeevent.id,
+        description: this.changeevent.description
+      })
+        .then(res => {
+          this.$swal('完成', '已成功更變菜單', 'success')
+          console.log(res)
+        }).catch(error => {
+          this.$swal('錯誤', `${error.response.data.message}`, 'error')
+        })
+    },
+    openDeleteConfirm (data) {
+      this.changeevent = data
+      this.$vs.dialog({
+        type: 'confirm',
+        color: 'danger',
+        title: '確認刪除',
+        text: '確認刪除項目嗎',
+        accept: this.acceptDeleteAlert
+      })
+    },
+    acceptDeleteAlert (color) {
+      this.$vs.notify({
+        color: 'primary',
+        title: '已順利刪除',
+        text: '已順利所選項目'
+      })
+      this.axios.post('http://localhost:3000/deleteevent', {
+        id: this.changeevent.id
+      })
+        .then(res => {
+          this.$swal('完成', '已成功刪除活動', 'success')
+        }).catch(error => {
+          this.$swal('錯誤', `${error.response.data.message}`, 'error')
+        })
     }
   },
+
   mounted: function () {
     this.axios.post('http://localhost:3000/allevent')
       .then(res => {
         this.allevent = res.data.result.map(data => {
           return {
-            title: data.title,
             highlight: data.color,
             dates: {
-              start: data.start,
-              end: data.end
+              start: new Date(data.startyear, data.startmonth - 1, data.startday),
+              end: new Date(data.endyear, data.endmonth - 1, data.endday)
             },
             popover: {
               label: data.title
             },
+            title: data.title,
             description: data.description,
             src: 'http://localhost:3000' + '/images/' + data.src,
             id: data.id
@@ -238,6 +345,9 @@ export default {
 }
 </script>
 <style lang="stylus">
+.btntext{
+  font-size 0.2rem !important
+}
 .text{
   font-size 0.5rem
 }
@@ -275,27 +385,31 @@ export default {
   text-shadow 0rem 0rem 0.3rem black
   font-size 2rem
 }
+.material-icons{
+  font-size 0px !important
+  background red
+}
 @media (min-width : 768px){
   .image{
   width 10rem
   height 10rem
   }
-.text{
-  font-size 1.5rem
-  margin auto
-}
-.item{
-  font-size 2rem
-}
-.picitem{
-  margin auto
-}
-.title{
-  font-size 2rem
+  .text{
+    font-size 1.5rem
+    margin auto
+  }
+  .item{
+    font-size 2rem
+  }
+  .picitem{
+    margin auto
+  }
+  .title{
+    font-size 2rem
+  }
+  .btntext{
+  font-size 1rem !important
   }
 }
-.material-icons{
-  font-size 0px !important
-  background red
-}
+
 </style>

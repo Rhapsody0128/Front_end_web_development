@@ -65,7 +65,8 @@ export default {
       style: 0,
       boxstyle: {},
       mainstyle: {
-        transition: '1s'
+        transition: '1s',
+        background: "url('./images/atmosphere/1446024551-3704374595.jpg')no-repeat center/cover"
       },
       styledetail: [
         {
