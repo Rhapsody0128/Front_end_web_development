@@ -185,7 +185,11 @@ const cartSchema = new Schema(
     },
     title: {
       type: String,
-      required: [true, '餐點名稱未填']
+      required: [true, '商品名稱未選擇']
+    },
+    itemid: {
+      type: String,
+      required: [true, '商品未選擇']
     },
     number: {
       type: Number,

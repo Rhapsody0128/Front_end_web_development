@@ -37,7 +37,7 @@
             <img class="bigpic" :src="item.src">
             <h2>{{item.description}}</h2>
             <h4>價格:{{item.value}}元</h4>
-            <vs-button class="mb-3" @click="additem(item.id,number,item.stock,item.title,item.value)" color="success" type="filled">加入購物車</vs-button>
+            <vs-button class="mb-3" @click="additem(item.id,number,item.stock,item.title,item.value,item.src)" color="success" type="filled">加入購物車</vs-button>
             <vs-input type="number" v-model="number" class="inputx m-auto mt-3" placeholder="數量"/>
           </vs-popup>
         </div>
@@ -63,7 +63,7 @@ export default {
     toggleAll (checked) {
       this.selected = checked ? this.flavours.slice() : []
     },
-    additem (id, number, stock, title, value) {
+    additem (id, number, stock, title, value, src) {
       if (this.account.length < -1) {
         this.$swal('錯誤', '請先登入會員', 'error')
         this.$router.push('/member')
@@ -83,14 +83,40 @@ export default {
           }).then((result) => {
             if (result.value) {
               this.$swal('確認', '已收到您的訂單，會盡速幫您處裡', 'success')
-              this.$store.commit('addcart', [id, number, title, value])
-              console.log(this.cart)
+              this.axios.post('http://localhost:3000/addcart', {
+                account: this.account,
+                title: title,
+                itemid: id,
+                src: src,
+                number: number,
+                value: value,
+                buying: true
+              })
+                .then(res => {
+                  console.log(res)
+                })
+                .catch(error => {
+                  console.log(error.response.data.message)
+                })
             }
           })
         } else {
           this.$swal('確認', '已加入購物車', 'success')
-          this.$store.commit('addcart', [id, number, title, value])
-          console.log(this.cart)
+          this.axios.post('http://localhost:3000/addcart', {
+            account: this.account,
+            title: title,
+            itemid: id,
+            src: src,
+            number: number,
+            value: value,
+            buying: true
+          })
+            .then(res => {
+              console.log(res)
+            })
+            .catch(error => {
+              console.log(error.response.data.message)
+            })
         }
       }
     },
@@ -104,9 +130,6 @@ export default {
   computed: {
     account () {
       return this.$store.getters.account
-    },
-    cart () {
-      return this.$store.getters.cart
     }
   },
   watch: {

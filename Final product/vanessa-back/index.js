@@ -398,7 +398,7 @@ app.post('/addmeal', async (req, res) => {
     }
   })
 })
-// 特餐更新
+// ---特餐更新
 app.post('/specialmeal', async (req, res) => {
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
@@ -663,7 +663,6 @@ app.post('/deleteevent', async (req, res) => {
     res.send({ success: false, message: message })
   }
 })
-
 // ---商品上傳
 app.post('/additem', async (req, res) => {
   if (!req.headers['content-type'].includes('multipart/form-data')) {
@@ -785,6 +784,58 @@ app.post('/deleteitem', async (req, res) => {
     const key = Object.keys(error.errors)[0]
     const message = error.errors[key].message
     res.send({ success: false, message: message })
+  }
+})
+// ---上傳購物車
+app.post('/addcart', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  try {
+    let result = await database.carts.findOneAndUpdate(
+      { itemid: req.body.itemid, account: req.body.account },
+      {
+        number: req.body.number
+      }
+    )
+    console.log(result)
+    if (result === null) {
+      console.log(req.body.title)
+      console.log(req.body.itemid)
+      console.log(req.body.src)
+      console.log(req.body.number)
+      console.log(req.body.title)
+      console.log(req.body.title)
+      result = await database.carts.create(
+        {
+          account: req.body.account,
+          title: req.body.title,
+          itemid: req.body.itemid,
+          src: req.body.src,
+          number: req.body.number,
+          value: req.body.value,
+          buying: req.body.buying
+        }
+      )
+    }
+    res.status(200)
+    res.send({ success: true, message: '', result })
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      // 資料格式錯誤
+      const key = Object.keys(error.errors)[0]
+      const message = error.errors[key].message
+      res.status(400)
+      res.send({ success: false, message })
+    } else {
+      // console.log(error)
+      // 伺服器錯誤
+      res.status(500)
+      res.send({ success: false, message: '伺服器錯誤' })
+    }
   }
 })
 
