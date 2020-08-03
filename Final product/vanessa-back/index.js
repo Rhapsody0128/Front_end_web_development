@@ -794,31 +794,6 @@ app.post('/addcart', async (req, res) => {
     res.send({ success: false, message: '格式不符' })
     return
   }
-<<<<<<< HEAD
-  try {
-    let result = await database.carts.findOneAndUpdate(
-      { itemid: req.body.itemid, account: req.body.account },
-      {
-        number: req.body.number
-      }
-    )
-    console.log(result)
-    if (result === null) {
-      console.log(req.body.title)
-      console.log(req.body.itemid)
-      console.log(req.body.src)
-      console.log(req.body.number)
-      console.log(req.body.title)
-      console.log(req.body.title)
-      result = await database.carts.create(
-        {
-          account: req.body.account,
-          title: req.body.title,
-          itemid: req.body.itemid,
-          src: req.body.src,
-          number: req.body.number,
-          value: req.body.value,
-=======
 
   try {
     let result = await database.carts.findOneAndUpdate(
@@ -836,7 +811,6 @@ app.post('/addcart', async (req, res) => {
           number: req.body.number,
           value: req.body.value,
           src: req.body.src,
->>>>>>> master
           buying: req.body.buying
         }
       )
@@ -851,19 +825,13 @@ app.post('/addcart', async (req, res) => {
       res.status(400)
       res.send({ success: false, message })
     } else {
-<<<<<<< HEAD
-      // console.log(error)
-=======
       console.log(error)
->>>>>>> master
       // 伺服器錯誤
       res.status(500)
       res.send({ success: false, message: '伺服器錯誤' })
     }
   }
 })
-<<<<<<< HEAD
-=======
 // ---購物車清單
 app.post('/getusercart', async (req, res) => {
   if (!req.headers['content-type'].includes('application/json')) {
@@ -1046,7 +1014,6 @@ app.post('/allcartorder', async (req, res) => {
     res.send({ success: false, message: error })
   }
 })
->>>>>>> master
 
 // 啟動網頁伺服器
 app.listen(3000, () => {
