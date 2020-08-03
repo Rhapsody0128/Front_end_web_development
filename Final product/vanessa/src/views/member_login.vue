@@ -302,6 +302,7 @@ export default {
     bottom 0
     margin auto
     transition 0.5s
+    transform: rotateY(0deg) translateZ(400px);
   }
   .check{
     position: absolute;
@@ -310,7 +311,7 @@ export default {
     top 0
     bottom 0
     margin auto
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateZ(400px);
     background black
     pointer-events: none
     transition 0.5s

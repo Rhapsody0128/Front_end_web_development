@@ -1,33 +1,34 @@
 <template>
   <div id="back_order">
-    <div class="row">
+    <div :style="allstyle" class='all'>
+    <div :style="cartorderstyle" class="row cartorder">
         <div class="col">
-            <vs-table multiple v-model="selected" :data="datas">
+            <vs-table class='table' multiple v-model="selected" :data="datas">
               <template slot="header">
                 <h1 class="title text-center">訂單資訊</h1>
               </template>
               <template slot="thead">
-                <vs-th sort-key="account" class="item p-lg-3">帳號</vs-th>
-                <vs-th sort-key="title" class="item p-lg-3">項目</vs-th>
-                <vs-th sort-key="number" class="item p-lg-3">數量</vs-th>
-                <vs-th sort-key="value" class="item p-lg-3">單價</vs-th>
-                <vs-th sort-key="id" class="item p-lg-3">訂單編號</vs-th>
+                <vs-th sort-key="account" class="item ">帳號</vs-th>
+                <vs-th sort-key="title" class="item ">項目</vs-th>
+                <vs-th sort-key="number" class="item ">數量</vs-th>
+                <vs-th sort-key="value" class="item ">單價</vs-th>
+                <vs-th sort-key="id" class="item ">訂單編號</vs-th>
               </template>
               <template slot-scope="{data}">
                 <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].account">
+                  <vs-td class="border" v-if="!data[indextr].finish" :data="data[indextr].account">
                     <span class="text">{{data[indextr].account}}</span>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].title">
-                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></span>
+                  <vs-td class="border" v-if="!data[indextr].finish" :data="data[indextr].title">
+                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br><br></span>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].number">
-                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></span>
+                  <vs-td class="border" v-if="!data[indextr].finish" :data="data[indextr].number">
+                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br><br></span>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].value">
-                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></span>
+                  <vs-td class="border" v-if="!data[indextr].finish" :data="data[indextr].value">
+                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br><br></span>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].id">
+                  <vs-td v-if="!data[indextr].finish" :data="data[indextr].id">
                     <span class="text">{{data[indextr].id}}</span>
                   </vs-td >
                 </vs-tr>
@@ -35,14 +36,61 @@
             </vs-table>
             <h4 class="text-right">所選定單總價為:{{allvalue}}元</h4>
             <div class="d-flex mt-3 justify-content-center mb-5">
-              <div class="col-lg-3 col-6 d-flex justify-content-center">
-                <vs-button @click="openConfirm()" color="success" type="filled">結案</vs-button>
+              <div class="col-lg-3 col-4 d-flex justify-content-center">
+                <vs-button @click="openConfirm()" color="primary" type="filled">結案</vs-button>
               </div>
-              <div class="col-lg-3 col-6 d-flex justify-content-center">
+              <div class="col-lg-3 col-4 d-flex justify-content-center">
                 <vs-button @click="openDeleteConfirm()" color="danger" type="filled">刪除</vs-button>
+              </div>
+              <div class="col-lg-3 col-4 d-flex justify-content-center">
+                <vs-button @click='changetoggle' color="success" type="filled">已結案訂單</vs-button>
               </div>
             </div>
         </div>
+    </div>
+    <div :style="finishstyle" class="row finish">
+        <div class="col">
+            <vs-table class='table' multiple v-model="selected" :data="datas">
+              <template slot="header">
+                <h1 class="title text-center">已結案訂單</h1>
+              </template>
+              <template slot="thead">
+                <vs-th sort-key="account" class="item ">帳號</vs-th>
+                <vs-th sort-key="title" class="item ">項目</vs-th>
+                <vs-th sort-key="number" class="item ">數量</vs-th>
+                <vs-th sort-key="value" class="item ">單價</vs-th>
+                <vs-th sort-key="id" class="item ">訂單編號</vs-th>
+              </template>
+              <template slot-scope="{data}">
+                <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
+                  <vs-td class="border" v-if="data[indextr].finish" :data="data[indextr].account">
+                    <span  class="text">{{data[indextr].account}}</span>
+                  </vs-td>
+                  <vs-td class="border" v-if="data[indextr].finish" :data="data[indextr].title">
+                    <span  v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br><br></span>
+                  </vs-td>
+                  <vs-td class="border" v-if="data[indextr].finish" :data="data[indextr].number">
+                    <span  v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br><br></span>
+                  </vs-td>
+                  <vs-td class="border" v-if="data[indextr].finish" :data="data[indextr].value">
+                    <span  v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br><br></span>
+                  </vs-td>
+                  <vs-td v-if="data[indextr].finish" :data="data[indextr].id">
+                    <span  class="text">{{data[indextr].id}}</span>
+                  </vs-td >
+                </vs-tr>
+              </template>
+            </vs-table>
+            <div class="d-flex mt-3 justify-content-center mb-5">
+              <div class="col-lg-3 col-6 d-flex justify-content-center">
+                <vs-button @click="openDeleteConfirm()" color="danger" type="filled">刪除</vs-button>
+              </div>
+              <div class="col-lg-3 col-6 d-flex justify-content-center">
+                <vs-button @click='changetoggle' color="success" type="filled">已結案訂單</vs-button>
+              </div>
+            </div>
+        </div>
+    </div>
     </div>
   </div>
 </template>
@@ -52,10 +100,43 @@ export default {
     return {
       index: '',
       datas: [],
-      selected: []
+      selected: [],
+      allstyle: '',
+      cartorderstyle: '',
+      finishstyle: '',
+      toggle: false
     }
   },
   methods: {
+    changetoggle () {
+      this.toggle = !this.toggle
+      this.selected = []
+      if (this.toggle) {
+        this.allstyle = {
+          transform: 'rotateY(180deg)'
+        }
+        this.cartorderstyle = {
+          pointerEvents: 'none',
+          opacity: '0'
+        }
+        this.finishstyle = {
+          pointerEvents: 'auto',
+          opacity: '1'
+        }
+      } else {
+        this.allstyle = {
+          transform: 'rotateY(0deg)'
+        }
+        this.cartorderstyle = {
+          pointerEvents: 'auto',
+          opacity: '1'
+        }
+        this.finishstyle = {
+          pointerEvents: 'none',
+          opacity: '0'
+        }
+      }
+    },
     openConfirm () {
       this.$vs.dialog({
         type: 'confirm',
@@ -157,6 +238,7 @@ export default {
     this.axios.post('http://localhost:3000/allcartorder')
       .then(res => {
         this.datas = res.data.result
+        console.log(this.datas)
       }).catch(error => {
         this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
@@ -175,7 +257,46 @@ export default {
 }
 .vs-icon{
   font-size 0rem !important
+  dipalay:none
 }
+.checkbox_x{
+  display none
+}
+.all{
+    transform-style: preserve-3d
+    position relative
+    top 0
+    right 0
+    left 0
+    bottom 0
+    margin auto
+    transform: rotateY(0deg) translateZ(400px);
+    transition 1s
+    .cartorder{
+      position: absolute;
+      right 0
+      left 0
+      top 0
+      bottom 0
+      transform: rotateY(0deg) translateZ(400px);
+      margin auto
+      background white
+      transition 0.5s
+    }
+    .finish{
+      position: absolute;
+      right 0
+      left 0
+      top 0
+      bottom 0
+      margin auto
+      transform: rotateY(180deg) translateZ(400px);
+      background white
+      pointer-events: none
+      transition 0.5s
+      opacity 0
+    }
+  }
 @media (min-width : 768px){
 .text{
   font-size 1.5rem

@@ -19,37 +19,37 @@
   <div id="text" class='container'>
     <transition name="fade">
     <div v-if="style===0" class="aa">
-          <h1 v-text="styledetail[0].title"></h1>
+          <h1 class="title" v-text="styledetail[0].title"></h1>
           <p v-text="styledetail[0].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===1" class="bb">
-          <h1 v-text="styledetail[1].title"></h1>
+          <h1 class="title" v-text="styledetail[1].title"></h1>
           <p v-text="styledetail[1].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===2" class="cc">
-          <h1 v-text="styledetail[2].title"></h1>
+          <h1 class="title" v-text="styledetail[2].title"></h1>
           <p v-text="styledetail[2].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===3" class="dd">
-          <h1 v-text="styledetail[3].title"></h1>
+          <h1 class="title" v-text="styledetail[3].title"></h1>
           <p v-text="styledetail[3].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===4" class="ee">
-          <h1 v-text="styledetail[4].title"></h1>
+          <h1 class="title" v-text="styledetail[4].title"></h1>
           <p v-text="styledetail[4].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===5" class="ff">
-          <h1 v-text="styledetail[5].title"></h1>
+          <h1 class="title" v-text="styledetail[5].title"></h1>
           <p v-text="styledetail[5].description"></p>
     </div>
 </transition>
@@ -259,8 +259,8 @@ export default {
       text-shadow black 0.3rem 0.3rem 0.3rem
     }
   #all {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
       transform-style:preserve-3d
       transform: rotate3d(0, 0, 0, 0deg);
       margin: auto;
@@ -284,27 +284,30 @@ export default {
   }
   .a {
     // background: rgba(255, 255, 0, 0.2);
-    transform: translateZ(125px);
+    transform: translateZ(100px);
   }
   .b {
     // background: rgba(0,0, 0, 0.2);
-    transform: rotateY(180deg) translateZ(125px);
+    transform: rotateY(180deg) translateZ(100px);
   }
   .c {
     // background:  rgba(255,0, 0, 0.2)
-    transform: rotateY(90deg) translateZ(125px);
+    transform: rotateY(90deg) translateZ(100px);
   }
   .d {
     // background:  rgba(0,255, 0, 0.2);
-    transform: rotateY(-90deg) translateZ(125px);
+    transform: rotateY(-90deg) translateZ(100px);
   }
   .e {
     // background:  rgba(0,0, 255, 0.2)
-    transform: rotateX(90deg) translateZ(125px);
+    transform: rotateX(90deg) translateZ(100px);
   }
   .f {
     // background:  rgba(0,255, 255, 0.2)
-    transform: rotateX(-90deg) translateZ(125px);
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+  .title{
+    font-size:2rem
   }
   @media (min-width : 768px) {
     #all {
@@ -340,6 +343,9 @@ export default {
       /* background: transparent; */
       transform: rotateX(-90deg) translateZ(200px);
     }
+    .title{
+    font-size:3rem
+  }
   }
   .fade-enter-active, .fade-leave-active {
       position absolute

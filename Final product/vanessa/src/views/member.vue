@@ -374,7 +374,7 @@ export default {
     left 0
     bottom 0
     margin auto
-    transform: rotateY(0deg);
+    transform: rotateY(0deg) translateZ(400px);
     transition 1s
     .login{
       position: absolute;
@@ -393,7 +393,7 @@ export default {
       top 0
       bottom 0
       margin auto
-      transform: rotateY(180deg);
+      transform: rotateY(180deg) translateZ(400px);
       background white
       pointer-events: none
       transition 0.5s

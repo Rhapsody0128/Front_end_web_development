@@ -43,7 +43,9 @@
     </div>
     <hr>
     <div class="container">
-      <router-view></router-view>
+      <vue-page-transition name="fade-in-up">
+        <router-view />
+      </vue-page-transition>
     </div>
   </div>
 </template>

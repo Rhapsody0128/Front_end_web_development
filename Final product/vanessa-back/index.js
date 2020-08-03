@@ -832,7 +832,7 @@ app.post('/addcart', async (req, res) => {
     }
   }
 })
-// ---購物車清單
+// ---購物車清單(byaccount)
 app.post('/getusercart', async (req, res) => {
   if (!req.headers['content-type'].includes('application/json')) {
     res.status(400)
@@ -897,6 +897,30 @@ app.post('/deletecart', async (req, res) => {
     console.log(result)
     res.status(200)
     res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+// 清空購物車(byaccount)
+app.post('/clearcart', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.carts.findOneAndRemove(
+      { account: req.body.account, buying: req.body.buying }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', result })
   } catch (error) {
     console.log(error)
     const key = Object.keys(error.errors)[0]
@@ -995,12 +1019,26 @@ app.post('/finishcartorder', async (req, res) => {
 // ---訂單清單
 app.post('/allcartorder', async (req, res) => {
   try {
-    const finished = await database.cartorders.find()
+    const result = await database.cartorders.find()
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在訂單資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---訂單清單(byaccount)
+app.post('/getusercartorder', async (req, res) => {
+  try {
     const result = await database.cartorders.find({
-      finish: false
+      account: req.body.account
     })
-    console.log(result)
-    console.log(finished)
     if (result !== null) {
       res.status(200)
       res.send({ success: true, message: '', result })

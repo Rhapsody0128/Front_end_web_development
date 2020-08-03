@@ -1,7 +1,7 @@
 <template>
   <div id="market">
     <h1 class="text-center mt-4 mb-4">購物廣場</h1>
-    <div class="row justify-content-center ">
+    <div class="row justify-content-center m-0">
       <div class="col-10 col-lg-2 ">
         <b-form-group>
           <template v-slot:label>

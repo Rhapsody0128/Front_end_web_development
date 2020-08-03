@@ -109,8 +109,8 @@ export default {
 .title{
   font-size 1.5rem
 }
-.vs-icon{
-  font-size 0rem !important
+.checkbox_x{
+  display none
 }
 @media (min-width : 768px){
 .text{

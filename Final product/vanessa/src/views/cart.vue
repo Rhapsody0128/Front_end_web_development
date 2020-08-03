@@ -3,7 +3,7 @@
     <h1 class="text-center mt-4 mb-4">購物車</h1>
     <div :style="allstyle" class="container all">
       <div :style="cartstyle" class="cart">
-        <h1 class="text-center mt-4 mb-4">未送出訂單</h1>
+        <h2 class="text-center mt-4 mb-4">未送出訂單</h2>
         <vs-table :data="cart">
           <template slot="thead">
             <vs-th sort-key="title">
@@ -57,8 +57,7 @@
                   class="d-block"
                   @click="openDeleteConfirm(tr)"
                   color="danger"
-                  type="filled"
-                >
+                  type="filled">
                   <span class="btntext">刪除</span>
                 </vs-button>
               </vs-td>
@@ -81,10 +80,17 @@
             </vs-button>
           </div>
         </div>
-        <button @click="changetoggle" class="btn btn-light toggle mt-5">確認歷史訂單</button>
+        <div class="row justify-content-center">
+          <div class="col-lg-2 col-6 d-flex justify-content-center">
+            <button @click="changetoggle(3)" class=" btn btn-light mt-5 mb-5">訂單查詢</button>
+          </div>
+          <div class="col-lg-2 col-6 d-flex justify-content-center">
+            <button @click="changetoggle(2)" class=" btn btn-light mt-5 mb-5">訂購紀錄</button>
+          </div>
+        </div>
       </div>
       <div :style="orderingstyle" class="ordering">
-        <h1 class="text-center mt-4 mb-4">歷史訂單</h1>
+        <h2 class="text-center mt-4 mb-4">訂購紀錄</h2>
         <vs-table :data="cart">
           <template slot="thead">
             <vs-th sort-key="title">
@@ -101,6 +107,9 @@
             </vs-th>
             <vs-th>
               <span class="item ml-lg-5 ml-4">圖片</span>
+            </vs-th>
+            <vs-th>
+              <span class="item ml-lg-5 ml-4">清除</span>
             </vs-th>
           </template>
           <template slot-scope="{data}">
@@ -124,10 +133,110 @@
                   </div>
                 </div>
               </vs-td>
+              <vs-td v-if="tr.buying!=true" :data="tr">
+                <div class="p-5">
+                  <vs-button
+                  class="d-block"
+                  @click="openDeleteConfirm(tr)"
+                  color="danger"
+                  type="filled">
+                  <span class="btntext">清除</span>
+                </vs-button>
+                </div>
+              </vs-td>
             </vs-tr>
           </template>
         </vs-table>
-        <button @click="changetoggle" class="btn btn-light toggle mt-5">購物車</button>
+        <div class="row justify-content-center">
+          <div class="col-lg-2 col-6 d-flex justify-content-center">
+            <button @click="changetoggle(1)" class=" btn btn-light mt-5 mb-5">購物車</button>
+          </div>
+          <div class="col-lg-2 col-6 d-flex justify-content-center">
+            <button @click="changetoggle(3)" class=" btn btn-light mt-5 mb-5">訂單查詢</button>
+          </div>
+        </div>
+      </div>
+      <div :style="historystyle" class="history">
+        <h2 class="text-center mt-4 mb-4">訂單查詢</h2>
+
+      <div class="row">
+        <div class="col">
+            <vs-table class='table' :data="history">
+              <template slot="header">
+                <h1 class="title text-center">處理中訂單</h1>
+              </template>
+              <template slot="thead">
+                <vs-th sort-key="account" class="item p-lg-3">帳號</vs-th>
+                <vs-th sort-key="title" class="item p-lg-3">項目</vs-th>
+                <vs-th sort-key="number" class="item p-lg-3">數量</vs-th>
+                <vs-th sort-key="value" class="item p-lg-3">單價</vs-th>
+                <vs-th sort-key="id" class="item p-lg-3">訂單編號</vs-th>
+              </template>
+              <template slot-scope="{data}">
+                <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
+                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].account">
+                    <span class="text">{{data[indextr].account}}</span>
+                  </vs-td>
+                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].title">
+                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></span>
+                  </vs-td>
+                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].number">
+                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></span>
+                  </vs-td>
+                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].value">
+                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></span>
+                  </vs-td>
+                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].id">
+                    <span class="text">{{data[indextr].id}}</span>
+                  </vs-td >
+                </vs-tr>
+              </template>
+            </vs-table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <vs-table class='table' :data="history">
+              <template slot="header">
+                <h1 class="title text-center">已處理訂單</h1>
+              </template>
+              <template slot="thead">
+                <vs-th sort-key="account" class="item p-lg-3">帳號</vs-th>
+                <vs-th sort-key="title" class="item p-lg-3">項目</vs-th>
+                <vs-th sort-key="number" class="item p-lg-3">數量</vs-th>
+                <vs-th sort-key="value" class="item p-lg-3">單價</vs-th>
+                <vs-th sort-key="id" class="item p-lg-3">訂單編號</vs-th>
+              </template>
+              <template slot-scope="{data}">
+                <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
+                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].account">
+                    <span class="text">{{data[indextr].account}}</span>
+                  </vs-td>
+                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].title">
+                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></span>
+                  </vs-td>
+                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].number">
+                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></span>
+                  </vs-td>
+                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].value">
+                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></span>
+                  </vs-td>
+                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].id">
+                    <span class="text">{{data[indextr].id}}</span>
+                  </vs-td >
+                </vs-tr>
+              </template>
+            </vs-table>
+        </div>
+      </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-2 col-6 d-flex justify-content-center">
+            <button @click="changetoggle(1)" class=" btn btn-light mt-5 mb-5">購物車</button>
+          </div>
+          <div class="col-lg-2 col-6 d-flex justify-content-center">
+            <button @click="changetoggle(2)" class=" btn btn-light mt-5 mb-5">訂購紀錄</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -145,7 +254,7 @@ export default {
       allstyle: {},
       cartstyle: {},
       orderingstyle: {},
-      toggle: false,
+      historystyle: {},
       block: true,
       cartorder: {
         account: '',
@@ -156,7 +265,8 @@ export default {
         src: [],
         buying: '',
         finish: ''
-      }
+      },
+      history: []
     }
   },
   computed: {
@@ -253,70 +363,93 @@ export default {
               this.$swal('錯誤', '商品數量不能為負數或零', 'error')
             }
           })
-          if (this.block) {
-            this.block = true
-            this.cart.forEach(data => {
-              if (data.buying) {
-                this.axios.post('http://localhost:3000/buyingcart', {
-                  id: data.id,
-                  buying: false
-                })
-                  .catch(error => {
-                    console.log(error.response.data.message)
+          const judge = this.cart.filter(data => {
+            return data.buying === true
+          })
+          if (judge.length > 0) {
+            if (this.block) {
+              this.block = true
+              this.cart.forEach(data => {
+                if (data.buying) {
+                  this.axios.post('http://localhost:3000/buyingcart', {
+                    id: data.id,
+                    buying: false
                   })
-              }
-            })
-            this.cartorder.account = this.account
-            this.cartorder.buying = false
-            this.cartorder.finish = false
-            this.cart.forEach(data => {
-              if (data.buying) {
-                this.cartorder.itemid.push(data.itemid)
-                this.cartorder.title.push(data.title)
-                this.cartorder.number.push(parseInt(data.number))
-                this.cartorder.value.push(data.value)
-                this.cartorder.src.push(data.src)
-              }
-            })
-            this.axios.post('http://localhost:3000/cartorder', this.cartorder)
-              .then(res => {
-                this.$swal('確認', `已收到您的訂單您的訂單編號為${res.data.result.id}`, 'success')
-                this.cartorder = {
-                  account: '',
-                  itemid: [],
-                  title: [],
-                  number: [],
-                  value: [],
-                  src: [],
-                  buying: '',
-                  finish: ''
+                    .catch(error => {
+                      console.log(error.response.data.message)
+                    })
                 }
               })
-              .catch(error => {
-                console.log(error.response.data.message)
+              this.cartorder.account = this.account
+              this.cartorder.buying = false
+              this.cartorder.finish = false
+              this.cart.forEach(data => {
+                if (data.buying) {
+                  this.cartorder.itemid.push(data.itemid)
+                  this.cartorder.title.push(data.title)
+                  this.cartorder.number.push(parseInt(data.number))
+                  this.cartorder.value.push(data.value)
+                  this.cartorder.src.push(data.src)
+                }
               })
+              this.axios.post('http://localhost:3000/cartorder', this.cartorder)
+                .then(res => {
+                  this.$swal('確認', `已收到您的訂單，您的訂單編號為${res.data.result.id}`, 'success')
+                  this.cartorder = {
+                    account: '',
+                    itemid: [],
+                    title: [],
+                    number: [],
+                    value: [],
+                    src: [],
+                    buying: '',
+                    finish: ''
+                  }
+                })
+                .catch(error => {
+                  console.log(error.response.data.message)
+                })
+            }
+          } else {
+            this.$swal('錯誤', '購物車沒有商品', 'error')
           }
         }
       })
     },
     clear () {
-
+      this.$swal({
+        title: '清空',
+        text: '確定要清空購物車?',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '確定',
+        cancelButtonText: '取消'
+      }).then((result) => {
+        if (result.value) {
+          const judge = this.cart.filter(data => {
+            return data.buying === true
+          })
+          if (judge.length > 0) {
+            this.cart.forEach(data => {
+              if (data.buying) {
+                this.axios.post('http://localhost:3000/clearcart', { account: this.account, buying: data.buying })
+                  .then(res => {
+                    this.$swal('完成', '已清空購物車', 'success')
+                  }).catch(error => {
+                    console.log(error.response.data.message)
+                  })
+              }
+            })
+          } else {
+            this.$swal('錯誤', '購物車沒有商品', 'error')
+          }
+        }
+      })
     },
-    changetoggle () {
-      this.toggle = !this.toggle
-      if (this.toggle) {
-        this.allstyle = {
-          transform: 'rotateY(180deg)'
-        }
-        this.cartstyle = {
-          pointerEvents: 'none',
-          opacity: '0'
-        }
-        this.orderingstyle = {
-          pointerEvents: 'auto',
-          opacity: '1'
-        }
-      } else {
+    changetoggle (value) {
+      if (value === 1) {
         this.allstyle = {
           transform: 'rotateY(0deg)'
         }
@@ -328,10 +461,54 @@ export default {
           pointerEvents: 'none',
           opacity: '0'
         }
+        this.historystyle = {
+          pointerEvents: 'none',
+          opacity: '0'
+        }
+      } else if (value === 2) {
+        this.allstyle = {
+          transform: 'rotateY(240deg)'
+        }
+        this.cartstyle = {
+          pointerEvents: 'none',
+          opacity: '0'
+        }
+        this.orderingstyle = {
+          pointerEvents: 'auto',
+          opacity: '1'
+        }
+        this.historystyle = {
+          pointerEvents: 'none',
+          opacity: '0'
+        }
+      } else {
+        this.allstyle = {
+          transform: 'rotateY(-240deg)'
+        }
+        this.cartstyle = {
+          pointerEvents: 'none',
+          opacity: '0'
+        }
+        this.orderingstyle = {
+          pointerEvents: 'none',
+          opacity: '0'
+        }
+        this.historystyle = {
+          pointerEvents: 'auto',
+          opacity: '1'
+        }
       }
     }
   },
   mounted: function () {
+    this.axios.post('http://localhost:3000/getusercartorder', {
+      account: this.account
+    })
+      .then(res => {
+        this.history = res.data.result
+      }).catch(error => {
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
+      })
     this.axios.post('http://localhost:3000/getusercart', {
       account: this.account
     })
@@ -394,7 +571,7 @@ export default {
     left 0
     bottom 0
     margin auto
-    transform: rotateY(0deg);
+    transform: rotateY(0deg)
     transition 1s
     .cart{
       position: absolute;
@@ -404,6 +581,7 @@ export default {
       bottom 0
       margin auto
       background white
+      transform: rotateY(0deg) translateZ(400px)
       transition 0.5s
     }
     .ordering{
@@ -413,7 +591,20 @@ export default {
       top 0
       bottom 0
       margin auto
-      transform: rotateY(180deg);
+      transform: rotateY(120deg) translateZ(400px)
+      background white
+      pointer-events: none
+      transition 0.5s
+      opacity 0
+    }
+    .history{
+      position: absolute;
+      right 0
+      left 0
+      top 0
+      bottom 0
+      margin auto
+      transform: rotateY(-120deg) translateZ(400px)
       background white
       pointer-events: none
       transition 0.5s
@@ -421,9 +612,6 @@ export default {
     }
   }
   .toggle{
-    position absolute
-    right 0
-    left 0
     margin auto
   }
 @media (min-width : 768px){
@@ -444,6 +632,5 @@ export default {
   .btntext{
     font-size 1rem !important
   }
-
 }
 </style>
