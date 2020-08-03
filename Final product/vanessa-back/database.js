@@ -179,6 +179,10 @@ const marketSchema = new Schema(
 )
 const cartSchema = new Schema(
   {
+    itemid: {
+      type: String,
+      required: [true, '沒有商品品項']
+    },
     account: {
       type: String,
       required: [true, 'BUG_ERROR_USER_NOT_LOGIN_BUT_ORDER']
@@ -195,7 +199,50 @@ const cartSchema = new Schema(
       type: Number,
       required: [true, '定價未填']
     },
+    src: {
+      type: String,
+      required: [true, '沒有圖片']
+    },
     buying: {
+      type: Boolean
+    }
+  },
+  {
+    // 不要紀錄資料修改次數
+    versionKey: false
+  }
+)
+
+const cartorderSchema = new Schema(
+  {
+    itemid: {
+      type: Array,
+      required: [true, '沒有商品品項']
+    },
+    account: {
+      type: String,
+      required: [true, 'BUG_ERROR_USER_NOT_LOGIN_BUT_ORDER']
+    },
+    title: {
+      type: Array,
+      required: [true, '餐點名稱未填']
+    },
+    number: {
+      type: Array,
+      required: [true, '數量未填']
+    },
+    value: {
+      type: Array,
+      required: [true, '定價未填']
+    },
+    src: {
+      type: Array,
+      required: [true, '沒有圖片']
+    },
+    buying: {
+      type: Boolean
+    },
+    finish: {
       type: Boolean
     }
   },
@@ -263,6 +310,7 @@ const menus = mongoose.model('menus', menuSchema)
 const events = mongoose.model('events', eventSchema)
 const markets = mongoose.model('markets', marketSchema)
 const carts = mongoose.model('carts', cartSchema)
+const cartorders = mongoose.model('cartorders', cartorderSchema)
 const connection = mongoose.connection
 
 // 匯出變數
@@ -273,5 +321,6 @@ export default {
   events,
   markets,
   carts,
+  cartorders,
   connection
 }

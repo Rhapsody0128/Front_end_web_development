@@ -398,7 +398,7 @@ app.post('/addmeal', async (req, res) => {
     }
   })
 })
-// 特餐更新
+// ---特餐更新
 app.post('/specialmeal', async (req, res) => {
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
@@ -663,7 +663,6 @@ app.post('/deleteevent', async (req, res) => {
     res.send({ success: false, message: message })
   }
 })
-
 // ---商品上傳
 app.post('/additem', async (req, res) => {
   if (!req.headers['content-type'].includes('multipart/form-data')) {
@@ -785,6 +784,234 @@ app.post('/deleteitem', async (req, res) => {
     const key = Object.keys(error.errors)[0]
     const message = error.errors[key].message
     res.send({ success: false, message: message })
+  }
+})
+// ---上傳購物車
+app.post('/addcart', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+
+  try {
+    let result = await database.carts.findOneAndUpdate(
+      { buying: req.body.buying, account: req.body.account, itemid: req.body.itemid },
+      {
+        $inc: { number: +req.body.number }
+      }
+    )
+    if (result === null) {
+      result = await database.carts.create(
+        {
+          itemid: req.body.itemid,
+          account: req.body.account,
+          title: req.body.title,
+          number: req.body.number,
+          value: req.body.value,
+          src: req.body.src,
+          buying: req.body.buying
+        }
+      )
+    }
+    res.status(200)
+    res.send({ success: true, message: '', result })
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      // 資料格式錯誤
+      const key = Object.keys(error.errors)[0]
+      const message = error.errors[key].message
+      res.status(400)
+      res.send({ success: false, message })
+    } else {
+      console.log(error)
+      // 伺服器錯誤
+      res.status(500)
+      res.send({ success: false, message: '伺服器錯誤' })
+    }
+  }
+})
+// ---購物車清單
+app.post('/getusercart', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式錯誤' })
+    return
+  }
+  try {
+    const result = await database.carts.find({
+      account: req.body.account
+    })
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在購物車資料' })
+    }
+  } catch (error) {
+    res.status(500)
+    res.send({ success: false, message: error })
+  }
+})
+// ---更動購物車
+app.post('/changecart', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.carts.findByIdAndUpdate(
+      { _id: req.body.id },
+      { number: req.body.number }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+// ---刪除購物車
+app.post('/deletecart', async (req, res) => {
+  // 拒絕不是JSON的資料格式
+  if (!req.headers['content-type'].includes('application/json')) {
+    // 會回傳錯誤狀態碼(400)
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 新增資料
+  try {
+    const result = await database.carts.findByIdAndRemove(
+      { _id: req.body.id }
+    )
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', id: result._id, result })
+  } catch (error) {
+    console.log(error)
+    const key = Object.keys(error.errors)[0]
+    const message = error.errors[key].message
+    res.send({ success: false, message: message })
+  }
+})
+// ---購物車轉清單
+app.post('/buyingcart', async (req, res) => {
+  try {
+    const result = await database.carts.findByIdAndUpdate(
+      { _id: req.body.id }, {
+        buying: req.body.buying
+      })
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '沒有菜單' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---訂單送出
+app.post('/cartorder', async (req, res) => {
+  try {
+    const result = await database.cartorders.create(
+      req.body)
+    // console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '沒有菜單' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---取消購物車清單
+app.post('/cancelcartorder', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式錯誤' })
+    return
+  }
+  try {
+    const result = await database.cartorders.findOneAndRemove({ _id: req.body.id })
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '' })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在訂單資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---結案購物車清單
+app.post('/finishcartorder', async (req, res) => {
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式錯誤' })
+    return
+  }
+  try {
+    const result = await database.cartorders.findByIdAndUpdate({ _id: req.body.id }, {
+      finish: req.body.finish
+    })
+    console.log(result)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '' })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在訂單資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
+  }
+})
+// ---訂單清單
+app.post('/allcartorder', async (req, res) => {
+  try {
+    const finished = await database.cartorders.find()
+    const result = await database.cartorders.find({
+      finish: false
+    })
+    console.log(result)
+    console.log(finished)
+    if (result !== null) {
+      res.status(200)
+      res.send({ success: true, message: '', result })
+    } else {
+      res.status(404)
+      res.send({ success: false, message: '不存在訂單資訊' })
+    }
+  } catch (error) {
+    res.status(500)
+    console.log(error)
+    res.send({ success: false, message: error })
   }
 })
 
