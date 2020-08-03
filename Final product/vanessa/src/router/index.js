@@ -150,6 +150,16 @@ const routes = [
           login: 'control',
           title: '後臺管理'
         }
+      },
+      {
+        path: '/back_cart',
+        name: 'back_cart',
+        component: () => import(/* webpackChunkName: "back_cart" */ '../views/back/back_cart.vue'),
+        meta: {
+          transition: 'fade-in-up',
+          login: 'control',
+          title: '後臺管理'
+        }
       }
     ],
     meta: {

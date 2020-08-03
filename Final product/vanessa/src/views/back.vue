@@ -36,6 +36,9 @@
         <vs-sidebar-item to="/back_member"  index="6">
           <h4>會員資料</h4>
         </vs-sidebar-item>
+        <vs-sidebar-item to="/back_cart"  index="7">
+          <h4>訂單資料</h4>
+        </vs-sidebar-item>
       </vs-sidebar>
     </div>
     <hr>
@@ -48,11 +51,7 @@
 <script>
 export default {
   data: () => ({
-    active: false,
-    test: 12
-  }),
-  mounted: function () {
-    this.$store.commit('addcart', [this.test, this.test, this.test, this.test])
-  }
+    active: false
+  })
 }
 </script>

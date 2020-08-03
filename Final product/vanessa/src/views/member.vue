@@ -397,6 +397,7 @@ export default {
       background white
       pointer-events: none
       transition 0.5s
+      opacity 0
     }
   }
   .toggle{
