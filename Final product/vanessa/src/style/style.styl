@@ -12,7 +12,10 @@ body,html
   left 0;
   right 0;
   bottom 0;
-  font-family: '微軟正黑體'}
+  font-family: '微軟正黑體'
+  font-size: 1.2rem
+  // font-weight: bolder
+}
 #sidebar{
   position fixed 
   top 0  
@@ -44,7 +47,7 @@ body,html
 #story{
   height: 100%
   width: 100%
-  box-sizing: border-box;
+  position: absolute
   }
 #news{
   height: 100%
@@ -68,7 +71,7 @@ body,html
   width: 100%
   position: absolute
 }
-cart{
+#cart{
   height: 100%
   width: 100%
   position: absolute
@@ -86,4 +89,104 @@ cart{
       }
     }
   }
+}
+.vs-table-text{
+  justify-content: center !important
+  }
+.td{
+  flex: block
+  text-align: center
+  }
+.b-form-file{
+  overflow hidden
+}
+.vs-component {
+  margin: auto
+  }
+.vs-icon{
+  font-size 0rem !important
+  dipalay:none
+}
+.checkbox_x{
+  display none !important
+}
+.btntext{
+  font-size 0.2rem !important
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+}
+.text{
+  font-size 0.5rem !important
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+}
+.item{
+  font-size 0.8rem !important
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+  font-weight: normal
+}
+.title{
+  font-size 1.2rem !important
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+}
+.title-lg{
+  font-size 1.8rem !important
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+}
+.font{
+  font-size 0.3rem !important
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+  }
+.vs-table-text{
+  text-align center
+  margin auto
+}
+.vs-table--td{
+  span{
+    display: flex
+    justify-content: center
+    margin: auto !important
+    text-align: center
+    div{
+      margin: auto
+    }
+    .empty{
+      display: none}
+  }
+}
+.material-icons{
+    font-size 0px !important
+    background red
+}
+@media (min-width : 768px){
+  .text{
+    font-size 1rem !important
+    margin auto
+    text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+  }
+  .item{
+    font-size 1rem !important
+    text-shadow: 0.2rem 0.2rem 0.5rem rgba(0,0,0,0.2)
+    font-weight: normal
+  }
+  .title{
+    font-size 1.5rem !important
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.2)
+    }
+    .title-lg{
+    font-size 2rem !important
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.2)
+  }
+  .btntext{
+    font-size 1rem !important
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.2)
+  }
+  .font{
+  font-size 1.8rem !important
+  text-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.2)
+  }
+}
+p{
+  font-size: 1rem
+}
+h1,h2,h3,h4,h5{
+  text-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.2)
 }

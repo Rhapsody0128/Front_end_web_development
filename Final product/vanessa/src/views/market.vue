@@ -93,10 +93,9 @@ export default {
               })
                 .then(res => {
                   this.$swal('確認', '已收到您的訂單，會盡速幫您處裡', 'success')
-                  console.log(res)
                 })
                 .catch(error => {
-                  console.log(error.response.data.message)
+                  this.$swal('錯誤', `${error.response.data.message}`, 'error')
                 })
             }
           })
@@ -112,10 +111,9 @@ export default {
           })
             .then(res => {
               this.$swal('確認', '已成功加入購物車', 'success')
-              console.log(res)
             })
             .catch(error => {
-              console.log(error.response.data.message)
+              this.$swal('錯誤', `${error.response.data.message}`, 'error')
             })
         }
       }
@@ -163,7 +161,7 @@ export default {
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }

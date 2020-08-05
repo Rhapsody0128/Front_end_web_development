@@ -238,7 +238,6 @@ export default {
     this.axios.post(process.env.VUE_APP_APIURL + '/allcartorder')
       .then(res => {
         this.datas = res.data.result
-        console.log(this.datas)
       }).catch(error => {
         this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
@@ -246,66 +245,39 @@ export default {
 }
 </script>
 <style lang="stylus">
-.text{
-  font-size 0.5rem
-}
-.item{
-  font-size 1rem
-}
-.title{
-  font-size 1.5rem
-}
-.vs-icon{
-  font-size 0rem !important
-  dipalay:none
-}
-.checkbox_x{
-  display none
-}
 .all{
-    transform-style: preserve-3d
-    position relative
-    top 0
+  transform-style: preserve-3d
+  position relative
+  top 0
+  right 0
+  left 0
+  bottom 0
+  margin auto
+  transform: rotateY(0deg) translateZ(400px);
+  transition 1s
+  .cartorder{
+    position: absolute;
     right 0
     left 0
+    top 0
+    bottom 0
+    transform: rotateY(0deg) translateZ(400px);
+    margin auto
+    background white
+    transition 0.5s
+  }
+  .finish{
+    position: absolute;
+    right 0
+    left 0
+    top 0
     bottom 0
     margin auto
-    transform: rotateY(0deg) translateZ(400px);
-    transition 1s
-    .cartorder{
-      position: absolute;
-      right 0
-      left 0
-      top 0
-      bottom 0
-      transform: rotateY(0deg) translateZ(400px);
-      margin auto
-      background white
-      transition 0.5s
-    }
-    .finish{
-      position: absolute;
-      right 0
-      left 0
-      top 0
-      bottom 0
-      margin auto
-      transform: rotateY(180deg) translateZ(400px);
-      background white
-      pointer-events: none
-      transition 0.5s
-      opacity 0
-    }
-  }
-@media (min-width : 768px){
-.text{
-  font-size 1.5rem
-}
-.item{
-  font-size 2rem
-}
-.title{
-  font-size 2.5rem
+    transform: rotateY(180deg) translateZ(400px);
+    background white
+    pointer-events: none
+    transition 0.5s
+    opacity 0
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="back_market">
-    <h1 class="text-center mt-4 mb-4">新增商品</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">新增商品</h1>
     <form>
     <div class="row">
       <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
         <h3 class="title mb-4 col-12">商品圖片</h3>
-        <b-form-file v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
+        <b-form-file class="b-form-file" v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
         <p>圖片請在1MB以下</p>
       </div>
       <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -42,13 +42,13 @@
   </form>
   <hr>
   <div class="container">
-    <h1 class="text-center mt-4 mb-4">商品管理</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">商品管理</h1>
     <vs-table :data="allmarket">
       <template slot="thead">
         <vs-th sort-key="title"><span class="item ">名稱</span></vs-th>
         <vs-th sort-key="value"><span class="item ">價格</span></vs-th>
         <vs-th sort-key="type"><span class="item">類型</span></vs-th>
-        <vs-th ><span class="item ml-lg-5 ml-4">圖片</span></vs-th>
+        <vs-th ><span class="item">圖片</span></vs-th>
         <vs-th ><span class="item ">描述</span></vs-th>
         <vs-th sort-key="stock" ><span class="item ">庫存</span></vs-th>
         <vs-th ><span class="item ">動作</span></vs-th>
@@ -238,60 +238,21 @@ export default {
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
 </script>
 <style lang="stylus">
-.btntext{
-  font-size 0.2rem !important
-}
-.text{
-  font-size 0.5rem
-}
-.item{
-  font-size 1rem
-}
-.title{
-  font-size 1.5rem
-}
 .image{
   width 5rem
   height 5rem
+  margin auto
   img{
     object-fit cover
     width 100%
     height 100%
     border-radius 50%
   }
-}
-.vs-table-text{
-  text-align center
-  margin auto
-}
-.material-icons{
-    font-size 0px !important
-    background red
-}
-@media (min-width : 768px){
-  .image{
-  width 10rem
-  height 10rem
-  }
-  .text{
-    font-size 1.5rem
-    margin auto
-  }
-  .item{
-    font-size 2rem
-  }
-  .title{
-    font-size 2rem
-    }
-  .btntext{
-    font-size 1rem !important
-  }
-
 }
 </style>

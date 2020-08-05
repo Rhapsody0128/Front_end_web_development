@@ -7,9 +7,10 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.592190167481!2d121.02436331544362!3d24.77516785477133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468362e95869081%3A0x9cc02cd8bb076e1e!2z5Yeh5aau6I6O5Y2X5q2Q6Iqx5ZyS6aSQ5buz!5e0!3m2!1szh-TW!2stw!4v1594621742442!5m2!1szh-TW!2stw" frameborder="0" style="width:100%;height:40rem;padding:0; margin:0" allowfullscreen tabindex="0"></iframe>
       </div>
     </div>
-    <div class="row justify-content-center m-0">
+  </div>
+  <div :style="infostyle" class="contianer info">
+    <div class="row justify-content-center mt-5 m-0">
       <div class="col-12 p-0">
-        <div>
           <b-card no-body>
             <b-tabs pills card vertical>
               <b-tab v-for="(tra,index) in traffic" :key='index' :title="tra.medthods" active>
@@ -21,7 +22,6 @@
               </b-tab>
             </b-tabs>
           </b-card>
-        </div>
       </div>
     </div>
   </div>
@@ -31,22 +31,19 @@
 export default {
   data () {
     return {
+      infostyle: {},
       traffic: [
         {
-          medthods: '腳踏車',
-          des: ['騎車到河裡', '掰', '福活', '隨便', '沒了', '騎車到河裡', '掰', '福活', '隨便', '沒了']
+          medthods: '營業時間',
+          des: ['星期一:11:30–22:00', '星期二:11:30–15:00 & 17:00–22:00', '星期三:11:30–15:00 & 17:00–22:00', '星期四:11:30–15:00 & 17:00–22:00', '星期五:11:30–22:00', '星期六:11:30–22:00', '星期日:11:30–22:00']
         },
         {
-          medthods: '開車',
-          des: ['開到海裡']
+          medthods: '餐廳資訊',
+          des: ['電話:03-5632686', '地址:300新竹市東區金山二十三街73號']
         },
         {
-          medthods: '公車',
-          des: ['沒有']
-        },
-        {
-          medthods: '貨車',
-          des: ['來個蹦蹦']
+          medthods: '產品/服務',
+          des: ['午晚餐', '有機料理', '啤酒', '提供素食料理', '葡萄酒']
         }
       ]
     }
@@ -55,6 +52,18 @@ export default {
     ScreenWidth () {
       return this.$store.getters.screenWidth - 800
     }
+  },
+  mounted: function () {
+    setTimeout(() => {
+      this.infostyle = { display: 'block', opacity: '1' }
+    }, 1000)
   }
 }
 </script>
+<style lang="stylus">
+.info{
+  transition 10s
+  display none
+  opacity 0
+}
+</style>

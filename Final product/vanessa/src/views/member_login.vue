@@ -251,9 +251,9 @@ export default {
           this.ordereddate = res.data.result[0].date.substr(0, 10)
           this.orderedtime = res.data.result[0].time
           this.orderedremarks = res.data.result[0].remarks
-        } else {
-          console.log('ordered not found')
         }
+      }).catch(error => {
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
     this.axios.post(process.env.VUE_APP_APIURL + '/getuserinfo', {
       account: this.account
@@ -263,6 +263,8 @@ export default {
           this.name = res.data.result[0].name
           this.phone = res.data.result[0].phone
         }
+      }).catch(error => {
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
@@ -312,7 +314,6 @@ export default {
     bottom 0
     margin auto
     transform: rotateY(180deg) translateZ(400px);
-    background black
     pointer-events: none
     transition 0.5s
     opacity 0

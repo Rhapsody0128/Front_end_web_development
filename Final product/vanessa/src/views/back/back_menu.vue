@@ -1,6 +1,6 @@
 <template>
   <div id="back_menu">
-    <h1 class="text-center mt-4 mb-4">新增餐點</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">新增餐點</h1>
     <form>
     <div class="row">
       <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-lg-6 col-12 mt-5 d-flex justify-content-center flex-wrap">
         <h3 class="title mb-4 col-12">餐點圖片</h3>
-        <b-form-file v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
+        <b-form-file class="b-form-file" v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
         <p>圖片請在1MB以下</p>
       </div>
       <div class="col-lg-6 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -39,7 +39,7 @@
   </form>
   <hr>
   <div class="container">
-    <h1 class="text-center mt-4 mb-4">特餐管理</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">特餐管理</h1>
     <vs-table :data="allmenu">
       <template slot="thead">
         <vs-th sort-key="title"><span class="item ">名稱</span></vs-th>
@@ -88,7 +88,7 @@
   </div>
   <hr>
   <div class="container">
-    <h1 class="text-center mt-4 mb-4">菜單管理</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">菜單管理</h1>
     <vs-table :data="allmenu">
       <template slot="thead">
         <vs-th sort-key="title"><span class="item ">名稱</span></vs-th>
@@ -185,7 +185,6 @@ export default {
         fd.append('type', this.type)
         fd.append('src', this.src)
         fd.append('description', this.description)
-        console.log(this.src)
         if (this.type === '特餐') {
           this.axios.post(process.env.VUE_APP_APIURL + '/specialmeal', fd, {
             headers: {
@@ -286,24 +285,12 @@ export default {
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
 </script>
 <style lang="stylus">
-.btntext{
-  font-size 0.2rem !important
-}
-.text{
-  font-size 0.5rem
-}
-.item{
-  font-size 1rem
-}
-.title{
-  font-size 1.5rem
-}
 .image{
   width 5rem
   height 5rem
@@ -313,33 +300,5 @@ export default {
     height 100%
     border-radius 50%
   }
-}
-.vs-table-text{
-  text-align center
-  margin auto
-}
-.material-icons{
-    font-size 0px !important
-    background red
-}
-@media (min-width : 768px){
-  .image{
-  width 10rem
-  height 10rem
-  }
-  .text{
-    font-size 1.5rem
-    margin auto
-  }
-  .item{
-    font-size 2rem
-  }
-  .title{
-    font-size 2rem
-    }
-  .btntext{
-    font-size 1rem !important
-  }
-
 }
 </style>

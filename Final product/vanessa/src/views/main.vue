@@ -7,6 +7,9 @@
 @touchend="touchend">
 
   <div :style="boxstyle" id="all" >
+    <div :style="slideleftstyle" class="slideleft">
+      <img :src="slideleft" alt="">
+    </div>
     <div style="background: url('./images/others/box.png') center/cover" class="box a"></div>
     <div style="background: url('./images/others/box.png') center/cover" class="box b"></div>
     <div style="background: url('./images/others/box.png') center/cover" class="box c"></div>
@@ -20,37 +23,37 @@
     <transition name="fade">
     <div v-if="style===0" class="aa">
           <h1 class="title" v-text="styledetail[0].title"></h1>
-          <p v-text="styledetail[0].description"></p>
+          <p class="font" v-text="styledetail[0].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===1" class="bb">
           <h1 class="title" v-text="styledetail[1].title"></h1>
-          <p v-text="styledetail[1].description"></p>
+          <p class="font" v-text="styledetail[1].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===2" class="cc">
           <h1 class="title" v-text="styledetail[2].title"></h1>
-          <p v-text="styledetail[2].description"></p>
+          <p class="font" v-text="styledetail[2].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===3" class="dd">
           <h1 class="title" v-text="styledetail[3].title"></h1>
-          <p v-text="styledetail[3].description"></p>
+          <p class="font" v-text="styledetail[3].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===4" class="ee">
           <h1 class="title" v-text="styledetail[4].title"></h1>
-          <p v-text="styledetail[4].description"></p>
+          <p class="font" v-text="styledetail[4].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===5" class="ff">
           <h1 class="title" v-text="styledetail[5].title"></h1>
-          <p v-text="styledetail[5].description"></p>
+          <p class="font" v-text="styledetail[5].description"></p>
     </div>
 </transition>
   </div>
@@ -62,6 +65,8 @@ export default {
 
   data () {
     return {
+      slideleft: './images/others/slideleft.svg',
+      slideleftstyle: {},
       style: 0,
       boxstyle: {},
       mainstyle: {
@@ -97,7 +102,7 @@ export default {
         {
           title: '是餐廳，也是家',
           description: '優質的服務團隊，重視每個貴賓用餐的環節，專業之外更在意與客人間的體貼互動',
-          background: "url('./images/atmosphere/12010577_909593355788892_5778526372011856134_o.jpg')no-repeat center/cover"
+          background: "url('./images/atmosphere/1446024549-3210848441.jpg')no-repeat center/cover"
         }
       ],
       boxmove: {
@@ -238,6 +243,12 @@ export default {
         }
       }, 500)
     }
+  },
+  mounted: function () {
+    this.slideleftstyle = {
+      opacity: 0,
+      marginRight: '50%'
+    }
   }
 }
 </script>
@@ -346,12 +357,26 @@ export default {
     .title{
     font-size:3rem
   }
-  }
+}
   .fade-enter-active, .fade-leave-active {
       position absolute
       transition: opacity .5s;
-    }
-    .fade-enter, .fade-leave-to {
+  }
+  .fade-enter, .fade-leave-to {
       opacity: 0;
+  }
+  .slideleft{
+    width 150%
+    height 150%
+    position absolute
+    z-index 9
+    pointer-events none
+    margin-left -20%
+    transition 8s
+    img{
+      width 100%
+      height 100%
+      object-fit cover
     }
+  }
 </style>

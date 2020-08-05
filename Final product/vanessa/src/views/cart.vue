@@ -3,7 +3,7 @@
     <h1 class="text-center mt-4 mb-4">購物車</h1>
     <div :style="allstyle" class="container all">
       <div :style="cartstyle" class="cart">
-        <h2 class="text-center mt-4 mb-4">未送出訂單</h2>
+        <h2 class="text-center mt-4 mb-4 title-lg">未送出訂單</h2>
         <vs-table :data="cart">
           <template slot="thead">
             <vs-th sort-key="title">
@@ -19,7 +19,7 @@
               <span class="item">數量</span>
             </vs-th>
             <vs-th>
-              <span class="item ml-lg-5 ml-4">圖片</span>
+              <span class="item">圖片</span>
             </vs-th>
             <vs-th>
               <span class="item">動作</span>
@@ -90,7 +90,7 @@
         </div>
       </div>
       <div :style="orderingstyle" class="ordering">
-        <h2 class="text-center mt-4 mb-4">訂購紀錄</h2>
+        <h2 class="text-center mt-4 mb-4 title-lg">訂購紀錄</h2>
         <vs-table :data="cart">
           <template slot="thead">
             <vs-th sort-key="title">
@@ -106,10 +106,10 @@
               <span class="item">數量</span>
             </vs-th>
             <vs-th>
-              <span class="item ml-lg-5 ml-4">圖片</span>
+              <span class="item">圖片</span>
             </vs-th>
             <vs-th>
-              <span class="item ml-lg-5 ml-4">清除</span>
+              <span class="item">清除</span>
             </vs-th>
           </template>
           <template slot-scope="{data}">
@@ -163,7 +163,7 @@
         <div class="col">
             <vs-table class='table' :data="history">
               <template slot="header">
-                <h1 class="title text-center">處理中訂單</h1>
+                <h1 class="title-lg text-center">處理中訂單</h1>
               </template>
               <template slot="thead">
                 <vs-th sort-key="account" class="item p-lg-3">帳號</vs-th>
@@ -376,7 +376,7 @@ export default {
                     buying: false
                   })
                     .catch(error => {
-                      console.log(error.response.data.message)
+                      this.$swal('錯誤', `${error.response.data.message}`, 'error')
                     })
                 }
               })
@@ -407,7 +407,7 @@ export default {
                   }
                 })
                 .catch(error => {
-                  console.log(error.response.data.message)
+                  this.$swal('錯誤', `${error.response.data.message}`, 'error')
                 })
             }
           } else {
@@ -438,7 +438,7 @@ export default {
                   .then(res => {
                     this.$swal('完成', '已清空購物車', 'success')
                   }).catch(error => {
-                    console.log(error.response.data.message)
+                    this.$swal('錯誤', `${error.response.data.message}`, 'error')
                   })
               }
             })
@@ -527,7 +527,7 @@ export default {
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }

@@ -57,3 +57,8 @@ export default {
   })
 }
 </script>
+<style lang="stylus">
+.sidebarx{
+  z-index 999
+}
+</style>
