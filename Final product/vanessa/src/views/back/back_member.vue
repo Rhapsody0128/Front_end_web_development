@@ -4,7 +4,7 @@
         <div class="col">
             <vs-table multiple v-model="selected" :data="datas">
               <template slot="header">
-                <h1 class="title text-center">會員資訊</h1>
+                <h1 class="title-lg text-center">會員資訊</h1>
               </template>
               <template slot="thead">
                 <vs-th sort-key="name" class="item">姓名</vs-th>

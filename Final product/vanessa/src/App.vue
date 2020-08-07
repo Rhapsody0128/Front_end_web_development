@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <div :style="bigscreenstyle" class="bigscreen">
+    <div v-if="boxshow" id='logoshow' class="bigscreen">
       <div class="logo-lg">
-        <vueSvgDraw file="./images/others/LOGO.svg" type="async" animTiming='EASE_OUT_BOUNCE' :duration="parseInt(300)" ref="vuesvg" pathTiming="EASE_OUT"></vueSvgDraw>
+        <vueSvgDraw file="./images/others/LOGO.svg" start="manual" type="async" :duration="parseInt(300)" ref="vuesvg" pathTiming="EASE_OUT"></vueSvgDraw>
       </div>
     </div>
     <div id="Status">
       <router-link v-if="name.length!=0" to="/cart">
-        <font-awesome-icon color='black' class='icon mr-1' size="lg" :icon="['fas', 'shopping-cart']"/>
+        <font-awesome-icon v-if="screenWidth>768" color='black' class='icon mr-1' size="lg" :icon="['fas', 'shopping-cart']"/>
+        <font-awesome-icon v-else color='black' class='icon mr-1' size="sm" :icon="['fas', 'shopping-cart']"/>
       </router-link>
       <span class="m-3">
         <span v-if="name.length!=0">{{name}}</span>
         <span v-else>遊客</span>
       </span>
-      <b-button v-if="name.length!=0" @click="logout" variant="dark">登出</b-button>
+      <a href="#" @click="logout"><font-awesome-icon  v-if="name.length!=0 && screenWidth<768" color='black' class='icon mr-1' size="sm" :icon="['fas', 'sign-out-alt']"/></a>
+      <b-button v-if="name.length!=0 && screenWidth>768" @click="logout" variant="dark"><span class="btntext">登出</span></b-button>
     </div>
     <div>
       <Slide
@@ -51,7 +53,6 @@
         <router-link v-if="account=='user1234'" to="/back">
           <span class="mr-2">後臺管理</span><font-awesome-icon color='white' class='icon' size="lg" :icon="['fas', 'wrench']"/>
         </router-link>
-
         <b-navbar class="bottomnav" >
           <span v-if="screenWidth>768">聯絡我們</span>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -86,7 +87,6 @@ export default {
   data () {
     return {
       screenWidth: document.documentElement.clientWidth,
-      bigscreenstyle: {},
       logo: './images/others/LOGO.svg'
     }
   },
@@ -103,6 +103,9 @@ export default {
     },
     account () {
       return this.$store.getters.account
+    },
+    boxshow () {
+      return this.$store.getters.boxshow
     }
   },
   watch: {
@@ -120,20 +123,15 @@ export default {
     window.onresize = function () {
       _this.screenWidth = document.documentElement.clientWidth
     }
-    setTimeout(() => {
-      this.bigscreenstyle = {
-        opacity: '0'
-      }
-    }, 900)
   },
-
   components: {
     vueSvgDraw,
     Slide
-  }
+  },
+  props: ['logoshow']
 }
 </script>
-<style lang="stylus" scoped>
+<style lang="stylus">
 #Status{
   margin 1.5rem
   position fixed
@@ -153,16 +151,6 @@ export default {
     font-weight:bolder;
   }
 }
-@media (max-width: 768px) {
-    #Status{
-      span{
-        display none
-      }
-    }
-    .bottomnav{
-      background none
-    }
-}
 .logo{
   width 2.5rem
   height 2.5rem
@@ -171,30 +159,72 @@ export default {
     height 100%
     object-fit cover
   }
-  }
+}
 .bigscreen{
-  width 100%
-  min-height 100%
   background gray
-  position absolute
-  z-index 999
-  transition 1s
-  pointer-events none
+  width 100%
+  height 100%
+  z-index 99
+  position fixed
+  pointer-events: none;
+  animation fadeout ease-in-out 3s
+  opacity 0
   .logo-lg{
+    width: 970px;
+    height: 970px;
+    margin: auto
+    margin-top: -4.3rem;
+    pointer-events: none;
     position absolute
-    margin auto
-    margin-top 5%
     top 0
+    right 0
     left 0
     right 0
-    bottom 0
-    height 40%
-    width 40%
-    z-index 3
+    z-index 4
   }
 }
 .logotitle{
   line-height 2.5rem
 }
-
+@media (max-width: 768px) {
+  #Status{
+    span{
+      display none
+    }
+  }
+  .bottomnav{
+    background none
+  }
+  .bigscreen{
+  background gray
+  width 100%
+  height 100%
+  z-index 99
+  position fixed
+  pointer-events: none;
+  opacity 0
+  animation fadeout ease-in-out 3s
+  .logo-lg{
+    width: 100%;
+    height: 30rem;
+    margin-top: -15.5%;
+    margin auto
+    pointer-events: none;
+    position absolute
+    top 0
+    right 0
+    left 0
+    bottom  0
+    z-index 4
+    }
+  }
+}
+@keyframes fadeout {
+  0% {
+    opacity 1
+  }
+  100% {
+    opacity 0
+  }
+}
 </style>

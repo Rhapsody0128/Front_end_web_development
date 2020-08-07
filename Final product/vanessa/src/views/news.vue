@@ -1,6 +1,6 @@
 <template>
 <div id="news">
-  <h1 class="text-center mt-4 mb-4">最新活動</h1>
+  <h1 class="text-center mt-4 mb-4 bigtitle">最新活動</h1>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
@@ -44,6 +44,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.commit('boxshow')
     this.axios.post(process.env.VUE_APP_APIURL + '/allevent')
       .then(res => {
         this.allevent = res.data.result.map(data => {

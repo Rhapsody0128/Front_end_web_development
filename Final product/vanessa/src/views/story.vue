@@ -1,6 +1,7 @@
 <template>
   <div :style=storystyle id="story">
-    <h1 class="text-center mt-4 mb-4 ">關於我們</h1>
+    <div :logoshow="style"></div>
+    <h1 class="text-center mt-4 mb-4 bigtitle">關於我們</h1>
     <div v-if="ScreenWidth>768" style="background:url('./images/atmosphere/13350244_1033842330030660_1000111736185408760_o.jpg') no-repeat fixed center/auto" class='story p-0'></div>
     <div v-else style="background:url('./images/atmosphere/150166_293460857402148_828730403_n.jpg') no-repeat fixed center/auto" class='story p-0'></div>
     <div id="flipbook" class='d-flex flex-wrap'>
@@ -25,14 +26,14 @@
         <flipbook class="flipbook col-12 col-lg-7 p-0" :pages="meal"></flipbook>
         <div class="col-12 col-lg-3 d-flex flex-column justify-content-center p-4 text-center">
           <h2 class="title-lg">嚴選食材，用心烹調</h2>
-          <p class="font">嚴選新鮮頂級的食材，佐入主廚費工自製的醬料，採用自然原味的料理手法，為您呈現一道道兼顧健康美味的歐法風味料理。</p>
+          <p >嚴選新鮮頂級的食材，佐入主廚費工自製的醬料，採用自然原味的料理手法，為您呈現一道道兼顧健康美味的歐法風味料理。</p>
         </div>
       </div>
       <div class="row justify-content-center mt-5 mb-5 m-0 col-12">
         <flipbook class="flipbook col-12 col-lg-6 p-0 order-lg-4" :pages="dessert"></flipbook>
         <div class="col-12 col-lg-3 d-flex flex-column justify-content-center p-lg-4 text-center order-lg-3">
           <h2 class="title-lg">客製化甜點</h2>
-          <p>提供客製的造型蛋糕，依客人的需求與愛好，從畫設計稿到製作完成，唯妙唯肖的萌樣，總帶給客人莫大的驚喜，深受喜愛。</p>
+          <p >提供客製的造型蛋糕，依客人的需求與愛好，從畫設計稿到製作完成，唯妙唯肖的萌樣，總帶給客人莫大的驚喜，深受喜愛。</p>
         </div>
       </div>
     </div>
@@ -46,6 +47,7 @@ export default {
       slideleft: './images/others/slideleft.svg',
       slideleftstyle: {},
       storystyle: {},
+      style: '',
       employee: [
         '',
         './images/human/1446024581-183110139.jpg',
@@ -99,6 +101,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.commit('boxshow')
     this.storystyle = {
       overflow: 'hidden'
     }

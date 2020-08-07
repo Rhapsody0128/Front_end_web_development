@@ -14,3 +14,22 @@
 - 0521 [BS Login](https://classroom.github.com/a/TX8ArH3A)OK
 - 0527 [BS Component](https://classroom.github.com/a/pGAwHMP8)OK
 - 0528 [BS Backdrop-filter](https://classroom.github.com/a/5aK4Mylp)OK
+
+## JS-Logic
+
+- [Star]OK
+- [Temperature]OK
+- [Question]OK
+- [Lottery](https://github.com/wdaweb/js-wei-li-cai-Rhapsody0128)OK
+
+## JS.jQ protfolio
+- [Music Game](https://github.com/wdaweb/js-da-di-shu-Rhapsody0128)OK
+- [Shooting Game](https://github.com/wdaweb/js-da-jiang-shi-Rhapsody0128)OK
+- [Clock](https://github.com/wdaweb/js-shi-zhong-Rhapsody0128)OK
+- [Card](https://github.com/wdaweb/js-qia-pian-Rhapsody0128)OK
+
+## node JS
+- [Line Bot](https://github.com/Rhapsody0128/node-line-Rhapsody0128)OK
+- [Pomodoro](https://github.com/Rhapsody0128/Pomodoro)OK
+
+

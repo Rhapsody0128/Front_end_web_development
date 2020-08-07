@@ -22,38 +22,38 @@
   <div id="text" class='container'>
     <transition name="fade">
     <div v-if="style===0" class="aa">
-          <h1 class="title" v-text="styledetail[0].title"></h1>
-          <p class="font" v-text="styledetail[0].description"></p>
+          <h1 class="title-lg" v-text="styledetail[0].title"></h1>
+          <p class="text" v-text="styledetail[0].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===1" class="bb">
-          <h1 class="title" v-text="styledetail[1].title"></h1>
-          <p class="font" v-text="styledetail[1].description"></p>
+          <h1 class="title-lg" v-text="styledetail[1].title"></h1>
+          <p class="text" v-text="styledetail[1].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===2" class="cc">
-          <h1 class="title" v-text="styledetail[2].title"></h1>
-          <p class="font" v-text="styledetail[2].description"></p>
+          <h1 class="title-lg" v-text="styledetail[2].title"></h1>
+          <p class="text" v-text="styledetail[2].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===3" class="dd">
-          <h1 class="title" v-text="styledetail[3].title"></h1>
-          <p class="font" v-text="styledetail[3].description"></p>
+          <h1 class="title-lg" v-text="styledetail[3].title"></h1>
+          <p class="text" v-text="styledetail[3].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===4" class="ee">
-          <h1 class="title" v-text="styledetail[4].title"></h1>
-          <p class="font" v-text="styledetail[4].description"></p>
+          <h1 class="title-lg" v-text="styledetail[4].title"></h1>
+          <p class="text" v-text="styledetail[4].description"></p>
     </div>
     </transition>
     <transition name="fade">
     <div v-if="style===5" class="ff">
-          <h1 class="title" v-text="styledetail[5].title"></h1>
-          <p class="font" v-text="styledetail[5].description"></p>
+          <h1 class="title-lg" v-text="styledetail[5].title"></h1>
+          <p class="text" v-text="styledetail[5].description"></p>
     </div>
 </transition>
   </div>
@@ -245,6 +245,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.commit('boxshow')
     this.slideleftstyle = {
       opacity: 0,
       marginRight: '50%'
@@ -273,11 +274,10 @@ export default {
       width: 200px;
       height: 200px;
       transform-style:preserve-3d
-      transform: rotate3d(0, 0, 0, 0deg);
+      transform: rotate3d(0.45 ,0.5, 0.18, 60deg);
       margin: auto;
-      margin-top: 10rem;
+      margin-top: 5rem;
       border-radius: 50%;
-      font-family: '微軟正黑體';
       pointer-events: none;
       transition: 1.5s
   }
@@ -324,6 +324,7 @@ export default {
     #all {
     width: 400px;
     height: 400px;
+    margin-top: 10rem;
     }
     #text{
       font-size:2rem

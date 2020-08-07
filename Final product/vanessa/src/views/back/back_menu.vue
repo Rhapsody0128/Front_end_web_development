@@ -45,7 +45,7 @@
         <vs-th sort-key="title"><span class="item ">名稱</span></vs-th>
         <vs-th sort-key="value"><span class="item ">價格</span></vs-th>
         <vs-th sort-key="type"><span class="item">類型</span></vs-th>
-        <vs-th ><span class="item ml-lg-5 ml-4">圖片</span></vs-th>
+        <vs-th ><span class="item ">圖片</span></vs-th>
         <vs-th ><span class="item ">描述</span></vs-th>
         <vs-th ><span class="item ">動作</span></vs-th>
       </template>
@@ -94,7 +94,7 @@
         <vs-th sort-key="title"><span class="item ">名稱</span></vs-th>
         <vs-th sort-key="value"><span class="item ">價格</span></vs-th>
         <vs-th sort-key="type"><span class="item">類型</span></vs-th>
-        <vs-th ><span class="item ml-lg-5 ml-4">圖片</span></vs-th>
+        <vs-th ><span class="item ">圖片</span></vs-th>
         <vs-th ><span class="item ">描述</span></vs-th>
         <vs-th ><span class="item ">動作</span></vs-th>
       </template>

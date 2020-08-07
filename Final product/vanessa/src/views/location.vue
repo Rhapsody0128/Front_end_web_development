@@ -1,6 +1,6 @@
 <template>
 <div id="location">
-<h1 class="text-center mt-4 mb-4">店家資訊</h1>
+<h1 class="text-center mt-4 mb-4 bigtitle">店家資訊</h1>
   <div class="container-fluid p-0 m-0">
     <div class="row m-0 p-0">
       <div class="col-12 p-0 m-0">
@@ -16,7 +16,7 @@
               <b-tab v-for="(tra,index) in traffic" :key='index' :title="tra.medthods" active>
                 <b-card-text>
                   <ul>
-                    <li class="ml-5" v-for="(de,index) in tra.des" :key="index">{{de}}</li>
+                    <li class="ml-lg-5 text" v-for="(de,index) in tra.des" :key="index">{{de}}</li>
                   </ul>
                 </b-card-text>
               </b-tab>
@@ -54,6 +54,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.commit('boxshow')
     setTimeout(() => {
       this.infostyle = { display: 'block', opacity: '1' }
     }, 1000)
@@ -65,5 +66,10 @@ export default {
   transition 10s
   display none
   opacity 0
+}
+@media (max-width: 768px) {
+  .nav-item{
+  font-size 1rem
+  }
 }
 </style>

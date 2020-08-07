@@ -1,6 +1,6 @@
 <template>
   <div id="cart">
-    <h1 class="text-center mt-4 mb-4">購物車</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">購物車</h1>
     <div :style="allstyle" class="container all">
       <div :style="cartstyle" class="cart">
         <h2 class="text-center mt-4 mb-4 title-lg">未送出訂單</h2>
@@ -163,7 +163,7 @@
         <div class="col">
             <vs-table class='table' :data="history">
               <template slot="header">
-                <h1 class="title-lg text-center">處理中訂單</h1>
+                <h1 class="title text-center">處理中訂單</h1>
               </template>
               <template slot="thead">
                 <vs-th sort-key="account" class="item p-lg-3">帳號</vs-th>
@@ -174,20 +174,20 @@
               </template>
               <template slot-scope="{data}">
                 <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].account">
-                    <span class="text">{{data[indextr].account}}</span>
+                  <vs-td class="border" v-if="!data[indextr].finish" :data="data[indextr].account">
+                    <span  class="text">{{data[indextr].account}}</span>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].title">
-                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></span>
+                  <vs-td class="border tableform" v-if="!data[indextr].finish" :data="data[indextr].title">
+                    <div v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></div>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].number">
-                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></span>
+                  <vs-td class="border tableform" v-if="!data[indextr].finish" :data="data[indextr].number">
+                    <div v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></div>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].value">
-                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></span>
+                  <vs-td class="border tableform" v-if="!data[indextr].finish" :data="data[indextr].value">
+                    <div v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></div>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].id">
-                    <span class="text">{{data[indextr].id}}</span>
+                  <vs-td v-if="!data[indextr].finish" :data="data[indextr].id">
+                    <span  class="text">{{data[indextr].id}}</span>
                   </vs-td >
                 </vs-tr>
               </template>
@@ -209,20 +209,20 @@
               </template>
               <template slot-scope="{data}">
                 <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].account">
-                    <span class="text">{{data[indextr].account}}</span>
+                  <vs-td class="border" v-if="data[indextr].finish" :data="data[indextr].account">
+                    <span  class="text">{{data[indextr].account}}</span>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].title">
-                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></span>
+                  <vs-td class="border tableform" v-if="data[indextr].finish" :data="data[indextr].title">
+                    <div v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></div>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].number">
-                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></span>
+                  <vs-td class="border tableform" v-if="data[indextr].finish" :data="data[indextr].number">
+                    <div v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></div>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].value">
-                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></span>
+                  <vs-td class="border tableform" v-if="data[indextr].finish" :data="data[indextr].value">
+                    <div v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></div>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].id">
-                    <span class="text">{{data[indextr].id}}</span>
+                  <vs-td v-if="data[indextr].finish" :data="data[indextr].id">
+                    <span  class="text">{{data[indextr].id}}</span>
                   </vs-td >
                 </vs-tr>
               </template>
@@ -501,6 +501,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.commit('boxshow')
     this.axios.post(process.env.VUE_APP_APIURL + '/getusercartorder', {
       account: this.account
     })
@@ -631,6 +632,15 @@ export default {
     }
   .btntext{
     font-size 1rem !important
+  }
+}
+.tableform{
+  span{
+    display flex !important
+    flex-wrap wrap !important
+    .text{
+      width 100%
+    }
   }
 }
 </style>

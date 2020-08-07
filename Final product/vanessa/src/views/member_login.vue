@@ -1,6 +1,6 @@
 <template>
   <div id="member_login">
-    <h1 class="text-center mt-4 mb-4">會員專區</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">會員專區</h1>
     <div :style="allstyle" class="container all">
       <form :style="orderstyle" class="order">
         <fieldset class="p-2 fieldset m-2 m-lg-5">
@@ -38,7 +38,7 @@
               <div class="col-12 col-lg-4 mt-2">
                 <p class="text col">日期：</p>
               </div>
-              <div class="col-12 col-lg-8 text mt-2">
+              <div class="col-12 col-lg-8 text mt-3">
                 <v-date-picker  v-model="date" />
               </div>
             </div>
@@ -46,7 +46,7 @@
               <div class="col-12 col-lg-4 mt-3 p-lg-0">
                 <p class="text col">人數：</p>
               </div>
-              <div class="col-12 col-lg-8 pl-4">
+              <div class="col-12 col-lg-8 pl-4 mt-3">
                 <b-dropdown id="dropdown-1" :text="peoplecount" class="m-md-2">
                   <b-dropdown-item @click="changepeoplecount('1')">1人</b-dropdown-item>
                   <b-dropdown-item @click="changepeoplecount('2')">2人</b-dropdown-item>
@@ -63,12 +63,13 @@
           </div>
           <div class="row">
             <div class="col-12 col-lg-6 d-flex align-items-center flex-wrap">
-              <div class="col-12 col-lg-4 mt-2">
+              <div class="col-12 col-lg-4">
                 <p class="text col">時間：</p>
               </div>
               <div class="col-12 col-lg-8 text mt-2">
-                <b-form-timepicker v-model="time" locale="tw"></b-form-timepicker>
-                <div class="mt-2"></div>
+                <div class="mt-4">
+                  <b-form-timepicker b-form-timepicker v-model="time" locale="tw"></b-form-timepicker>
+                </div>
               </div>
             </div>
             <div class="col-12 col-lg-6 d-flex align-items-center flex-wrap">
@@ -240,6 +241,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.commit('boxshow')
     this.axios.post(process.env.VUE_APP_APIURL + '/checkorder', {
       account: this.account
     })

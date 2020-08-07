@@ -18,7 +18,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFacebook, faLine, faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faShoppingCart, faBookOpen, faShoppingBasket, faBook, faCalendarAlt, faMapMarkerAlt, faUser, faUserCheck, faWrench } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faBookOpen, faShoppingBasket, faBook, faCalendarAlt, faMapMarkerAlt, faUser, faUserCheck, faWrench, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -26,7 +26,7 @@ import './style/style.styl'
 import 'vuesax/dist/vuesax.css'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
-library.add(faFacebook, faLine, faInstagram, faShoppingCart, faBookOpen, faShoppingBasket, faBook, faCalendarAlt, faMapMarkerAlt, faUser, faUserCheck, faWrench)
+library.add(faFacebook, faLine, faInstagram, faShoppingCart, faBookOpen, faShoppingBasket, faBook, faCalendarAlt, faMapMarkerAlt, faUser, faUserCheck, faWrench, faSignOutAlt)
 dotenv.config()
 
 Vue.use(BootstrapVue)

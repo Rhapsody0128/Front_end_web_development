@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     screenWidth: 0,
     name: '',
-    account: ''
+    account: '',
+    boxshow: false
   },
   getters: {
     screenWidth (state) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     cart (state) {
       return JSON.parse(JSON.stringify(state.cart))
+    },
+    boxshow (state) {
+      return state.boxshow
     }
   },
   mutations: {
@@ -36,12 +40,17 @@ export default new Vuex.Store({
     logout (state) {
       state.name = ''
       state.account = ''
+    },
+    boxshow (state) {
+      state.boxshow = true
+      setTimeout(() => {
+        state.boxshow = false
+      }, 4000)
     }
   },
   actions: {
   },
   modules: {
   },
-
   plugins: [createPersistedState()]
 })

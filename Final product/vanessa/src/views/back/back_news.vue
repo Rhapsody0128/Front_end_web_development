@@ -63,10 +63,13 @@
                 <vs-input class="inputx col-12" label-placeholder="活動標題" v-model="tr.title"/>
               </template>
             </vs-td>
-            <vs-td :data="tr">
-              <v-calendar
-              :attributes=[tr]
-            ></v-calendar>
+            <vs-td class="calendar" :data="tr">
+              <v-calendar v-if="ScreenWidth>768" :attributes=[tr]></v-calendar>
+            <vs-button v-else @click="popupActivo=true" color="primary" type="border">點我看呈現</vs-button>
+              <vs-popup class="holamundo"  title="月曆預覽" :active.sync="popupActivo">
+                <v-calendar class="m-auto" :attributes=[tr]></v-calendar>
+                <v-date-picker class="w-100 col-12" mode='range' v-model='tr.dates'/>
+              </vs-popup>
             <template slot="edit">
               <v-date-picker class="w-100 col-12" mode='range' v-model='tr.dates'/>
             </template>
@@ -185,6 +188,7 @@ var changedatesformat = (datastart, dataend) => {
 export default {
   data () {
     return {
+      popupActivo: false,
       color: '',
       pickcolorstyle: {},
       state: null,
@@ -313,6 +317,11 @@ export default {
         }).catch(error => {
           this.$swal('錯誤', `${error.response.data.message}`, 'error')
         })
+    }
+  },
+  computed: {
+    ScreenWidth () {
+      return this.$store.getters.screenWidth
     }
   },
 

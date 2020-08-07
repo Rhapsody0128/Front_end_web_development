@@ -1,6 +1,6 @@
 <template>
   <div id="member">
-    <h1 class="text-center mt-4 mb-4">會員專區</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">會員專區</h1>
     <div class="container all" :style="allstyle">
       <form :style="loginstyle" class="login">
         <fieldset class="p-2 fieldset m-2 m-lg-5">
@@ -39,14 +39,14 @@
           </div>
           <div class="row mt-5 justify-content-center align-items-center flex-nowrap">
             <div class="col-lg-2 text-right">
-              <button @click="login" class="btn btn-primary">確認</button>
+              <button @click="login" class="btn btn-primary"><span class="btntext">確認</span></button>
             </div>
             <div class="col-lg-2 text-left">
-              <button class="btn btn-danger">重寫</button>
+              <button class="btn btn-danger"><span class="btntext">重寫</span></button>
             </div>
           </div>
         </fieldset>
-        <button  @click="changetoggle" class="btn btn-light toggle">沒有帳號?</button>
+        <button  @click="changetoggle" class="btn btn-light toggle"><span class="btntext">沒有帳號?</span></button>
       </form>
       <form :style="registeringstyle" class="registering">
         <fieldset class="p-2 fieldset m-2 m-lg-5">
@@ -148,7 +148,7 @@
           </div>
           <div class="row justify-content-center align-items-center mt-5">
             <div class="col-6 text-right">
-              <b-button  class="btn-success" v-b-modal.modal-1>會員須知</b-button>
+              <b-button  class="btn-success" v-b-modal.modal-1><span class="btntext">會員須知</span></b-button>
               <b-modal id="modal-1" title="會員須知">
                 <ul class="ml-5">
                   <li>每天需繳3000會費</li>
@@ -163,14 +163,14 @@
           </div>
           <div class="row mt-5 justify-content-center align-items-center flex-nowrap">
             <div class="col-lg-2 text-right">
-              <button @click="registering" class="btn btn-primary">確認</button>
+              <button @click="registering" class="btn btn-primary"><span class="btntext">確認</span></button>
             </div>
             <div class="col-lg-2 text-left">
-              <button class="btn btn-danger">重寫</button>
+              <button class="btn btn-danger"><span class="btntext">重寫</span></button>
             </div>
           </div>
         </fieldset>
-        <button href="#" @click="changetoggle" class="btn btn-light toggle">已有帳號</button>
+        <button @click="changetoggle" class="btn btn-light toggle">已有帳號</button>
       </form>
     </div>
   </div>
@@ -349,6 +349,9 @@ export default {
         }
       }
     }
+  },
+  mounted: function () {
+    this.$store.commit('boxshow')
   }
 }
 </script>
@@ -383,6 +386,7 @@ export default {
       top 0
       bottom 0
       margin auto
+      transform: rotateY(0deg) translateZ(400px);
       transition 0.5s
     }
     .registering{

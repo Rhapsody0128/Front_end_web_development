@@ -1,6 +1,6 @@
 <template>
   <div id="back">
-    <h1 class="text-center mt-4 mb-4">後臺管理</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">後臺管理</h1>
     <div class="container">
       <div class="row justify-content-center">
         <vs-button class="mb-5" @click="active=!active" color="primary" type="filled">管理</vs-button>
@@ -54,7 +54,10 @@
 export default {
   data: () => ({
     active: false
-  })
+  }),
+  mounted: function () {
+    this.$store.commit('boxshow')
+  }
 }
 </script>
 <style lang="stylus">

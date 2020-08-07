@@ -1,6 +1,6 @@
 <template>
   <div id="menu">
-    <h1 class="text-center mt-4 mb-4">菜單瀏覽</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">菜單瀏覽</h1>
     <div v-for="(meal,index) in menu" :key="index">
     <div v-if="meal.type ==='特餐'" id="spcialmeal" class="row flex-wrap justify-content-center">
       <div class="col-10 col-lg-4">
@@ -113,6 +113,7 @@ export default {
     }
   },
   mounted: function () {
+    this.$store.commit('boxshow')
     this.axios.post(process.env.VUE_APP_APIURL + '/allmenu')
       .then(res => {
         this.menu = res.data.result.map(data => {
@@ -146,20 +147,20 @@ export default {
     bottom -1px
   }
   .mealpic{
-    width 10rem
-    height 10rem
+    width 8rem
+    height 8rem
     img{
       border-radius:50%
       width 100%
       height 100%
       object-fit cover
-      padding 1rem
+      padding 0.5rem
     }
   }
   .mealdes{
-    width 8rem
-    height 8rem
-    padding 1rem
+    width 7rem
+    height 4rem
+    padding 0.5rem
     margin auto
     }
     @media (min-width : 768px) {
@@ -170,7 +171,7 @@ export default {
       .mealdes{
       width 12rem
       height 12rem
-      font-size 1.2rem
+      font-size 1.6rem
       }
     }
     .fade-enter-active, .fade-leave-active {

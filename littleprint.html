@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="color" v-model="color">
+    <input type="button" value="筆" @click="mode = 1">
+    <input type="button" value="擦" @click="mode = 2">
+    <br>
+    <div id="erase" v-if="mode === 2">
+      大小 <input type="range" v-model="eraseSize" min="1" max="100">
+    </div>
+    <br>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const data = new Vue({
+      el: "#app",
+      data: {
+        color: 'black',
+        ishold: false,
+        bgcolor: 'white',
+        mouselast: {x: -1, y: -1},
+        // 1 = pen
+        // 2 = ??
+        mode: 1,
+        eraseSize: 10
+      }
+    })
+
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = data.bgcolor
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    canvas.onmousedown = () => {
+      data.ishold = true
+    }
+
+    canvas.onmousemove = (event) => {
+      // 取得 canvas 在視窗中的位置
+      const rect = canvas.getBoundingClientRect()
+
+      // 取得滑鼠在 canvas 的 X 座標
+      // event.clientX/Y 獲取滑鼠在瀏覽器視窗的 X/Y 座標
+      // https://segmentfault.com/a/1190000002405897
+      const x = event.clientX - rect.left
+      const y = event.clientY - rect.top
+
+      if(data.ishold && data.mouselast.x >= -1 && data.mouselast.y >= -1) {
+        if(data.mode === 1) {
+          ctx.strokeStyle = data.color
+          ctx.beginPath()
+          ctx.moveTo(data.mouselast.x, data.mouselast.y)
+          ctx.lineTo(x, y)
+          ctx.stroke()
+        
+        }
+        else if (data.mode === 2) {
+          ctx.fillStyle = data.bgcolor
+          ctx.beginPath()
+          ctx.arc(x, y, data.eraseSize, 0, Math.PI*2, true)
+          ctx.fill()
+        }
+      }
+      data.mouselast = { x, y }
+    }
+
+    canvas.onclick = (event) => {
+    }
+
+    window.onmouseup = () => {
+      data.ishold = false
+      data.mouselast = { x:-1 , y: -1 }
+    }
+  </script>
+</body>
+</html>
