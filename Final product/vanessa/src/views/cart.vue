@@ -1,9 +1,9 @@
 <template>
   <div id="cart">
-    <h1 class="text-center mt-4 mb-4">購物車</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">購物車</h1>
     <div :style="allstyle" class="container all">
       <div :style="cartstyle" class="cart">
-        <h2 class="text-center mt-4 mb-4">未送出訂單</h2>
+        <h2 class="text-center mt-4 mb-4 title-lg">未送出訂單</h2>
         <vs-table :data="cart">
           <template slot="thead">
             <vs-th sort-key="title">
@@ -19,7 +19,7 @@
               <span class="item">數量</span>
             </vs-th>
             <vs-th>
-              <span class="item ml-lg-5 ml-4">圖片</span>
+              <span class="item">圖片</span>
             </vs-th>
             <vs-th>
               <span class="item">動作</span>
@@ -90,7 +90,7 @@
         </div>
       </div>
       <div :style="orderingstyle" class="ordering">
-        <h2 class="text-center mt-4 mb-4">訂購紀錄</h2>
+        <h2 class="text-center mt-4 mb-4 title-lg">訂購紀錄</h2>
         <vs-table :data="cart">
           <template slot="thead">
             <vs-th sort-key="title">
@@ -106,10 +106,10 @@
               <span class="item">數量</span>
             </vs-th>
             <vs-th>
-              <span class="item ml-lg-5 ml-4">圖片</span>
+              <span class="item">圖片</span>
             </vs-th>
             <vs-th>
-              <span class="item ml-lg-5 ml-4">清除</span>
+              <span class="item">清除</span>
             </vs-th>
           </template>
           <template slot-scope="{data}">
@@ -174,20 +174,20 @@
               </template>
               <template slot-scope="{data}">
                 <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].account">
-                    <span class="text">{{data[indextr].account}}</span>
+                  <vs-td class="border" v-if="!data[indextr].finish" :data="data[indextr].account">
+                    <span  class="text">{{data[indextr].account}}</span>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].title">
-                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></span>
+                  <vs-td class="border tableform" v-if="!data[indextr].finish" :data="data[indextr].title">
+                    <div v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></div>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].number">
-                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></span>
+                  <vs-td class="border tableform" v-if="!data[indextr].finish" :data="data[indextr].number">
+                    <div v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></div>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].value">
-                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></span>
+                  <vs-td class="border tableform" v-if="!data[indextr].finish" :data="data[indextr].value">
+                    <div v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></div>
                   </vs-td>
-                  <vs-td v-if="!data[indextr].finish" class="p-lg-3" :data="data[indextr].id">
-                    <span class="text">{{data[indextr].id}}</span>
+                  <vs-td v-if="!data[indextr].finish" :data="data[indextr].id">
+                    <span  class="text">{{data[indextr].id}}</span>
                   </vs-td >
                 </vs-tr>
               </template>
@@ -209,20 +209,20 @@
               </template>
               <template slot-scope="{data}">
                 <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].account">
-                    <span class="text">{{data[indextr].account}}</span>
+                  <vs-td class="border" v-if="data[indextr].finish" :data="data[indextr].account">
+                    <span  class="text">{{data[indextr].account}}</span>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].title">
-                    <span v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></span>
+                  <vs-td class="border tableform" v-if="data[indextr].finish" :data="data[indextr].title">
+                    <div v-for="(title,index) in data[indextr].title" :key="index" class="text">{{title}}<br></div>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].number">
-                    <span v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></span>
+                  <vs-td class="border tableform" v-if="data[indextr].finish" :data="data[indextr].number">
+                    <div v-for="(number,index) in data[indextr].number" :key="index" class="text">{{number}}<br></div>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].value">
-                    <span v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></span>
+                  <vs-td class="border tableform" v-if="data[indextr].finish" :data="data[indextr].value">
+                    <div v-for="(value,index) in data[indextr].value" :key="index" class="text">{{value}}<br></div>
                   </vs-td>
-                  <vs-td v-if="data[indextr].finish" class="p-lg-3" :data="data[indextr].id">
-                    <span class="text">{{data[indextr].id}}</span>
+                  <vs-td v-if="data[indextr].finish" :data="data[indextr].id">
+                    <span  class="text">{{data[indextr].id}}</span>
                   </vs-td >
                 </vs-tr>
               </template>
@@ -310,7 +310,7 @@ export default {
         title: '已順利更變',
         text: '已順利所選項目'
       })
-      this.axios.post('http://localhost:3000/changecart', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/changecart', {
         number: this.changecart.number,
         id: this.changecart.id
       })
@@ -336,7 +336,7 @@ export default {
         title: '已順利刪除',
         text: '已順利刪除所選項目'
       })
-      this.axios.post('http://localhost:3000/deletecart', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/deletecart', {
         id: this.changecart.id
       })
         .then(res => {
@@ -371,12 +371,12 @@ export default {
               this.block = true
               this.cart.forEach(data => {
                 if (data.buying) {
-                  this.axios.post('http://localhost:3000/buyingcart', {
+                  this.axios.post(process.env.VUE_APP_APIURL + '/buyingcart', {
                     id: data.id,
                     buying: false
                   })
                     .catch(error => {
-                      console.log(error.response.data.message)
+                      this.$swal('錯誤', `${error.response.data.message}`, 'error')
                     })
                 }
               })
@@ -392,7 +392,7 @@ export default {
                   this.cartorder.src.push(data.src)
                 }
               })
-              this.axios.post('http://localhost:3000/cartorder', this.cartorder)
+              this.axios.post(process.env.VUE_APP_APIURL + '/cartorder', this.cartorder)
                 .then(res => {
                   this.$swal('確認', `已收到您的訂單，您的訂單編號為${res.data.result.id}`, 'success')
                   this.cartorder = {
@@ -407,7 +407,7 @@ export default {
                   }
                 })
                 .catch(error => {
-                  console.log(error.response.data.message)
+                  this.$swal('錯誤', `${error.response.data.message}`, 'error')
                 })
             }
           } else {
@@ -434,11 +434,11 @@ export default {
           if (judge.length > 0) {
             this.cart.forEach(data => {
               if (data.buying) {
-                this.axios.post('http://localhost:3000/clearcart', { account: this.account, buying: data.buying })
+                this.axios.post(process.env.VUE_APP_APIURL + '/clearcart', { account: this.account, buying: data.buying })
                   .then(res => {
                     this.$swal('完成', '已清空購物車', 'success')
                   }).catch(error => {
-                    console.log(error.response.data.message)
+                    this.$swal('錯誤', `${error.response.data.message}`, 'error')
                   })
               }
             })
@@ -501,7 +501,8 @@ export default {
     }
   },
   mounted: function () {
-    this.axios.post('http://localhost:3000/getusercartorder', {
+    this.$store.commit('boxshow')
+    this.axios.post(process.env.VUE_APP_APIURL + '/getusercartorder', {
       account: this.account
     })
       .then(res => {
@@ -509,7 +510,7 @@ export default {
       }).catch(error => {
         this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
-    this.axios.post('http://localhost:3000/getusercart', {
+    this.axios.post(process.env.VUE_APP_APIURL + '/getusercart', {
       account: this.account
     })
       .then(res => {
@@ -527,7 +528,7 @@ export default {
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
@@ -631,6 +632,15 @@ export default {
     }
   .btntext{
     font-size 1rem !important
+  }
+}
+.tableform{
+  span{
+    display flex !important
+    flex-wrap wrap !important
+    .text{
+      width 100%
+    }
   }
 }
 </style>

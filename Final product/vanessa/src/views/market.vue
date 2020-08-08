@@ -1,6 +1,6 @@
 <template>
   <div id="market">
-    <h1 class="text-center mt-4 mb-4">購物廣場</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">購物廣場</h1>
     <div class="row justify-content-center m-0">
       <div class="col-10 col-lg-2 ">
         <b-form-group>
@@ -25,7 +25,7 @@
         </b-form-group>
       </div>
       <div id="showmarket" class="col-12 col-lg-8 d-flex justify-content-start flex-wrap">
-        <div class="mealcard d-flex" v-for="(item,index) in market" :key="index">
+        <div class="itemcard d-flex" v-for="(item,index) in market" :key="index">
           <transition name="fade">
             <div @click="item.popupActivo=true;number=null" v-if="selected.includes(item.type)">
               <div class="itempic">
@@ -82,7 +82,7 @@ export default {
             cancelButtonText: '取消'
           }).then((result) => {
             if (result.value) {
-              this.axios.post('http://localhost:3000/addcart', {
+              this.axios.post(process.env.VUE_APP_APIURL + '/addcart', {
                 itemid: id,
                 account: this.account,
                 title: title,
@@ -93,15 +93,14 @@ export default {
               })
                 .then(res => {
                   this.$swal('確認', '已收到您的訂單，會盡速幫您處裡', 'success')
-                  console.log(res)
                 })
                 .catch(error => {
-                  console.log(error.response.data.message)
+                  this.$swal('錯誤', `${error.response.data.message}`, 'error')
                 })
             }
           })
         } else {
-          this.axios.post('http://localhost:3000/addcart', {
+          this.axios.post(process.env.VUE_APP_APIURL + '/addcart', {
             itemid: id,
             account: this.account,
             title: title,
@@ -112,10 +111,9 @@ export default {
           })
             .then(res => {
               this.$swal('確認', '已成功加入購物車', 'success')
-              console.log(res)
             })
             .catch(error => {
-              console.log(error.response.data.message)
+              this.$swal('錯誤', `${error.response.data.message}`, 'error')
             })
         }
       }
@@ -147,7 +145,8 @@ export default {
     }
   },
   mounted: function () {
-    this.axios.post('http://localhost:3000/allmarket')
+    this.$store.commit('boxshow')
+    this.axios.post(process.env.VUE_APP_APIURL + '/allmarket')
       .then(res => {
         this.market = res.data.result.map(data => {
           return {
@@ -155,7 +154,7 @@ export default {
             value: data.value,
             type: data.type,
             description: data.description,
-            src: 'http://localhost:3000' + '/images/' + data.src,
+            src: process.env.VUE_APP_APIURL + '/images/' + data.src,
             stock: data.stock,
             popupActivo: false,
             id: data.id
@@ -163,7 +162,7 @@ export default {
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
@@ -175,20 +174,20 @@ export default {
     height 80%
   }
   .itempic{
-    width 10rem
-    height 10rem
+    width 8rem
+    height 8rem
     img{
       border-radius:50%
       width 100%
       height 100%
       object-fit cover
-      padding 1rem
+      padding 0.5rem
     }
   }
   .itemdes{
-    width 8rem
-    height 8rem
-    padding 1rem
+    width 7rem
+    height 4rem
+    padding 0.5rem
     margin auto
     }
     @media (min-width : 768px) {
@@ -199,7 +198,7 @@ export default {
       .itemdes{
       width 12rem
       height 12rem
-      font-size 1.2rem
+      font-size 1.6rem
       }
     }
     .fade-enter-active, .fade-leave-active {

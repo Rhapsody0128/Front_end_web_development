@@ -14,6 +14,9 @@ import FTPStorage from 'multer-ftp'
 import multer from 'multer'
 import path from 'path'
 import fs from 'fs'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const MongoStore = connectMongo(session)
 const app = express()
@@ -27,17 +30,20 @@ app.use(session({
   // 密鑰，加密認證資料用，無特定值
   secret: 'vanessa',
   // 登入狀態有效毫秒
+  store: new MongoStore({
+    // 使用 mongoose 的資料庫連接
+    mongooseConnection: database.connection,
+    // 設定存入的 collection
+    collection: process.env.COLLECTION_SESSION
+  }),
   cookie: {
     maxAge: 1000 * 60 * 30
   },
   // 是否保存沒有被修改過的連線狀態
   saveUninitialized: false,
   // 是否每次重新計算過期時間
-  rolling: true,
+  rolling: true
   // 存入mongodb
-  store: new MongoStore({
-    mongooseConnection: database.connection
-  })
 }))
 // ---檔案上傳FTP
 let storage
@@ -86,10 +92,23 @@ const upload = multer({
 
 // 設定跨域套件
 app.use(cors({
-  // origin來源網域
-  // callback(錯誤,是否允許)
   origin (origin, callback) {
-    callback(null, true)
+    // 直接開網頁，不是 ajax 時，origin 是 undefined
+    if (origin === undefined) {
+      callback(null, true)
+    } else {
+      console.log(process.env.ALLOW_CORS)
+      if (process.env.ALLOW_CORS === 'true') {
+        // 開發環境，允許
+        callback(null, true)
+      } else if (origin.includes('github')) {
+        // 非開發環境，但是從 github 過來，允許
+        callback(null, true)
+      } else {
+        // 不是開發也不是從 github 過來，拒絕
+        callback(new Error('Not allowed'), false)
+      }
+    }
   },
   credentials: true
 }))
@@ -349,12 +368,15 @@ app.post('/allorder', async (req, res) => {
 })
 // ---菜單上傳
 app.post('/addmeal', async (req, res) => {
+  console.log('addmeal')
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
     res.send({ success: false, message: '格式不符' })
     return
   }
+  console.log('format ok')
   upload.single('src')(req, res, async error => {
+    console.log('upload single')
     if (error instanceof multer.MulterError) {
       // 上傳錯誤
       let message = ''
@@ -366,19 +388,29 @@ app.post('/addmeal', async (req, res) => {
       res.status(400)
       res.send({ success: false, message })
     } else if (error) {
+      console.log(error)
       res.status(500)
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
+      console.log('aaaa')
       try {
+        let src = ''
+        if (process.env.FTP === 'false') {
+          src = req.file.filename
+        } else {
+          src = path.basename(req.file.path)
+        }
+
         const result = await database.menus.create(
           {
             title: req.body.title,
             value: req.body.value,
             type: req.body.type,
-            src: req.file.filename,
+            src,
             description: req.body.description
           }
         )
+        console.log(result)
         res.status(200)
         res.send({ success: true, message: '', result })
       } catch (error) {
@@ -421,12 +453,18 @@ app.post('/specialmeal', async (req, res) => {
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
       try {
+        let src = ''
+        if (process.env.FTP === 'false') {
+          src = req.file.filename
+        } else {
+          src = path.basename(req.file.path)
+        }
         let result = await database.menus.findOneAndUpdate(
           { type: req.body.type },
           {
             title: req.body.title,
             value: req.body.value,
-            src: req.file.filename,
+            src: req,
             description: req.body.description
           }
         )
@@ -437,7 +475,7 @@ app.post('/specialmeal', async (req, res) => {
               title: req.body.title,
               value: req.body.value,
               type: req.body.type,
-              src: req.file.filename,
+              src,
               description: req.body.description
             }
           )
@@ -555,6 +593,12 @@ app.post('/addevent', async (req, res) => {
       res.status(500)
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
+      let src = ''
+      if (process.env.FTP === 'false') {
+        src = req.file.filename
+      } else {
+        src = path.basename(req.file.path)
+      }
       try {
         const result = await database.events.create(
           {
@@ -566,7 +610,7 @@ app.post('/addevent', async (req, res) => {
             endyear: req.body.endyear,
             endmonth: req.body.endmonth,
             endday: req.body.endday,
-            src: req.file.filename,
+            src,
             description: req.body.description
           }
         )
@@ -685,13 +729,19 @@ app.post('/additem', async (req, res) => {
       res.status(500)
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
+      let src = ''
+      if (process.env.FTP === 'false') {
+        src = req.file.filename
+      } else {
+        src = path.basename(req.file.path)
+      }
       try {
         const result = await database.markets.create(
           {
             title: req.body.title,
             value: req.body.value,
             type: req.body.type,
-            src: req.file.filename,
+            src,
             description: req.body.description,
             stock: req.body.stock
           }
@@ -1054,7 +1104,6 @@ app.post('/getusercartorder', async (req, res) => {
 })
 
 // 啟動網頁伺服器
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('網頁伺服器已啟動')
-  console.log('http://localhost:3000')
 })

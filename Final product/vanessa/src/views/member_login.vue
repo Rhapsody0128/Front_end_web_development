@@ -1,6 +1,6 @@
 <template>
   <div id="member_login">
-    <h1 class="text-center mt-4 mb-4">會員專區</h1>
+    <h1 class="text-center mt-4 mb-4 bigtitle">會員專區</h1>
     <div :style="allstyle" class="container all">
       <form :style="orderstyle" class="order">
         <fieldset class="p-2 fieldset m-2 m-lg-5">
@@ -38,7 +38,7 @@
               <div class="col-12 col-lg-4 mt-2">
                 <p class="text col">日期：</p>
               </div>
-              <div class="col-12 col-lg-8 text mt-2">
+              <div class="col-12 col-lg-8 text mt-3">
                 <v-date-picker  v-model="date" />
               </div>
             </div>
@@ -46,7 +46,7 @@
               <div class="col-12 col-lg-4 mt-3 p-lg-0">
                 <p class="text col">人數：</p>
               </div>
-              <div class="col-12 col-lg-8 pl-4">
+              <div class="col-12 col-lg-8 pl-4 mt-3">
                 <b-dropdown id="dropdown-1" :text="peoplecount" class="m-md-2">
                   <b-dropdown-item @click="changepeoplecount('1')">1人</b-dropdown-item>
                   <b-dropdown-item @click="changepeoplecount('2')">2人</b-dropdown-item>
@@ -63,12 +63,13 @@
           </div>
           <div class="row">
             <div class="col-12 col-lg-6 d-flex align-items-center flex-wrap">
-              <div class="col-12 col-lg-4 mt-2">
+              <div class="col-12 col-lg-4">
                 <p class="text col">時間：</p>
               </div>
               <div class="col-12 col-lg-8 text mt-2">
-                <b-form-timepicker v-model="time" locale="tw"></b-form-timepicker>
-                <div class="mt-2"></div>
+                <div class="mt-4">
+                  <b-form-timepicker b-form-timepicker v-model="time" locale="tw"></b-form-timepicker>
+                </div>
               </div>
             </div>
             <div class="col-12 col-lg-6 d-flex align-items-center flex-wrap">
@@ -154,7 +155,7 @@ export default {
       }
     },
     order () {
-      this.axios.post('http://localhost:3000/order', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/order', {
         account: this.account,
         name: this.name,
         phone: this.phone,
@@ -180,7 +181,7 @@ export default {
         })
     },
     cancelorder () {
-      this.axios.post('http://localhost:3000/cancelorder', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/cancelorder', {
         account: this.account
       })
         .then(res => {
@@ -240,7 +241,8 @@ export default {
     }
   },
   mounted: function () {
-    this.axios.post('http://localhost:3000/checkorder', {
+    this.$store.commit('boxshow')
+    this.axios.post(process.env.VUE_APP_APIURL + '/checkorder', {
       account: this.account
     })
       .then(res => {
@@ -251,11 +253,11 @@ export default {
           this.ordereddate = res.data.result[0].date.substr(0, 10)
           this.orderedtime = res.data.result[0].time
           this.orderedremarks = res.data.result[0].remarks
-        } else {
-          console.log('ordered not found')
         }
+      }).catch(error => {
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
-    this.axios.post('http://localhost:3000/getuserinfo', {
+    this.axios.post(process.env.VUE_APP_APIURL + '/getuserinfo', {
       account: this.account
     })
       .then(res => {
@@ -263,6 +265,8 @@ export default {
           this.name = res.data.result[0].name
           this.phone = res.data.result[0].phone
         }
+      }).catch(error => {
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
@@ -312,7 +316,6 @@ export default {
     bottom 0
     margin auto
     transform: rotateY(180deg) translateZ(400px);
-    background black
     pointer-events: none
     transition 0.5s
     opacity 0

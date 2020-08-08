@@ -304,13 +304,13 @@ const eventSchema = new Schema(
 // 建立 Model
 // mongoose.model('資料表名稱', Schema)
 // 資料表名稱必須為複數，結尾加 s
-const users = mongoose.model('users', userSchema)
-const orders = mongoose.model('orders', orderSchema)
-const menus = mongoose.model('menus', menuSchema)
-const events = mongoose.model('events', eventSchema)
-const markets = mongoose.model('markets', marketSchema)
-const carts = mongoose.model('carts', cartSchema)
-const cartorders = mongoose.model('cartorders', cartorderSchema)
+const users = mongoose.model(process.env.COLLECTION_USER, userSchema)
+const orders = mongoose.model(process.env.COLLECTION_ORDER, orderSchema)
+const menus = mongoose.model(process.env.COLLECTION_MENU, menuSchema)
+const events = mongoose.model(process.env.COLLECTION_EVENT, eventSchema)
+const markets = mongoose.model(process.env.COLLECTION_MARKET, marketSchema)
+const carts = mongoose.model(process.env.COLLECTION_CART, cartSchema)
+const cartorders = mongoose.model(process.env.COLLECTION_CARTORDER, cartorderSchema)
 const connection = mongoose.connection
 
 // 匯出變數

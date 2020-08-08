@@ -4,7 +4,7 @@
         <div class="col">
             <vs-table multiple v-model="selected" :data="datas">
               <template slot="header">
-                <h1 class="title text-center">訂位資訊</h1>
+                <h1 class="title-lg text-center ">訂位資訊</h1>
               </template>
               <template slot="thead">
                 <vs-th sort-key="name" class="item">姓名</vs-th>
@@ -77,13 +77,13 @@ export default {
           text: '已順利刪除所選項目'
         })
         this.selected.forEach(data => {
-          this.axios.post('http://localhost:3000/cancelorder', {
+          this.axios.post(process.env.VUE_APP_APIURL + '/cancelorder', {
             account: data.account
           })
             .then(res => {
               if (res.data.success) {
                 this.$swal('成功', '取消成功', 'success')
-                this.axios.post('http://localhost:3000/allorder')
+                this.axios.post(process.env.VUE_APP_APIURL + '/allorder')
                   .then(res => {
                     this.datas = res.data.result
                   })
@@ -98,7 +98,7 @@ export default {
     }
   },
   mounted: function () {
-    this.axios.post('http://localhost:3000/allorder')
+    this.axios.post(process.env.VUE_APP_APIURL + '/allorder')
       .then(res => {
         this.datas = res.data.result
       }).catch(error => {

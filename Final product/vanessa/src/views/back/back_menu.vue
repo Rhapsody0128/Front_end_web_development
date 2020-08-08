@@ -1,6 +1,6 @@
 <template>
   <div id="back_menu">
-    <h1 class="text-center mt-4 mb-4">新增餐點</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">新增餐點</h1>
     <form>
     <div class="row">
       <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-lg-6 col-12 mt-5 d-flex justify-content-center flex-wrap">
         <h3 class="title mb-4 col-12">餐點圖片</h3>
-        <b-form-file v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
+        <b-form-file class="b-form-file" v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
         <p>圖片請在1MB以下</p>
       </div>
       <div class="col-lg-6 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -39,13 +39,13 @@
   </form>
   <hr>
   <div class="container">
-    <h1 class="text-center mt-4 mb-4">特餐管理</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">特餐管理</h1>
     <vs-table :data="allmenu">
       <template slot="thead">
         <vs-th sort-key="title"><span class="item ">名稱</span></vs-th>
         <vs-th sort-key="value"><span class="item ">價格</span></vs-th>
         <vs-th sort-key="type"><span class="item">類型</span></vs-th>
-        <vs-th ><span class="item ml-lg-5 ml-4">圖片</span></vs-th>
+        <vs-th ><span class="item ">圖片</span></vs-th>
         <vs-th ><span class="item ">描述</span></vs-th>
         <vs-th ><span class="item ">動作</span></vs-th>
       </template>
@@ -65,9 +65,6 @@
           </vs-td>
           <vs-td v-if="tr.type==='特餐'" :data="tr.type">
             <span class='text'>{{tr.type}}</span>
-            <template slot="edit">
-              <b-form-select class="col-12 mt-3" v-model="tr.type" :options="selecttype"></b-form-select>
-            </template>
           </vs-td>
           <vs-td v-if="tr.type==='特餐'" :data="tr.src">
             <div>
@@ -84,7 +81,6 @@
           </vs-td>
           <vs-td v-if="tr.type==='特餐'" :data="tr">
             <vs-button class="d-block" @click="openConfirm(tr)" color="success" type="filled"><span class="btntext">儲存</span></vs-button>
-            <vs-button class="d-block" @click="openDeleteConfirm(tr)" color="danger" type="filled"><span class="btntext">刪除</span></vs-button>
           </vs-td>
         </vs-tr>
       </template>
@@ -92,13 +88,13 @@
   </div>
   <hr>
   <div class="container">
-    <h1 class="text-center mt-4 mb-4">菜單管理</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">菜單管理</h1>
     <vs-table :data="allmenu">
       <template slot="thead">
         <vs-th sort-key="title"><span class="item ">名稱</span></vs-th>
         <vs-th sort-key="value"><span class="item ">價格</span></vs-th>
         <vs-th sort-key="type"><span class="item">類型</span></vs-th>
-        <vs-th ><span class="item ml-lg-5 ml-4">圖片</span></vs-th>
+        <vs-th ><span class="item ">圖片</span></vs-th>
         <vs-th ><span class="item ">描述</span></vs-th>
         <vs-th ><span class="item ">動作</span></vs-th>
       </template>
@@ -189,9 +185,8 @@ export default {
         fd.append('type', this.type)
         fd.append('src', this.src)
         fd.append('description', this.description)
-
         if (this.type === '特餐') {
-          this.axios.post('http://localhost:3000/specialmeal', fd, {
+          this.axios.post(process.env.VUE_APP_APIURL + '/specialmeal', fd, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -202,7 +197,7 @@ export default {
               this.$swal('錯誤', `${error.response.data.message}`, 'error')
             })
         } else {
-          this.axios.post('http://localhost:3000/addmeal', fd, {
+          this.axios.post(process.env.VUE_APP_APIURL + '/addmeal', fd, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -236,7 +231,7 @@ export default {
         title: '已順利更變',
         text: '已順利所選項目'
       })
-      this.axios.post('http://localhost:3000/changemeal', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/changemeal', {
         title: this.changemeal.title,
         value: this.changemeal.value,
         type: this.changemeal.type,
@@ -265,7 +260,7 @@ export default {
         title: '已順利刪除',
         text: '已順利所選項目'
       })
-      this.axios.post('http://localhost:3000/deletemeal', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/deletemeal', {
         id: this.changemeal.id
       })
         .then(res => {
@@ -276,7 +271,7 @@ export default {
     }
   },
   mounted: function () {
-    this.axios.post('http://localhost:3000/allmenu')
+    this.axios.post(process.env.VUE_APP_APIURL + '/allmenu')
       .then(res => {
         this.allmenu = res.data.result.map(data => {
           return {
@@ -284,30 +279,18 @@ export default {
             value: data.value,
             type: data.type,
             description: data.description,
-            src: 'http://localhost:3000' + '/images/' + data.src,
+            src: process.env.VUE_APP_APIURL + '/images/' + data.src,
             id: data.id
           }
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
 </script>
 <style lang="stylus">
-.btntext{
-  font-size 0.2rem !important
-}
-.text{
-  font-size 0.5rem
-}
-.item{
-  font-size 1rem
-}
-.title{
-  font-size 1.5rem
-}
 .image{
   width 5rem
   height 5rem
@@ -317,33 +300,5 @@ export default {
     height 100%
     border-radius 50%
   }
-}
-.vs-table-text{
-  text-align center
-  margin auto
-}
-.material-icons{
-    font-size 0px !important
-    background red
-}
-@media (min-width : 768px){
-  .image{
-  width 10rem
-  height 10rem
-  }
-  .text{
-    font-size 1.5rem
-    margin auto
-  }
-  .item{
-    font-size 2rem
-  }
-  .title{
-    font-size 2rem
-    }
-  .btntext{
-    font-size 1rem !important
-  }
-
 }
 </style>

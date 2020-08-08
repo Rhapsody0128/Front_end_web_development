@@ -1,6 +1,6 @@
 <template>
   <div id="back_news">
-    <h1 class="text-center mt-4 mb-4">活動新增</h1>
+    <h1 class="text-center mt-4 mb-4 title-lg">活動新增</h1>
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-lg-6 col-12 mt-5 d-flex justify-content-center flex-wrap">
           <h3 class="title mb-4 col-12">活動圖片</h3>
-          <b-form-file v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
+          <b-form-file class="b-form-file" v-model="src" :state="state" @input="validateFile" placeholder="選擇檔案或拖曳至此" drop-placeholder="將檔案拖曳至此" requiredbrowse-text="瀏覽" accept="image/*"></b-form-file>
           <p>圖片請在1MB以下</p>
         </div>
         <div class="col-lg-6 col-12 mt-5 d-flex justify-content-center flex-wrap">
@@ -45,13 +45,13 @@
       </div>
     </div>
     <hr>
-      <h1 class="text-center mt-4 mb-4">活動管理</h1>
+      <h1 class="text-center mt-4 mb-4 title-lg">活動管理</h1>
     <div class="container">
       <vs-table :data="allevent">
         <template slot="thead">
           <vs-th sort-key="title"><span class="item">活動</span></vs-th>
-          <vs-th sort-key="range"><span class="item m-auto">月曆呈現</span></vs-th>
-          <vs-th ><span class="item ml-lg-5 ml-4">圖片</span></vs-th>
+          <vs-th sort-key="range"><span class="item text-center">月曆呈現</span></vs-th>
+          <vs-th ><span class="item">圖片</span></vs-th>
           <vs-th ><span class="item">內容</span></vs-th>
           <vs-th ><span class="item">動作</span></vs-th>
         </template>
@@ -63,10 +63,13 @@
                 <vs-input class="inputx col-12" label-placeholder="活動標題" v-model="tr.title"/>
               </template>
             </vs-td>
-            <vs-td :data="tr">
-              <v-calendar
-              :attributes=[tr]
-            ></v-calendar>
+            <vs-td class="calendar" :data="tr">
+              <v-calendar v-if="ScreenWidth>768" :attributes=[tr]></v-calendar>
+            <vs-button v-else @click="popupActivo=true" color="primary" type="border">點我看呈現</vs-button>
+              <vs-popup class="holamundo"  title="月曆預覽" :active.sync="popupActivo">
+                <v-calendar class="m-auto" :attributes=[tr]></v-calendar>
+                <v-date-picker class="w-100 col-12" mode='range' v-model='tr.dates'/>
+              </vs-popup>
             <template slot="edit">
               <v-date-picker class="w-100 col-12" mode='range' v-model='tr.dates'/>
             </template>
@@ -185,6 +188,7 @@ var changedatesformat = (datastart, dataend) => {
 export default {
   data () {
     return {
+      popupActivo: false,
       color: '',
       pickcolorstyle: {},
       state: null,
@@ -244,7 +248,7 @@ export default {
           end: new Date()
         }
 
-        this.axios.post('http://localhost:3000/addevent', fd, {
+        this.axios.post(process.env.VUE_APP_APIURL + '/addevent', fd, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -272,8 +276,7 @@ export default {
         title: '已順利更變',
         text: '已順利所選項目'
       })
-      console.log(changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[0][1])
-      this.axios.post('http://localhost:3000/changeevent', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/changeevent', {
         title: this.changeevent.title,
         startyear: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[0][2],
         startmonth: changedatesformat(this.changeevent.dates.start, this.changeevent.dates.end)[0][0],
@@ -286,7 +289,6 @@ export default {
       })
         .then(res => {
           this.$swal('完成', '已成功更變菜單', 'success')
-          console.log(res)
         }).catch(error => {
           this.$swal('錯誤', `${error.response.data.message}`, 'error')
         })
@@ -307,7 +309,7 @@ export default {
         title: '已順利刪除',
         text: '已順利所選項目'
       })
-      this.axios.post('http://localhost:3000/deleteevent', {
+      this.axios.post(process.env.VUE_APP_APIURL + '/deleteevent', {
         id: this.changeevent.id
       })
         .then(res => {
@@ -317,9 +319,14 @@ export default {
         })
     }
   },
+  computed: {
+    ScreenWidth () {
+      return this.$store.getters.screenWidth
+    }
+  },
 
   mounted: function () {
-    this.axios.post('http://localhost:3000/allevent')
+    this.axios.post(process.env.VUE_APP_APIURL + '/allevent')
       .then(res => {
         this.allevent = res.data.result.map(data => {
           return {
@@ -333,30 +340,18 @@ export default {
             },
             title: data.title,
             description: data.description,
-            src: 'http://localhost:3000' + '/images/' + data.src,
+            src: process.env.VUE_APP_APIURL + '/images/' + data.src,
             id: data.id
           }
         })
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
   }
 }
 </script>
 <style lang="stylus">
-.btntext{
-  font-size 0.2rem !important
-}
-.text{
-  font-size 0.5rem
-}
-.item{
-  font-size 1rem
-}
-.title{
-  font-size 1.5rem
-}
 .image{
   width 5rem
   height 5rem
@@ -373,10 +368,6 @@ export default {
   border-radius 50%
   margin-left 15%
 }
-.vs-table-text{
-  text-align center
-  margin auto
-}
 .pickcolorstyle{
   border-radius 0.5rem
   height 3rem
@@ -385,31 +376,4 @@ export default {
   text-shadow 0rem 0rem 0.3rem black
   font-size 2rem
 }
-.material-icons{
-  font-size 0px !important
-  background red
-}
-@media (min-width : 768px){
-  .image{
-  width 10rem
-  height 10rem
-  }
-  .text{
-    font-size 1.5rem
-    margin auto
-  }
-  .item{
-    font-size 2rem
-  }
-  .picitem{
-    margin auto
-  }
-  .title{
-    font-size 2rem
-  }
-  .btntext{
-  font-size 1rem !important
-  }
-}
-
 </style>
