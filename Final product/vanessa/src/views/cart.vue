@@ -1,9 +1,16 @@
 <template>
   <div id="cart">
+<<<<<<< Updated upstream
     <h1 class="text-center mt-4 mb-4 bigtitle">購物車</h1>
     <div :style="allstyle" class="container all">
       <div :style="cartstyle" class="cart">
         <h2 class="text-center mt-4 mb-4 title-lg">未送出訂單</h2>
+=======
+    <h1 class="text-center mt-4 mb-4">購物車</h1>
+    <div :style="allstyle" class="container all">
+      <div :style="cartstyle" class="cart">
+        <h1 class="text-center mt-4 mb-4">未送出訂單</h1>
+>>>>>>> Stashed changes
         <vs-table :data="cart">
           <template slot="thead">
             <vs-th sort-key="title">
@@ -19,7 +26,11 @@
               <span class="item">數量</span>
             </vs-th>
             <vs-th>
+<<<<<<< Updated upstream
               <span class="item">圖片</span>
+=======
+              <span class="item ml-lg-5 ml-4">圖片</span>
+>>>>>>> Stashed changes
             </vs-th>
             <vs-th>
               <span class="item">動作</span>
@@ -47,6 +58,7 @@
                   <div class="image">
                     <img :src="tr.src" />
                   </div>
+<<<<<<< Updated upstream
                 </div>
               </vs-td>
               <vs-td v-if="tr.buying" :data="tr">
@@ -237,6 +249,89 @@
             <button @click="changetoggle(2)" class=" btn btn-light mt-5 mb-5">訂購紀錄</button>
           </div>
         </div>
+=======
+                </div>
+              </vs-td>
+              <vs-td v-if="tr.buying" :data="tr">
+                <vs-button class="d-block" @click="openConfirm(tr)" color="success" type="filled">
+                  <span class="btntext">儲存</span>
+                </vs-button>
+                <vs-button
+                  class="d-block"
+                  @click="openDeleteConfirm(tr)"
+                  color="danger"
+                  type="filled"
+                >
+                  <span class="btntext">刪除</span>
+                </vs-button>
+              </vs-td>
+            </vs-tr>
+          </template>
+        </vs-table>
+        <div class="row justify-content-end mt-3 mb-3">
+          <h4 class="text-right mr-5">總品項數量:{{allnumber}}</h4>
+          <h4 class="text-right">總品項價格:{{allvalue}}</h4>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-6 col-lg-2 d-flex justify-content-center">
+            <vs-button @click="buy" color="success" type="filled">
+              <span class="btntext">購買</span>
+            </vs-button>
+          </div>
+          <div class="col-6 col-lg-2 d-flex justify-content-center">
+            <vs-button @click="clear" color="danger" type="filled">
+              <span class="btntext">清空</span>
+            </vs-button>
+          </div>
+        </div>
+        <button @click="changetoggle" class="btn btn-light toggle mt-5">確認歷史訂單</button>
+      </div>
+      <div :style="orderingstyle" class="ordering">
+        <h1 class="text-center mt-4 mb-4">歷史訂單</h1>
+        <vs-table :data="cart">
+          <template slot="thead">
+            <vs-th sort-key="title">
+              <span class="item">項目</span>
+            </vs-th>
+            <vs-th sort-key="value">
+              <span class="item">單價</span>
+            </vs-th>
+            <vs-th sort-key="value">
+              <span class="item">價格</span>
+            </vs-th>
+            <vs-th sort-key="number">
+              <span class="item">數量</span>
+            </vs-th>
+            <vs-th>
+              <span class="item ml-lg-5 ml-4">圖片</span>
+            </vs-th>
+          </template>
+          <template slot-scope="{data}">
+            <vs-tr :key="indextr" v-for="(tr, indextr) in data">
+              <vs-td v-if="tr.buying!=true" :data="tr.title">
+                <span class="text">{{tr.title}}</span>
+              </vs-td>
+              <vs-td v-if="tr.buying!=true" :data="tr.value">
+                <span class="text">{{tr.value}}</span>
+              </vs-td>
+              <vs-td v-if="tr.buying!=true" :data="tr">
+                <span class="text">{{tr.value*tr.number}}</span>
+              </vs-td>
+              <vs-td v-if="tr.buying!=true" :data="tr.number">
+                <span class="text">{{tr.number}}</span>
+              </vs-td>
+              <vs-td v-if="tr.buying!=true" :data="tr.src">
+                <div>
+                  <div class="image">
+                    <img :src="tr.src" />
+                  </div>
+                </div>
+              </vs-td>
+            </vs-tr>
+          </template>
+        </vs-table>
+        <button @click="changetoggle" class="btn btn-light toggle mt-5">購物車</button>
+>>>>>>> Stashed changes
       </div>
     </div>
   </div>
@@ -254,7 +349,11 @@ export default {
       allstyle: {},
       cartstyle: {},
       orderingstyle: {},
+<<<<<<< Updated upstream
       historystyle: {},
+=======
+      toggle: false,
+>>>>>>> Stashed changes
       block: true,
       cartorder: {
         account: '',
@@ -265,8 +364,12 @@ export default {
         src: [],
         buying: '',
         finish: ''
+<<<<<<< Updated upstream
       },
       history: []
+=======
+      }
+>>>>>>> Stashed changes
     }
   },
   computed: {
@@ -363,6 +466,7 @@ export default {
               this.$swal('錯誤', '商品數量不能為負數或零', 'error')
             }
           })
+<<<<<<< Updated upstream
           const judge = this.cart.filter(data => {
             return data.buying === true
           })
@@ -412,11 +516,56 @@ export default {
             }
           } else {
             this.$swal('錯誤', '購物車沒有商品', 'error')
+=======
+          if (this.block) {
+            this.block = true
+            this.cart.forEach(data => {
+              if (data.buying) {
+                this.axios.post('http://localhost:3000/buyingcart', {
+                  id: data.id,
+                  buying: false
+                })
+                  .catch(error => {
+                    console.log(error.response.data.message)
+                  })
+              }
+            })
+            this.cartorder.account = this.account
+            this.cartorder.buying = false
+            this.cartorder.finish = false
+            this.cart.forEach(data => {
+              if (data.buying) {
+                this.cartorder.itemid.push(data.itemid)
+                this.cartorder.title.push(data.title)
+                this.cartorder.number.push(parseInt(data.number))
+                this.cartorder.value.push(data.value)
+                this.cartorder.src.push(data.src)
+              }
+            })
+            this.axios.post('http://localhost:3000/cartorder', this.cartorder)
+              .then(res => {
+                this.$swal('確認', `已收到您的訂單您的訂單編號為${res.data.result.id}`, 'success')
+                this.cartorder = {
+                  account: '',
+                  itemid: [],
+                  title: [],
+                  number: [],
+                  value: [],
+                  src: [],
+                  buying: '',
+                  finish: ''
+                }
+              })
+              .catch(error => {
+                console.log(error.response.data.message)
+              })
+>>>>>>> Stashed changes
           }
         }
       })
     },
     clear () {
+<<<<<<< Updated upstream
       this.$swal({
         title: '清空',
         text: '確定要清空購物車?',
@@ -468,6 +617,15 @@ export default {
       } else if (value === 2) {
         this.allstyle = {
           transform: 'rotateY(240deg)'
+=======
+
+    },
+    changetoggle () {
+      this.toggle = !this.toggle
+      if (this.toggle) {
+        this.allstyle = {
+          transform: 'rotateY(180deg)'
+>>>>>>> Stashed changes
         }
         this.cartstyle = {
           pointerEvents: 'none',
@@ -477,6 +635,7 @@ export default {
           pointerEvents: 'auto',
           opacity: '1'
         }
+<<<<<<< Updated upstream
         this.historystyle = {
           pointerEvents: 'none',
           opacity: '0'
@@ -488,19 +647,32 @@ export default {
         this.cartstyle = {
           pointerEvents: 'none',
           opacity: '0'
+=======
+      } else {
+        this.allstyle = {
+          transform: 'rotateY(0deg)'
+        }
+        this.cartstyle = {
+          pointerEvents: 'auto',
+          opacity: '1'
+>>>>>>> Stashed changes
         }
         this.orderingstyle = {
           pointerEvents: 'none',
           opacity: '0'
         }
+<<<<<<< Updated upstream
         this.historystyle = {
           pointerEvents: 'auto',
           opacity: '1'
         }
+=======
+>>>>>>> Stashed changes
       }
     }
   },
   mounted: function () {
+<<<<<<< Updated upstream
     this.$store.commit('boxshow')
     this.axios.post(process.env.VUE_APP_APIURL + '/getusercartorder', {
       account: this.account
@@ -511,6 +683,9 @@ export default {
         this.$swal('錯誤', `${error.response.data.message}`, 'error')
       })
     this.axios.post(process.env.VUE_APP_APIURL + '/getusercart', {
+=======
+    this.axios.post('http://localhost:3000/getusercart', {
+>>>>>>> Stashed changes
       account: this.account
     })
       .then(res => {
@@ -572,7 +747,11 @@ export default {
     left 0
     bottom 0
     margin auto
+<<<<<<< Updated upstream
     transform: rotateY(0deg)
+=======
+    transform: rotateY(0deg);
+>>>>>>> Stashed changes
     transition 1s
     .cart{
       position: absolute;
@@ -582,7 +761,10 @@ export default {
       bottom 0
       margin auto
       background white
+<<<<<<< Updated upstream
       transform: rotateY(0deg) translateZ(400px)
+=======
+>>>>>>> Stashed changes
       transition 0.5s
     }
     .ordering{
@@ -592,6 +774,7 @@ export default {
       top 0
       bottom 0
       margin auto
+<<<<<<< Updated upstream
       transform: rotateY(120deg) translateZ(400px)
       background white
       pointer-events: none
@@ -606,6 +789,9 @@ export default {
       bottom 0
       margin auto
       transform: rotateY(-120deg) translateZ(400px)
+=======
+      transform: rotateY(180deg);
+>>>>>>> Stashed changes
       background white
       pointer-events: none
       transition 0.5s
@@ -613,6 +799,12 @@ export default {
     }
   }
   .toggle{
+<<<<<<< Updated upstream
+=======
+    position absolute
+    right 0
+    left 0
+>>>>>>> Stashed changes
     margin auto
   }
 @media (min-width : 768px){

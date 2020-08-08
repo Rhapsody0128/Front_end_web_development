@@ -844,6 +844,30 @@ app.post('/addcart', async (req, res) => {
     res.send({ success: false, message: '格式不符' })
     return
   }
+<<<<<<< Updated upstream
+
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
+  try {
+    let result = await database.carts.findOneAndUpdate(
+      { buying: req.body.buying, account: req.body.account, itemid: req.body.itemid },
+      {
+        $inc: { number: +req.body.number }
+      }
+    )
+    if (result === null) {
+      result = await database.carts.create(
+        {
+          itemid: req.body.itemid,
+          account: req.body.account,
+          title: req.body.title,
+          number: req.body.number,
+          value: req.body.value,
+<<<<<<< Updated upstream
+          src: req.body.src,
+=======
+=======
 
   try {
     let result = await database.carts.findOneAndUpdate(
@@ -861,6 +885,8 @@ app.post('/addcart', async (req, res) => {
           number: req.body.number,
           value: req.body.value,
           src: req.body.src,
+>>>>>>> master
+>>>>>>> Stashed changes
           buying: req.body.buying
         }
       )
@@ -875,14 +901,28 @@ app.post('/addcart', async (req, res) => {
       res.status(400)
       res.send({ success: false, message })
     } else {
+<<<<<<< Updated upstream
       console.log(error)
+=======
+<<<<<<< HEAD
+      // console.log(error)
+=======
+      console.log(error)
+>>>>>>> master
+>>>>>>> Stashed changes
       // 伺服器錯誤
       res.status(500)
       res.send({ success: false, message: '伺服器錯誤' })
     }
   }
 })
+<<<<<<< Updated upstream
 // ---購物車清單(byaccount)
+=======
+<<<<<<< HEAD
+=======
+// ---購物車清單
+>>>>>>> Stashed changes
 app.post('/getusercart', async (req, res) => {
   if (!req.headers['content-type'].includes('application/json')) {
     res.status(400)
@@ -954,6 +994,7 @@ app.post('/deletecart', async (req, res) => {
     res.send({ success: false, message: message })
   }
 })
+<<<<<<< Updated upstream
 // 清空購物車(byaccount)
 app.post('/clearcart', async (req, res) => {
   // 拒絕不是JSON的資料格式
@@ -978,6 +1019,8 @@ app.post('/clearcart', async (req, res) => {
     res.send({ success: false, message: message })
   }
 })
+=======
+>>>>>>> Stashed changes
 // ---購物車轉清單
 app.post('/buyingcart', async (req, res) => {
   try {
@@ -1069,6 +1112,7 @@ app.post('/finishcartorder', async (req, res) => {
 // ---訂單清單
 app.post('/allcartorder', async (req, res) => {
   try {
+<<<<<<< Updated upstream
     const result = await database.cartorders.find()
     if (result !== null) {
       res.status(200)
@@ -1089,6 +1133,14 @@ app.post('/getusercartorder', async (req, res) => {
     const result = await database.cartorders.find({
       account: req.body.account
     })
+=======
+    const finished = await database.cartorders.find()
+    const result = await database.cartorders.find({
+      finish: false
+    })
+    console.log(result)
+    console.log(finished)
+>>>>>>> Stashed changes
     if (result !== null) {
       res.status(200)
       res.send({ success: true, message: '', result })
@@ -1102,6 +1154,10 @@ app.post('/getusercartorder', async (req, res) => {
     res.send({ success: false, message: error })
   }
 })
+<<<<<<< Updated upstream
+=======
+>>>>>>> master
+>>>>>>> Stashed changes
 
 // 啟動網頁伺服器
 app.listen(process.env.PORT, () => {

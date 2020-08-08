@@ -37,8 +37,18 @@
             <img class="bigpic" :src="item.src">
             <h3>{{item.description}}</h3>
             <h4>價格:{{item.value}}元</h4>
+<<<<<<< Updated upstream
             <vs-button class="mb-1" @click="additem(item.id,number,item.stock,item.title,item.value,item.src)" color="success" type="filled">加入購物車</vs-button>
             <vs-input type="number" v-model="number" class="inputx m-auto" placeholder="數量"/>
+=======
+<<<<<<< HEAD
+            <vs-button class="mb-3" @click="additem(item.id,number,item.stock,item.title,item.value,item.src)" color="success" type="filled">加入購物車</vs-button>
+            <vs-input type="number" v-model="number" class="inputx m-auto mt-3" placeholder="數量"/>
+=======
+            <vs-button class="mb-1" @click="additem(item.id,number,item.stock,item.title,item.value,item.src)" color="success" type="filled">加入購物車</vs-button>
+            <vs-input type="number" v-model="number" class="inputx m-auto" placeholder="數量"/>
+>>>>>>> master
+>>>>>>> Stashed changes
           </vs-popup>
         </div>
       </div>
@@ -82,7 +92,27 @@ export default {
             cancelButtonText: '取消'
           }).then((result) => {
             if (result.value) {
+<<<<<<< Updated upstream
               this.axios.post(process.env.VUE_APP_APIURL + '/addcart', {
+                itemid: id,
+=======
+<<<<<<< HEAD
+              this.$swal('確認', '已收到您的訂單，會盡速幫您處裡', 'success')
+              this.axios.post('http://localhost:3000/addcart', {
+>>>>>>> Stashed changes
+                account: this.account,
+                title: title,
+                number: number,
+                value: value,
+                src: src,
+                buying: true
+              })
+                .then(res => {
+<<<<<<< Updated upstream
+                  this.$swal('確認', '已收到您的訂單，會盡速幫您處裡', 'success')
+=======
+=======
+              this.axios.post('http://localhost:3000/addcart', {
                 itemid: id,
                 account: this.account,
                 title: title,
@@ -93,6 +123,9 @@ export default {
               })
                 .then(res => {
                   this.$swal('確認', '已收到您的訂單，會盡速幫您處裡', 'success')
+>>>>>>> master
+                  console.log(res)
+>>>>>>> Stashed changes
                 })
                 .catch(error => {
                   this.$swal('錯誤', `${error.response.data.message}`, 'error')
@@ -100,7 +133,27 @@ export default {
             }
           })
         } else {
+<<<<<<< Updated upstream
           this.axios.post(process.env.VUE_APP_APIURL + '/addcart', {
+            itemid: id,
+=======
+<<<<<<< HEAD
+          this.$swal('確認', '已加入購物車', 'success')
+          this.axios.post('http://localhost:3000/addcart', {
+>>>>>>> Stashed changes
+            account: this.account,
+            title: title,
+            number: number,
+            value: value,
+            src: src,
+            buying: true
+          })
+            .then(res => {
+<<<<<<< Updated upstream
+              this.$swal('確認', '已成功加入購物車', 'success')
+=======
+=======
+          this.axios.post('http://localhost:3000/addcart', {
             itemid: id,
             account: this.account,
             title: title,
@@ -111,6 +164,9 @@ export default {
           })
             .then(res => {
               this.$swal('確認', '已成功加入購物車', 'success')
+>>>>>>> master
+              console.log(res)
+>>>>>>> Stashed changes
             })
             .catch(error => {
               this.$swal('錯誤', `${error.response.data.message}`, 'error')

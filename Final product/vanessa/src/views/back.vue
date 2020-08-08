@@ -54,10 +54,14 @@
 export default {
   data: () => ({
     active: false
+<<<<<<< Updated upstream
   }),
   mounted: function () {
     this.$store.commit('boxshow')
   }
+=======
+  })
+>>>>>>> Stashed changes
 }
 </script>
 <style lang="stylus">
