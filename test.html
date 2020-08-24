@@ -4,42 +4,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+#button {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+#input{
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  left: 5rem;
+}
+#ok{
+  width: 1%;
+  height: 2rem;
+  margin: auto;
+  
+}
+#Screen{
+  width: 80%;
+  height: 50rem;
+  background: gray;
+  margin: auto;
+  font-size: 5rem;
+}
+  </style>
 </head>
 <body>
-  <canvas id="draw" width="400" height="320"></canvas>
-<script>
-const canvas = document.querySelector('#draw');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-canvas.style.border = '1px solid black'
-console.log(canvas.style);
-const ctx = canvas.getContext('2d');
-
-let lastP =[lastX,lasxY] = [0,0]
-let isDrawing = false;
-
-canvas.addEventListener('mousedown', (e) => {
-	isDrawing = true;
-  console.log(e);
-  [lastX,lastY] = [e.clientX,e.clientY]
-  console.log();
-});
-canvas.addEventListener('mousemove', function(event) {
-  if(!isDrawing) return;
-  ctx.strokeStyle = `red`;
-    // 開始設定路徑
-    ctx.beginPath();
-    // 將畫筆移動到下筆座標點
-    ctx.moveTo(lastX, lastY);
-    // 從目前畫筆位置畫線到新座標點 (滑鼠所在位置)
-    ctx.lineTo(event.offsetX, event.offsetY);
-
-    // 上面都是在規劃路徑, 這裡才是將線畫出來
-    ctx.stroke();
-});
-canvas.addEventListener('mouseup', () => isDrawing = false);
-canvas.addEventListener('mouseout', () => isDrawing = false);
-
-</script>
+  <div id="ok">
+    <button onclick="showpre()">OK</button>
+  </div>
+  <div onmouseover="putin()" id='Screen'></div>
+  <div id='button'>
+    <button>按鈕</button>
+  </div>
+  <div id='input' style="position: absolute;">
+    <input type="text">
+  </div>
 </body>
+<script>
+  dragElement(document.getElementById("button"));
+  dragElement(document.getElementById("input"));
+  const Screen  = document.getElementById("Screen")
+  const button = document.getElementById("button")
+  const input = document.getElementById("input")
+  let item = undefined
+// ---把拖拉事件帶入
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+  // ---按下拖曳物件
+  function dragMouseDown(e) {
+    item = elmnt
+    console.log(item);
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // document.onmouseup = closeDragElement;
+    // // call a function whenever the cursor moves:
+    // document.onmousemove = elementDrag;
+    elmnt.style.pointerEvents = 'none'
+  }
+  // ---拖拉物件中
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+  // ---放開拖曳物件
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+    elmnt.style.pointerEvents = 'auto'
+    item = undefined
+  }
+  
+}
+function putin() {
+  if(item!==undefined){
+
+    Screen.append(item.id)
+  }
+}
+function showpre() {
+  console.log('object');
+  }
+</script>
 </html>
